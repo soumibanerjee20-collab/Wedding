@@ -6,7 +6,7 @@ import { GraduationCap, ArrowRight, Heart } from 'lucide-react';
 const OurStoryPage = () => {
   return (
     <div className="min-h-screen">
-      {/* Hero Section with London Background */}
+      {/* Hero Section with London/Big Ben Background */}
       <section
         className="relative min-h-screen flex flex-col items-center justify-center pt-20"
         style={{
@@ -16,17 +16,17 @@ const OurStoryPage = () => {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#f5f3ef]/85" />
+        <div className="absolute inset-0 bg-[#f8f6f2]/88" />
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           {/* Title */}
-          <h1 className="font-serif text-5xl md:text-7xl text-[#5a6a4d] mb-8 tracking-wider">
+          <h1 className="font-display text-5xl md:text-7xl text-[#5a6a4d] mb-8 tracking-wider">
             OUR STORY
           </h1>
 
           {/* Tagline */}
-          <p className="font-serif text-xl md:text-2xl text-[#5a6a4d]/80 italic mb-12 leading-relaxed">
+          <p className="font-cormorant text-xl md:text-2xl lg:text-3xl text-[#5a6a4d]/80 italic mb-12 leading-relaxed">
             {ourStory.tagline}
           </p>
 
@@ -40,7 +40,7 @@ const OurStoryPage = () => {
           {/* CTA Button */}
           <Link
             to="/timeline"
-            className="inline-flex items-center gap-3 bg-[#6b7c5e] text-white px-8 py-4 rounded-full text-sm tracking-wider hover:bg-[#5a6a4d] transition-colors duration-300 group"
+            className="inline-flex items-center gap-3 bg-[#6b7c5e] text-white px-8 py-4 rounded-full text-sm tracking-wider hover:bg-[#5a6a4d] transition-colors duration-300 group shadow-md"
           >
             Discover Their Journey
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -58,42 +58,42 @@ const OurStoryPage = () => {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#f5f3ef]/90" />
+        <div className="absolute inset-0 bg-[#f8f6f2]/92" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+          <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 md:gap-12">
             {/* Bride Profile Card */}
-            <div className="bg-white/90 backdrop-blur-sm p-10 max-w-sm w-full text-center shadow-sm">
+            <div className="bg-white/95 backdrop-blur-sm p-10 max-w-md w-full text-center shadow-sm">
               <div className="flex justify-center mb-6">
                 <GraduationCap className="w-10 h-10 text-[#6b7c5e]" />
               </div>
-              <h2 className="font-serif text-2xl md:text-3xl text-[#5a6a4d] tracking-wider mb-6">
-                {brideProfile.name.toUpperCase()}
+              <h2 className="font-display text-2xl md:text-3xl text-[#5a6a4d] tracking-wider mb-6 small-caps">
+                {brideProfile.name}
               </h2>
               <div className="space-y-3 text-[#5a6a4d]/80">
                 <p className="text-sm">{brideProfile.origin}</p>
-                <p className="text-sm">{brideProfile.description}</p>
+                <p className="text-sm italic">{brideProfile.description}</p>
                 <p className="text-sm">{brideProfile.education}</p>
                 <p className="text-sm">{brideProfile.career}</p>
               </div>
             </div>
 
             {/* Heart Divider */}
-            <div className="hidden md:flex flex-col items-center">
+            <div className="flex md:flex-col items-center justify-center py-4 md:py-0">
               <Heart className="w-8 h-8 text-[#6b7c5e] fill-[#6b7c5e]" />
             </div>
 
             {/* Groom Profile Card */}
-            <div className="bg-white/90 backdrop-blur-sm p-10 max-w-sm w-full text-center shadow-sm">
+            <div className="bg-white/95 backdrop-blur-sm p-10 max-w-md w-full text-center shadow-sm">
               <div className="flex justify-center mb-6">
                 <GraduationCap className="w-10 h-10 text-[#6b7c5e]" />
               </div>
-              <h2 className="font-serif text-2xl md:text-3xl text-[#5a6a4d] tracking-wider mb-6">
-                {groomProfile.name.toUpperCase()}
+              <h2 className="font-display text-2xl md:text-3xl text-[#5a6a4d] tracking-wider mb-6 small-caps">
+                {groomProfile.name}
               </h2>
               <div className="space-y-3 text-[#5a6a4d]/80">
                 <p className="text-sm">{groomProfile.origin}</p>
-                <p className="text-sm">{groomProfile.description}</p>
+                <p className="text-sm italic">{groomProfile.description}</p>
                 <p className="text-sm">{groomProfile.education}</p>
                 <p className="text-sm">{groomProfile.career}</p>
               </div>

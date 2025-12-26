@@ -31,12 +31,12 @@ const Header = () => {
           <Link to="/" className="flex items-center">
             <div className="relative">
               {/* Corner brackets */}
-              <span className="absolute -top-1 -left-1 text-[#7a8c69] text-xs opacity-60">┌</span>
-              <span className="absolute -top-1 -right-1 text-[#7a8c69] text-xs opacity-60">┐</span>
-              <span className="absolute -bottom-1 -left-1 text-[#7a8c69] text-xs opacity-60">└</span>
-              <span className="absolute -bottom-1 -right-1 text-[#7a8c69] text-xs opacity-60">┘</span>
+              <span className="absolute -top-1.5 -left-1.5 text-[#9a7c4e] text-sm font-light">┌</span>
+              <span className="absolute -top-1.5 -right-1.5 text-[#9a7c4e] text-sm font-light">┐</span>
+              <span className="absolute -bottom-1.5 -left-1.5 text-[#9a7c4e] text-sm font-light">└</span>
+              <span className="absolute -bottom-1.5 -right-1.5 text-[#9a7c4e] text-sm font-light">┘</span>
               <div className="border border-[#6b7c5e] px-4 py-2">
-                <span className="font-serif text-lg text-[#5a6a4d] tracking-wider">
+                <span className="font-display text-lg text-[#5a6a4d] tracking-wider">
                   {coupleInfo.monogram}
                 </span>
               </div>
@@ -44,12 +44,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
+          <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
             {navigationItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.path}
-                className={`text-sm tracking-[0.15em] font-medium transition-colors duration-300 relative group ${
+                className={`text-sm tracking-[0.12em] font-medium transition-colors duration-300 relative group ${
                   isActive(item.path)
                     ? 'text-[#5a6a4d]'
                     : 'text-[#6b7c5e] hover:text-[#4a5a40]'
@@ -57,7 +57,7 @@ const Header = () => {
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[1px] bg-[#5a6a4d] transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-[1px] bg-[#9a7c4e] transition-all duration-300 ${
                     isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -108,7 +108,7 @@ const Header = () => {
                 key={item.id}
                 to={item.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-sm tracking-[0.15em] font-medium transition-colors duration-300 ${
+                className={`text-sm tracking-[0.12em] font-medium transition-colors duration-300 ${
                   isActive(item.path)
                     ? 'text-[#5a6a4d]'
                     : 'text-[#6b7c5e] hover:text-[#4a5a40]'
