@@ -5,11 +5,11 @@ import { MapPin, Heart } from 'lucide-react';
 const TimelinePage = () => {
   return (
     <div className="min-h-screen pt-20 relative">
-      {/* Background Image - Edinburgh Victoria Street Colorful */}
+      {/* Background Image - Edinburgh Castle & Old Town */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1568393691622-c7ba131d63b4?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1920&q=80')`,
         }}
       >
         {/* Overlay */}
