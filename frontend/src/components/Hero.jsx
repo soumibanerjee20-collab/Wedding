@@ -21,73 +21,83 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         {/* Monogram Logo Card */}
-        <div className="bg-white shadow-lg mb-8 px-8 py-12 max-w-[220px]">
+        <div className="bg-white shadow-lg mb-8 px-8 py-10 max-w-[200px]">
           <svg
-            viewBox="0 0 120 160"
-            className="w-32 h-44 mx-auto"
+            viewBox="0 0 100 140"
+            className="w-28 h-40 mx-auto"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Floral decorations - top */}
+            {/* Top flowers cluster */}
             <g className="flowers">
-              {/* Top flower 1 */}
-              <circle cx="45" cy="25" r="8" fill="#f5f0e6" stroke="#c9b896" strokeWidth="0.5" />
-              <circle cx="45" cy="25" r="3" fill="#e8d4a8" />
+              {/* Main flower left */}
+              <g transform="translate(25, 20)">
+                <ellipse cx="0" cy="-8" rx="6" ry="8" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3"/>
+                <ellipse cx="6" cy="-4" rx="6" ry="8" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3" transform="rotate(30)"/>
+                <ellipse cx="-6" cy="-4" rx="6" ry="8" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3" transform="rotate(-30)"/>
+                <circle cx="0" cy="0" r="4" fill="#e8dbb8"/>
+              </g>
               
-              {/* Top flower 2 */}
-              <circle cx="75" cy="20" r="7" fill="#f5f0e6" stroke="#c9b896" strokeWidth="0.5" />
-              <circle cx="75" cy="20" r="2.5" fill="#e8d4a8" />
+              {/* Main flower right */}
+              <g transform="translate(75, 18)">
+                <ellipse cx="0" cy="-7" rx="5" ry="7" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3"/>
+                <ellipse cx="5" cy="-3" rx="5" ry="7" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3" transform="rotate(35)"/>
+                <ellipse cx="-5" cy="-3" rx="5" ry="7" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.3" transform="rotate(-35)"/>
+                <circle cx="0" cy="0" r="3" fill="#e8dbb8"/>
+              </g>
               
               {/* Small buds */}
-              <ellipse cx="35" cy="35" rx="3" ry="5" fill="#f5f0e6" stroke="#c9b896" strokeWidth="0.3" />
-              <ellipse cx="85" cy="30" rx="2.5" ry="4" fill="#f5f0e6" stroke="#c9b896" strokeWidth="0.3" />
+              <ellipse cx="18" cy="30" rx="3" ry="5" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.2"/>
+              <ellipse cx="82" cy="28" rx="2.5" ry="4" fill="#faf8f2" stroke="#d4c8a8" strokeWidth="0.2"/>
             </g>
             
-            {/* Leaves */}
-            <g className="leaves" fill="#7a8c69" opacity="0.8">
-              <path d="M30 50 Q35 40 45 35 Q40 45 35 55 Z" />
-              <path d="M90 45 Q85 35 75 30 Q80 40 85 50 Z" />
-              <path d="M25 70 Q30 60 40 55 Q35 65 30 75 Z" />
-              <path d="M95 65 Q90 55 80 50 Q85 60 90 70 Z" />
+            {/* Leaves and stems */}
+            <g className="leaves" fill="#7a8c69" opacity="0.85">
+              {/* Left side leaves */}
+              <path d="M25 25 Q15 35 20 50 Q28 40 25 25" />
+              <path d="M22 32 Q10 40 15 55 Q25 45 22 32" />
+              
+              {/* Right side leaves */}
+              <path d="M75 23 Q85 33 80 48 Q72 38 75 23" />
+              <path d="M78 30 Q90 38 85 53 Q75 43 78 30" />
             </g>
             
-            {/* Stems */}
-            <g stroke="#7a8c69" strokeWidth="1" fill="none" opacity="0.7">
-              <path d="M45 35 Q50 50 55 70" />
-              <path d="M75 30 Q70 50 65 70" />
+            {/* Stems curving down */}
+            <g stroke="#7a8c69" strokeWidth="1.2" fill="none" opacity="0.8">
+              <path d="M28 35 Q35 55 45 70" />
+              <path d="M72 33 Q65 53 55 70" />
             </g>
             
-            {/* S letter */}
+            {/* Intertwined S & J */}
             <text
-              x="38"
-              y="115"
-              fontFamily="'Cormorant Garamond', serif"
-              fontSize="55"
+              x="28"
+              y="105"
+              fontFamily="'Cormorant Garamond', Georgia, serif"
+              fontSize="50"
               fill="#9a7c4e"
               fontStyle="italic"
-              fontWeight="500"
+              fontWeight="400"
             >
               S
             </text>
             
-            {/* J letter - intertwined */}
             <text
-              x="62"
-              y="115"
-              fontFamily="'Cormorant Garamond', serif"
-              fontSize="55"
+              x="52"
+              y="105"
+              fontFamily="'Cormorant Garamond', Georgia, serif"
+              fontSize="50"
               fill="#9a7c4e"
               fontStyle="italic"
-              fontWeight="500"
+              fontWeight="400"
             >
               J
             </text>
             
             {/* Bottom decorative leaves */}
-            <g className="bottom-leaves" fill="#7a8c69" opacity="0.7">
-              <path d="M40 120 Q50 130 60 140 Q55 125 45 115 Z" />
-              <path d="M80 120 Q70 130 60 140 Q65 125 75 115 Z" />
-              <path d="M50 125 Q55 140 60 150 Q58 135 52 122 Z" />
-              <path d="M70 125 Q65 140 60 150 Q62 135 68 122 Z" />
+            <g className="bottom-leaves" fill="#7a8c69" opacity="0.75">
+              <path d="M35 108 Q45 120 50 132 Q48 118 38 106 Z" />
+              <path d="M65 108 Q55 120 50 132 Q52 118 62 106 Z" />
+              <path d="M42 112 Q48 125 50 135 Q49 122 44 110 Z" />
+              <path d="M58 112 Q52 125 50 135 Q51 122 56 110 Z" />
             </g>
           </svg>
         </div>
