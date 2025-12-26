@@ -13,13 +13,13 @@ const HomePage = () => {
         }}
       >
         {/* Fade overlay matching logo colors */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/75 via-[#faf8f4]/50 to-[#faf8f4]/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/90 via-[#faf8f4]/70 to-[#faf8f4]/90\" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
         {/* Logo Image */}
-        <div className="bg-white/95 shadow-lg mb-10 p-4 rounded-sm">
+        <div className="bg-white shadow-lg mb-10 p-4 rounded-sm">
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
@@ -27,11 +27,11 @@ const HomePage = () => {
           />
         </div>
 
-        {/* Names - Gold color matching logo */}
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-[#b8956b] mb-4 tracking-wide">
-          <span className="font-normal">{coupleInfo.bride}</span>
-          <span className="mx-4 md:mx-6 text-[#8a9a7c] italic font-light">&</span>
-          <span className="font-normal italic">{coupleInfo.groom}</span>
+        {/* Names - Higher contrast for readability */}
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-[#8B6914] mb-4 tracking-wide drop-shadow-sm">
+          <span className="font-medium">{coupleInfo.bride}</span>
+          <span className="mx-4 md:mx-6 text-[#6b7c5e] italic font-light">&</span>
+          <span className="font-medium italic">{coupleInfo.groom}</span>
         </h1>
 
         {/* Tagline */}
