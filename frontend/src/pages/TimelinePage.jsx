@@ -7,7 +7,7 @@ const TimelinePage = () => {
     <div
       className="min-h-screen pt-20"
       style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1590089415225-401ed6f9db8e?w=1920&q=80')`,
+        backgroundImage: `url('https://images.unsplash.com/photo-1567087580282-d5c0a7b12dc6?w=1920&q=80')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
