@@ -8,7 +8,9 @@ module.exports = {
   theme: {
   	extend: {
   		fontFamily: {
-  			serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+  			serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+  			display: ['"Playfair Display"', 'Georgia', 'serif'],
+  			cormorant: ['"Cormorant Garamond"', 'Georgia', 'serif'],
   			sans: ['Montserrat', 'system-ui', 'sans-serif'],
   		},
   		borderRadius: {
