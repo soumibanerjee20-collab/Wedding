@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#5a6a4d] py-16 text-white">
+    <footer className="bg-[#5a5a52] py-16 text-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
         {/* Logo */}
         <div className="mb-6">
@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
 
         {/* Names */}
-        <p className="font-display text-2xl tracking-wider mb-4">
+        <p className="font-display text-2xl tracking-wider mb-4 text-[#d4b896]">
           {coupleInfo.bride} & {coupleInfo.groom}
         </p>
 
@@ -28,7 +28,7 @@ const Footer = () => {
         {/* Decorative element */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <div className="w-16 h-[1px] bg-white/30" />
-          <Heart className="w-4 h-4 text-[#c9b896]" />
+          <Heart className="w-4 h-4 text-[#d4b896]" />
           <div className="w-16 h-[1px] bg-white/30" />
         </div>
 
