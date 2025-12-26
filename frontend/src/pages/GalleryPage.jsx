@@ -1,96 +1,100 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { gallery } from '../data/mock';
-import { X } from 'lucide-react';
+import { useState } from 'react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GalleryPage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [filter, setFilter] = useState('all');
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const categories = ['all', 'engagement', 'graduation', 'dating'];
-  
-  const filteredGallery = filter === 'all' 
-    ? gallery 
-    : gallery.filter(img => img.category === filter);
+  const openLightbox = (index) => setSelectedIndex(index);
+  const closeLightbox = () => setSelectedIndex(null);
+  const goNext = () => setSelectedIndex((prev) => (prev + 1) % gallery.length);
+  const goPrev = () => setSelectedIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Title */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
-            Our Gallery
+            Our Moments
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-4" />
           <p className="text-[#5a5a52] text-sm tracking-wide font-light">
-            Moments captured in time
+            Snapshots of our journey together
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-5 py-2 text-xs tracking-wider uppercase transition-all duration-300 rounded-full ${
-                filter === cat
-                  ? 'bg-[#8a9a7c] text-white'
-                  : 'bg-transparent text-[#5a5a52] border border-[#d4b896] hover:bg-[#f5f2eb]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {filteredGallery.map((image, index) => (
+        {/* Masonry-style Gallery Grid */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+          {gallery.map((image, index) => (
             <div
               key={image.id}
-              className={`relative overflow-hidden cursor-pointer group ${
-                index === 0 ? 'md:col-span-2 md:row-span-2' : ''
-              }`}
-              onClick={() => setSelectedImage(image)}
+              className="break-inside-avoid cursor-pointer group"
+              onClick={() => openLightbox(index)}
             >
-              <div className="aspect-square">
+              <div className="relative overflow-hidden bg-white p-2 shadow-sm hover:shadow-lg transition-all duration-500">
                 <img
                   src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  alt="Our moment"
+                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
-              </div>
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[#b8956b]/0 group-hover:bg-[#b8956b]/20 transition-all duration-500 flex items-end justify-center pb-4">
-                <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
-                  {image.alt}
-                </span>
+                {/* Subtle hover overlay */}
+                <div className="absolute inset-2 bg-[#b8956b]/0 group-hover:bg-[#b8956b]/10 transition-all duration-500" />
               </div>
             </div>
           ))}
         </div>
+
+        {/* Note about captions */}
+        <div className="text-center mt-12">
+          <p className="text-[#7a7a72] text-sm italic">
+            More photos coming soon...
+          </p>
+        </div>
       </div>
 
       {/* Lightbox */}
-      {selectedImage && (
+      {selectedIndex !== null && (
         <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+          onClick={closeLightbox}
         >
+          {/* Close button */}
           <button
-            className="absolute top-6 right-6 text-white hover:text-[#b8956b] transition-colors"
-            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors z-10"
+            onClick={closeLightbox}
           >
             <X className="w-8 h-8" />
           </button>
-          <div className="text-center">
+          
+          {/* Navigation */}
+          <button
+            className="absolute left-4 md:left-8 text-white/80 hover:text-white transition-colors p-2"
+            onClick={(e) => { e.stopPropagation(); goPrev(); }}
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+          
+          <button
+            className="absolute right-4 md:right-8 text-white/80 hover:text-white transition-colors p-2"
+            onClick={(e) => { e.stopPropagation(); goNext(); }}
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+
+          {/* Image */}
+          <div className="max-w-5xl max-h-[85vh] px-16" onClick={(e) => e.stopPropagation()}>
             <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="max-w-full max-h-[80vh] object-contain"
-              onClick={(e) => e.stopPropagation()}
+              src={gallery[selectedIndex].src}
+              alt="Our moment"
+              className="max-w-full max-h-[85vh] object-contain"
             />
-            <p className="text-white mt-4 font-display text-lg">{selectedImage.alt}</p>
+          </div>
+          
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 text-sm">
+            {selectedIndex + 1} / {gallery.length}
           </div>
         </div>
       )}
