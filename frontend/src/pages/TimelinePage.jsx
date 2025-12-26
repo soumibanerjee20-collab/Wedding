@@ -4,17 +4,17 @@ import { MapPin, Heart } from 'lucide-react';
 
 const TimelinePage = () => {
   return (
-    <div
-      className="min-h-screen pt-20"
-      style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1567087580282-d5c0a7b12dc6?w=1920&q=80')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
-    >
-      {/* Overlay */}
-      <div className="fixed inset-0 bg-[#faf8f4]/88 pointer-events-none" />
+    <div className="min-h-screen pt-20 relative">
+      {/* Background Image - Edinburgh Victoria Street */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1920&q=80')`,
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-[#faf8f4]/88" />
+      </div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
         {/* Section Title */}
