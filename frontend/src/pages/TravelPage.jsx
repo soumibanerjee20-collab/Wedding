@@ -9,7 +9,7 @@ const TravelPage = () => {
         {/* Section Title */}
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
-            Travel & Stay
+            Travel & Accommodation
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-6" />
           <p className="text-[#5a5a52] text-sm tracking-wide font-light max-w-xl mx-auto">
