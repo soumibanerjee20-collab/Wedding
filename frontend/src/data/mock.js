@@ -18,7 +18,7 @@ export const navigationItems = [
   { id: 'events', label: 'EVENTS', path: '/events' },
   { id: 'gallery', label: 'GALLERY', path: '/gallery' },
   { id: 'families', label: 'FAMILIES', path: '/families' },
-  { id: 'travel', label: 'TRAVEL', path: '/travel' },
+  { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
   { id: 'rsvp', label: 'RSVP', path: '/rsvp' }
 ];
 
