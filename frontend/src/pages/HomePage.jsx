@@ -9,7 +9,7 @@ const HomePage = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1920&q=80')`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/10" />
