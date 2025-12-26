@@ -39,7 +39,7 @@ const HomePage = () => {
         </p>
 
         {/* Subtitle */}
-        <p className="font-cormorant text-[#5a6a4d] text-xl md:text-2xl lg:text-3xl mt-8 italic drop-shadow-sm">
+        <p className="font-cormorant text-[#5a6a4d] text-xl md:text-2xl lg:text-3xl mt-8 italic bg-white/50 backdrop-blur-sm px-6 py-2 rounded-full">
           {coupleInfo.subtitle}
         </p>
 
