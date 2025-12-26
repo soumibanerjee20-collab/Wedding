@@ -158,15 +158,15 @@ export const events = [
 export const gallery = [
   {
     id: 1,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
-    alt: "The Ring - October Proposal",
-    category: "engagement"
-  },
-  {
-    id: 2,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
     alt: "Graduation Day Together",
     category: "graduation"
+  },
+  {
+    id: 2,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
+    alt: "The Ring - October Proposal",
+    category: "engagement"
   },
   {
     id: 3,
