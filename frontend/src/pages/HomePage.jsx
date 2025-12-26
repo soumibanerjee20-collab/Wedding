@@ -35,7 +35,7 @@ const HomePage = () => {
         </h1>
 
         {/* Tagline */}
-        <p className="text-[#5a5a52] text-sm md:text-base tracking-[0.25em] mt-8 uppercase font-medium">
+        <p className="text-[#3d3d38] text-base md:text-lg tracking-[0.25em] mt-8 uppercase font-bold drop-shadow-md">
           {coupleInfo.tagline}
         </p>
 
