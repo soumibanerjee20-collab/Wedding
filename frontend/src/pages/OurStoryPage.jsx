@@ -16,7 +16,7 @@ const OurStoryPage = () => {
         }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#f8f6f2]/88" />
+        <div className="absolute inset-0 bg-[#f8f6f2]/92" />
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
