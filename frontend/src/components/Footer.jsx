@@ -3,26 +3,26 @@ import { coupleInfo } from '../data/mock';
 import { Heart } from 'lucide-react';
 
 const Footer = () => {
-  const weddingDate = new Date(coupleInfo.weddingDate);
-  const formattedDate = weddingDate.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric'
-  });
-
   return (
     <footer className="bg-[#5a6a4d] py-16 text-white">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        {/* Monogram */}
+        {/* Logo */}
         <div className="mb-6">
-          <span className="font-serif text-3xl tracking-wider">
-            {coupleInfo.bride.charAt(0)} & {coupleInfo.groom.charAt(0)}
-          </span>
+          <img
+            src={coupleInfo.logoUrl}
+            alt="S & J"
+            className="w-20 h-20 mx-auto object-contain bg-white rounded-full p-2"
+          />
         </div>
 
-        {/* Date */}
-        <p className="text-white/80 text-sm tracking-widest mb-6">
-          {formattedDate}
+        {/* Names */}
+        <p className="font-display text-2xl tracking-wider mb-4">
+          {coupleInfo.bride} & {coupleInfo.groom}
+        </p>
+
+        {/* Dates */}
+        <p className="text-white/70 text-sm tracking-widest mb-6">
+          USA {coupleInfo.usWeddingYear} • INDIA {coupleInfo.indiaWeddingYear}
         </p>
 
         {/* Decorative element */}
@@ -33,12 +33,12 @@ const Footer = () => {
         </div>
 
         {/* Message */}
-        <p className="font-serif text-lg italic text-white/90 mb-8">
+        <p className="font-cormorant text-lg italic text-white/90 mb-8">
           "Two souls, one heart, forever intertwined"
         </p>
 
         {/* Copyright */}
-        <p className="text-white/60 text-xs tracking-wider">
+        <p className="text-white/50 text-xs tracking-wider">
           {coupleInfo.bride} & {coupleInfo.groom} © {new Date().getFullYear()}
         </p>
       </div>
