@@ -93,19 +93,19 @@ const Hero = () => {
         </div>
 
         {/* Names */}
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#5a6a4d] mb-4 tracking-wide">
+        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#5a6a4d] mb-4 tracking-wide drop-shadow-sm">
           <span className="font-light">{coupleInfo.bride}</span>
           <span className="mx-4 md:mx-6 text-[#7a8c69] italic font-light">&</span>
           <span className="font-light italic">{coupleInfo.groom}</span>
         </h1>
 
         {/* Tagline */}
-        <p className="text-[#6b7c5e] text-sm md:text-base tracking-[0.3em] mt-6 uppercase">
+        <p className="text-[#5a6a4d] text-sm md:text-base tracking-[0.3em] mt-6 uppercase drop-shadow-sm bg-white/60 px-6 py-2">
           {coupleInfo.tagline}
         </p>
 
         {/* Subtitle */}
-        <p className="font-serif text-[#5a6a4d] text-xl md:text-2xl mt-8 italic">
+        <p className="font-serif text-[#5a6a4d] text-xl md:text-2xl mt-8 italic drop-shadow-sm">
           {coupleInfo.subtitle}
         </p>
       </div>
