@@ -121,13 +121,13 @@ export const timeline = [
   },
   {
     date: "OCTOBER 2025",
-    title: "The Ring & The Promise",
-    description: "James returned to the UK for a precious few weeks - October 5th through the 31st. On a crisp autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee. A sparkling ring. A question asked with a full heart. Though they'd already promised each other forever in Cornwall, this moment felt different - fresh, magical, witnessed by those who'd watched their love story unfold. Tears of joy. A resounding yes. A celebration of love that crossed every boundary.",
+    title: "A Surprise She'll Never Forget",
+    description: "James returned to the UK for a short but unforgettable trip. On a crisp autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a sparkling ring. It was a complete surprise - a moment so magical, so perfect, that time seemed to stand still. Tears of joy, a resounding yes, and the cheers of friends who had watched their love story unfold. A memory etched in her heart forever.",
     location: "Colchester Castle Park, England"
   },
   {
     date: "NOW",
-    title: "Waiting for Forever",
+    title: "Counting Down to Forever",
     description: "An ocean apart but never truly separated. Video calls that bridge time zones. Messages that say 'I love you' at midnight and dawn. The visa paperwork is underway, each form a step closer to home. Every day apart is one day closer to the moment she arrives in Wyoming, to the life they'll build together. Distance is just a temporary chapter in their forever story.",
     location: "Wyoming & India"
   }
