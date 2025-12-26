@@ -1,14 +1,16 @@
-// Mock data for Soumi & James Wedding Website
+// Real data for Soumi & James Wedding Website - from relationship letters
 
 export const coupleInfo = {
   bride: "Soumi",
   groom: "James",
   brideFullName: "Soumi Banerjee",
-  groomFullName: "James Adams (James)",
+  groomFullName: "James M. Adams",
   tagline: "A CROSS-CONTINENTAL LOVE STORY",
   subtitle: "From University of Essex to Forever",
-  weddingDate: "2025-06-15",
-  monogram: "S & J"
+  usWeddingYear: "2026",
+  indiaWeddingYear: "2027",
+  monogram: "S & J",
+  logoUrl: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/v93q8anj_ChatGPT%20Image%20Dec%2016%2C%202025%20at%2009_44_15%20PM.png"
 };
 
 export const navigationItems = [
@@ -22,8 +24,8 @@ export const navigationItems = [
 
 export const ourStory = {
   tagline: "Two strangers in a classroom. An unexpected friendship. A love that crossed oceans.",
-  meetingDate: "October 2023",
-  meetingPlace: "University of Essex",
+  meetingDate: "October 2, 2023",
+  meetingPlace: "University of Essex, Colchester",
   narrative: "Soumi, a Bengali professional with an adventurous spirit, and James, a former Army Captain seeking his next chapter, met on MBA induction day. He seemed quiet, serious. She wondered if they'd ever be friends. Then a canceled lunch changed everything."
 };
 
@@ -32,96 +34,133 @@ export const brideProfile = {
   origin: "From Kolkata, India",
   description: "A Bengali girl who's called many places home",
   education: "MBA, University of Essex",
-  career: "Professional journey across different countries"
+  career: "Professional journey across different countries",
+  background: "Born and raised in Kolkata, pursued her first Master's in Bangalore, worked at Accenture before embarking on her MBA journey in the UK."
 };
 
 export const groomProfile = {
-  name: "James Adams (James)",
+  name: "James M. Adams",
   origin: "From Ohio, United States of America",
   description: "Former Captain, U.S. Army",
   education: "MBA, University of Essex",
-  career: "Procurement Manager at HF Sinclair, Wyoming"
+  career: "Procurement Manager at HF Sinclair, Wyoming",
+  background: "Resigned his Army commission to pursue an MBA in England, seeking growth beyond his military career."
 };
 
 export const timeline = [
   {
-    year: "2023",
+    date: "OCTOBER 2023",
     title: "First Meeting",
-    description: "We met during MBA induction day at the University of Essex. A chance encounter that changed everything.",
-    month: "October"
+    description: "We met on MBA induction day at the University of Essex. Soumi noticed James's quiet and observant nature. They didn't speak much that day, but something felt familiar.",
+    location: "Colchester, England"
   },
   {
-    year: "2023",
-    title: "First Date",
-    description: "A canceled lunch led to an unexpected coffee date that neither of us could forget.",
-    month: "November"
+    date: "NOVEMBER 2023",
+    title: "Growing Friendship",
+    description: "An unexpected lunch due to a friend's cancellation brought them together. They talked about their academic journeys, goals, and past lives. This was the beautiful beginning of a friendship that grew organically.",
+    location: "University of Essex"
   },
   {
-    year: "2024",
-    title: "First Trip Together",
-    description: "We explored the English countryside together, creating memories that would last a lifetime.",
-    month: "February"
+    date: "DECEMBER 2023",
+    title: "A Bittersweet Goodbye",
+    description: "James had breakfast with Soumi before flying home to Ohio for Christmas. He felt sadness at their parting and realized Soumi had become a dear friend. Their connection was deeper than either had acknowledged.",
+    location: "Colchester, England"
   },
   {
-    year: "2024",
-    title: "Meeting the Families",
-    description: "Soumi met James's family in Ohio, and James traveled to Kolkata to meet Soumi's family.",
-    month: "June"
+    date: "MARCH 2024",
+    title: "The First Kiss",
+    description: "James took Soumi to lunch at Romano Lounge in Colchester and asked her to join him on a trip to Edinburgh. That evening, they shared their first kiss. She said yes to Edinburgh.",
+    location: "Romano Lounge, Colchester"
   },
   {
-    year: "2024",
-    title: "The Proposal",
-    description: "Under the stars in London, James proposed. She said yes without hesitation.",
-    month: "September"
+    date: "APRIL 2024",
+    title: "Edinburgh Magic",
+    description: "In the spring, they took a trip to Edinburgh that changed everything. Cobbled streets straight out of Harry Potter, Edinburgh Castle glowing against the night sky, their first real date at a cozy restaurant with wine and moonlit walks. Soumi cried tears of joy seeing the city she'd dreamed about, and James held space for her quietly. When they said goodbye at the train station days later, both in tears, they knew - this wasn't just friendship anymore.",
+    location: "Edinburgh, Scotland"
   },
   {
-    year: "2025",
-    title: "Wedding Day",
-    description: "The day we've been dreaming of. Join us as we celebrate our forever.",
-    month: "June"
+    date: "MAY 2024",
+    title: "Together",
+    description: "They made it official. No more pretending they were just friends. They were dating, and it felt right. Through the rest of spring and into summer, their bond grew deeper with every shared moment.",
+    location: "Colchester, England"
+  },
+  {
+    date: "SUMMER 2024",
+    title: "Meeting the Family",
+    description: "Soumi met James's mother Judy, his twin brother Patrick, and Patrick's fiancée Michelle. Judy and Soumi formed an immediate connection - a warm and loving mother-daughter-like relationship that continues to grow.",
+    location: "England"
+  },
+  {
+    date: "DECEMBER 2024",
+    title: "Chester & Wales",
+    description: "They traveled to Chester and Conwy. At a historic steakhouse, over wine and candlelight, James began to see Soumi as his life partner. In Wales, despite the wind preventing their castle visit, they hiked together - Soumi gaining confidence with each step.",
+    location: "Chester & Conwy, Wales"
+  },
+  {
+    date: "CHRISTMAS 2024",
+    title: "Our First Christmas",
+    description: "They spent their first Christmas together in Colchester, cherishing quiet moments, shared meals, and the warmth of being together during the holiday season.",
+    location: "Colchester, England"
+  },
+  {
+    date: "MARCH 2025",
+    title: "Adventures in Peak District",
+    description: "After James returned from interviews in the U.S., they traveled to Castleton and the Peak District. Soumi ran her first 10K alongside James, discovering strength she didn't know she had. They explored Hope Valley and the beautiful trails of England.",
+    location: "Peak District, England"
+  },
+  {
+    date: "APRIL 2025",
+    title: "Cornwall & The Proposal",
+    description: "Their final trip before graduation took them to Rye and Tintagel, Cornwall. During a coastal path walk to the tiny village of Port William, watching the sunset from a cliff, James called his parents and knew - Soumi was the one. On April 11th, in a private moment, James proposed. She said yes.",
+    location: "Tintagel, Cornwall"
+  },
+  {
+    date: "APRIL 10, 2025",
+    title: "Graduation Day",
+    description: "They walked across the stage together at the University of Essex, completing the MBA journey that brought them together. Two strangers who became everything to each other.",
+    location: "University of Essex"
+  },
+  {
+    date: "APRIL 12, 2025",
+    title: "A New Chapter Begins",
+    description: "James departed for Wyoming to begin his new job. At Heathrow Airport, they said goodbye - not forever, but for now. The visa process began, and with it, the countdown to their forever.",
+    location: "Heathrow Airport, London"
   }
 ];
 
 export const events = [
   {
     id: 1,
-    name: "Mehendi Ceremony",
-    date: "June 13, 2025",
-    time: "3:00 PM - 8:00 PM",
-    venue: "The Garden Pavilion",
-    address: "123 Rose Garden Lane, London",
-    description: "Join us for an afternoon of beautiful henna artistry, music, and celebration.",
-    dressCode: "Colorful Indian attire encouraged"
+    name: "US Wedding Celebration",
+    date: "Mid 2026 (Tentative)",
+    time: "TBD",
+    venue: "To Be Announced",
+    address: "Wyoming / Ohio, USA",
+    description: "Our intimate celebration in the United States after Soumi arrives on her fiancé visa. A blend of American and Indian traditions.",
+    dressCode: "Formal / Indian attire welcome",
+    status: "Planning in Progress"
   },
   {
     id: 2,
-    name: "Sangeet Night",
-    date: "June 14, 2025",
-    time: "6:00 PM - 11:00 PM",
-    venue: "Grand Ballroom, The Mayfair Hotel",
-    address: "456 Park Lane, London",
-    description: "An evening of music, dance performances, and celebration of our love story.",
-    dressCode: "Semi-formal / Indian festive wear"
+    name: "Indian Wedding Ceremony",
+    date: "2027 (Tentative)",
+    time: "TBD",
+    venue: "To Be Announced",
+    address: "Kolkata, India",
+    description: "A traditional Bengali wedding celebration with Soumi's family and friends. Full of colors, rituals, music, and love.",
+    dressCode: "Traditional Indian attire",
+    status: "Date TBD"
   },
   {
     id: 3,
-    name: "Wedding Ceremony",
-    date: "June 15, 2025",
-    time: "11:00 AM - 2:00 PM",
-    venue: "St. Mary's Church",
-    address: "789 Church Road, Essex",
-    description: "The sacred ceremony where we officially become one. A blend of traditions.",
-    dressCode: "Formal attire"
-  },
-  {
-    id: 4,
-    name: "Reception",
-    date: "June 15, 2025",
-    time: "5:00 PM - 12:00 AM",
-    venue: "Hedingham Castle",
-    address: "Castle Lane, Essex",
-    description: "Join us for an evening of dinner, dancing, and celebration.",
-    dressCode: "Black tie / Indian formal"
+    name: "Reception - India",
+    date: "2027 (Tentative)",
+    time: "TBD",
+    venue: "To Be Announced",
+    address: "Kolkata, India",
+    description: "A grand reception to celebrate with extended family and friends who couldn't attend the US celebration.",
+    dressCode: "Festive Indian wear",
+    status: "Date TBD"
   }
 ];
 
@@ -129,91 +168,98 @@ export const gallery = [
   {
     id: 1,
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    alt: "Couple portrait",
-    category: "engagement"
+    alt: "Love story",
+    category: "memories"
   },
   {
     id: 2,
     src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80",
-    alt: "Romantic moment",
-    category: "engagement"
+    alt: "Together",
+    category: "memories"
   },
   {
     id: 3,
     src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
     alt: "Walking together",
-    category: "prewedding"
+    category: "adventures"
   },
   {
     id: 4,
     src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",
-    alt: "Wedding rings",
-    category: "details"
+    alt: "Rings",
+    category: "engagement"
   },
   {
     id: 5,
     src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80",
-    alt: "Beautiful venue",
-    category: "venue"
+    alt: "Edinburgh",
+    category: "adventures"
   },
   {
     id: 6,
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-    alt: "Sunset moment",
-    category: "prewedding"
+    alt: "Sunset",
+    category: "memories"
   },
   {
     id: 7,
     src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80",
-    alt: "Happy couple",
-    category: "engagement"
+    alt: "Happy moments",
+    category: "memories"
   },
   {
     id: 8,
     src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
-    alt: "Flowers detail",
-    category: "details"
+    alt: "Flowers",
+    category: "engagement"
   }
 ];
 
 export const families = {
   bride: {
     title: "Bride's Family",
+    subtitle: "The Banerjees",
     members: [
       {
-        name: "Mr. Arun Banerjee",
+        name: "Mr. Banerjee",
         relation: "Father of the Bride",
-        description: "A retired professor who instilled the love of learning in Soumi."
+        description: "Soumi's loving father who supported her dreams across continents."
       },
       {
-        name: "Mrs. Priya Banerjee",
+        name: "Mrs. Banerjee",
         relation: "Mother of the Bride",
-        description: "A classical dancer who taught Soumi grace and strength."
-      },
-      {
-        name: "Rahul Banerjee",
-        relation: "Brother of the Bride",
-        description: "Soumi's protective older brother and best friend."
+        description: "The heart of the family, who raised Soumi with grace and strength."
       }
     ]
   },
   groom: {
     title: "Groom's Family",
+    subtitle: "The Adams",
     members: [
       {
-        name: "Mr. William Adams",
+        name: "Mark Eugene Adams",
         relation: "Father of the Groom",
-        description: "A architect who built the foundation of their family home."
+        description: "Was the first to see the special connection between James and Soumi during his visit to England. Encouraged James to pursue his heart."
       },
       {
-        name: "Mrs. Elizabeth Adams",
+        name: "Judith Rae Adams (Judy)",
         relation: "Mother of the Groom",
-        description: "A garden enthusiast who welcomed Soumi with open arms."
+        description: "Traveled to England and formed an immediate, loving mother-daughter bond with Soumi. They talk regularly and share a warm, genuine relationship."
       },
       {
-        name: "Emily Adams",
-        relation: "Sister of the Groom",
-        description: "James's younger sister who can't wait to have Soumi as family."
+        name: "Patrick Adams",
+        relation: "Twin Brother of the Groom",
+        description: "James's twin brother who welcomed Soumi warmly into the family."
+      },
+      {
+        name: "Robert Adams",
+        relation: "Youngest Brother of the Groom",
+        description: "The youngest Adams brother, who met Soumi just before departing for job interviews."
+      },
+      {
+        name: "Michelle",
+        relation: "Patrick's Fiancée",
+        description: "Patrick's fiancée who has become a friend to Soumi."
       }
     ]
   }
@@ -221,38 +267,20 @@ export const families = {
 
 export const travelInfo = {
   venue: {
-    name: "Essex & London, UK",
-    description: "Our wedding celebrations will take place across two beautiful locations."
+    name: "Two Celebrations, Two Countries",
+    description: "Our love story spans continents, and so will our celebrations."
   },
-  hotels: [
-    {
-      name: "The Grand Essex Hotel",
-      address: "100 High Street, Colchester, Essex",
-      phone: "+44 1234 567890",
-      website: "www.grandessexhotel.com",
-      groupCode: "SOUMIJAMES2025",
-      description: "Our recommended hotel with special rates for wedding guests."
-    },
-    {
-      name: "Boutique Inn",
-      address: "25 Castle Lane, Essex",
-      phone: "+44 1234 567891",
-      website: "www.boutiqueinn.co.uk",
-      description: "A charming option close to the wedding venue."
-    }
-  ],
-  transportation: {
-    airports: [
-      "London Heathrow (LHR) - 1.5 hours to venue",
-      "London Stansted (STN) - 45 minutes to venue",
-      "London City (LCY) - 1 hour to venue"
-    ],
-    shuttle: "Complimentary shuttle service will be provided between hotels and venues."
+  usLocation: {
+    title: "United States (2026)",
+    location: "Wyoming / Ohio",
+    description: "Our first celebration will be in the United States after Soumi arrives. Details to follow.",
+    notes: "James currently works in Casper, Wyoming. The Adams family is based in Ohio."
   },
-  localAttractions: [
-    "Colchester Castle - Historic Norman castle",
-    "Dedham Vale - Beautiful countryside walks",
-    "Beth Chatto Gardens - Stunning gardens",
-    "Layer Marney Tower - Tudor architecture"
-  ]
+  indiaLocation: {
+    title: "India (2027)",
+    location: "Kolkata, West Bengal",
+    description: "A traditional Bengali celebration in Soumi's hometown, surrounded by her family and friends.",
+    notes: "The city of joy, where Soumi was born and raised."
+  },
+  stayTuned: "More details about venues, accommodations, and travel will be shared as we finalize our plans. Thank you for being part of our journey!"
 };
