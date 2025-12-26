@@ -5,15 +5,15 @@ import { coupleInfo } from '../data/mock';
 const HomePage = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Image - Grand Teton Wyoming */}
+      {/* Background Image - Autumn Wyoming Mountains */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1472396961693-142e6e269027?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1920&q=80')`,
         }}
       >
-        {/* Strong fade overlay to match logo colors */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/80 via-[#faf8f4]/60 to-[#faf8f4]/80" />
+        {/* Fade overlay matching logo colors */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/75 via-[#faf8f4]/50 to-[#faf8f4]/75" />
       </div>
 
       {/* Content */}
