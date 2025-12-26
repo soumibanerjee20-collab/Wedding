@@ -5,14 +5,7 @@ export const coupleInfo = {
   groom: "James",
   brideFullName: "Soumi Banerjee",
   groomFullName: "James M. Adams",
-  tagline: "WHERE TWO WORLDS BECAME ONE",
-  taglineOptions: [
-    "WHERE TWO WORLDS BECAME ONE",
-    "A LOVE STORY ACROSS CONTINENTS",
-    "TWO HEARTS, ONE JOURNEY",
-    "WRITTEN IN THE STARS",
-    "MEANT TO BE"
-  ],
+  tagline: "TWO HEARTS, ONE JOURNEY",
   usWeddingYear: "2026",
   indiaWeddingYear: "2027",
   monogram: "S & J",
@@ -92,7 +85,7 @@ export const timeline = [
   {
     date: "SUMMER 2024",
     title: "Meeting the Family",
-    description: "Soumi met James's mother Judy, his twin brother Patrick, and Patrick's fiancée Michelle. From the very first moment, Judy and Soumi connected. It was as if they'd known each other forever - a warm, loving mother-daughter bond that continues to grow stronger every day.",
+    description: "Soumi met James's mother Judy, his twin brother Patrick, and Patrick's fiancée Michelle. From the very first moment, Judy and Soumi connected like they'd known each other forever - a warm, loving mother-daughter bond that continues to grow stronger every day. Mark, James's father, was the first to see the special connection between them during his visit to England.",
     location: "England"
   },
   {
@@ -109,14 +102,14 @@ export const timeline = [
   },
   {
     date: "APRIL 2025",
-    title: "Cornwall & A Question",
-    description: "Their final trip before graduation took them to Rye and Tintagel, Cornwall. Walking the coastal path to Port William, watching the sunset from a cliff overlooking the ocean, James called his parents. He knew. On April 11th, in a quiet, private moment, he asked Soumi to be his forever. She said yes.",
+    title: "Cornwall & A Promise",
+    description: "Their final trip before graduation took them to Rye and Tintagel, Cornwall. Walking the coastal path to Port William, watching the sunset from a cliff overlooking the ocean, James felt a certainty wash over him. He called his parents that evening to tell them what he already knew in his heart - Soumi was the one. In a quiet, heartfelt moment beneath the stars, they promised each other forever.",
     location: "Tintagel, Cornwall"
   },
   {
     date: "APRIL 10, 2025",
     title: "Graduation Day",
-    description: "They walked across the stage together at the University of Essex, completing the MBA journey that had brought them together. Two strangers who became study partners, then friends, then everything to each other. This was just the beginning.",
+    description: "They walked across the stage together at the University of Essex, completing the MBA journey that had brought them together. Two strangers who became study partners, then friends, then everything to each other. Caps in the air, diplomas in hand, and a whole future ahead.",
     location: "University of Essex"
   },
   {
@@ -128,13 +121,13 @@ export const timeline = [
   {
     date: "OCTOBER 2025",
     title: "The Surprise Return",
-    description: "James came back to the UK for a short but unforgettable trip. On a beautiful autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a ring - a real, sparkling symbol of their love. Though they'd been engaged since April, this moment felt fresh, magical, like falling in love all over again. She said yes, again, with the same joy as the first time.",
+    description: "James came back to the UK for a short but unforgettable trip from October 5th to 31st. On a beautiful autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a sparkling ring - making it official in front of everyone who mattered. Even though they'd promised each other forever in Cornwall, this moment felt fresh, magical, like falling in love all over again. She said yes, tears of joy streaming down her face.",
     location: "Colchester Castle Park, England"
   },
   {
     date: "NOW",
     title: "Counting the Days",
-    description: "Oceans apart but hearts intertwined, they navigate the visa process together - video calls, late-night messages across time zones, and dreams of the day they'll finally be home together. Every day apart is one day closer to forever.",
+    description: "Oceans apart but hearts intertwined, they navigate the visa process together - video calls across time zones, late-night messages filled with love, and dreams of the day they'll finally be home together. Every day apart is one day closer to forever. The distance is temporary, but their love is permanent.",
     location: "Wyoming & India"
   }
 ];
@@ -152,12 +145,12 @@ export const events = [
   },
   {
     id: 2,
-    name: "Indian Wedding & Reception",
+    name: "Indian Reception",
     date: "2027",
     time: "TBD",
     venue: "To Be Announced",
     location: "Kolkata, India",
-    description: "A grand celebration in Soumi's hometown. Traditional Bengali wedding ceremonies filled with colors, rituals, music, and the warmth of family and friends.",
+    description: "A grand celebration in Soumi's hometown - the City of Joy. Small traditional Bengali wedding rituals followed by a colorful reception filled with music, dance, and the warmth of family and friends.",
     status: "TENTATIVE"
   }
 ];
@@ -165,15 +158,15 @@ export const events = [
 export const gallery = [
   {
     id: 1,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
-    alt: "Graduation Together",
-    category: "graduation"
-  },
-  {
-    id: 2,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
     alt: "The Ring - October Proposal",
     category: "engagement"
+  },
+  {
+    id: 2,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
+    alt: "Graduation Day Together",
+    category: "graduation"
   },
   {
     id: 3,
@@ -189,15 +182,33 @@ export const gallery = [
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80",
-    alt: "Edinburgh Adventures",
-    category: "adventures"
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/mxz2di04_14c587a9-b195-492a-985d-f39d3801ae00.jpeg",
+    alt: "Adventures Together",
+    category: "dating"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-    alt: "Sunset Memories",
-    category: "memories"
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/hi979bff_IMG_0845.jpeg",
+    alt: "Our Journey",
+    category: "dating"
+  },
+  {
+    id: 7,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/konivf0j_IMG_0390.jpeg",
+    alt: "Making Memories",
+    category: "dating"
+  },
+  {
+    id: 8,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/qr59msui_IMG_1186.jpeg",
+    alt: "Together Always",
+    category: "dating"
+  },
+  {
+    id: 9,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/4up8iufh_IMG_2925.jpeg",
+    alt: "Beautiful Moments",
+    category: "dating"
   }
 ];
 
@@ -231,12 +242,12 @@ export const families = {
       {
         name: "Mark Eugene Adams",
         relation: "Father of the Groom",
-        description: "Was the first to see the special connection between James and Soumi during his visit to England."
+        description: "Was the first to see the special connection between James and Soumi during his visit to England. Encouraged James to follow his heart."
       },
       {
         name: "Judith Rae Adams (Judy)",
         relation: "Mother of the Groom",
-        description: "Formed an immediate, loving mother-daughter bond with Soumi. They talk regularly and share a warm, genuine relationship."
+        description: "Traveled to England and formed an immediate, loving mother-daughter bond with Soumi. They talk regularly and share a warm, genuine relationship. Already excited about future grandchildren."
       },
       {
         name: "Patrick Adams",
@@ -263,19 +274,66 @@ export const travelInfo = {
     description: "Our love story spans continents, and so will our celebrations."
   },
   usLocation: {
-    title: "United States (2026)",
+    title: "Casper, Wyoming, USA",
     location: "Wyoming / Ohio, USA",
-    description: "Our first celebration will be in the United States after Soumi arrives on her fiancé visa.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-    details: "James currently works in Casper, Wyoming. The Adams family is based in Ohio. Exact venue details coming soon."
+    description: "Where James works and where our US celebration will take place.",
+    image: "https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=800&q=80",
+    history: "Casper sits at the crossroads of the Oregon, California, Mormon Pioneer, and Pony Express trails. Known as 'The Oil City' for its petroleum heritage, it's surrounded by stunning Wyoming landscapes including the nearby Grand Tetons.",
+    landmarks: [
+      {
+        name: "Grand Teton National Park",
+        description: "Majestic mountain peaks reflected in pristine alpine lakes. A 4-hour drive from Casper, but absolutely worth it."
+      },
+      {
+        name: "National Historic Trails Center",
+        description: "Immersive exhibits on four historic trails with panoramic views of Casper Mountain."
+      },
+      {
+        name: "Fort Caspar Museum",
+        description: "Reconstructed 1860s fort detailing Casper's military and pioneer history."
+      },
+      {
+        name: "Independence Rock",
+        description: "A massive granite dome carved with thousands of emigrant names from the 1800s Oregon Trail."
+      },
+      {
+        name: "Garden Creek Falls",
+        description: "Beautiful waterfall accessible via a short hike near Casper Mountain."
+      }
+    ]
   },
   indiaLocation: {
-    title: "India (2027)",
+    title: "Kolkata, India",
     location: "Kolkata, West Bengal",
-    description: "A traditional Bengali celebration in Soumi's hometown - the City of Joy.",
+    description: "The City of Joy - Soumi's hometown and where our Indian celebration will be held.",
     image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
-    landmark: "Victoria Memorial",
-    details: "Kolkata, where Soumi was born and raised, is known for its rich culture, literature, and the iconic Victoria Memorial."
+    history: "Kolkata, formerly Calcutta, was the capital of British India until 1911. It's a city of literature, art, culture, and intellectual heritage. Known for its colonial architecture, vibrant festivals, and warm hospitality, Kolkata has produced Nobel laureates, filmmakers, and artists who shaped Indian culture.",
+    landmarks: [
+      {
+        name: "Victoria Memorial",
+        description: "A magnificent white marble monument built in 1906-1921, now a museum set in 64 acres of beautiful gardens."
+      },
+      {
+        name: "Howrah Bridge",
+        description: "The iconic cantilever bridge over the Hooghly River, completed in 1943. A symbol of Kolkata's engineering marvel."
+      },
+      {
+        name: "Indian Museum",
+        description: "The oldest and largest museum in India, founded in 1814, housing rare artifacts and archaeological treasures."
+      },
+      {
+        name: "Dakshineswar Kali Temple",
+        description: "A famous Hindu temple dedicated to Goddess Kali, located on the banks of the Hooghly River."
+      },
+      {
+        name: "Park Street",
+        description: "The heart of Kolkata's food and nightlife scene, lined with colonial-era buildings and iconic restaurants."
+      },
+      {
+        name: "Princep Ghat",
+        description: "A beautiful riverside promenade with Palladian architecture, perfect for evening walks."
+      }
+    ]
   },
   stayTuned: "More details about venues, accommodations, and travel will be shared as we finalize our plans. Thank you for being part of our journey!"
 };

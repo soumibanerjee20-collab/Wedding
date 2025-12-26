@@ -7,14 +7,14 @@ const TimelinePage = () => {
     <div
       className="min-h-screen pt-20"
       style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1567087580282-d5c0a7b12dc6?w=1920&q=80')`,
+        backgroundImage: `url('https://images.unsplash.com/photo-1506377585622-bedcbb027afc?w=1920&q=80')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
     >
       {/* Overlay */}
-      <div className="fixed inset-0 bg-[#faf8f4]/92 pointer-events-none" />
+      <div className="fixed inset-0 bg-[#faf8f4]/90 pointer-events-none" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
         {/* Section Title */}

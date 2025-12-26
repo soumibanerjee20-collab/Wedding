@@ -5,25 +5,25 @@ import { coupleInfo } from '../data/mock';
 const HomePage = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Image - Faded Mountain */}
+      {/* Background Image - Grand Teton Wyoming */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=1920&q=80')`,
         }}
       >
         {/* Strong fade overlay to match logo colors */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/85 via-[#faf8f4]/70 to-[#faf8f4]/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/80 via-[#faf8f4]/60 to-[#faf8f4]/80" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
         {/* Logo Image */}
-        <div className="bg-white/90 shadow-lg mb-10 p-3 rounded-sm">
+        <div className="bg-white/95 shadow-lg mb-10 p-4 rounded-sm">
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-44 h-44 md:w-52 md:h-52 object-contain"
+            className="w-44 h-44 md:w-56 md:h-56 object-contain"
           />
         </div>
 
@@ -35,7 +35,7 @@ const HomePage = () => {
         </h1>
 
         {/* Tagline */}
-        <p className="text-[#5a5a52] text-sm md:text-base tracking-[0.25em] mt-8 uppercase">
+        <p className="text-[#5a5a52] text-sm md:text-base tracking-[0.25em] mt-8 uppercase font-medium">
           {coupleInfo.tagline}
         </p>
 
