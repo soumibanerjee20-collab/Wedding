@@ -7,15 +7,15 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image - Grand Teton style mountains */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1920&q=80')`,
         }}
       >
-        {/* Subtle overlay for text readability */}
-        <div className="absolute inset-0 bg-white/10" />
+        {/* Subtle gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/20" />
       </div>
 
       {/* Content */}
