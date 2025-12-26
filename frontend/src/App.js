@@ -1,31 +1,32 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import OurStory from "./components/OurStory";
-import Timeline from "./components/Timeline";
-import Events from "./components/Events";
-import Gallery from "./components/Gallery";
-import Families from "./components/Families";
-import Travel from "./components/Travel";
-import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import OurStoryPage from "./pages/OurStoryPage";
+import TimelinePage from "./pages/TimelinePage";
+import EventsPage from "./pages/EventsPage";
+import GalleryPage from "./pages/GalleryPage";
+import FamiliesPage from "./pages/FamiliesPage";
+import TravelPage from "./pages/TravelPage";
 
 function App() {
   return (
     <div className="App">
       <Toaster position="top-center" richColors />
-      <Header />
-      <main>
-        <Hero />
-        <OurStory />
-        <Timeline />
-        <Events />
-        <Gallery />
-        <Families />
-        <Travel />
-      </main>
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/our-story" element={<OurStoryPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/families" element={<FamiliesPage />} />
+          <Route path="/travel" element={<TravelPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

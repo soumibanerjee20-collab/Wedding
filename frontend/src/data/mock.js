@@ -3,6 +3,8 @@
 export const coupleInfo = {
   bride: "Soumi",
   groom: "James",
+  brideFullName: "Soumi Banerjee",
+  groomFullName: "James Adams (James)",
   tagline: "A CROSS-CONTINENTAL LOVE STORY",
   subtitle: "From University of Essex to Forever",
   weddingDate: "2025-06-15",
@@ -10,61 +12,67 @@ export const coupleInfo = {
 };
 
 export const navigationItems = [
-  { id: 'our-story', label: 'OUR STORY', href: '#our-story' },
-  { id: 'timeline', label: 'TIMELINE', href: '#timeline' },
-  { id: 'events', label: 'EVENTS', href: '#events' },
-  { id: 'gallery', label: 'GALLERY', href: '#gallery' },
-  { id: 'families', label: 'FAMILIES', href: '#families' },
-  { id: 'travel', label: 'TRAVEL', href: '#travel' }
+  { id: 'our-story', label: 'OUR STORY', path: '/our-story' },
+  { id: 'timeline', label: 'TIMELINE', path: '/timeline' },
+  { id: 'events', label: 'EVENTS', path: '/events' },
+  { id: 'gallery', label: 'GALLERY', path: '/gallery' },
+  { id: 'families', label: 'FAMILIES', path: '/families' },
+  { id: 'travel', label: 'TRAVEL', path: '/travel' }
 ];
 
 export const ourStory = {
-  title: "Our Story",
-  paragraphs: [
-    "It all began in the autumn of 2018 at the University of Essex. Two souls from different corners of the world found each other in the most unexpected place - a crowded lecture hall during orientation week.",
-    "Soumi, from the vibrant streets of Kolkata, India, had traveled across continents to pursue her dreams. James, a British native with a passion for adventure, was captivated by her warmth and infectious laughter from their very first conversation.",
-    "What started as study sessions in the library transformed into late-night conversations about life, dreams, and everything in between. Coffee dates turned into weekend adventures exploring the English countryside.",
-    "Through the challenges of long-distance during summers and the joy of reunions, their love only grew stronger. After five beautiful years together, James proposed during a sunset picnic at their favorite spot by the lake - the same place where they had their first real date."
-  ],
-  image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80"
+  tagline: "Two strangers in a classroom. An unexpected friendship. A love that crossed oceans.",
+  meetingDate: "October 2023",
+  meetingPlace: "University of Essex",
+  narrative: "Soumi, a Bengali professional with an adventurous spirit, and James, a former Army Captain seeking his next chapter, met on MBA induction day. He seemed quiet, serious. She wondered if they'd ever be friends. Then a canceled lunch changed everything."
+};
+
+export const brideProfile = {
+  name: "Soumi Banerjee",
+  origin: "From Kolkata, India",
+  description: "A Bengali girl who's called many places home",
+  education: "MBA, University of Essex",
+  career: "Professional journey across different countries"
+};
+
+export const groomProfile = {
+  name: "James Adams (James)",
+  origin: "From Ohio, United States of America",
+  description: "Former Captain, U.S. Army",
+  education: "MBA, University of Essex",
+  career: "Procurement Manager at HF Sinclair, Wyoming"
 };
 
 export const timeline = [
   {
-    year: "2018",
+    year: "2023",
     title: "First Meeting",
-    description: "We met during orientation week at the University of Essex. A chance encounter that changed everything.",
-    month: "September"
-  },
-  {
-    year: "2018",
-    title: "First Date",
-    description: "Our first official date was a cozy coffee shop near campus. We talked for hours and didn't want it to end.",
-    month: "November"
-  },
-  {
-    year: "2019",
-    title: "First Trip Together",
-    description: "We took our first trip together to the Lake District. It became our favorite escape.",
-    month: "March"
-  },
-  {
-    year: "2020",
-    title: "Meeting the Families",
-    description: "Despite the challenges, we connected with each other's families virtually. Love knows no boundaries.",
-    month: "December"
-  },
-  {
-    year: "2021",
-    title: "Moving In Together",
-    description: "We finally got our own little apartment in London. Our first home together.",
-    month: "June"
+    description: "We met during MBA induction day at the University of Essex. A chance encounter that changed everything.",
+    month: "October"
   },
   {
     year: "2023",
+    title: "First Date",
+    description: "A canceled lunch led to an unexpected coffee date that neither of us could forget.",
+    month: "November"
+  },
+  {
+    year: "2024",
+    title: "First Trip Together",
+    description: "We explored the English countryside together, creating memories that would last a lifetime.",
+    month: "February"
+  },
+  {
+    year: "2024",
+    title: "Meeting the Families",
+    description: "Soumi met James's family in Ohio, and James traveled to Kolkata to meet Soumi's family.",
+    month: "June"
+  },
+  {
+    year: "2024",
     title: "The Proposal",
-    description: "James proposed at sunset by the lake where we had our first date. She said yes!",
-    month: "August"
+    description: "Under the stars in London, James proposed. She said yes without hesitation.",
+    month: "September"
   },
   {
     year: "2025",
@@ -193,17 +201,17 @@ export const families = {
     title: "Groom's Family",
     members: [
       {
-        name: "Mr. William Thompson",
+        name: "Mr. William Adams",
         relation: "Father of the Groom",
         description: "A architect who built the foundation of their family home."
       },
       {
-        name: "Mrs. Elizabeth Thompson",
+        name: "Mrs. Elizabeth Adams",
         relation: "Mother of the Groom",
         description: "A garden enthusiast who welcomed Soumi with open arms."
       },
       {
-        name: "Emily Thompson",
+        name: "Emily Adams",
         relation: "Sister of the Groom",
         description: "James's younger sister who can't wait to have Soumi as family."
       }

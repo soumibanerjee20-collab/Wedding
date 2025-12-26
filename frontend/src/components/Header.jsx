@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { navigationItems, coupleInfo } from '../data/mock';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,13 +15,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileMenuOpen(false);
-  };
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header
@@ -31,33 +27,41 @@ const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className="flex items-center"
-          >
-            <div className="border border-[#6b7c5e] px-3 py-1">
-              <span className="font-serif text-lg text-[#6b7c5e] tracking-wider">
-                {coupleInfo.monogram}
-              </span>
+          {/* Logo with decorative corners */}
+          <Link to="/" className="flex items-center">
+            <div className="relative">
+              {/* Corner brackets */}
+              <span className="absolute -top-1 -left-1 text-[#7a8c69] text-xs opacity-60">┌</span>
+              <span className="absolute -top-1 -right-1 text-[#7a8c69] text-xs opacity-60">┐</span>
+              <span className="absolute -bottom-1 -left-1 text-[#7a8c69] text-xs opacity-60">└</span>
+              <span className="absolute -bottom-1 -right-1 text-[#7a8c69] text-xs opacity-60">┘</span>
+              <div className="border border-[#6b7c5e] px-4 py-2">
+                <span className="font-serif text-lg text-[#5a6a4d] tracking-wider">
+                  {coupleInfo.monogram}
+                </span>
+              </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 lg:space-x-12">
             {navigationItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => scrollToSection(item.href)}
-                className="text-[#6b7c5e] text-sm tracking-[0.2em] font-medium hover:text-[#4a5a40] transition-colors duration-300 relative group"
+                to={item.path}
+                className={`text-sm tracking-[0.15em] font-medium transition-colors duration-300 relative group ${
+                  isActive(item.path)
+                    ? 'text-[#5a6a4d]'
+                    : 'text-[#6b7c5e] hover:text-[#4a5a40]'
+                }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#6b7c5e] transition-all duration-300 group-hover:w-full" />
-              </button>
+                <span
+                  className={`absolute -bottom-1 left-0 h-[1px] bg-[#5a6a4d] transition-all duration-300 ${
+                    isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
+              </Link>
             ))}
           </nav>
 
@@ -100,13 +104,18 @@ const Header = () => {
         >
           <nav className="flex flex-col space-y-4 pb-4">
             {navigationItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => scrollToSection(item.href)}
-                className="text-[#6b7c5e] text-sm tracking-[0.2em] font-medium hover:text-[#4a5a40] transition-colors duration-300 text-left"
+                to={item.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={`text-sm tracking-[0.15em] font-medium transition-colors duration-300 ${
+                  isActive(item.path)
+                    ? 'text-[#5a6a4d]'
+                    : 'text-[#6b7c5e] hover:text-[#4a5a40]'
+                }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
         </div>
