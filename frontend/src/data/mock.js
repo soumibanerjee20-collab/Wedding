@@ -103,8 +103,8 @@ export const timeline = [
   },
   {
     date: "APRIL 2025",
-    title: "Cornwall & Certainty",
-    description: "Their final adventure before graduation took them to Tintagel, Cornwall. Walking the dramatic coastal paths to Port William, watching the sunset paint the ocean gold, James felt an overwhelming certainty wash over him. Later that evening, he called his parents. 'She's the one,' he told them. 'I'm sure.' In the quiet beauty of Cornwall, surrounded by ancient cliffs and endless horizons, they both knew their story was just beginning.",
+    title: "Cornwall - Our Last Adventure",
+    description: "Their final trip before graduation took them to Tintagel, Cornwall. Walking the dramatic coastal paths to Port William, watching the sunset paint the ocean in shades of gold and rose, they knew this journey together was just beginning. The ancient cliffs, the endless horizon, the magic of Cornwall - it was the perfect ending to their UK chapter and the beautiful start of forever.",
     location: "Tintagel, Cornwall"
   },
   {
