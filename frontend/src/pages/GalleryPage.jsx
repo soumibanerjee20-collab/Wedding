@@ -4,6 +4,13 @@ import { X } from 'lucide-react';
 
 const GalleryPage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [filter, setFilter] = useState('all');
+
+  const categories = ['all', 'engagement', 'graduation', 'dating'];
+  
+  const filteredGallery = filter === 'all' 
+    ? gallery 
+    : gallery.filter(img => img.category === filter);
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-16">
@@ -19,9 +26,26 @@ const GalleryPage = () => {
           </p>
         </div>
 
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-5 py-2 text-xs tracking-wider uppercase transition-all duration-300 rounded-full ${
+                filter === cat
+                  ? 'bg-[#8a9a7c] text-white'
+                  : 'bg-transparent text-[#5a5a52] border border-[#d4b896] hover:bg-[#f5f2eb]'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {gallery.map((image, index) => (
+          {filteredGallery.map((image, index) => (
             <div
               key={image.id}
               className={`relative overflow-hidden cursor-pointer group ${
@@ -29,7 +53,7 @@ const GalleryPage = () => {
               }`}
               onClick={() => setSelectedImage(image)}
             >
-              <div className={`${index === 0 ? 'aspect-square' : 'aspect-square'}`}>
+              <div className="aspect-square">
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -37,8 +61,8 @@ const GalleryPage = () => {
                 />
               </div>
               {/* Overlay */}
-              <div className="absolute inset-0 bg-[#b8956b]/0 group-hover:bg-[#b8956b]/20 transition-all duration-500 flex items-center justify-center">
-                <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 font-display text-lg bg-black/30 px-4 py-2 rounded-full">
+              <div className="absolute inset-0 bg-[#b8956b]/0 group-hover:bg-[#b8956b]/20 transition-all duration-500 flex items-end justify-center pb-4">
+                <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm bg-black/40 px-4 py-2 rounded-full backdrop-blur-sm">
                   {image.alt}
                 </span>
               </div>
