@@ -1,12 +1,18 @@
-// Real data for Soumi & James Wedding Website - from relationship letters
+// Real data for Soumi & James Wedding Website
 
 export const coupleInfo = {
   bride: "Soumi",
   groom: "James",
   brideFullName: "Soumi Banerjee",
   groomFullName: "James M. Adams",
-  tagline: "A CROSS-CONTINENTAL LOVE STORY",
-  subtitle: "From University of Essex to Forever",
+  tagline: "WHERE TWO WORLDS BECAME ONE",
+  taglineOptions: [
+    "WHERE TWO WORLDS BECAME ONE",
+    "A LOVE STORY ACROSS CONTINENTS",
+    "TWO HEARTS, ONE JOURNEY",
+    "WRITTEN IN THE STARS",
+    "MEANT TO BE"
+  ],
   usWeddingYear: "2026",
   indiaWeddingYear: "2027",
   monogram: "S & J",
@@ -34,8 +40,7 @@ export const brideProfile = {
   origin: "From Kolkata, India",
   description: "A Bengali girl who's called many places home",
   education: "MBA, University of Essex",
-  career: "Professional journey across different countries",
-  background: "Born and raised in Kolkata, pursued her first Master's in Bangalore, worked at Accenture before embarking on her MBA journey in the UK."
+  career: "Professional journey across different countries"
 };
 
 export const groomProfile = {
@@ -43,175 +48,156 @@ export const groomProfile = {
   origin: "From Ohio, United States of America",
   description: "Former Captain, U.S. Army",
   education: "MBA, University of Essex",
-  career: "Procurement Manager at HF Sinclair, Wyoming",
-  background: "Resigned his Army commission to pursue an MBA in England, seeking growth beyond his military career."
+  career: "Procurement Manager at HF Sinclair, Wyoming"
 };
 
+// Timeline as a flowing story
 export const timeline = [
   {
     date: "OCTOBER 2023",
-    title: "First Meeting",
-    description: "We met on MBA induction day at the University of Essex. Soumi noticed James's quiet and observant nature. They didn't speak much that day, but something felt familiar.",
+    title: "The Beginning",
+    description: "Two strangers from opposite ends of the world walked into the same classroom at the University of Essex. Soumi noticed James's quiet, observant nature during MBA induction. He seemed serious, almost reserved. Little did she know that this encounter would change everything.",
     location: "Colchester, England"
   },
   {
     date: "NOVEMBER 2023",
-    title: "Growing Friendship",
-    description: "An unexpected lunch due to a friend's cancellation brought them together. They talked about their academic journeys, goals, and past lives. This was the beautiful beginning of a friendship that grew organically.",
+    title: "An Unexpected Friendship",
+    description: "A friend canceled lunch last minute, and fate stepped in. James and Soumi ended up sharing a meal together, talking about their dreams, their journeys, and the paths that led them here. What started as a simple lunch became hours of conversation. A beautiful friendship was born.",
     location: "University of Essex"
   },
   {
     date: "DECEMBER 2023",
     title: "A Bittersweet Goodbye",
-    description: "James had breakfast with Soumi before flying home to Ohio for Christmas. He felt sadness at their parting and realized Soumi had become a dear friend. Their connection was deeper than either had acknowledged.",
+    description: "James had to fly home to Ohio for Christmas. That morning, over breakfast, something felt different. As they said goodbye, James realized the depth of what he felt. Soumi had become more than a friend - she was someone he couldn't imagine leaving behind.",
     location: "Colchester, England"
   },
   {
     date: "MARCH 2024",
-    title: "The First Kiss",
-    description: "James took Soumi to lunch at Romano Lounge in Colchester and asked her to join him on a trip to Edinburgh. That evening, they shared their first kiss. She said yes to Edinburgh.",
+    title: "When Friendship Became More",
+    description: "Over lunch at Romano Lounge, James asked Soumi to join him on a trip to Edinburgh. Her eyes lit up. That evening, under the soft lights of the restaurant, the boundaries of friendship began to blur. A question, an answer, and a promise of adventure together.",
     location: "Romano Lounge, Colchester"
   },
   {
     date: "APRIL 2024",
     title: "Edinburgh Magic",
-    description: "In the spring, they took a trip to Edinburgh that changed everything. Cobbled streets straight out of Harry Potter, Edinburgh Castle glowing against the night sky, their first real date at a cozy restaurant with wine and moonlit walks. Soumi cried tears of joy seeing the city she'd dreamed about, and James held space for her quietly. When they said goodbye at the train station days later, both in tears, they knew - this wasn't just friendship anymore.",
+    description: "The cobbled streets of Edinburgh felt like stepping into a fairytale. Harry Potter-esque alleyways, Edinburgh Castle glowing against the evening sky, their first real date at a cozy restaurant with wine and moonlit walks. When Soumi saw the city she'd only dreamed of, tears of joy streamed down her face. James held her quietly, knowing this moment was everything. At the train station, saying goodbye, both knew - this wasn't just friendship anymore.",
     location: "Edinburgh, Scotland"
   },
   {
     date: "MAY 2024",
-    title: "Together",
-    description: "They made it official. No more pretending they were just friends. They were dating, and it felt right. Through the rest of spring and into summer, their bond grew deeper with every shared moment.",
+    title: "Official",
+    description: "No more pretending. They were together, and it felt like the most natural thing in the world. Every shared laugh, every quiet moment, every adventure - it all made sense now. Through spring and into summer, their bond deepened with each passing day.",
     location: "Colchester, England"
   },
   {
     date: "SUMMER 2024",
     title: "Meeting the Family",
-    description: "Soumi met James's mother Judy, his twin brother Patrick, and Patrick's fiancée Michelle. Judy and Soumi formed an immediate connection - a warm and loving mother-daughter-like relationship that continues to grow.",
+    description: "Soumi met James's mother Judy, his twin brother Patrick, and Patrick's fiancée Michelle. From the very first moment, Judy and Soumi connected. It was as if they'd known each other forever - a warm, loving mother-daughter bond that continues to grow stronger every day.",
     location: "England"
   },
   {
     date: "DECEMBER 2024",
     title: "Chester & Wales",
-    description: "They traveled to Chester and Conwy. At a historic steakhouse, over wine and candlelight, James began to see Soumi as his life partner. In Wales, despite the wind preventing their castle visit, they hiked together - Soumi gaining confidence with each step.",
+    description: "They traveled to Chester and Conwy, exploring historic streets and ancient castles. At a candlelit steakhouse, over wine and conversation, James began to see their future clearly. In Wales, though the wind prevented their castle visit, they hiked together - Soumi gaining confidence with every step, James falling deeper in love.",
     location: "Chester & Conwy, Wales"
   },
   {
-    date: "CHRISTMAS 2024",
-    title: "Our First Christmas",
-    description: "They spent their first Christmas together in Colchester, cherishing quiet moments, shared meals, and the warmth of being together during the holiday season.",
-    location: "Colchester, England"
-  },
-  {
     date: "MARCH 2025",
-    title: "Adventures in Peak District",
-    description: "After James returned from interviews in the U.S., they traveled to Castleton and the Peak District. Soumi ran her first 10K alongside James, discovering strength she didn't know she had. They explored Hope Valley and the beautiful trails of England.",
+    title: "Peak District Adventures",
+    description: "After James returned from interviews in the U.S., they escaped to Castleton and the Peak District. Soumi ran her first 10K alongside James, discovering strength she didn't know she had. Through Hope Valley's winding trails, they realized - they were unstoppable together.",
     location: "Peak District, England"
   },
   {
     date: "APRIL 2025",
-    title: "Cornwall & The Proposal",
-    description: "Their final trip before graduation took them to Rye and Tintagel, Cornwall. During a coastal path walk to the tiny village of Port William, watching the sunset from a cliff, James called his parents and knew - Soumi was the one. On April 11th, in a private moment, James proposed. She said yes.",
+    title: "Cornwall & A Question",
+    description: "Their final trip before graduation took them to Rye and Tintagel, Cornwall. Walking the coastal path to Port William, watching the sunset from a cliff overlooking the ocean, James called his parents. He knew. On April 11th, in a quiet, private moment, he asked Soumi to be his forever. She said yes.",
     location: "Tintagel, Cornwall"
   },
   {
     date: "APRIL 10, 2025",
     title: "Graduation Day",
-    description: "They walked across the stage together at the University of Essex, completing the MBA journey that brought them together. Two strangers who became everything to each other.",
+    description: "They walked across the stage together at the University of Essex, completing the MBA journey that had brought them together. Two strangers who became study partners, then friends, then everything to each other. This was just the beginning.",
     location: "University of Essex"
   },
   {
     date: "APRIL 12, 2025",
-    title: "A New Chapter Begins",
-    description: "James departed for Wyoming to begin his new job. At Heathrow Airport, they said goodbye - not forever, but for now. The visa process began, and with it, the countdown to their forever.",
+    title: "The Long Distance Begins",
+    description: "At Heathrow Airport, James departed for Wyoming to begin his new career. They held each other tight, tears falling freely. This wasn't goodbye - it was 'see you soon.' The visa process began, and with it, the countdown to their forever.",
     location: "Heathrow Airport, London"
+  },
+  {
+    date: "OCTOBER 2025",
+    title: "The Surprise Return",
+    description: "James came back to the UK for a short but unforgettable trip. On a beautiful autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a ring - a real, sparkling symbol of their love. Though they'd been engaged since April, this moment felt fresh, magical, like falling in love all over again. She said yes, again, with the same joy as the first time.",
+    location: "Colchester Castle Park, England"
+  },
+  {
+    date: "NOW",
+    title: "Counting the Days",
+    description: "Oceans apart but hearts intertwined, they navigate the visa process together - video calls, late-night messages across time zones, and dreams of the day they'll finally be home together. Every day apart is one day closer to forever.",
+    location: "Wyoming & India"
   }
 ];
 
 export const events = [
   {
     id: 1,
-    name: "US Wedding Celebration",
-    date: "Mid 2026 (Tentative)",
+    name: "US Wedding",
+    date: "Mid 2026",
     time: "TBD",
     venue: "To Be Announced",
-    address: "Wyoming / Ohio, USA",
-    description: "Our intimate celebration in the United States after Soumi arrives on her fiancé visa. A blend of American and Indian traditions.",
-    dressCode: "Formal / Indian attire welcome",
-    status: "Planning in Progress"
+    location: "Wyoming / Ohio, USA",
+    description: "Our intimate celebration in the United States after Soumi arrives. A beautiful blend of American and Indian traditions, surrounded by James's family and close friends.",
+    status: "TENTATIVE"
   },
   {
     id: 2,
-    name: "Indian Wedding Ceremony",
-    date: "2027 (Tentative)",
+    name: "Indian Wedding & Reception",
+    date: "2027",
     time: "TBD",
     venue: "To Be Announced",
-    address: "Kolkata, India",
-    description: "A traditional Bengali wedding celebration with Soumi's family and friends. Full of colors, rituals, music, and love.",
-    dressCode: "Traditional Indian attire",
-    status: "Date TBD"
-  },
-  {
-    id: 3,
-    name: "Reception - India",
-    date: "2027 (Tentative)",
-    time: "TBD",
-    venue: "To Be Announced",
-    address: "Kolkata, India",
-    description: "A grand reception to celebrate with extended family and friends who couldn't attend the US celebration.",
-    dressCode: "Festive Indian wear",
-    status: "Date TBD"
+    location: "Kolkata, India",
+    description: "A grand celebration in Soumi's hometown. Traditional Bengali wedding ceremonies filled with colors, rituals, music, and the warmth of family and friends.",
+    status: "TENTATIVE"
   }
 ];
 
 export const gallery = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-    alt: "Love story",
-    category: "memories"
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
+    alt: "Graduation Together",
+    category: "graduation"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=80",
-    alt: "Together",
-    category: "memories"
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
+    alt: "The Ring - October Proposal",
+    category: "engagement"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=600&q=80",
-    alt: "Walking together",
-    category: "adventures"
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/uh72ghmi_7DCCD797-689C-4682-9124-934A9D16112F.jpeg",
+    alt: "Our Proposal Moment",
+    category: "engagement"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80",
-    alt: "Rings",
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/kgfzz6ft_52215AF6-07A8-4454-953B-E1A05DB4D9E5.jpeg",
+    alt: "Celebrating Together",
     category: "engagement"
   },
   {
     id: 5,
     src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80",
-    alt: "Edinburgh",
+    alt: "Edinburgh Adventures",
     category: "adventures"
   },
   {
     id: 6,
     src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-    alt: "Sunset",
+    alt: "Sunset Memories",
     category: "memories"
-  },
-  {
-    id: 7,
-    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80",
-    alt: "Happy moments",
-    category: "memories"
-  },
-  {
-    id: 8,
-    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80",
-    alt: "Flowers",
-    category: "engagement"
   }
 ];
 
@@ -229,6 +215,12 @@ export const families = {
         name: "Mrs. Banerjee",
         relation: "Mother of the Bride",
         description: "The heart of the family, who raised Soumi with grace and strength."
+      },
+      {
+        name: "Bruno Banerjee",
+        relation: "Furry Brother",
+        description: "The most adorable member of the family. Loved by all, spoiled by everyone, and Soumi's faithful companion.",
+        isFurry: true
       }
     ]
   },
@@ -239,27 +231,27 @@ export const families = {
       {
         name: "Mark Eugene Adams",
         relation: "Father of the Groom",
-        description: "Was the first to see the special connection between James and Soumi during his visit to England. Encouraged James to pursue his heart."
+        description: "Was the first to see the special connection between James and Soumi during his visit to England."
       },
       {
         name: "Judith Rae Adams (Judy)",
         relation: "Mother of the Groom",
-        description: "Traveled to England and formed an immediate, loving mother-daughter bond with Soumi. They talk regularly and share a warm, genuine relationship."
+        description: "Formed an immediate, loving mother-daughter bond with Soumi. They talk regularly and share a warm, genuine relationship."
       },
       {
         name: "Patrick Adams",
-        relation: "Twin Brother of the Groom",
+        relation: "Twin Brother",
         description: "James's twin brother who welcomed Soumi warmly into the family."
       },
       {
         name: "Robert Adams",
-        relation: "Youngest Brother of the Groom",
-        description: "The youngest Adams brother, who met Soumi just before departing for job interviews."
+        relation: "Youngest Brother",
+        description: "The youngest Adams brother, met Soumi just before departing for his own adventures."
       },
       {
         name: "Michelle",
         relation: "Patrick's Fiancée",
-        description: "Patrick's fiancée who has become a friend to Soumi."
+        description: "Soon to be officially part of the family, a friend to Soumi."
       }
     ]
   }
@@ -272,15 +264,18 @@ export const travelInfo = {
   },
   usLocation: {
     title: "United States (2026)",
-    location: "Wyoming / Ohio",
-    description: "Our first celebration will be in the United States after Soumi arrives. Details to follow.",
-    notes: "James currently works in Casper, Wyoming. The Adams family is based in Ohio."
+    location: "Wyoming / Ohio, USA",
+    description: "Our first celebration will be in the United States after Soumi arrives on her fiancé visa.",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    details: "James currently works in Casper, Wyoming. The Adams family is based in Ohio. Exact venue details coming soon."
   },
   indiaLocation: {
     title: "India (2027)",
     location: "Kolkata, West Bengal",
-    description: "A traditional Bengali celebration in Soumi's hometown, surrounded by her family and friends.",
-    notes: "The city of joy, where Soumi was born and raised."
+    description: "A traditional Bengali celebration in Soumi's hometown - the City of Joy.",
+    image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
+    landmark: "Victoria Memorial",
+    details: "Kolkata, where Soumi was born and raised, is known for its rich culture, literature, and the iconic Victoria Memorial."
   },
   stayTuned: "More details about venues, accommodations, and travel will be shared as we finalize our plans. Thank you for being part of our journey!"
 };

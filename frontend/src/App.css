@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap');
 
+:root {
+  /* Logo-inspired color palette */
+  --color-gold: #b8956b;       /* Warm gold from S&J text */
+  --color-gold-light: #d4b896;
+  --color-sage: #8a9a7c;       /* Sage green from leaves */
+  --color-sage-dark: #6b7c5e;
+  --color-cream: #faf8f4;      /* Cream from flowers */
+  --color-cream-dark: #f5f2eb;
+  --color-text: #5a5a52;       /* Soft dark for text */
+  --color-text-light: #7a7a72;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,9 +25,9 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
-  color: #5a6a4d;
-  background-color: #ffffff;
-  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-cream);
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -37,7 +49,7 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-/* Smooth transitions for all interactive elements */
+/* Smooth transitions for interactive elements */
 button, a {
   transition: all 0.3s ease;
 }
@@ -48,25 +60,25 @@ button, a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f3ef;
+  background: var(--color-cream-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c9b896;
+  background: var(--color-gold-light);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9a7c4e;
+  background: var(--color-gold);
 }
 
 /* Selection color */
 ::selection {
-  background-color: #c9b896;
-  color: #5a6a4d;
+  background-color: var(--color-gold-light);
+  color: var(--color-text);
 }
 
-/* Fade in animation */
+/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -103,23 +115,30 @@ img {
   height: auto;
 }
 
-/* Focus styles for accessibility */
+/* Focus styles */
 *:focus {
-  outline: 2px solid #9a7c4e;
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
 button:focus {
-  outline: 2px solid #9a7c4e;
+  outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }
 
-/* Elegant letter spacing for headings */
-.tracking-elegant {
-  letter-spacing: 0.15em;
+/* Utility classes */
+.text-gold {
+  color: var(--color-gold);
 }
 
-/* Small caps style */
+.text-sage {
+  color: var(--color-sage);
+}
+
+.bg-cream {
+  background-color: var(--color-cream);
+}
+
 .small-caps {
   font-variant: small-caps;
   letter-spacing: 0.1em;
