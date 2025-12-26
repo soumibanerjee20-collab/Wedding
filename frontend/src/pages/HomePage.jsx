@@ -9,7 +9,7 @@ const HomePage = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1504006833117-8886a355efbf?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1565686974685-18e81ffb5e16?w=1920&q=80')`,
         }}
       >
         {/* Strong fade overlay to match logo colors */}
