@@ -1,6 +1,6 @@
 import React from 'react';
 import { timeline } from '../data/mock';
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Heart } from 'lucide-react';
 
 const TimelinePage = () => {
   return (
@@ -14,83 +14,81 @@ const TimelinePage = () => {
       }}
     >
       {/* Overlay */}
-      <div className="fixed inset-0 bg-[#f8f6f2]/90 pointer-events-none" />
+      <div className="fixed inset-0 bg-[#faf8f4]/92 pointer-events-none" />
       
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
         {/* Section Title */}
         <div className="text-center mb-16">
-          <h1 className="font-display text-4xl md:text-6xl text-[#5a6a4d] mb-4 tracking-wider">
-            Our Timeline
+          <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
+            Our Journey
           </h1>
-          <div className="w-24 h-[1px] bg-[#9a7c4e] mx-auto" />
+          <p className="font-cormorant text-xl text-[#5a5a52] italic">A story written across continents</p>
+          <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mt-6" />
         </div>
 
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#c9b896]/60 md:-translate-x-1/2" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-[#d4b896]/50 md:-translate-x-1/2" />
 
           {timeline.map((item, index) => (
             <div
               key={index}
-              className={`relative flex items-start mb-16 last:mb-0 ${
+              className={`relative flex items-start mb-12 last:mb-0 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
               {/* Timeline dot */}
-              <div className="absolute left-4 md:left-1/2 w-3 h-3 bg-[#6b7c5e] rounded-full -translate-x-1/2 mt-8 z-10 ring-4 ring-[#f8f6f2]" />
+              <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-[#8a9a7c] rounded-full -translate-x-1/2 mt-6 z-10 ring-4 ring-[#faf8f4]">
+                {item.date === "NOW" && (
+                  <span className="absolute w-4 h-4 bg-[#8a9a7c] rounded-full animate-ping" />
+                )}
+              </div>
 
               {/* Content Card */}
               <div
-                className={`ml-12 md:ml-0 md:w-[45%] ${
+                className={`ml-14 md:ml-0 md:w-[45%] ${
                   index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'
                 }`}
               >
-                <div className="bg-white/95 backdrop-blur-sm p-8 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-sm">
+                <div className="bg-white p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-[#d4b896]/10">
                   {/* Date Badge */}
-                  <div className={`inline-flex items-center gap-2 px-4 py-1.5 bg-[#f5f3ef] rounded-full mb-4 ${
-                    index % 2 === 0 ? 'md:float-right md:ml-4' : ''
-                  }`}>
-                    <Calendar className="w-3.5 h-3.5 text-[#6b7c5e]" />
-                    <span className="text-[#6b7c5e] text-xs font-medium tracking-wider">
-                      {item.date}
-                    </span>
-                  </div>
-                  
-                  <div className="clear-both" />
+                  <span className="inline-block px-4 py-1.5 bg-[#f5f2eb] text-[#b8956b] text-xs font-medium tracking-wider rounded-full mb-4">
+                    {item.date}
+                  </span>
                   
                   {/* Title */}
-                  <h3 className="font-display text-xl md:text-2xl text-[#5a6a4d] mb-4 tracking-wide small-caps">
+                  <h3 className="font-display text-xl md:text-2xl text-[#b8956b] mb-4 tracking-wide">
                     {item.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-[#5a6a4d]/75 text-sm md:text-base leading-relaxed mb-4 font-light">
+                  <p className="text-[#5a5a52] text-sm md:text-base leading-relaxed mb-4 font-light">
                     {item.description}
                   </p>
                   
                   {/* Location */}
-                  <div className={`flex items-center gap-2 text-[#9a7c4e] ${
+                  <div className={`flex items-center gap-2 text-[#8a9a7c] text-sm ${
                     index % 2 === 0 ? 'md:justify-end' : ''
                   }`}>
                     <MapPin className="w-4 h-4" />
-                    <span className="text-sm italic">{item.location}</span>
+                    <span className="italic">{item.location}</span>
                   </div>
                 </div>
               </div>
             </div>
           ))}
 
-          {/* End decoration */}
-          <div className="absolute left-4 md:left-1/2 bottom-0 -translate-x-1/2 translate-y-4">
-            <div className="w-4 h-4 bg-[#9a7c4e] rounded-full ring-4 ring-[#f8f6f2]" />
+          {/* End heart */}
+          <div className="absolute left-6 md:left-1/2 bottom-0 -translate-x-1/2 translate-y-6">
+            <Heart className="w-6 h-6 text-[#b8956b] fill-[#b8956b]" />
           </div>
         </div>
         
-        {/* Bottom text */}
+        {/* Bottom quote */}
         <div className="text-center mt-20">
-          <p className="font-cormorant text-2xl md:text-3xl text-[#5a6a4d] italic">
-            "And so our adventure continues..."      
+          <p className="font-cormorant text-2xl md:text-3xl text-[#5a5a52] italic">
+            "Distance means so little when someone means so much"      
           </p>
         </div>
       </div>

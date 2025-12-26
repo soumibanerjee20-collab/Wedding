@@ -5,48 +5,44 @@ import { coupleInfo } from '../data/mock';
 const HomePage = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Image - Wyoming Mountain Beauty */}
+      {/* Background Image - Faded Mountain */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1920&q=80')`,
+          backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-white/10" />
+        {/* Strong fade overlay to match logo colors */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/85 via-[#faf8f4]/70 to-[#faf8f4]/85" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
         {/* Logo Image */}
-        <div className="bg-white shadow-xl mb-8 p-4">
+        <div className="bg-white/90 shadow-lg mb-10 p-3 rounded-sm">
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-40 h-40 md:w-48 md:h-48 object-contain"
+            className="w-44 h-44 md:w-52 md:h-52 object-contain"
           />
         </div>
 
-        {/* Names */}
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-[#5a6a4d] mb-4 tracking-wide drop-shadow-sm">
+        {/* Names - Gold color matching logo */}
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-[#b8956b] mb-4 tracking-wide">
           <span className="font-normal">{coupleInfo.bride}</span>
-          <span className="mx-4 md:mx-6 text-[#9a7c4e] italic font-light">&</span>
+          <span className="mx-4 md:mx-6 text-[#8a9a7c] italic font-light">&</span>
           <span className="font-normal italic">{coupleInfo.groom}</span>
         </h1>
 
         {/* Tagline */}
-        <p className="text-[#5a6a4d] text-sm md:text-base tracking-[0.25em] mt-6 uppercase drop-shadow-sm bg-white/70 backdrop-blur-sm px-6 py-3">
+        <p className="text-[#5a5a52] text-sm md:text-base tracking-[0.25em] mt-8 uppercase">
           {coupleInfo.tagline}
-        </p>
-
-        {/* Subtitle */}
-        <p className="font-cormorant text-[#5a6a4d] text-xl md:text-2xl lg:text-3xl mt-8 italic bg-white/50 backdrop-blur-sm px-6 py-2 rounded-full">
-          {coupleInfo.subtitle}
         </p>
 
         {/* CTA Button */}
         <Link
           to="/our-story"
-          className="mt-12 inline-flex items-center gap-3 bg-[#6b7c5e]/90 hover:bg-[#5a6a4d] text-white px-8 py-4 rounded-full text-sm tracking-wider transition-all duration-300 group backdrop-blur-sm"
+          className="mt-12 inline-flex items-center gap-3 bg-[#8a9a7c] hover:bg-[#6b7c5e] text-white px-8 py-4 rounded-full text-sm tracking-wider transition-all duration-300 group shadow-md"
         >
           <span>Discover Our Story</span>
           <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +54,7 @@ const HomePage = () => {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <svg
-          className="w-6 h-6 text-[#5a6a4d]"
+          className="w-6 h-6 text-[#b8956b]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

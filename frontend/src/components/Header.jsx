@@ -21,25 +21,18 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm py-3'
-          : 'bg-white/80 backdrop-blur-sm py-4'
+          ? 'bg-[#faf8f4]/95 backdrop-blur-sm shadow-sm py-3'
+          : 'bg-[#faf8f4]/70 backdrop-blur-sm py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo with decorative corners */}
+          {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="relative">
-              {/* Corner brackets */}
-              <span className="absolute -top-1.5 -left-1.5 text-[#9a7c4e] text-sm font-light">┌</span>
-              <span className="absolute -top-1.5 -right-1.5 text-[#9a7c4e] text-sm font-light">┐</span>
-              <span className="absolute -bottom-1.5 -left-1.5 text-[#9a7c4e] text-sm font-light">└</span>
-              <span className="absolute -bottom-1.5 -right-1.5 text-[#9a7c4e] text-sm font-light">┘</span>
-              <div className="border border-[#6b7c5e] px-4 py-2">
-                <span className="font-display text-lg text-[#5a6a4d] tracking-wider">
-                  {coupleInfo.monogram}
-                </span>
-              </div>
+            <div className="border border-[#b8956b] px-4 py-2 bg-white/50">
+              <span className="font-display text-lg text-[#b8956b] tracking-wider">
+                {coupleInfo.monogram}
+              </span>
             </div>
           </Link>
 
@@ -51,13 +44,13 @@ const Header = () => {
                 to={item.path}
                 className={`text-sm tracking-[0.12em] font-medium transition-colors duration-300 relative group ${
                   isActive(item.path)
-                    ? 'text-[#5a6a4d]'
-                    : 'text-[#6b7c5e] hover:text-[#4a5a40]'
+                    ? 'text-[#b8956b]'
+                    : 'text-[#5a5a52] hover:text-[#b8956b]'
                 }`}
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-[1px] bg-[#9a7c4e] transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-[1px] bg-[#b8956b] transition-all duration-300 ${
                     isActive(item.path) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -68,7 +61,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-[#6b7c5e]"
+            className="md:hidden p-2 text-[#5a5a52]"
             aria-label="Toggle menu"
           >
             <svg
@@ -110,8 +103,8 @@ const Header = () => {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`text-sm tracking-[0.12em] font-medium transition-colors duration-300 ${
                   isActive(item.path)
-                    ? 'text-[#5a6a4d]'
-                    : 'text-[#6b7c5e] hover:text-[#4a5a40]'
+                    ? 'text-[#b8956b]'
+                    : 'text-[#5a5a52] hover:text-[#b8956b]'
                 }`}
               >
                 {item.label}
