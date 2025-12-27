@@ -18,12 +18,15 @@ const HomePage = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
-        {/* Logo Image */}
-        <div className="bg-white shadow-lg mb-10 p-4 rounded-sm">
+        {/* Logo Image - Integrated with backdrop */}
+        <div className="mb-10">
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-44 h-44 md:w-56 md:h-56 object-contain"
+            className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-xl"
+            style={{
+              filter: 'drop-shadow(0 4px 20px rgba(139, 105, 20, 0.3))',
+            }}
           />
         </div>
 
