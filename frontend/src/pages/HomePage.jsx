@@ -23,10 +23,10 @@ const HomePage = () => {
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-52 h-52 md:w-72 md:h-72 object-contain"
+            className="w-52 h-52 md:w-72 md:h-72 object-contain opacity-90"
             style={{
-              mixBlendMode: 'multiply',
-              filter: 'drop-shadow(0 2px 8px rgba(139, 105, 20, 0.15))',
+              mixBlendMode: 'darken',
+              filter: 'contrast(1.1) drop-shadow(0 2px 12px rgba(107, 124, 94, 0.3))',
             }}
           />
         </div>
