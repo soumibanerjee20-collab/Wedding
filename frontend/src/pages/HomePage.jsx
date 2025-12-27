@@ -18,15 +18,21 @@ const HomePage = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
-        {/* Logo Image - Stamp effect on backdrop */}
-        <div className="mb-10">
+        {/* Logo Image - Seamless stamp effect */}
+        <div 
+          className="mb-10 p-6 rounded-2xl"
+          style={{
+            background: 'linear-gradient(135deg, rgba(250,248,244,0.85) 0%, rgba(245,243,238,0.75) 100%)',
+            boxShadow: '0 8px 32px rgba(139, 105, 20, 0.08)',
+            backdropFilter: 'blur(8px)',
+          }}
+        >
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-52 h-52 md:w-72 md:h-72 object-contain opacity-90"
+            className="w-44 h-44 md:w-56 md:h-56 object-contain"
             style={{
-              mixBlendMode: 'darken',
-              filter: 'contrast(1.1) drop-shadow(0 2px 12px rgba(107, 124, 94, 0.3))',
+              mixBlendMode: 'multiply',
             }}
           />
         </div>
