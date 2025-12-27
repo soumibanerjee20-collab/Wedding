@@ -18,14 +18,21 @@ const HomePage = () => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 pt-20">
-        {/* Logo Image - Integrated with backdrop */}
-        <div className="mb-10">
+        {/* Logo Image - Blended with backdrop */}
+        <div className="mb-10 relative">
+          <div 
+            className="absolute inset-0 rounded-full blur-3xl opacity-60"
+            style={{
+              background: 'radial-gradient(circle, rgba(250,248,244,0.95) 0%, rgba(250,248,244,0) 70%)',
+              transform: 'scale(1.5)',
+            }}
+          />
           <img
             src={coupleInfo.logoUrl}
             alt="S & J Monogram"
-            className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-xl"
+            className="relative w-48 h-48 md:w-64 md:h-64 object-contain rounded-full"
             style={{
-              filter: 'drop-shadow(0 4px 20px rgba(139, 105, 20, 0.3))',
+              filter: 'drop-shadow(0 4px 20px rgba(139, 105, 20, 0.2))',
             }}
           />
         </div>
