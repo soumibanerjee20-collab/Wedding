@@ -26,7 +26,7 @@ export const ourStory = {
   tagline: "Two strangers in a classroom. An unexpected friendship. A love that crossed oceans.",
   meetingDate: "October 2, 2023",
   meetingPlace: "University of Essex, Colchester",
-  narrative: "Soumi, a Bengali professional with an adventurous spirit, and James, a former Army Captain seeking his next chapter, met on MBA induction day. He seemed quiet, serious. She wondered if they'd ever be friends. Then a canceled lunch changed everything."
+  narrative: "MBA induction day. A room full of strangers, nervous introductions, and polite smiles. He was the serious one. She was the one who could light up a room. On paper, they made no sense. Soumi, a spirited Bengali dreamer chasing her MBA, spotted James across the room—reserved, composed, the kind of man who looked like he had stories to tell but wouldn't share them easily. She remembers thinking he'd never crack a smile. He remembers thinking she was way out of his league. Then lunch plans fell through, and the universe quietly rearranged the seating chart. Slowly, the serious one started to smile."
 };
 
 export const brideProfile = {
