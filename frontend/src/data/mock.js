@@ -75,7 +75,12 @@ export const timeline = [
     date: "APRIL 2024",
     title: "Edinburgh - Where Magic Happened",
     description: "The cobblestone streets of Victoria Street felt like stepping into a dream. Edinburgh Castle glowing against the night sky. Cozy dinners with wine and laughter. Their first real date at Howies restaurant, followed by moonlit walks along ancient streets. When Soumi finally saw the city she'd only imagined through Harry Potter books, tears of pure joy streamed down her face. James held space for her quietly, and in that moment, both knew - this was more than friendship. Saying goodbye at the train station, watching her face through the window as it pulled away, James felt fear of losing something precious. They'd found each other.",
-    location: "Edinburgh, Scotland"
+    location: "Edinburgh, Scotland",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/jb80d38v_IMG_0699.jpeg",
+      "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/gh500ub6_IMG_0545.jpeg",
+      "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/ovsivscc_IMG_0686.jpeg"
+    ]
   },
   {
     date: "MAY 2024",
