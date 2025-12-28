@@ -19,6 +19,7 @@ export const navigationItems = [
   { id: 'gallery', label: 'GALLERY', path: '/gallery' },
   { id: 'families', label: 'FAMILIES', path: '/families' },
   { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
+  { id: 'guestbook', label: 'GUESTBOOK', path: '/guestbook' },
   { id: 'rsvp', label: 'RSVP', path: '/rsvp' }
 ];
 
