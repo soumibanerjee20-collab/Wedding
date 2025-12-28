@@ -216,14 +216,6 @@ const GuestbookPage = () => {
             </div>
           ))}
         </div>
-
-        {/* Bottom Quote */}
-        <div className="text-center mt-16 py-12 border-t border-[#e8e2d9]">
-          <p className="font-cormorant text-2xl text-[#5a5a52] italic">
-            "The best thing to hold onto in life is each other"
-          </p>
-          <p className="text-sm text-[#8a9a7c] mt-2">— Audrey Hepburn</p>
-        </div>
       </div>
     </div>
   );
