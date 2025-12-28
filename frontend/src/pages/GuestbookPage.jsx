@@ -12,10 +12,20 @@ const GuestbookPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   // Load messages from localStorage on mount
+  // Clear old cached sample messages on first load
   useEffect(() => {
     const savedMessages = localStorage.getItem('weddingGuestbook');
     if (savedMessages) {
-      setMessages(JSON.parse(savedMessages));
+      const parsed = JSON.parse(savedMessages);
+      // Filter out any sample messages (those with specific IDs 1, 2, 3)
+      const realMessages = parsed.filter(msg => ![1, 2, 3].includes(msg.id));
+      if (realMessages.length !== parsed.length) {
+        // Sample messages were found and removed
+        localStorage.setItem('weddingGuestbook', JSON.stringify(realMessages));
+        setMessages(realMessages);
+      } else {
+        setMessages(parsed);
+      }
     }
   }, []);
 
