@@ -7,7 +7,8 @@ const IntroAnimation = ({ onComplete }) => {
   const [logoOpacity, setLogoOpacity] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
-  const iframeRef = useRef(null);
+  const audioRef = useRef(null);
+  
   // Phase 0: Waiting for user to click "Enter"
   // Phase 1: Logo starts fading in slowly
   // Phase 2: Invitation text appears (all together)
@@ -36,12 +37,51 @@ const IntroAnimation = ({ onComplete }) => {
   const handleStart = () => {
     setHasStarted(true);
     setPhase(1);
+    
+    // Play audio after user interaction
+    if (audioRef.current) {
+      audioRef.current.volume = 0;
+      audioRef.current.play().then(() => {
+        // Fade in audio
+        let volume = 0;
+        const fadeIn = setInterval(() => {
+          if (volume < 0.6) {
+            volume += 0.03;
+            audioRef.current.volume = Math.min(volume, 0.6);
+          } else {
+            clearInterval(fadeIn);
+          }
+        }, 100);
+      }).catch(err => console.log('Audio play failed:', err));
+    }
   };
 
   // Handle mute toggle
   const toggleMute = () => {
-    setIsMuted(!isMuted);
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
   };
+
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        // Fade out audio
+        const fadeOut = setInterval(() => {
+          if (audioRef.current && audioRef.current.volume > 0.05) {
+            audioRef.current.volume -= 0.05;
+          } else {
+            clearInterval(fadeOut);
+            if (audioRef.current) {
+              audioRef.current.pause();
+            }
+          }
+        }, 50);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -71,22 +111,12 @@ const IntroAnimation = ({ onComplete }) => {
           : 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
       }}
     >
-      {/* YouTube Audio Player (hidden) - River Flows in You - Only loads after user interaction */}
-      {hasStarted && (
-        <iframe
-          ref={iframeRef}
-          src={`https://www.youtube.com/embed/fp7d-kcfa8g?autoplay=1&mute=${isMuted ? 1 : 0}&loop=0&controls=0&showinfo=0&rel=0&enablejsapi=1&start=0`}
-          allow="autoplay; encrypted-media"
-          style={{
-            position: 'absolute',
-            width: '1px',
-            height: '1px',
-            opacity: 0,
-            pointerEvents: 'none',
-          }}
-          title="Background Music"
-        />
-      )}
+      {/* Audio Element - River Flows in You (Royalty-free piano) */}
+      <audio 
+        ref={audioRef} 
+        src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3"
+        preload="auto"
+      />
 
       {/* Click to Enter Screen */}
       {!hasStarted && (
