@@ -6,12 +6,13 @@ import { useAudio } from '../context/AudioContext';
 const IntroAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
   const [logoOpacity, setLogoOpacity] = useState(0);
+  const [textPhase, setTextPhase] = useState(0); // 0: none, 1: invited, 2: celebrate, 3: names, 4: heart
   const [hasStarted, setHasStarted] = useState(false);
   const { isMuted, startMusic, fadeToBackground, toggleMute } = useAudio();
   
   // Phase 0: Waiting for user to click "Enter"
   // Phase 1: Logo starts fading in slowly
-  // Phase 2: Invitation text appears (all together)
+  // Phase 2: Text starts appearing one by one
   // Phase 3: Bloom effect - transitioning out
   // Phase 4: Complete - unmount
 
@@ -20,7 +21,7 @@ const IntroAnimation = ({ onComplete }) => {
     if (phase === 1) {
       let opacity = 0;
       const fadeInterval = setInterval(() => {
-        opacity += 0.02;
+        opacity += 0.015; // Slower fade
         if (opacity >= 1) {
           setLogoOpacity(1);
           clearInterval(fadeInterval);
@@ -44,13 +45,24 @@ const IntroAnimation = ({ onComplete }) => {
     if (!hasStarted) return;
 
     const timers = [
-      setTimeout(() => setPhase(2), 2700),      // Text appears (after logo is visible)
-      setTimeout(() => setPhase(3), 5900),      // Start bloom transition
+      // Phase 2: Start text sequence after logo is visible
+      setTimeout(() => setPhase(2), 3500),
+      
+      // Text appears one by one with pauses
+      setTimeout(() => setTextPhase(1), 3800),    // "You are cordially invited"
+      setTimeout(() => setTextPhase(2), 6000),    // "to celebrate the love story of"
+      setTimeout(() => setTextPhase(3), 8500),    // Names appear
+      setTimeout(() => setTextPhase(4), 10500),   // Heart appears
+      
+      // Start bloom transition
+      setTimeout(() => setPhase(3), 13000),
+      
+      // Complete
       setTimeout(() => {
-        fadeToBackground(); // Fade music to soft background level
+        fadeToBackground();
         setPhase(4);
         onComplete();
-      }, 7500),                                   // Complete
+      }, 14800),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -183,14 +195,16 @@ const IntroAnimation = ({ onComplete }) => {
             />
           </div>
 
-          {/* Invitation Text */}
+          {/* Invitation Text - Sequential appearance */}
           <div 
-            className={`relative z-10 text-center mt-10 transition-all duration-1000 ease-out ${
-              phase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            } ${phase >= 3 ? 'opacity-0' : ''}`}
+            className={`relative z-10 text-center mt-10 ${phase >= 3 ? 'opacity-0' : ''}`}
+            style={{ transition: 'opacity 1s ease-out' }}
           >
+            {/* Line 1: "You are cordially invited" */}
             <p 
-              className="font-cormorant text-lg md:text-xl tracking-[0.3em] uppercase mb-4"
+              className={`font-cormorant text-lg md:text-xl tracking-[0.3em] uppercase mb-6 transition-all duration-1000 ease-out ${
+                textPhase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
               style={{
                 color: '#d4c4a8',
                 textShadow: '0 0 20px rgba(212,196,168,0.3)',
@@ -199,8 +213,11 @@ const IntroAnimation = ({ onComplete }) => {
               You are cordially invited
             </p>
             
+            {/* Line 2: "to celebrate the love story of" */}
             <p 
-              className="font-cormorant text-2xl md:text-3xl italic mb-6"
+              className={`font-cormorant text-2xl md:text-3xl italic mb-8 transition-all duration-1000 ease-out ${
+                textPhase >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
               style={{
                 color: '#e8dcc8',
                 textShadow: '0 0 30px rgba(232,220,200,0.2)',
@@ -209,7 +226,12 @@ const IntroAnimation = ({ onComplete }) => {
               to celebrate the love story of
             </p>
             
-            <h1 className="font-display text-5xl md:text-6xl tracking-wide">
+            {/* Line 3: Names */}
+            <h1 
+              className={`font-display text-5xl md:text-6xl tracking-wide transition-all duration-1200 ease-out ${
+                textPhase >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              }`}
+            >
               <span 
                 style={{
                   color: '#f0e6d3',
@@ -242,7 +264,7 @@ const IntroAnimation = ({ onComplete }) => {
           {/* Decorative heart element */}
           <div 
             className={`absolute bottom-16 transition-all duration-1000 ${
-              phase >= 2 ? 'opacity-60 translate-y-0' : 'opacity-0 translate-y-4'
+              textPhase >= 4 ? 'opacity-60 translate-y-0' : 'opacity-0 translate-y-4'
             } ${phase >= 3 ? 'opacity-0' : ''}`}
           >
             <div className="flex items-center gap-4">
