@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { navigationItems, coupleInfo } from '../data/mock';
+import { useAudio } from '../context/AudioContext';
+import { Volume2, VolumeX } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isMuted, hasStarted, toggleMute } = useAudio();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,37 +59,70 @@ const Header = () => {
                 />
               </Link>
             ))}
+            
+            {/* Music Mute Button - Desktop */}
+            {hasStarted && (
+              <button
+                onClick={toggleMute}
+                className="p-2 rounded-full transition-all duration-300 hover:bg-[#8a9a7c]/10"
+                aria-label={isMuted ? 'Unmute music' : 'Mute music'}
+                title={isMuted ? 'Unmute music' : 'Mute music'}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5 text-[#8a9a7c]" />
+                ) : (
+                  <Volume2 className="w-5 h-5 text-[#8a9a7c]" />
+                )}
+              </button>
+            )}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-[#5a5a52]"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile Menu Button & Mute */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Music Mute Button - Mobile */}
+            {hasStarted && (
+              <button
+                onClick={toggleMute}
+                className="p-2 rounded-full transition-all duration-300"
+                aria-label={isMuted ? 'Unmute music' : 'Mute music'}
+              >
+                {isMuted ? (
+                  <VolumeX className="w-5 h-5 text-[#8a9a7c]" />
+                ) : (
+                  <Volume2 className="w-5 h-5 text-[#8a9a7c]" />
+                )}
+              </button>
+            )}
+            
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-[#5a5a52]"
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
