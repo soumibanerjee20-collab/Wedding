@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { coupleInfo } from '../data/mock';
 import { Volume2, VolumeX, Play } from 'lucide-react';
+import { useAudio } from '../context/AudioContext';
 
 const IntroAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
   const [logoOpacity, setLogoOpacity] = useState(0);
-  const [isMuted, setIsMuted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
-  const audioRef = useRef(null);
+  const { isMuted, startMusic, fadeToBackground, toggleMute } = useAudio();
   
   // Phase 0: Waiting for user to click "Enter"
   // Phase 1: Logo starts fading in slowly
@@ -37,51 +37,8 @@ const IntroAnimation = ({ onComplete }) => {
   const handleStart = () => {
     setHasStarted(true);
     setPhase(1);
-    
-    // Play audio after user interaction
-    if (audioRef.current) {
-      audioRef.current.volume = 0;
-      audioRef.current.play().then(() => {
-        // Fade in audio
-        let volume = 0;
-        const fadeIn = setInterval(() => {
-          if (volume < 0.6) {
-            volume += 0.03;
-            audioRef.current.volume = Math.min(volume, 0.6);
-          } else {
-            clearInterval(fadeIn);
-          }
-        }, 100);
-      }).catch(err => console.log('Audio play failed:', err));
-    }
+    startMusic(); // Start the global music
   };
-
-  // Handle mute toggle
-  const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
-
-  // Cleanup audio on unmount
-  useEffect(() => {
-    return () => {
-      if (audioRef.current) {
-        // Fade out audio
-        const fadeOut = setInterval(() => {
-          if (audioRef.current && audioRef.current.volume > 0.05) {
-            audioRef.current.volume -= 0.05;
-          } else {
-            clearInterval(fadeOut);
-            if (audioRef.current) {
-              audioRef.current.pause();
-            }
-          }
-        }, 50);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -90,13 +47,14 @@ const IntroAnimation = ({ onComplete }) => {
       setTimeout(() => setPhase(2), 2700),      // Text appears (after logo is visible)
       setTimeout(() => setPhase(3), 5900),      // Start bloom transition
       setTimeout(() => {
+        fadeToBackground(); // Fade music to soft background level
         setPhase(4);
         onComplete();
       }, 7500),                                   // Complete
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, [hasStarted, onComplete]);
+  }, [hasStarted, onComplete, fadeToBackground]);
 
   if (phase === 4) return null;
 
@@ -111,13 +69,6 @@ const IntroAnimation = ({ onComplete }) => {
           : 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
       }}
     >
-      {/* Audio Element - River Flows in You (Royalty-free piano) */}
-      <audio 
-        ref={audioRef} 
-        src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3"
-        preload="auto"
-      />
-
       {/* Click to Enter Screen */}
       {!hasStarted && (
         <div className="flex flex-col items-center justify-center text-center">
