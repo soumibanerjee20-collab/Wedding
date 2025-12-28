@@ -9,7 +9,7 @@ export const coupleInfo = {
   usWeddingYear: "2026",
   indiaWeddingYear: "2027",
   monogram: "S & J",
-  logoUrl: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/v93q8anj_ChatGPT%20Image%20Dec%2016%2C%202025%20at%2009_44_15%20PM.png"
+  logoUrl: "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/scggrc0b_ChatGPT%20Image%20Dec%2027%2C%202025%20at%2010_07_22%20PM.png"
 };
 
 export const navigationItems = [
