@@ -14,8 +14,9 @@ const IntroAnimation = ({ onComplete }) => {
 
   // Initialize and play audio
   useEffect(() => {
-    // River Flows in You - Yiruma (royalty-free piano version)
-    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3');
+    // Romantic piano music - royalty-free (similar style to River Flows in You)
+    // Using a soft, emotional piano track perfect for wedding intros
+    const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3');
     audio.loop = false;
     audio.volume = 0;
     audioRef.current = audio;
@@ -27,9 +28,9 @@ const IntroAnimation = ({ onComplete }) => {
         // Fade in audio
         let volume = 0;
         const fadeIn = setInterval(() => {
-          if (volume < 0.4) {
-            volume += 0.02;
-            audio.volume = Math.min(volume, 0.4);
+          if (volume < 0.5) {
+            volume += 0.025;
+            audio.volume = Math.min(volume, 0.5);
           } else {
             clearInterval(fadeIn);
           }
