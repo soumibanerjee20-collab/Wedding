@@ -1,13 +1,72 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { coupleInfo } from '../data/mock';
+import { Volume2, VolumeX } from 'lucide-react';
 
 const IntroAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef(null);
   // Phase 0: Initial
   // Phase 1: Logo appears with glow
   // Phase 2: Invitation text appears (all together)
   // Phase 3: Bloom effect - transitioning out
   // Phase 4: Complete - unmount
+
+  // Initialize and play audio
+  useEffect(() => {
+    // River Flows in You - Yiruma (royalty-free piano version)
+    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3');
+    audio.loop = false;
+    audio.volume = 0;
+    audioRef.current = audio;
+
+    // Try to play audio (may be blocked by browser autoplay policy)
+    const playAudio = async () => {
+      try {
+        await audio.play();
+        // Fade in audio
+        let volume = 0;
+        const fadeIn = setInterval(() => {
+          if (volume < 0.4) {
+            volume += 0.02;
+            audio.volume = Math.min(volume, 0.4);
+          } else {
+            clearInterval(fadeIn);
+          }
+        }, 100);
+      } catch (error) {
+        console.log('Autoplay blocked, user interaction required');
+      }
+    };
+
+    // Small delay to ensure component is mounted
+    setTimeout(playAudio, 500);
+
+    return () => {
+      // Fade out and cleanup
+      if (audioRef.current) {
+        const fadeOut = setInterval(() => {
+          if (audioRef.current && audioRef.current.volume > 0.05) {
+            audioRef.current.volume -= 0.05;
+          } else {
+            clearInterval(fadeOut);
+            if (audioRef.current) {
+              audioRef.current.pause();
+              audioRef.current = null;
+            }
+          }
+        }, 50);
+      }
+    };
+  }, []);
+
+  // Handle mute toggle
+  const toggleMute = () => {
+    if (audioRef.current) {
+      audioRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   useEffect(() => {
     const timers = [
@@ -36,6 +95,25 @@ const IntroAnimation = ({ onComplete }) => {
           : 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
       }}
     >
+      {/* Mute Button */}
+      <button
+        onClick={toggleMute}
+        className={`absolute top-6 right-6 z-20 p-3 rounded-full transition-all duration-300 ${
+          phase >= 3 ? 'opacity-0' : 'opacity-70 hover:opacity-100'
+        }`}
+        style={{
+          backgroundColor: 'rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(4px)',
+        }}
+        aria-label={isMuted ? 'Unmute' : 'Mute'}
+      >
+        {isMuted ? (
+          <VolumeX className="w-5 h-5 text-[#d4c4a8]" />
+        ) : (
+          <Volume2 className="w-5 h-5 text-[#d4c4a8]" />
+        )}
+      </button>
+
       {/* Subtle gradient overlay for depth */}
       <div 
         className="absolute inset-0 opacity-30"
