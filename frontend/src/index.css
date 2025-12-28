@@ -113,3 +113,96 @@ code {
         border-bottom-color: inherit;
     }
 }
+
+/* Wedding Intro Animation Keyframes */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-40px) translateX(-5px);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translateY(-20px) translateX(-10px);
+        opacity: 0.5;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) rotate(15deg);
+    }
+    50%, 100% {
+        transform: translateX(200%) rotate(15deg);
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 30px rgba(240,230,211,0.3), 0 2px 10px rgba(0,0,0,0.3);
+    }
+    100% {
+        text-shadow: 0 0 50px rgba(240,230,211,0.5), 0 0 80px rgba(212,184,150,0.3), 0 2px 10px rgba(0,0,0,0.3);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.15);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.15);
+    }
+    70% {
+        transform: scale(1);
+    }
+}
+
+@keyframes expandRight {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 5rem;
+        opacity: 1;
+    }
+}
+
+@keyframes expandLeft {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 5rem;
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
