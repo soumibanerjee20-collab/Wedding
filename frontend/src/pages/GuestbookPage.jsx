@@ -16,36 +16,6 @@ const GuestbookPage = () => {
     const savedMessages = localStorage.getItem('weddingGuestbook');
     if (savedMessages) {
       setMessages(JSON.parse(savedMessages));
-    } else {
-      // Add some initial sample messages
-      const sampleMessages = [
-        {
-          id: 1,
-          name: "Mom & Dad Banerjee",
-          message: "Our dearest Soumi, watching you find your soulmate fills our hearts with immeasurable joy. James, welcome to our family. May your journey together be blessed with endless love and happiness.",
-          relationship: "Bride's Parents",
-          date: "2024-12-20",
-          hearts: 12
-        },
-        {
-          id: 2,
-          name: "The Adams Family",
-          message: "James, we've never seen you happier. Soumi, you've brought so much light into our son's life. We can't wait to officially welcome you as our daughter. Here's to a lifetime of adventures together!",
-          relationship: "Groom's Family",
-          date: "2024-12-18",
-          hearts: 15
-        },
-        {
-          id: 3,
-          name: "MBA Squad 2024",
-          message: "From study buddies to soulmates! We watched your love story unfold in the Essex hallways. Cheers to the couple who proved that the best things in life come unexpectedly. Love you both! 🎓❤️",
-          relationship: "University Friends",
-          date: "2024-12-15",
-          hearts: 23
-        }
-      ];
-      setMessages(sampleMessages);
-      localStorage.setItem('weddingGuestbook', JSON.stringify(sampleMessages));
     }
   }, []);
 
