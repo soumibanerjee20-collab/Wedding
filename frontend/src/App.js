@@ -12,6 +12,7 @@ import GalleryPage from "./pages/GalleryPage";
 import FamiliesPage from "./pages/FamiliesPage";
 import TravelPage from "./pages/TravelPage";
 import RSVPPage from "./pages/RSVPPage";
+import GuestbookPage from "./pages/GuestbookPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/families" element={<FamiliesPage />} />
             <Route path="/travel" element={<TravelPage />} />
             <Route path="/rsvp" element={<RSVPPage />} />
+            <Route path="/guestbook" element={<GuestbookPage />} />
           </Routes>
         </main>
         <Footer />
