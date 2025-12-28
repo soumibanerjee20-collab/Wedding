@@ -4,80 +4,48 @@ import { Volume2, VolumeX } from 'lucide-react';
 
 const IntroAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
+  const [logoOpacity, setLogoOpacity] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
+  const iframeRef = useRef(null);
   // Phase 0: Initial
-  // Phase 1: Logo appears with glow
+  // Phase 1: Logo starts fading in slowly
   // Phase 2: Invitation text appears (all together)
   // Phase 3: Bloom effect - transitioning out
   // Phase 4: Complete - unmount
 
-  // Initialize and play audio
+  // Gradual logo fade-in effect
   useEffect(() => {
-    // Romantic piano music - royalty-free (similar style to River Flows in You)
-    // Using a soft, emotional piano track perfect for wedding intros
-    const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3');
-    audio.loop = false;
-    audio.volume = 0;
-    audioRef.current = audio;
+    if (phase === 1) {
+      let opacity = 0;
+      const fadeInterval = setInterval(() => {
+        opacity += 0.02; // Very gradual increase
+        if (opacity >= 1) {
+          setLogoOpacity(1);
+          clearInterval(fadeInterval);
+        } else {
+          setLogoOpacity(opacity);
+        }
+      }, 50); // Every 50ms, total ~2.5 seconds for full fade
 
-    // Try to play audio (may be blocked by browser autoplay policy)
-    const playAudio = async () => {
-      try {
-        await audio.play();
-        // Fade in audio
-        let volume = 0;
-        const fadeIn = setInterval(() => {
-          if (volume < 0.5) {
-            volume += 0.025;
-            audio.volume = Math.min(volume, 0.5);
-          } else {
-            clearInterval(fadeIn);
-          }
-        }, 100);
-      } catch (error) {
-        console.log('Autoplay blocked, user interaction required');
-      }
-    };
-
-    // Small delay to ensure component is mounted
-    setTimeout(playAudio, 500);
-
-    return () => {
-      // Fade out and cleanup
-      if (audioRef.current) {
-        const fadeOut = setInterval(() => {
-          if (audioRef.current && audioRef.current.volume > 0.05) {
-            audioRef.current.volume -= 0.05;
-          } else {
-            clearInterval(fadeOut);
-            if (audioRef.current) {
-              audioRef.current.pause();
-              audioRef.current = null;
-            }
-          }
-        }, 50);
-      }
-    };
-  }, []);
+      return () => clearInterval(fadeInterval);
+    }
+  }, [phase]);
 
   // Handle mute toggle
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
   };
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setPhase(1), 400),       // Logo fades in
-      setTimeout(() => setPhase(2), 2200),      // Text appears (all together)
-      setTimeout(() => setPhase(3), 5500),      // Start bloom transition
+      setTimeout(() => setPhase(1), 300),       // Logo starts fading in
+      setTimeout(() => setPhase(2), 3000),      // Text appears (after logo is visible)
+      setTimeout(() => setPhase(3), 6200),      // Start bloom transition
       setTimeout(() => {
         setPhase(4);
         onComplete();
-      }, 7000),                                   // Complete
+      }, 7800),                                   // Complete
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -96,6 +64,21 @@ const IntroAnimation = ({ onComplete }) => {
           : 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
       }}
     >
+      {/* YouTube Audio Player (hidden) - River Flows in You */}
+      <iframe
+        ref={iframeRef}
+        src={`https://www.youtube.com/embed/fp7d-kcfa8g?autoplay=1&mute=${isMuted ? 1 : 0}&loop=0&controls=0&showinfo=0&rel=0&enablejsapi=1`}
+        allow="autoplay"
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          opacity: 0,
+          pointerEvents: 'none',
+        }}
+        title="Background Music"
+      />
+
       {/* Mute Button */}
       <button
         onClick={toggleMute}
@@ -123,16 +106,16 @@ const IntroAnimation = ({ onComplete }) => {
         }}
       />
 
-      {/* Ambient glow behind logo */}
+      {/* Ambient glow behind logo - also fades in with logo */}
       <div 
-        className={`absolute transition-all duration-1500 ${
-          phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-        }`}
+        className="absolute transition-all duration-1000"
         style={{
           width: '450px',
           height: '450px',
           background: 'radial-gradient(circle, rgba(212,184,150,0.2) 0%, rgba(184,149,107,0.1) 40%, transparent 70%)',
           filter: 'blur(50px)',
+          opacity: logoOpacity * 0.8,
+          transform: `scale(${0.5 + logoOpacity * 0.5})`,
         }}
       />
 
@@ -146,11 +129,17 @@ const IntroAnimation = ({ onComplete }) => {
         }}
       />
 
-      {/* Logo */}
+      {/* Logo - Slow fade in */}
       <div 
         className={`relative z-10 transition-all duration-1500 ease-out ${
-          phase >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-        } ${phase >= 3 ? 'scale-75 -translate-y-20' : ''}`}
+          phase >= 3 ? 'scale-75 -translate-y-20' : ''
+        }`}
+        style={{
+          opacity: phase >= 1 ? logoOpacity : 0,
+          transform: phase >= 3 
+            ? 'scale(0.75) translateY(-80px)' 
+            : `scale(${0.9 + logoOpacity * 0.1})`,
+        }}
       >
         <img
           src={coupleInfo.logoUrl}
@@ -158,7 +147,7 @@ const IntroAnimation = ({ onComplete }) => {
           className="w-52 h-52 md:w-72 md:h-72 object-contain"
           style={{
             filter: phase >= 1 && phase < 3 
-              ? 'drop-shadow(0 0 40px rgba(212,184,150,0.4)) drop-shadow(0 0 80px rgba(184,149,107,0.2))'
+              ? `drop-shadow(0 0 ${40 * logoOpacity}px rgba(212,184,150,${0.4 * logoOpacity})) drop-shadow(0 0 ${80 * logoOpacity}px rgba(184,149,107,${0.2 * logoOpacity}))`
               : 'none',
           }}
         />
