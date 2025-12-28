@@ -6,6 +6,7 @@ import { useAudio } from '../context/AudioContext';
 const IntroAnimation = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
   const [logoOpacity, setLogoOpacity] = useState(0);
+  const [namesOpacity, setNamesOpacity] = useState(0);
   const [textPhase, setTextPhase] = useState(0); // 0: none, 1: invited, 2: celebrate, 3: names, 4: heart
   const [hasStarted, setHasStarted] = useState(false);
   const { isMuted, startMusic, fadeToBackground, toggleMute } = useAudio();
@@ -34,6 +35,24 @@ const IntroAnimation = ({ onComplete }) => {
     }
   }, [phase]);
 
+  // Gradual names fade-in effect
+  useEffect(() => {
+    if (textPhase === 3) {
+      let opacity = 0;
+      const fadeInterval = setInterval(() => {
+        opacity += 0.02; // Slow fade for names
+        if (opacity >= 1) {
+          setNamesOpacity(1);
+          clearInterval(fadeInterval);
+        } else {
+          setNamesOpacity(opacity);
+        }
+      }, 50); // ~2.5 seconds for full fade
+
+      return () => clearInterval(fadeInterval);
+    }
+  }, [textPhase]);
+
   // Handle user clicking to start
   const handleStart = () => {
     setHasStarted(true);
@@ -51,18 +70,18 @@ const IntroAnimation = ({ onComplete }) => {
       // Text appears one by one with pauses
       setTimeout(() => setTextPhase(1), 3800),    // "You are cordially invited"
       setTimeout(() => setTextPhase(2), 6000),    // "to celebrate the love story of"
-      setTimeout(() => setTextPhase(3), 8500),    // Names appear
-      setTimeout(() => setTextPhase(4), 10500),   // Heart appears
+      setTimeout(() => setTextPhase(3), 8500),    // Names start fading in
+      setTimeout(() => setTextPhase(4), 12000),   // Heart appears (after names fully visible)
       
       // Start bloom transition
-      setTimeout(() => setPhase(3), 13000),
+      setTimeout(() => setPhase(3), 14500),
       
       // Complete
       setTimeout(() => {
         fadeToBackground();
         setPhase(4);
         onComplete();
-      }, 14800),
+      }, 16500),
     ];
 
     return () => timers.forEach(clearTimeout);
@@ -226,16 +245,19 @@ const IntroAnimation = ({ onComplete }) => {
               to celebrate the love story of
             </p>
             
-            {/* Line 3: Names */}
+            {/* Line 3: Names - Slow fade in */}
             <h1 
-              className={`font-display text-5xl md:text-6xl tracking-wide transition-all duration-1200 ease-out ${
-                textPhase >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              }`}
+              className="font-display text-5xl md:text-6xl tracking-wide"
+              style={{
+                opacity: textPhase >= 3 ? namesOpacity : 0,
+                transform: `scale(${textPhase >= 3 ? 0.95 + namesOpacity * 0.05 : 0.95})`,
+                transition: 'transform 0.5s ease-out',
+              }}
             >
               <span 
                 style={{
                   color: '#f0e6d3',
-                  textShadow: '0 0 40px rgba(240,230,211,0.4), 0 2px 10px rgba(0,0,0,0.3)',
+                  textShadow: `0 0 ${40 * namesOpacity}px rgba(240,230,211,${0.4 * namesOpacity}), 0 2px 10px rgba(0,0,0,0.3)`,
                 }}
               >
                 {coupleInfo.bride}
@@ -244,7 +266,7 @@ const IntroAnimation = ({ onComplete }) => {
                 className="mx-4 italic"
                 style={{
                   color: '#8a9a7c',
-                  textShadow: '0 0 20px rgba(138,154,124,0.5)',
+                  textShadow: `0 0 ${20 * namesOpacity}px rgba(138,154,124,${0.5 * namesOpacity})`,
                 }}
               >
                 &
@@ -253,7 +275,7 @@ const IntroAnimation = ({ onComplete }) => {
                 className="italic"
                 style={{
                   color: '#f0e6d3',
-                  textShadow: '0 0 40px rgba(240,230,211,0.4), 0 2px 10px rgba(0,0,0,0.3)',
+                  textShadow: `0 0 ${40 * namesOpacity}px rgba(240,230,211,${0.4 * namesOpacity}), 0 2px 10px rgba(0,0,0,0.3)`,
                 }}
               >
                 {coupleInfo.groom}
