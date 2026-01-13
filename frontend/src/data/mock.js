@@ -129,7 +129,10 @@ export const timeline = [
     date: "OCTOBER 2025",
     title: "A Surprise She'll Never Forget",
     description: "After six long months apart, James returned to the UK. On a crisp autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a sparkling ring. Six months of video calls, of longing, of counting days - all leading to this magical moment. The friends who had watched their love story unfold from the very beginning were there to witness it. Time stood still. Her heart raced. He asked. She said yes.",
-    location: "Colchester Castle Park, England"
+    location: "Colchester Castle Park, England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/hi979bff_IMG_0845.jpeg"
+    ]
   },
   {
     date: "NOW",
