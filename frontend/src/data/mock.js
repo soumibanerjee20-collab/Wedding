@@ -56,7 +56,7 @@ export const timeline = [
   },
   {
     date: "NOVEMBER 2023",
-    title: "When Fate Intervened",
+    title: "The Day Fate Intervened",
     description: "A friend canceled lunch at the last minute. What seemed like a small inconvenience became the beautiful beginning of everything. Over that unexpected meal, they discovered shared dreams, exchanged stories of their journeys, and found something rare - a connection that felt both new and familiar. Friendship bloomed naturally, one conversation at a time.",
     location: "University of Essex"
   },
@@ -74,7 +74,7 @@ export const timeline = [
   },
   {
     date: "APRIL 2024",
-    title: "Edinburgh - Where Magic Happened",
+    title: "Edinburgh, Where Magic Happened",
     description: "The cobblestone streets of Victoria Street felt like stepping into a dream. Edinburgh Castle glowing against the night sky. Cozy dinners with wine and laughter. Their first real date at Howies restaurant, followed by moonlit walks along ancient streets. When Soumi finally saw the city she'd only imagined through Harry Potter books, tears of pure joy streamed down her face. James held space for her quietly, and in that moment, both knew - this was more than friendship. Saying goodbye at the train station, watching her face through the window as it pulled away, James felt fear of losing something precious. They'd found each other.",
     location: "Edinburgh, Scotland",
     photos: [
@@ -97,7 +97,7 @@ export const timeline = [
   },
   {
     date: "DECEMBER 2024",
-    title: "Adventures & Revelations",
+    title: "Adventures and Revelations",
     description: "Chester's historic streets during Christmas markets. Conwy, Wales with its ancient castle. At a candlelit steakhouse, watching Soumi laugh over wine, James felt something shift - this wasn't just a girlfriend, this was his future. During a challenging hike in Wales, Soumi surprised herself with every step forward. James watched her grow more confident, more fearless, and fell deeper in love with every mile they conquered together.",
     location: "Chester & Conwy, Wales"
   },
@@ -115,7 +115,7 @@ export const timeline = [
   },
   {
     date: "APRIL 10, 2025",
-    title: "Graduation - Together",
+    title: "Graduation Day",
     description: "They walked across that stage side by side at the University of Essex. Two strangers who became study partners, then friends, then everything to each other. Caps thrown in the air, diplomas in hand, and a whole beautiful future stretching ahead. The MBA brought them together - but what they built was so much more than academic.",
     location: "University of Essex"
   },
