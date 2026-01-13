@@ -216,12 +216,12 @@ export const families = {
     subtitle: "The Banerjees",
     members: [
       {
-        name: "Mr. Banerjee",
+        name: "Somnath Banerjee",
         relation: "Father of the Bride",
         description: "Soumi's loving father who supported her dreams across continents."
       },
       {
-        name: "Mrs. Banerjee",
+        name: "Swapna Banerjee",
         relation: "Mother of the Bride",
         description: "The heart of the family, who raised Soumi with grace and strength."
       },
