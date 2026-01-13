@@ -43,7 +43,7 @@ export const groomProfile = {
   origin: "From Ohio, United States of America",
   description: "Former Captain, U.S. Army",
   education: "MBA, University of Essex",
-  career: "Procurement Manager at HF Sinclair, Wyoming"
+  career: "Based in Wyoming"
 };
 
 // Timeline - A Love Story told beautifully
