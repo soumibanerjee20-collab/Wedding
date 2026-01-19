@@ -167,13 +167,18 @@ export const events = [
 
 export const gallery = [
   {
-    id: 3,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/uh72ghmi_7DCCD797-689C-4682-9124-934A9D16112F.jpeg",
-    category: "engagement"
+    id: 8,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/qr59msui_IMG_1186.jpeg",
+    category: "dating"
   },
   {
     id: 4,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/kgfzz6ft_52215AF6-07A8-4454-953B-E1A05DB4D9E5.jpeg",
+    category: "engagement"
+  },
+  {
+    id: 3,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/uh72ghmi_7DCCD797-689C-4682-9124-934A9D16112F.jpeg",
     category: "engagement"
   },
   {
@@ -184,17 +189,17 @@ export const gallery = [
   {
     id: 7,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/konivf0j_IMG_0390.jpeg",
-    category: "dating"
-  },
-  {
-    id: 8,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/qr59msui_IMG_1186.jpeg",
-    category: "dating"
+    category: "graduation"
   },
   {
     id: 9,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/4up8iufh_IMG_2925.jpeg",
     category: "dating"
+  },
+  {
+    id: 6,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/hi979bff_IMG_0845.jpeg",
+    category: "portrait"
   },
   {
     id: 1,
@@ -204,11 +209,6 @@ export const gallery = [
   {
     id: 2,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
-    category: "proposal"
-  },
-  {
-    id: 6,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/hi979bff_IMG_0845.jpeg",
     category: "proposal"
   }
 ];
