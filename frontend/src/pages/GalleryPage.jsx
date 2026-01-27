@@ -2,19 +2,6 @@ import React, { useState } from 'react';
 import { gallery } from '../data/mock';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Polaroid captions for each photo
-const polaroidCaptions = [
-  "Forever starts here ✨",
-  "My favorite hello",
-  "Together is our favorite place",
-  "Love at first sight",
-  "Making memories",
-  "Our adventure continues",
-  "You & me",
-  "The beginning",
-  "Pure magic"
-];
-
 // Random rotation angles for authentic polaroid feel
 const rotations = [-6, 3, -4, 5, -3, 4, -5, 2, -2];
 
