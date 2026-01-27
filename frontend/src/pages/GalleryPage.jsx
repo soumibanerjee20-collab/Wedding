@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { gallery } from '../data/mock';
-import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Polaroid captions for each photo
+const polaroidCaptions = [
+  "Forever starts here ✨",
+  "My favorite hello",
+  "Together is our favorite place",
+  "Love at first sight",
+  "Making memories",
+  "Our adventure continues",
+  "You & me",
+  "The beginning",
+  "Pure magic"
+];
+
+// Random rotation angles for authentic polaroid feel
+const rotations = [-6, 3, -4, 5, -3, 4, -5, 2, -2];
 
 const GalleryPage = () => {
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -13,7 +28,7 @@ const GalleryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Section Title */}
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
@@ -25,29 +40,60 @@ const GalleryPage = () => {
           </p>
         </div>
 
-        {/* Masonry-style Gallery Grid */}
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        {/* Polaroid Style Gallery */}
+        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
           {gallery.map((image, index) => (
             <div
               key={image.id}
-              className="break-inside-avoid cursor-pointer group"
+              className="cursor-pointer group transition-all duration-500 hover:z-10"
               onClick={() => openLightbox(index)}
+              style={{
+                transform: `rotate(${rotations[index % rotations.length]}deg)`,
+              }}
             >
-              <div className="relative overflow-hidden bg-white p-2 shadow-sm hover:shadow-lg transition-all duration-500">
-                <img
-                  src={image.src}
-                  alt="Our moment"
-                  className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-                {/* Subtle hover overlay */}
-                <div className="absolute inset-2 bg-[#b8956b]/0 group-hover:bg-[#b8956b]/10 transition-all duration-500" />
+              {/* Polaroid Frame */}
+              <div 
+                className="bg-white p-3 pb-14 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105"
+                style={{
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.1), 0 10px 40px rgba(184, 149, 107, 0.15)',
+                }}
+              >
+                {/* Photo */}
+                <div className="w-52 h-52 md:w-60 md:h-60 overflow-hidden bg-gray-100">
+                  <img
+                    src={image.src}
+                    alt="Our moment"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                
+                {/* Polaroid Caption - Handwritten style */}
+                <div className="absolute bottom-3 left-0 right-0 text-center">
+                  <p 
+                    className="text-[#5a5a52] text-sm italic"
+                    style={{
+                      fontFamily: "'Caveat', cursive, serif",
+                      fontSize: '1.1rem',
+                    }}
+                  >
+                    {polaroidCaptions[index % polaroidCaptions.length]}
+                  </p>
+                </div>
               </div>
+              
+              {/* Tape effect on top */}
+              <div 
+                className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-6 opacity-60"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(184, 149, 107, 0.4) 0%, rgba(184, 149, 107, 0.2) 100%)',
+                }}
+              />
             </div>
           ))}
         </div>
 
-        {/* Note about captions */}
-        <div className="text-center mt-12">
+        {/* Note */}
+        <div className="text-center mt-16">
           <p className="text-[#7a7a72] text-sm italic">
             More photos coming soon...
           </p>
