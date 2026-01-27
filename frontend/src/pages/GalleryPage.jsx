@@ -40,7 +40,7 @@ const GalleryPage = () => {
             >
               {/* Polaroid Frame */}
               <div 
-                className="bg-white p-3 pb-14 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105"
+                className="bg-white p-3 pb-5 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:scale-105"
                 style={{
                   boxShadow: '0 4px 15px rgba(0,0,0,0.1), 0 10px 40px rgba(184, 149, 107, 0.15)',
                 }}
@@ -52,19 +52,6 @@ const GalleryPage = () => {
                     alt="Our moment"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                </div>
-                
-                {/* Polaroid Caption - Handwritten style */}
-                <div className="absolute bottom-3 left-0 right-0 text-center">
-                  <p 
-                    className="text-[#5a5a52] text-sm italic"
-                    style={{
-                      fontFamily: "'Caveat', cursive, serif",
-                      fontSize: '1.1rem',
-                    }}
-                  >
-                    {polaroidCaptions[index % polaroidCaptions.length]}
-                  </p>
                 </div>
               </div>
               
