@@ -172,16 +172,6 @@ export const gallery = [
     category: "dating"
   },
   {
-    id: 4,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/kgfzz6ft_52215AF6-07A8-4454-953B-E1A05DB4D9E5.jpeg",
-    category: "engagement"
-  },
-  {
-    id: 3,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/uh72ghmi_7DCCD797-689C-4682-9124-934A9D16112F.jpeg",
-    category: "engagement"
-  },
-  {
     id: 5,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/mxz2di04_14c587a9-b195-492a-985d-f39d3801ae00.jpeg",
     category: "dating"
@@ -202,13 +192,23 @@ export const gallery = [
     category: "portrait"
   },
   {
-    id: 1,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
+    id: 2,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
     category: "proposal"
   },
   {
-    id: 2,
-    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/s58c247l_489887096_18275002111270122_4574696822399417548_n.jpg",
+    id: 4,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/kgfzz6ft_52215AF6-07A8-4454-953B-E1A05DB4D9E5.jpeg",
+    category: "engagement"
+  },
+  {
+    id: 3,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/uh72ghmi_7DCCD797-689C-4682-9124-934A9D16112F.jpeg",
+    category: "engagement"
+  },
+  {
+    id: 1,
+    src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
     category: "proposal"
   }
 ];
