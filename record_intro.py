@@ -20,6 +20,9 @@ async def record_intro():
         await page.goto("http://localhost:3000", wait_until="networkidle")
         await page.evaluate("sessionStorage.removeItem('introShown')")
         
+        # Hide the Emergent badge
+        await page.evaluate("document.getElementById('emergent-badge').style.display = 'none'")
+        
         # Reload to get fresh intro
         await page.reload(wait_until="networkidle")
         await page.wait_for_timeout(1000)
