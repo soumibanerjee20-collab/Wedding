@@ -9,9 +9,9 @@ async def record_intro():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         context = await browser.new_context(
-            viewport={"width": 800, "height": 600},
+            viewport={"width": 720, "height": 540},
             record_video_dir="/tmp/video",
-            record_video_size={"width": 800, "height": 600}
+            record_video_size={"width": 720, "height": 540}
         )
         
         page = await context.new_page()
@@ -25,7 +25,11 @@ async def record_intro():
         
         # Reload to get fresh intro
         await page.reload(wait_until="networkidle")
-        await page.wait_for_timeout(1000)
+        await page.wait_for_timeout(500)
+        
+        # Hide badge again after reload
+        await page.evaluate("document.getElementById('emergent-badge').style.display = 'none'")
+        await page.wait_for_timeout(500)
         
         # Click the "Click to Enter" button to start
         try:
@@ -58,23 +62,34 @@ async def main():
         
         print(f"Converting {video_path} to GIF...")
         
-        # Convert to GIF using ffmpeg with optimization for WhatsApp
-        # Skip first 1 second (before clicking), take ~16 seconds of animation
-        cmd = [
+        # Higher quality GIF conversion
+        # Step 1: Generate a high-quality palette
+        palette_cmd = [
             "ffmpeg", "-y",
             "-i", video_path,
-            "-ss", "1",  # Start after 1 second 
-            "-t", "16",  # Take 16 seconds
-            "-vf", "fps=12,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128:stats_mode=diff[p];[s1][p]paletteuse=dither=bayer:bayer_scale=3",
+            "-ss", "0.5",
+            "-t", "16",
+            "-vf", "fps=15,scale=640:-1:flags=lanczos,palettegen=max_colors=256:stats_mode=full",
+            "/tmp/palette.png"
+        ]
+        subprocess.run(palette_cmd, capture_output=True)
+        
+        # Step 2: Create GIF using the palette
+        gif_cmd = [
+            "ffmpeg", "-y",
+            "-i", video_path,
+            "-i", "/tmp/palette.png",
+            "-ss", "0.5",
+            "-t", "16",
+            "-lavfi", "fps=15,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=floyd_steinberg",
             "-loop", "0",
             gif_path
         ]
         
-        result = subprocess.run(cmd, capture_output=True, text=True)
+        result = subprocess.run(gif_cmd, capture_output=True, text=True)
         
         if result.returncode == 0:
             print(f"GIF created successfully: {gif_path}")
-            # Get file size
             size = os.path.getsize(gif_path) / (1024 * 1024)
             print(f"File size: {size:.2f} MB")
         else:
