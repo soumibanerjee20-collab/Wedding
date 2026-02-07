@@ -62,26 +62,13 @@ async def main():
         
         print(f"Converting {video_path} to GIF...")
         
-        # Higher quality GIF conversion
-        # Step 1: Generate a high-quality palette
-        palette_cmd = [
-            "ffmpeg", "-y",
-            "-i", video_path,
-            "-ss", "0.5",
-            "-t", "16",
-            "-vf", "fps=15,scale=640:-1:flags=lanczos,palettegen=max_colors=256:stats_mode=full",
-            "/tmp/palette.png"
-        ]
-        subprocess.run(palette_cmd, capture_output=True)
-        
-        # Step 2: Create GIF using the palette
+        # High quality GIF conversion in single command
         gif_cmd = [
-            "ffmpeg", "-y",
+            "/usr/bin/ffmpeg", "-y",
             "-i", video_path,
-            "-i", "/tmp/palette.png",
             "-ss", "0.5",
             "-t", "16",
-            "-lavfi", "fps=15,scale=640:-1:flags=lanczos[x];[x][1:v]paletteuse=dither=floyd_steinberg",
+            "-vf", "fps=15,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=256:stats_mode=full[p];[s1][p]paletteuse=dither=sierra2_4a",
             "-loop", "0",
             gif_path
         ]
