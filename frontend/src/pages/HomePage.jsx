@@ -7,8 +7,8 @@ import IntroAnimation from '../components/IntroAnimation';
 const WeddingCountdown = ({ visible }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   
-  // Wedding date: September 26, 2026
-  const weddingDate = new Date('2026-09-26T00:00:00');
+  // Wedding date: August 8, 2026
+  const weddingDate = new Date('2026-08-08T00:00:00');
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -59,7 +59,7 @@ const WeddingCountdown = ({ visible }) => {
         <TimeBlock value={timeLeft.seconds} label="Secs" />
       </div>
       <p className="text-[#7a7a72] text-sm mt-4 italic">
-        September 26, 2026
+        August 8, 2026
       </p>
     </div>
   );
