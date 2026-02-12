@@ -115,20 +115,17 @@ const HomePage = () => {
             />
           </div>
 
-          {/* Names - Higher contrast for readability */}
+          {/* Names - Bold and visible */}
           <h1 
-            className={`font-display text-4xl md:text-6xl lg:text-7xl text-[#5a4a1a] mb-2 tracking-wide transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-            style={{ 
-              textShadow: '0 0 30px rgba(250,248,244,1), 0 0 60px rgba(250,248,244,0.8), 0 2px 4px rgba(0,0,0,0.1)',
-            }}
+            className={`font-display text-4xl md:text-6xl lg:text-7xl text-[#6b5a1a] mb-2 tracking-wide font-semibold transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
-            <span className="font-medium">{coupleInfo.bride}</span>
-            <span className="mx-3 md:mx-5 text-[#4a5a40] italic font-light">&</span>
-            <span className="font-medium italic">{coupleInfo.groom}</span>
+            <span>{coupleInfo.bride}</span>
+            <span className="mx-3 md:mx-5 text-[#4a5a40] italic font-medium">&</span>
+            <span className="italic">{coupleInfo.groom}</span>
           </h1>
 
           {/* Tagline */}
-          <p className={`text-[#3d3d38] text-sm md:text-base tracking-[0.25em] mt-4 uppercase font-bold drop-shadow-md transition-all duration-1000 delay-700 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <p className={`text-[#3d3d38] text-base md:text-lg tracking-[0.25em] mt-4 uppercase font-bold transition-all duration-1000 delay-700 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             {coupleInfo.tagline}
           </p>
 
