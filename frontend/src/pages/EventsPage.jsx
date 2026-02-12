@@ -259,17 +259,17 @@ const EventsPage = () => {
             {/* Title */}
             <div className="md:w-2/3 pb-2 md:text-right">
               <div className="flex items-center gap-3 mb-2 md:justify-end">
-                <span className="text-[#c17f59] text-sm tracking-[0.2em] uppercase">Chapter Two</span>
-                <div className="w-12 h-[2px] bg-[#c17f59]" />
+                <span className="text-[#D4740C] text-sm tracking-[0.2em] uppercase">Chapter Two</span>
+                <div className="w-12 h-[2px] bg-[#E89B3C]" />
               </div>
-              <h2 className="font-display text-3xl md:text-4xl text-[#8B4513] mb-2">
+              <h2 className="font-display text-3xl md:text-4xl text-[#B8540B] mb-2">
                 {indianWedding.title}
               </h2>
               <p className="font-cormorant text-xl text-[#7a7a72] italic">
                 {indianWedding.subtitle}
               </p>
               <div className="flex items-center gap-2 mt-3 text-[#5a5a52] md:justify-end">
-                <MapPin className="w-4 h-4 text-[#c17f59]" />
+                <MapPin className="w-4 h-4 text-[#E89B3C]" />
                 <span className="text-sm">{indianWedding.location}</span>
               </div>
             </div>
@@ -278,7 +278,7 @@ const EventsPage = () => {
           {/* Events Timeline */}
           <div className="relative">
             {/* Connecting line with marigold color */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#c17f59]/20 via-[#c17f59]/40 to-[#c17f59]/20" />
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#E89B3C]/20 via-[#E89B3C]/40 to-[#E89B3C]/20" />
             
             <div className="grid md:grid-cols-3 gap-6">
               {indianWedding.events.map((event, index) => (
