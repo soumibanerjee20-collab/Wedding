@@ -74,7 +74,7 @@ const EventCard = ({ event, isIndian, index }) => {
       {/* Event number */}
       <div 
         className={`absolute -left-3 top-6 w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-medium ${
-          isIndian ? 'bg-gradient-to-br from-[#c17f59] to-[#a66b4a]' : 'bg-gradient-to-br from-[#8a9a7c] to-[#6b7c5e]'
+          isIndian ? 'bg-gradient-to-br from-[#E89B3C] to-[#D4740C]' : 'bg-gradient-to-br from-[#8a9a7c] to-[#6b7c5e]'
         }`}
       >
         {index + 1}
@@ -83,7 +83,7 @@ const EventCard = ({ event, isIndian, index }) => {
       {/* Icon */}
       <div 
         className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
-          isIndian ? 'bg-[#fff5eb] text-[#c17f59]' : 'bg-[#f0f4ed] text-[#8a9a7c]'
+          isIndian ? 'bg-[#FFF5E6] text-[#D4740C]' : 'bg-[#f0f4ed] text-[#8a9a7c]'
         }`}
       >
         {getEventIcon(event.icon)}
@@ -91,7 +91,7 @@ const EventCard = ({ event, isIndian, index }) => {
       
       {/* Event name */}
       <h4 className={`font-display text-xl md:text-2xl mb-2 tracking-wide ${
-        isIndian ? 'text-[#8B4513]' : 'text-[#5a6b50]'
+        isIndian ? 'text-[#B8540B]' : 'text-[#5a6b50]'
       }`}>
         {event.name}
       </h4>
