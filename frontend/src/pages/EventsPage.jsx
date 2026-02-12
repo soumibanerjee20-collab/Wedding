@@ -115,7 +115,12 @@ const EventCard = ({ event, isIndian, index }) => {
     >
       {/* Decorative element */}
       {isIndian && (
-        <AlpanaPattern className="absolute -top-4 -right-4 w-24 h-24 text-[#c17f59] opacity-30" />
+        <>
+          <AlpanaPattern className="absolute -top-6 -right-6 w-28 h-28 text-[#E89B3C] opacity-25" />
+          <div className="absolute bottom-2 right-2 w-8 h-8 opacity-20">
+            <PaisleyPattern className="w-full h-full text-[#D4740C]" />
+          </div>
+        </>
       )}
       
       {/* Event number */}
