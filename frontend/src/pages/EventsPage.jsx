@@ -251,8 +251,8 @@ const EventsPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
               {/* Floating date badge */}
-              <div className="absolute -bottom-4 right-4 bg-white px-4 py-2 rounded-full shadow-md">
-                <span className="text-[#c17f59] font-medium text-sm">{indianWedding.date}</span>
+              <div className="absolute -bottom-4 right-4 bg-white px-4 py-2 rounded-full shadow-md border border-[#E89B3C]/20">
+                <span className="text-[#D4740C] font-medium text-sm">{indianWedding.date}</span>
               </div>
             </div>
             
