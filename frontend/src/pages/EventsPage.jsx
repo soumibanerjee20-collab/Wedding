@@ -54,11 +54,14 @@ const EventCard = ({ event, isIndian, index }) => {
       }`}
       style={{
         background: isIndian 
-          ? 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,248,240,0.95) 100%)'
+          ? 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,247,235,0.98) 100%)'
           : 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,247,0.95) 100%)',
         boxShadow: isHovered 
-          ? '0 10px 40px rgba(0,0,0,0.1)' 
+          ? isIndian 
+            ? '0 10px 40px rgba(228,155,60,0.2)' 
+            : '0 10px 40px rgba(0,0,0,0.1)' 
           : '0 4px 15px rgba(0,0,0,0.05)',
+        border: isIndian ? '1px solid rgba(228,155,60,0.15)' : 'none',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
