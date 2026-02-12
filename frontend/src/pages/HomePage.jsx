@@ -117,11 +117,13 @@ const HomePage = () => {
 
           {/* Names - Higher contrast for readability */}
           <h1 
-            className={`font-display text-4xl md:text-6xl lg:text-7xl text-[#8B6914] mb-2 tracking-wide transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-            style={{ textShadow: '0 2px 10px rgba(255,255,255,0.8)' }}
+            className={`font-display text-4xl md:text-6xl lg:text-7xl text-[#5a4a1a] mb-2 tracking-wide transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ 
+              textShadow: '0 0 30px rgba(250,248,244,1), 0 0 60px rgba(250,248,244,0.8), 0 2px 4px rgba(0,0,0,0.1)',
+            }}
           >
             <span className="font-medium">{coupleInfo.bride}</span>
-            <span className="mx-3 md:mx-5 text-[#6b7c5e] italic font-light">&</span>
+            <span className="mx-3 md:mx-5 text-[#4a5a40] italic font-light">&</span>
             <span className="font-medium italic">{coupleInfo.groom}</span>
           </h1>
 
