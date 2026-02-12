@@ -142,28 +142,86 @@ export const timeline = [
   }
 ];
 
-export const events = [
-  {
-    id: 1,
-    name: "US Wedding",
-    date: "Mid 2026",
-    time: "TBD",
-    venue: "To Be Announced",
-    location: "Wyoming / Ohio, USA",
-    description: "Our intimate celebration in the United States after Soumi arrives. A beautiful blend of American and Indian traditions, surrounded by James's family and close friends.",
-    status: "TENTATIVE"
+export const events = {
+  usWedding: {
+    title: "American Wedding",
+    subtitle: "Where The West Meets Forever",
+    location: "Casper, Wyoming",
+    date: "August 8, 2026",
+    image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80",
+    events: [
+      {
+        id: 1,
+        name: "Rehearsal Dinner",
+        date: "August 7, 2026",
+        time: "Evening",
+        venue: "Restaurant TBA",
+        location: "Casper, Wyoming",
+        description: "An intimate evening with our closest family and friends to celebrate the night before. Good food, great company, and cherished moments.",
+        icon: "dinner"
+      },
+      {
+        id: 2,
+        name: "Wedding Ceremony",
+        date: "August 8, 2026",
+        time: "Afternoon",
+        venue: "Outdoor Venue TBA",
+        location: "Casper, Wyoming",
+        description: "An intimate outdoor ceremony surrounded by Wyoming's natural beauty. Where two hearts officially become one under the open sky.",
+        icon: "rings"
+      },
+      {
+        id: 3,
+        name: "Reception",
+        date: "August 8, 2026",
+        time: "Evening",
+        venue: "Our New Home",
+        location: "Casper, Wyoming",
+        description: "Join us for an intimate celebration at our new home. Dinner, dancing, and making memories together as we begin our married life.",
+        icon: "celebration"
+      }
+    ]
   },
-  {
-    id: 2,
-    name: "Indian Reception",
-    date: "2027",
-    time: "TBD",
-    venue: "To Be Announced",
+  indianWedding: {
+    title: "Indian Wedding",
+    subtitle: "Where Tradition Meets Love",
     location: "Kolkata, India",
-    description: "A grand celebration in Soumi's hometown - the City of Joy. Small traditional Bengali wedding rituals followed by a colorful reception filled with music, dance, and the warmth of family and friends.",
-    status: "TENTATIVE"
+    date: "October 21-23, 2027",
+    image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
+    events: [
+      {
+        id: 4,
+        name: "Sangeet & Mehendi",
+        date: "October 21, 2027",
+        time: "Evening",
+        venue: "Venue TBA",
+        location: "Kolkata, India",
+        description: "A night of music, dance, and beautiful henna art. Families come together for performances, laughter, and the bride gets adorned with intricate mehendi designs.",
+        icon: "music"
+      },
+      {
+        id: 5,
+        name: "Wedding Ceremony",
+        date: "October 23, 2027",
+        time: "Auspicious Hour",
+        venue: "Venue TBA",
+        location: "Kolkata, India",
+        description: "A traditional Bengali wedding ceremony filled with sacred rituals, mantras, and the beautiful exchange of garlands. The bride and groom take seven steps together, promising a lifetime of love.",
+        icon: "mandap"
+      },
+      {
+        id: 6,
+        name: "Reception",
+        date: "October 23, 2027",
+        time: "Evening",
+        venue: "Venue TBA",
+        location: "Kolkata, India",
+        description: "A grand celebration to welcome the newlyweds. Exquisite Bengali cuisine, music, and blessings from loved ones as we celebrate this union.",
+        icon: "feast"
+      }
+    ]
   }
-];
+};
 
 export const gallery = [
   {
