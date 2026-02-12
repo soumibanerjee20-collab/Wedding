@@ -246,7 +246,14 @@ const EventsPage = () => {
         </div>
         
         {/* Decorative floral corner */}
-        <FloralCorner className="absolute bottom-0 right-0 w-32 h-32 text-[#8a9a7c] opacity-30" />
+        <div className="absolute bottom-0 right-0 w-32 h-32 opacity-20">
+          <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-[#8a9a7c]">
+            <path d="M100 100 Q 70 70, 80 50 Q 90 30, 70 20 Q 50 10, 40 30" stroke="currentColor" strokeWidth="1" fill="none" />
+            <circle cx="80" cy="50" r="3" fill="currentColor" />
+            <circle cx="70" cy="30" r="2" fill="currentColor" />
+            <circle cx="50" cy="40" r="2" fill="currentColor" />
+          </svg>
+        </div>
       </section>
 
       {/* Divider */}
