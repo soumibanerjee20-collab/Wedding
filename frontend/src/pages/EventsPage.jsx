@@ -258,31 +258,52 @@ const EventsPage = () => {
       </div>
 
       {/* Indian Wedding Section */}
-      <section className="relative">
+      <section className="relative py-4">
         {/* Marigold gradient background - more visible */}
         <div 
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, rgba(255,243,224,0.7) 0%, rgba(255,237,213,0.5) 50%, rgba(255,248,240,0.3) 100%)',
+            background: 'linear-gradient(135deg, rgba(255,243,224,0.8) 0%, rgba(255,237,213,0.6) 50%, rgba(255,248,240,0.4) 100%)',
           }}
         />
         
         {/* Marigold border accent at top */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E89B3C] to-transparent opacity-40" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-[#E89B3C] to-transparent opacity-50" />
         
-        {/* Subtle alpana pattern in background */}
-        <div className="absolute top-10 right-10 opacity-20">
-          <AlpanaPattern className="w-64 h-64 text-[#D4740C]" />
-        </div>
-        <div className="absolute bottom-20 left-10 opacity-15">
-          <AlpanaPattern className="w-48 h-48 text-[#D4740C]" />
+        {/* Decorative border pattern at top */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-96 opacity-30">
+          <BorderPattern className="w-full h-6 text-[#D4740C]" />
         </div>
         
-        {/* Marigold flower decorative dots */}
-        <div className="absolute top-20 left-20 w-3 h-3 rounded-full bg-[#F5A623] opacity-30" />
-        <div className="absolute top-40 right-32 w-2 h-2 rounded-full bg-[#E89B3C] opacity-25" />
-        <div className="absolute bottom-40 left-40 w-2 h-2 rounded-full bg-[#F5A623] opacity-20" />
-        <div className="absolute bottom-60 right-20 w-3 h-3 rounded-full bg-[#D4740C] opacity-25" />
+        {/* Large Alpana patterns - MORE VISIBLE */}
+        <div className="absolute top-16 right-8 opacity-40">
+          <AlpanaPattern className="w-72 h-72 text-[#D4740C]" />
+        </div>
+        <div className="absolute bottom-16 left-8 opacity-35">
+          <AlpanaPattern className="w-56 h-56 text-[#D4740C]" />
+        </div>
+        <div className="absolute top-1/2 left-4 -translate-y-1/2 opacity-25">
+          <AlpanaPattern className="w-40 h-40 text-[#E89B3C]" />
+        </div>
+        
+        {/* Paisley motifs - Bengali touch */}
+        <div className="absolute top-32 left-16 opacity-35 rotate-12">
+          <PaisleyPattern className="w-16 h-24 text-[#D4740C]" />
+        </div>
+        <div className="absolute bottom-32 right-16 opacity-30 -rotate-12">
+          <PaisleyPattern className="w-14 h-20 text-[#E89B3C]" />
+        </div>
+        <div className="absolute top-48 right-40 opacity-25 rotate-45">
+          <PaisleyPattern className="w-12 h-18 text-[#D4740C]" />
+        </div>
+        
+        {/* Marigold flower decorative dots - scattered */}
+        <div className="absolute top-24 left-32 w-4 h-4 rounded-full bg-[#F5A623] opacity-40" />
+        <div className="absolute top-40 right-48 w-3 h-3 rounded-full bg-[#E89B3C] opacity-35" />
+        <div className="absolute bottom-40 left-48 w-3 h-3 rounded-full bg-[#F5A623] opacity-30" />
+        <div className="absolute bottom-56 right-24 w-4 h-4 rounded-full bg-[#D4740C] opacity-35" />
+        <div className="absolute top-60 left-20 w-2 h-2 rounded-full bg-[#E89B3C] opacity-40" />
+        <div className="absolute bottom-28 left-36 w-2 h-2 rounded-full bg-[#F5A623] opacity-35" />
         
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
           {/* Section Header */}
