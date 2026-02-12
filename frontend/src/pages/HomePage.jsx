@@ -97,8 +97,8 @@ const HomePage = () => {
             backgroundImage: `url('https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/vi3rdgsl_oxbow-bend-4845483-Header_Mobile.webp')`,
           }}
         >
-          {/* Fade overlay matching logo colors */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/85 via-[#faf8f4]/60 to-[#faf8f4]/85" />
+          {/* Fade overlay - more transparent to make text pop */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/92 via-[#faf8f4]/80 to-[#faf8f4]/92" />
         </div>
 
         {/* Content */}
