@@ -90,15 +90,15 @@ const HomePage = () => {
       {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
       
       <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
-        {/* Background Image - Wyoming Mountains */}
+        {/* Background Image - Wyoming Grand Teton Mountains */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')`,
+            backgroundImage: `url('https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/vi3rdgsl_oxbow-bend-4845483-Header_Mobile.webp')`,
           }}
         >
           {/* Fade overlay matching logo colors */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/90 via-[#faf8f4]/70 to-[#faf8f4]/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f4]/85 via-[#faf8f4]/60 to-[#faf8f4]/85" />
         </div>
 
         {/* Content */}
