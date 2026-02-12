@@ -209,16 +209,30 @@ const EventsPage = () => {
 
       {/* Indian Wedding Section */}
       <section className="relative">
-        {/* Subtle marigold/warm gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-l from-[#fff8f0]/60 via-transparent to-transparent" />
+        {/* Marigold gradient background - more visible */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,243,224,0.7) 0%, rgba(255,237,213,0.5) 50%, rgba(255,248,240,0.3) 100%)',
+          }}
+        />
+        
+        {/* Marigold border accent at top */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#E89B3C] to-transparent opacity-40" />
         
         {/* Subtle alpana pattern in background */}
-        <div className="absolute top-10 right-10 opacity-10">
-          <AlpanaPattern className="w-64 h-64 text-[#c17f59]" />
+        <div className="absolute top-10 right-10 opacity-20">
+          <AlpanaPattern className="w-64 h-64 text-[#D4740C]" />
         </div>
-        <div className="absolute bottom-20 left-10 opacity-10">
-          <AlpanaPattern className="w-48 h-48 text-[#c17f59]" />
+        <div className="absolute bottom-20 left-10 opacity-15">
+          <AlpanaPattern className="w-48 h-48 text-[#D4740C]" />
         </div>
+        
+        {/* Marigold flower decorative dots */}
+        <div className="absolute top-20 left-20 w-3 h-3 rounded-full bg-[#F5A623] opacity-30" />
+        <div className="absolute top-40 right-32 w-2 h-2 rounded-full bg-[#E89B3C] opacity-25" />
+        <div className="absolute bottom-40 left-40 w-2 h-2 rounded-full bg-[#F5A623] opacity-20" />
+        <div className="absolute bottom-60 right-20 w-3 h-3 rounded-full bg-[#D4740C] opacity-25" />
         
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
           {/* Section Header */}
