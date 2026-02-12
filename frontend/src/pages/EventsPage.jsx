@@ -5,22 +5,69 @@ import { Calendar, MapPin, Music, Utensils, Heart, PartyPopper, Sparkles } from 
 // Subtle decorative patterns
 const AlpanaPattern = ({ className }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-    <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="0.5" opacity="0.25" />
-    <circle cx="50" cy="50" r="25" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
-    <path d="M50 5 L55 15 L50 25 L45 15 Z" fill="currentColor" opacity="0.15" />
-    <path d="M50 75 L55 85 L50 95 L45 85 Z" fill="currentColor" opacity="0.15" />
-    <path d="M5 50 L15 55 L25 50 L15 45 Z" fill="currentColor" opacity="0.15" />
-    <path d="M75 50 L85 55 L95 50 L85 45 Z" fill="currentColor" opacity="0.15" />
+    {/* Outer circle */}
+    <circle cx="50" cy="50" r="48" stroke="currentColor" strokeWidth="1" />
+    <circle cx="50" cy="50" r="42" stroke="currentColor" strokeWidth="0.5" />
+    <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="1" />
+    <circle cx="50" cy="50" r="28" stroke="currentColor" strokeWidth="0.5" />
+    <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="1" />
+    <circle cx="50" cy="50" r="12" stroke="currentColor" strokeWidth="0.5" />
+    <circle cx="50" cy="50" r="5" fill="currentColor" />
+    
+    {/* Lotus petals - top */}
+    <path d="M50 2 Q55 15 50 25 Q45 15 50 2" fill="currentColor" opacity="0.6" />
+    <path d="M50 75 Q55 85 50 98 Q45 85 50 75" fill="currentColor" opacity="0.6" />
+    <path d="M2 50 Q15 55 25 50 Q15 45 2 50" fill="currentColor" opacity="0.6" />
+    <path d="M75 50 Q85 55 98 50 Q85 45 75 50" fill="currentColor" opacity="0.6" />
+    
+    {/* Diagonal petals */}
+    <path d="M15 15 Q25 25 20 35 Q18 25 15 15" fill="currentColor" opacity="0.4" />
+    <path d="M85 15 Q75 25 80 35 Q82 25 85 15" fill="currentColor" opacity="0.4" />
+    <path d="M15 85 Q25 75 20 65 Q18 75 15 85" fill="currentColor" opacity="0.4" />
+    <path d="M85 85 Q75 75 80 65 Q82 75 85 85" fill="currentColor" opacity="0.4" />
+    
+    {/* Small dots around */}
+    <circle cx="50" cy="8" r="2" fill="currentColor" />
+    <circle cx="50" cy="92" r="2" fill="currentColor" />
+    <circle cx="8" cy="50" r="2" fill="currentColor" />
+    <circle cx="92" cy="50" r="2" fill="currentColor" />
+    <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+    <circle cx="80" cy="20" r="1.5" fill="currentColor" />
+    <circle cx="20" cy="80" r="1.5" fill="currentColor" />
+    <circle cx="80" cy="80" r="1.5" fill="currentColor" />
   </svg>
 );
 
-const FloralCorner = ({ className }) => (
-  <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 100 Q 30 70, 50 80 Q 70 90, 100 60" stroke="currentColor" strokeWidth="1" fill="none" opacity="0.2" />
-    <circle cx="50" cy="80" r="3" fill="currentColor" opacity="0.3" />
-    <circle cx="30" cy="85" r="2" fill="currentColor" opacity="0.2" />
-    <circle cx="70" cy="75" r="2" fill="currentColor" opacity="0.2" />
+// Paisley/Mango motif - very Bengali
+const PaisleyPattern = ({ className }) => (
+  <svg className={className} viewBox="0 0 50 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path 
+      d="M25 5 Q45 20 40 45 Q35 70 25 75 Q15 70 10 45 Q5 20 25 5" 
+      stroke="currentColor" 
+      strokeWidth="1.5" 
+      fill="none"
+    />
+    <path 
+      d="M25 15 Q35 25 32 40 Q28 55 25 58 Q22 55 18 40 Q15 25 25 15" 
+      stroke="currentColor" 
+      strokeWidth="1" 
+      fill="currentColor"
+      opacity="0.3"
+    />
+    <circle cx="25" cy="30" r="3" fill="currentColor" />
+    <path d="M25 5 Q28 0 32 5" stroke="currentColor" strokeWidth="1" fill="none" />
+  </svg>
+);
+
+// Decorative border pattern
+const BorderPattern = ({ className }) => (
+  <svg className={className} viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 10 Q10 0 20 10 Q30 20 40 10 Q50 0 60 10 Q70 20 80 10 Q90 0 100 10 Q110 20 120 10 Q130 0 140 10 Q150 20 160 10 Q170 0 180 10 Q190 20 200 10" stroke="currentColor" strokeWidth="1.5" fill="none" />
+    <circle cx="20" cy="10" r="2" fill="currentColor" />
+    <circle cx="60" cy="10" r="2" fill="currentColor" />
+    <circle cx="100" cy="10" r="2" fill="currentColor" />
+    <circle cx="140" cy="10" r="2" fill="currentColor" />
+    <circle cx="180" cy="10" r="2" fill="currentColor" />
   </svg>
 );
 
