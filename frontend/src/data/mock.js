@@ -336,7 +336,7 @@ export const travelInfo = {
     title: "Casper, Wyoming, USA",
     location: "Wyoming / Ohio, USA",
     description: "Where James works and where our US celebration will take place.",
-    image: "https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1554600774-47a4ca56c66b?w=800&q=80",
     history: "Casper sits at the crossroads of the Oregon, California, Mormon Pioneer, and Pony Express trails. Known as 'The Oil City' for its petroleum heritage, it's surrounded by stunning Wyoming landscapes including the nearby Grand Tetons - some of the most dramatic mountain scenery in North America.",
     landmarks: [
       {
