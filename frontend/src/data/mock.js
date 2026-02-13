@@ -52,7 +52,10 @@ export const timeline = [
     date: "OCTOBER 2023",
     title: "Strangers in a Classroom",
     description: "Two people from opposite ends of the world stepped into the same MBA classroom at the University of Essex. She noticed his quiet confidence, his observant eyes. He seemed serious, almost reserved. Neither could have guessed that this ordinary day would be the first chapter of an extraordinary story.",
-    location: "Colchester, England"
+    location: "Colchester, England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/jr3075pq_a061bae9-99c7-4dc0-bf3c-6e9a3dbec987.jpeg"
+    ]
   },
   {
     date: "NOVEMBER 2023",
