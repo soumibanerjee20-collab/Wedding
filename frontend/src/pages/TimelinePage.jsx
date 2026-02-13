@@ -78,27 +78,62 @@ const TimelinePage = () => {
                       </div>
                     </div>
 
-                    {/* Photos Grid - Right side */}
+                    {/* Photos Grid - Right side - Polaroid Style */}
                     <div className={`mt-6 md:mt-0 ${index % 2 === 0 ? 'md:pl-12' : 'md:order-1 md:pr-12'}`}>
-                      <div className="grid grid-cols-2 gap-3">
-                        {/* First photo - large */}
-                        <div className="col-span-2 aspect-[4/3] overflow-hidden rounded-lg shadow-md group">
-                          <img
-                            src={item.photos[0]}
-                            alt={`${item.title} - Memory 1`}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        {/* Remaining photos - smaller */}
-                        {item.photos.slice(1).map((photo, photoIndex) => (
-                          <div key={photoIndex} className="aspect-square overflow-hidden rounded-lg shadow-md group">
-                            <img
-                              src={photo}
-                              alt={`${item.title} - Memory ${photoIndex + 2}`}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </div>
-                        ))}
+                      <div className="flex flex-wrap justify-center gap-4">
+                        {item.photos.map((photo, photoIndex) => {
+                          // Slight random rotations for authentic polaroid feel
+                          const rotations = [-3, 2, -2, 3, -1];
+                          const rotation = rotations[photoIndex % rotations.length];
+                          
+                          return (
+                            <div 
+                              key={photoIndex} 
+                              className="group cursor-pointer transition-all duration-500 hover:z-10 hover:scale-105"
+                              style={{
+                                transform: `rotate(${rotation}deg)`,
+                              }}
+                            >
+                              {/* Polaroid Frame */}
+                              <div 
+                                className="bg-white p-2 pb-12 shadow-lg hover:shadow-2xl transition-all duration-500 relative"
+                                style={{
+                                  boxShadow: '0 4px 15px rgba(0,0,0,0.1), 0 10px 40px rgba(184, 149, 107, 0.2)',
+                                }}
+                              >
+                                {/* Photo */}
+                                <div className="w-48 h-48 md:w-56 md:h-56 overflow-hidden bg-gray-100">
+                                  <img
+                                    src={photo}
+                                    alt={`${item.title} - Memory ${photoIndex + 1}`}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                  />
+                                </div>
+                                
+                                {/* Polaroid bottom - Date caption */}
+                                <div className="absolute bottom-3 left-0 right-0 text-center">
+                                  <p 
+                                    className="text-[#7a7a72] text-sm"
+                                    style={{
+                                      fontFamily: "'Caveat', cursive, serif",
+                                      fontSize: '1rem',
+                                    }}
+                                  >
+                                    {item.date === "NOW" ? "Present Day" : item.date}
+                                  </p>
+                                </div>
+                              </div>
+                              
+                              {/* Tape effect */}
+                              <div 
+                                className="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 opacity-50 rounded-sm"
+                                style={{
+                                  background: 'linear-gradient(135deg, rgba(184, 149, 107, 0.5) 0%, rgba(184, 149, 107, 0.3) 100%)',
+                                }}
+                              />
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
