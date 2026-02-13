@@ -126,7 +126,10 @@ export const timeline = [
     date: "APRIL 12, 2025",
     title: "The Hardest Goodbye",
     description: "Heathrow Airport. The longest hug. Tears that wouldn't stop. James was leaving for Wyoming to start his new career, and every step toward that departure gate felt impossible. But beneath the heartbreak was something stronger - hope. A shared belief that this separation was temporary, that they were moving toward something beautiful. The visa process began, and with it, the countdown to forever.",
-    location: "Heathrow Airport, London"
+    location: "Heathrow Airport, London",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/vamb76r2_IMG_6897.jpeg"
+    ]
   },
   {
     date: "OCTOBER 2025",
