@@ -142,66 +142,80 @@ button:focus {
 .small-caps {
   font-variant: small-caps;
   letter-spacing: 0.1em;
-}
-/* Password Screen Styling */
+/* ===== Luxury Emerald Password Screen ===== */
 
 .password-screen {
   height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    var(--color-cream),
-    var(--color-cream-dark)
-  );
+  background: radial-gradient(
+      circle at center,
+      rgba(20, 45, 32, 0.9) 0%,
+      #0f2b1f 60%,
+      #081a13 100%
+    );
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .password-card {
-  background: white;
-  padding: 50px 60px;
-  border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  max-width: 400px;
+  background: transparent;
+  padding: 40px;
   width: 90%;
+  max-width: 600px;
 }
 
 .password-card h1 {
-  font-size: 2rem;
-  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 500;
+  color: #e6d5b8;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
 }
 
 .password-card p {
-  margin-bottom: 25px;
-  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: #e6d5b8;
+  margin-bottom: 40px;
+  font-style: italic;
 }
 
 .password-card input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid var(--color-cream-dark);
+  max-width: 320px;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid rgba(230, 213, 184, 0.6);
   border-radius: 6px;
-  margin-bottom: 15px;
+  color: #e6d5b8;
   font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.password-card input::placeholder {
+  color: rgba(230, 213, 184, 0.5);
 }
 
 .password-card input:focus {
-  border-color: var(--color-gold);
   outline: none;
+  border-color: #e6d5b8;
 }
 
 .password-card button {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--color-gold);
-  color: white;
+  padding: 14px 40px;
+  background: #b8956b;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .password-card button:hover {
-  background-color: var(--color-gold-light);
+  background: #d4b896;
 }
