@@ -32,13 +32,15 @@ function App() {
 
   // 🔐 PASSWORD SCREEN
   if (!authenticated) {
-    return (
-      <div className="password-screen">
-        <div className="password-card animate-fadeIn">
-          <h1 className="font-display text-gold">Soumi & James</h1>
-          <p className="font-cormorant text-sage">
-            Kindly enter the password shared with you
-          </p>
+  return (
+    <div className="password-screen">
+      <div className="password-card animate-fadeIn">
+        <h1>Soumi & James</h1>
+        <p>
+          You Are Cordially Invited
+          <br />
+          Kindly enter the password to continue
+        </p>
 
           <form onSubmit={handleSubmit}>
             <input
