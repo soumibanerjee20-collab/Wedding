@@ -142,6 +142,8 @@ button:focus {
 .small-caps {
   font-variant: small-caps;
   letter-spacing: 0.1em;
+}
+
 /* ===== Luxury Emerald Password Screen ===== */
 
 .password-screen {
