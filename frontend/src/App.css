@@ -221,3 +221,9 @@ button:focus {
 .password-card button:hover {
   background: #d4b896;
 }
+/* Hide Emergent watermark */
+a[href*="emergent"],
+div[class*="emergent"],
+img[src*="emergent"] {
+  display: none !important;
+}
