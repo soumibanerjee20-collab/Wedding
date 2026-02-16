@@ -1,5 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "sonner";
+import { AudioProvider } from "./context/AudioContext";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import OurStoryPage from "./pages/OurStoryPage";
+import TimelinePage from "./pages/TimelinePage";
+import EventsPage from "./pages/EventsPage";
+import GalleryPage from "./pages/GalleryPage";
+import FamiliesPage from "./pages/FamiliesPage";
+import TravelPage from "./pages/TravelPage";
+import RSVPPage from "./pages/RSVPPage";
+import GuestbookPage from "./pages/GuestbookPage";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -16,13 +30,14 @@ function App() {
     }
   };
 
+  // 🔐 PASSWORD SCREEN
   if (!authenticated) {
     return (
       <div className="password-screen">
         <div className="password-card animate-fadeIn">
           <h1 className="font-display text-gold">Soumi & James</h1>
           <p className="font-cormorant text-sage">
-            Please enter the password to view our wedding website
+            Kindly enter the password shared with you
           </p>
 
           <form onSubmit={handleSubmit}>
@@ -39,9 +54,29 @@ function App() {
     );
   }
 
+  // 💍 FULL WEBSITE (UNCHANGED STRUCTURE)
   return (
     <div className="App">
-      {/* Your existing site content */}
+      <AudioProvider>
+        <Toaster position="top-center" richColors />
+        <BrowserRouter>
+          <Header />
+          <main className="min-h-screen">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/our-story" element={<OurStoryPage />} />
+              <Route path="/timeline" element={<TimelinePage />} />
+              <Route path="/events" element={<EventsPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/families" element={<FamiliesPage />} />
+              <Route path="/travel" element={<TravelPage />} />
+              <Route path="/rsvp" element={<RSVPPage />} />
+              <Route path="/guestbook" element={<GuestbookPage />} />
+            </Routes>
+          </main>
+          <Footer />
+        </BrowserRouter>
+      </AudioProvider>
     </div>
   );
 }
