@@ -36,11 +36,8 @@ function App() {
     <div className="password-screen">
       <div className="password-card animate-fadeIn">
         <h1>Soumi & James</h1>
-        <p>
-          You Are Cordially Invited
-          <br />
-          Kindly enter the password to continue
-        </p>
+        <p>By Invitation Only</p>
+          
 
           <form onSubmit={handleSubmit}>
             <input
