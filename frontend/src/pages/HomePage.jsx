@@ -99,7 +99,7 @@ const HomePage = () => {
           }}
         >
           {/* Fade overlay - more faded for better text visibility */}
-          <div className="absolute inset-0 bg-[#faf8f4]/75" />
+          <div className="absolute inset-0 bg-[#faf8f4]/65" />
         </div>
 
         {/* Content */}
