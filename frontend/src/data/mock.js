@@ -80,7 +80,10 @@ export const timeline = [
     date: "MARCH 2024",
     title: "A Question That Changed Everything",
     description: "At Romano Lounge over lunch, James gathered his courage and asked a simple question: 'Would you come to Edinburgh with me?' Her eyes lit up. That evening, under soft lights and the hum of possibility, the boundaries of friendship began to blur. She said yes - to Edinburgh, and unknowingly, to the beginning of forever.",
-    location: "Romano Lounge, Colchester"
+    location: "Romano Lounge, Colchester",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/84a6xfiv_IMG_0418.jpeg"
+    ]
   },
   {
     date: "APRIL 2024",
@@ -106,19 +109,29 @@ export const timeline = [
     date: "SUMMER 2024",
     title: "Welcome to the Family",
     description: "Meeting James's family felt like coming home. Judy wrapped Soumi in warmth from the first moment - a mother-daughter bond that felt instant and true. Mark saw the way James looked at Soumi and knew before anyone said a word. Patrick and Michelle welcomed her like she'd always been part of their lives. Through video calls, James connected with Soumi's parents too, building bridges across continents with genuine warmth and respect.",
-    location: "England"
+    location: "England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/77wntpqf_c4641ccd-2468-4765-9832-06d4346fc397.jpeg"
+    ]
   },
   {
     date: "DECEMBER 2024",
     title: "Adventures and Revelations",
     description: "Chester's historic streets during Christmas markets. Conwy, Wales with its ancient castle. At a candlelit steakhouse, watching Soumi laugh over wine, James felt something shift - this wasn't just a girlfriend, this was his future. During a challenging hike in Wales, Soumi surprised herself with every step forward. James watched her grow more confident, more fearless, and fell deeper in love with every mile they conquered together.",
-    location: "Chester & Conwy, Wales"
+    location: "Chester & Conwy, Wales",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/mii6ps9u_IMG_3730.jpeg",
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ertfsk09_IMG_3892.jpeg"
+    ]
   },
   {
     date: "MARCH 2025",
     title: "Finding Strength Together",
     description: "The Peak District became their proving ground. Soumi ran her first 10K alongside James through Hope Valley's winding trails - something she never imagined she could do. With every step, she discovered strength she didn't know existed. He was there beside her, not leading, but running together. In those moments of shared triumph, they learned what partnership truly meant.",
-    location: "Peak District, England"
+    location: "Peak District, England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ec88udup_IMG_5172.jpeg"
+    ]
   },
   {
     date: "APRIL 2025",
