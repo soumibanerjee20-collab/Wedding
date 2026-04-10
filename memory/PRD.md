@@ -5,94 +5,42 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 
 ## Design Requirements
 - **Color Palette:** Sage green (#8a9a7c, #6b7c5e), cream (#faf8f4), warm gold (#b8956b, #8B6914)
-- **Typography:** Elegant display fonts with handwritten accents
+- **Typography:** Elegant display fonts with handwritten accents (Caveat for polaroid captions)
 - **Vibe:** Regal, elegant, magical, classic
+- **Decorations:** Sage green botanical leaf SVGs (eucalyptus branches, single leaves, corner vines, leaf garlands) on RSVP, Guestbook, Families pages
 
 ## Tech Stack
 - **Frontend:** React, React Router, TailwindCSS
 - **Animation:** CSS keyframe animations, Framer Motion
 - **State Management:** React Hooks, Context API (for audio)
-- **Data:** localStorage for guestbook, hardcoded data in mock.js
+- **Data:** localStorage for guestbook/RSVP, hardcoded data in mock.js
 - **Deployment:** Vercel (configured with vercel.json)
 
-## User Personas
-- **Primary:** Wedding guests (family and friends from US and India)
-- **Secondary:** The couple (Soumi & James)
+## Core Features (All Completed)
 
-## Core Features
+1. **Homepage** — Intro animation, countdown timer (Aug 8, 2026), Grand Teton backdrop
+2. **Our Story** — Couple's narrative, individual profiles
+3. **Timeline** — Chronological love story with polaroid photos (Oct 2023 - Present)
+4. **Events** — US Wedding (Aug 7-8, 2026, Wyoming) + Indian Wedding (Nov 5-6, 2027 Tentative, Kolkata)
+5. **Gallery** — Polaroid-style scattered photos with lightbox
+6. **Families** — Banerjees + Adams families with sage green leaf decorations
+7. **Travel & Stay** — Info for both US and India locations with landmarks
+8. **Guestbook** — Leave messages with hearts, localStorage persistence, leaf decorations
+9. **RSVP** — Dual-event selection, plus-one logic, decline-to-guestbook redirect, leaf decorations
+10. **Background Music** — "River Flows in You" persistent player
+11. **WhatsApp Invite GIF** — wedding-invite.gif from intro animation
 
-### Completed Features
-
-1. **Homepage with Intro Animation**
-   - Multi-stage ~16.5 second intro with "Click to Enter"
-   - Sequential text reveal with soft bloom transition
-   - Wyoming mountain backdrop with logo
-   - "TWO HEARTS, ONE JOURNEY" tagline
-
-2. **Wedding Countdown Timer**
-   - Live countdown to August 8, 2026 (US Wedding)
-   - Days, Hours, Minutes, Seconds display
-   - Elegant frosted glass design
-
-3. **Polaroid Style Gallery**
-   - Authentic scattered polaroid layout with random rotations
-   - Handwritten-style captions (Caveat font)
-   - Tape effect and hover animations
-   - Lightbox for full-size viewing
-
-4. **Background Music**
-   - Global audio player with "River Flows in You"
-   - Persistent mute button in header
-   - Plays across all pages
-
-5. **Our Story Page**
-   - Couple's narrative and meeting story
-   - Individual profiles for Soumi & James
-
-6. **Timeline Page**
-   - Chronological love story from October 2023 to present
-   - Photo galleries for key events (Edinburgh, Proposal, "The Day Fate Intervened")
-   - Passive-voice, catchy titles
-   - Polaroid-style photos with Caveat font dates
-
-7. **Gallery Page**
-   - User-arranged photo order
-   - Polaroid style layout with captions
-
-8. **Families Page**
-   - Banerjee family (including Bruno, furry brother)
-   - Adams family
-
-9. **Events Page**
-   - US Wedding: August 7-8, 2026, Casper, Wyoming (Rehearsal Dinner, Ceremony, Reception)
-   - Indian Wedding: November 5-6, 2027 (Tentative), Kolkata (Sangeet & Mehendi on Nov 5, Wedding Reception on Nov 6)
-   - Dual cultural themes (sage green for US, marigold/alpana for India)
-
-10. **Travel & Stay Page**
-    - Information for both US and India locations
-    - Local landmarks and attractions
-
-11. **Guestbook Page**
-    - Leave messages functionality
-    - localStorage persistence
-
-12. **RSVP Page**
-    - US Wedding with plus-one logic
-    - Indian Wedding RSVP
-    - "Regretfully Decline" redirects to Guestbook for well wishes
-
-13. **Vercel Deployment Config**
-    - vercel.json for client-side routing
-
-14. **WhatsApp Invite GIF**
-    - wedding-invite.gif generated from intro animation
+## Key Dates
+- US Wedding: August 8, 2026 (Casper, Wyoming)
+- Indian Sangeet & Mehendi: November 5, 2027 (Tentative, Kolkata)
+- Indian Wedding Reception: November 6, 2027 (Tentative, Kolkata)
 
 ## Pages & Routes
-- `/` - Homepage (with intro animation on first visit)
+- `/` - Homepage
 - `/our-story` - Our Story
 - `/timeline` - Timeline
 - `/events` - Events
-- `/gallery` - Gallery (Polaroid style)
+- `/gallery` - Gallery
 - `/families` - Families
 - `/travel` - Travel & Stay
 - `/guestbook` - Guestbook
@@ -100,16 +48,12 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 
 ## Key Files
 - `/app/frontend/src/data/mock.js` - All content data
-- `/app/frontend/src/pages/HomePage.jsx` - Homepage with countdown
-- `/app/frontend/src/pages/GalleryPage.jsx` - Polaroid gallery
-- `/app/frontend/src/pages/EventsPage.jsx` - Dual-themed events
-- `/app/frontend/src/pages/TimelinePage.jsx` - Timeline with polaroid photos
-- `/app/frontend/src/pages/RSVPPage.jsx` - RSVP with conditional flows
-- `/app/frontend/src/components/IntroAnimation.jsx` - Intro sequence
-- `/app/frontend/src/context/AudioContext.jsx` - Global audio state
+- `/app/frontend/src/components/LeafDecorations.jsx` - Shared sage green leaf SVG components
+- `/app/frontend/src/pages/*.jsx` - All page components
 - `/app/frontend/vercel.json` - Vercel deployment config
+- `/app/frontend/public/wedding-invite.gif` - WhatsApp invite GIF
 
-## Backlog (P0-P2)
+## Backlog
 
 ### P1 - Medium Priority
 - Vercel deployment debugging (user reported errors)
@@ -121,14 +65,7 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 - Dress code page with visual examples
 - Accommodation details when finalized
 
-## Key Dates
-- US Wedding: August 8, 2026 (Casper, Wyoming)
-- Indian Wedding Sangeet & Mehendi: November 5, 2027 (Tentative, Kolkata)
-- Indian Wedding Reception: November 6, 2027 (Tentative, Kolkata)
-
 ## Notes
 - All data is frontend-only (no backend database)
-- Logo URL stored in mock.js
-- Music file in public/assets/
 - All external image URLs hosted on customer-assets.emergentagent.com
-- "Made with Emergent" watermark only appears in preview, not on Vercel deployment
+- "Made with Emergent" watermark only in preview, not on Vercel deployment

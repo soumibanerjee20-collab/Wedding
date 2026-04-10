@@ -70,7 +70,10 @@ export const timeline = [
     date: "DECEMBER 2023",
     title: "The First Goodbye",
     description: "James flew home to Ohio for Christmas. That morning, sharing breakfast before his departure, something shifted. As they said goodbye, he felt an ache he couldn't quite name. Soumi had become someone he didn't want to leave behind. Miles apart for the holidays, both found themselves counting days until they'd meet again.",
-    location: "Colchester, England"
+    location: "Colchester, England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ej76f7ot_IMG_8425.jpeg"
+    ]
   },
   {
     date: "MARCH 2024",

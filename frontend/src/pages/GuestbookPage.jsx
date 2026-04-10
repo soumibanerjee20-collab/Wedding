@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, Send, MessageCircle, User, Calendar } from 'lucide-react';
+import { EucalyptusBranch, SingleLeaf, CornerVine, LeafGarland } from '../components/LeafDecorations';
 
 const GuestbookPage = () => {
   const [messages, setMessages] = useState([]);
@@ -12,15 +13,12 @@ const GuestbookPage = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   // Load messages from localStorage on mount
-  // Clear old cached sample messages on first load
   useEffect(() => {
     const savedMessages = localStorage.getItem('weddingGuestbook');
     if (savedMessages) {
       const parsed = JSON.parse(savedMessages);
-      // Filter out any sample messages (those with specific IDs 1, 2, 3)
       const realMessages = parsed.filter(msg => ![1, 2, 3].includes(msg.id));
       if (realMessages.length !== parsed.length) {
-        // Sample messages were found and removed
         localStorage.setItem('weddingGuestbook', JSON.stringify(realMessages));
         setMessages(realMessages);
       } else {
@@ -35,7 +33,6 @@ const GuestbookPage = () => {
 
     setIsSubmitting(true);
     
-    // Simulate submission delay
     setTimeout(() => {
       const message = {
         id: Date.now(),
@@ -73,34 +70,46 @@ const GuestbookPage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-[#faf8f4]">
+    <div className="min-h-screen pt-20 bg-[#faf8f4] relative overflow-hidden">
+      {/* Leaf Decorations */}
+      <EucalyptusBranch className="absolute top-16 right-0 w-24 md:w-28 h-auto text-[#8a9a7c]" flip />
+      <EucalyptusBranch className="absolute top-16 left-0 w-24 md:w-28 h-auto text-[#8a9a7c]" />
+      <SingleLeaf className="absolute top-72 right-8 w-10 h-14 text-[#8a9a7c] -rotate-6" />
+      <SingleLeaf className="absolute top-96 left-6 w-8 h-12 text-[#8a9a7c] rotate-20" />
+      <CornerVine className="absolute bottom-0 right-0 w-36 md:w-48 h-auto text-[#8a9a7c]" flip />
+      <CornerVine className="absolute bottom-0 left-0 w-36 md:w-48 h-auto text-[#8a9a7c]" />
+
       {/* Header Section */}
-      <div className="relative py-16 bg-gradient-to-b from-[#f5f0e8] to-[#faf8f4]">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <MessageCircle className="w-12 h-12 text-[#8a9a7c] mx-auto mb-4" />
+      <div className="relative py-16 bg-gradient-to-b from-[#f0f4ed]/60 to-[#faf8f4]">
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <MessageCircle className="w-12 h-12 text-[#6b7c5e] mx-auto mb-4" />
           <h1 className="font-display text-4xl md:text-5xl text-[#b8956b] mb-4">
             Guestbook
           </h1>
-          <p className="font-cormorant text-xl md:text-2xl text-[#5a5a52] italic max-w-2xl mx-auto">
+          <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic max-w-2xl mx-auto">
             Leave your blessings, wishes, and messages for Soumi & James. 
             Your words will be cherished forever.
           </p>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mt-6" />
         </div>
+        {/* Garland divider */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-80 md:w-96">
+          <LeafGarland className="w-full h-8 text-[#8a9a7c]" />
+        </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12 relative z-10">
         {/* Write a Message Form */}
-        <div className="bg-white rounded-lg shadow-md p-8 mb-12 border border-[#e8e2d9]">
-          <h2 className="font-display text-2xl text-[#5a5a52] mb-6 flex items-center gap-3">
-            <Send className="w-5 h-5 text-[#8a9a7c]" />
+        <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-md p-8 mb-12 border border-[#8a9a7c]/15">
+          <h2 className="font-display text-2xl text-[#3d3d38] mb-6 flex items-center gap-3">
+            <Send className="w-5 h-5 text-[#6b7c5e]" />
             Leave Your Wishes
           </h2>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-[#5a5a52] mb-2">
+                <label className="block text-sm font-medium text-[#3d3d38] mb-2">
                   Your Name *
                 </label>
                 <input
@@ -108,12 +117,12 @@ const GuestbookPage = () => {
                   value={newMessage.name}
                   onChange={(e) => setNewMessage({ ...newMessage, name: e.target.value })}
                   placeholder="Enter your name"
-                  className="w-full px-4 py-3 border border-[#e8e2d9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all"
+                  className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all bg-[#faf8f4]"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#5a5a52] mb-2">
+                <label className="block text-sm font-medium text-[#3d3d38] mb-2">
                   Your Relationship to the Couple
                 </label>
                 <input
@@ -121,13 +130,13 @@ const GuestbookPage = () => {
                   value={newMessage.relationship}
                   onChange={(e) => setNewMessage({ ...newMessage, relationship: e.target.value })}
                   placeholder="e.g., Friend of the Bride, Colleague"
-                  className="w-full px-4 py-3 border border-[#e8e2d9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all"
+                  className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all bg-[#faf8f4]"
                 />
               </div>
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-[#5a5a52] mb-2">
+              <label className="block text-sm font-medium text-[#3d3d38] mb-2">
                 Your Message *
               </label>
               <textarea
@@ -135,13 +144,13 @@ const GuestbookPage = () => {
                 onChange={(e) => setNewMessage({ ...newMessage, message: e.target.value })}
                 placeholder="Share your wishes, blessings, or a favorite memory with the couple..."
                 rows={5}
-                className="w-full px-4 py-3 border border-[#e8e2d9] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all resize-none"
+                className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8a9a7c]/50 focus:border-[#8a9a7c] transition-all resize-none bg-[#faf8f4]"
                 required
               />
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-[#8a9a7c]">
+              <p className="text-sm text-[#6b7c5e] font-medium">
                 * Required fields
               </p>
               <button
@@ -167,8 +176,8 @@ const GuestbookPage = () => {
           {/* Success Message */}
           {showSuccess && (
             <div className="mt-6 p-4 bg-[#8a9a7c]/10 border border-[#8a9a7c]/30 rounded-lg text-center">
-              <p className="text-[#6b7c5e] font-medium">
-                ✨ Thank you! Your message has been added to our guestbook.
+              <p className="text-[#5a6b50] font-medium">
+                Thank you! Your message has been added to our guestbook.
               </p>
             </div>
           )}
@@ -176,18 +185,27 @@ const GuestbookPage = () => {
 
         {/* Messages List */}
         <div className="space-y-6">
-          <h2 className="font-display text-2xl text-[#5a5a52] mb-6 flex items-center gap-3">
+          <h2 className="font-display text-2xl text-[#3d3d38] mb-6 flex items-center gap-3">
             <Heart className="w-5 h-5 text-[#b8956b]" />
             Messages from Loved Ones
-            <span className="text-sm font-normal text-[#8a9a7c] bg-[#8a9a7c]/10 px-3 py-1 rounded-full">
+            <span className="text-sm font-normal text-[#5a6b50] bg-[#8a9a7c]/10 px-3 py-1 rounded-full">
               {messages.length} {messages.length === 1 ? 'message' : 'messages'}
             </span>
           </h2>
 
+          {messages.length === 0 && (
+            <div className="text-center py-12 bg-white/80 backdrop-blur-sm rounded-lg border border-[#8a9a7c]/10">
+              <Heart className="w-10 h-10 text-[#b8956b]/40 mx-auto mb-3" />
+              <p className="text-[#5a5a52] font-cormorant text-lg italic">
+                Be the first to leave your wishes for the couple!
+              </p>
+            </div>
+          )}
+
           {messages.map((msg, index) => (
             <div 
               key={msg.id}
-              className="bg-white rounded-lg shadow-sm p-6 border border-[#e8e2d9] hover:shadow-md transition-shadow duration-300"
+              className="bg-white/95 backdrop-blur-sm rounded-lg shadow-sm p-6 border border-[#8a9a7c]/12 hover:shadow-md transition-shadow duration-300"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-start justify-between mb-4">
@@ -196,19 +214,19 @@ const GuestbookPage = () => {
                     <User className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-[#5a5a52]">{msg.name}</h3>
+                    <h3 className="font-medium text-[#3d3d38]">{msg.name}</h3>
                     {msg.relationship && (
-                      <p className="text-sm text-[#8a9a7c]">{msg.relationship}</p>
+                      <p className="text-sm text-[#6b7c5e]">{msg.relationship}</p>
                     )}
                   </div>
                 </div>
-                <div className="flex items-center gap-1 text-sm text-[#a09080]">
+                <div className="flex items-center gap-1 text-sm text-[#7a7a72]">
                   <Calendar className="w-3.5 h-3.5" />
                   {formatDate(msg.date)}
                 </div>
               </div>
 
-              <p className="text-[#5a5a52] leading-relaxed mb-4 font-cormorant text-lg">
+              <p className="text-[#3d3d38] leading-relaxed mb-4 font-cormorant text-lg">
                 "{msg.message}"
               </p>
 
