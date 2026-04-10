@@ -22,13 +22,13 @@ const TimelinePage = () => {
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
             Our Journey
           </h1>
-          <p className="font-cormorant text-xl md:text-2xl text-[#5a5a52] italic">A love story across continents</p>
+          <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic">A love story across continents</p>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mt-6" />
         </div>
 
         {/* Timeline */}
         <div className="relative">
-          {/* Vertical line - hidden on mobile when photos present */}
+          {/* Vertical line */}
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#d4b896] via-[#8a9a7c] to-[#b8956b] md:-translate-x-1/2" />
 
           {timeline.map((item, index) => {
@@ -54,24 +54,24 @@ const TimelinePage = () => {
                           <span className="inline-block text-[#b8956b] text-xs font-semibold tracking-[0.2em]">
                             {item.date}
                           </span>
-                          <span className="flex items-center gap-1 text-[#8a9a7c] text-xs bg-[#8a9a7c]/10 px-2 py-1 rounded-full">
+                          <span className="flex items-center gap-1 text-[#6b7c5e] text-xs bg-[#8a9a7c]/10 px-2 py-1 rounded-full">
                             <Camera className="w-3 h-3" />
                             {item.photos.length} photos
                           </span>
                         </div>
                         
                         {/* Title */}
-                        <h3 className="font-display text-xl md:text-2xl text-[#5a5a52] mb-4">
+                        <h3 className="font-display text-xl md:text-2xl text-[#3d3d38] mb-4">
                           {item.title}
                         </h3>
                         
                         {/* Description */}
-                        <p className="text-[#5a5a52]/80 text-sm md:text-base leading-relaxed mb-5 font-light">
+                        <p className="text-[#3d3d38] text-sm md:text-base leading-relaxed mb-5">
                           {item.description}
                         </p>
                         
                         {/* Location */}
-                        <div className="flex items-center gap-2 text-[#8a9a7c] text-sm">
+                        <div className="flex items-center gap-2 text-[#6b7c5e] text-sm">
                           <MapPin className="w-4 h-4" />
                           <span className="font-medium">{item.location}</span>
                         </div>
@@ -82,10 +82,8 @@ const TimelinePage = () => {
                     <div className={`mt-6 md:mt-0 ${index % 2 === 0 ? 'md:pl-12' : 'md:order-1 md:pr-12'}`}>
                       <div className={`flex flex-wrap justify-center gap-4 ${item.photos.length >= 3 ? 'flex-row items-start' : ''}`}>
                         {item.photos.map((photo, photoIndex) => {
-                          // Slight random rotations for authentic polaroid feel
                           const rotations = [-3, 2, -2, 3, -1];
                           const rotation = rotations[photoIndex % rotations.length];
-                          // Smaller polaroids when there are 3+ photos
                           const isCompact = item.photos.length >= 3;
                           
                           return (
@@ -103,19 +101,20 @@ const TimelinePage = () => {
                                   boxShadow: '0 4px 15px rgba(0,0,0,0.1), 0 10px 40px rgba(184, 149, 107, 0.2)',
                                 }}
                               >
-                                {/* Photo */}
+                                {/* Photo - object-top to avoid cutting heads */}
                                 <div className={`${isCompact ? 'w-32 h-32 md:w-40 md:h-40' : 'w-48 h-48 md:w-56 md:h-56'} overflow-hidden bg-gray-100`}>
                                   <img
                                     src={photo}
                                     alt={`${item.title} - Memory ${photoIndex + 1}`}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    style={{ objectPosition: 'center 25%' }}
                                   />
                                 </div>
                                 
                                 {/* Polaroid bottom - Date caption */}
                                 <div className={`absolute ${isCompact ? 'bottom-1.5' : 'bottom-3'} left-0 right-0 text-center`}>
                                   <p 
-                                    className="text-[#7a7a72]"
+                                    className="text-[#5a5a52]"
                                     style={{
                                       fontFamily: "'Caveat', cursive, serif",
                                       fontSize: isCompact ? '0.85rem' : '1rem',
@@ -150,17 +149,17 @@ const TimelinePage = () => {
                         </span>
                         
                         {/* Title */}
-                        <h3 className="font-display text-xl md:text-2xl text-[#5a5a52] mb-4">
+                        <h3 className="font-display text-xl md:text-2xl text-[#3d3d38] mb-4">
                           {item.title}
                         </h3>
                         
                         {/* Description */}
-                        <p className="text-[#5a5a52]/80 text-sm md:text-base leading-relaxed mb-5 font-light">
+                        <p className="text-[#3d3d38] text-sm md:text-base leading-relaxed mb-5">
                           {item.description}
                         </p>
                         
                         {/* Location */}
-                        <div className={`flex items-center gap-2 text-[#8a9a7c] text-sm ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
+                        <div className={`flex items-center gap-2 text-[#6b7c5e] text-sm ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
                           <MapPin className="w-4 h-4" />
                           <span className="font-medium">{item.location}</span>
                         </div>
@@ -182,7 +181,7 @@ const TimelinePage = () => {
         
         {/* Bottom quote */}
         <div className="text-center mt-24 bg-white/80 backdrop-blur-sm p-8 rounded-sm">
-          <p className="font-cormorant text-2xl md:text-3xl text-[#5a5a52] italic">
+          <p className="font-cormorant text-2xl md:text-3xl text-[#3d3d38] italic">
             "Distance means so little when someone means so much"      
           </p>
         </div>

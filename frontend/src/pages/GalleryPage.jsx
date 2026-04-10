@@ -22,7 +22,7 @@ const GalleryPage = () => {
             Our Moments
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-4" />
-          <p className="text-[#5a5a52] text-sm tracking-wide font-light">
+          <p className="text-[#3d3d38] text-sm tracking-wide">
             Snapshots of our journey together
           </p>
         </div>

@@ -149,7 +149,7 @@ const EventCard = ({ event, isIndian, index }) => {
       </h4>
       
       {/* Date & Time */}
-      <div className="flex items-center gap-2 text-sm text-[#7a7a72] mb-1">
+      <div className="flex items-center gap-2 text-sm text-[#5a5a52] mb-1">
         <Calendar className="w-4 h-4" />
         <span>{event.date}</span>
         <span className="text-[#b8956b]">•</span>
@@ -157,13 +157,13 @@ const EventCard = ({ event, isIndian, index }) => {
       </div>
       
       {/* Venue */}
-      <div className="flex items-start gap-2 text-sm text-[#7a7a72] mb-4">
+      <div className="flex items-start gap-2 text-sm text-[#5a5a52] mb-4">
         <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
         <span>{event.venue}, {event.location}</span>
       </div>
       
       {/* Description */}
-      <p className="text-[#5a5a52] text-sm leading-relaxed font-light">
+      <p className="text-[#3d3d38] text-sm leading-relaxed">
         {event.description}
       </p>
     </div>
@@ -182,7 +182,7 @@ const EventsPage = () => {
             Wedding Events
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-6" />
-          <p className="text-[#5a5a52] text-sm md:text-base tracking-wide max-w-2xl mx-auto font-light">
+          <p className="text-[#3d3d38] text-sm md:text-base tracking-wide max-w-2xl mx-auto">
             Our celebration spans two continents, reflecting the beautiful cross-cultural journey of our love story. 
             From the mountains of Wyoming to the vibrant streets of Kolkata.
           </p>
@@ -222,10 +222,10 @@ const EventsPage = () => {
               <h2 className="font-display text-3xl md:text-4xl text-[#5a6b50] mb-2">
                 {usWedding.title}
               </h2>
-              <p className="font-cormorant text-xl text-[#7a7a72] italic">
+              <p className="font-cormorant text-xl text-[#5a5a52] italic">
                 {usWedding.subtitle}
               </p>
-              <div className="flex items-center gap-2 mt-3 text-[#5a5a52]">
+              <div className="flex items-center gap-2 mt-3 text-[#3d3d38]">
                 <MapPin className="w-4 h-4 text-[#8a9a7c]" />
                 <span className="text-sm">{usWedding.location}</span>
               </div>
@@ -262,7 +262,7 @@ const EventsPage = () => {
           <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#b8956b]/30" />
           <div className="flex items-center gap-2">
             <span className="text-[#b8956b] text-2xl">✦</span>
-            <span className="font-cormorant text-lg text-[#7a7a72] italic">and then</span>
+            <span className="font-cormorant text-lg text-[#5a5a52] italic">and then</span>
             <span className="text-[#b8956b] text-2xl">✦</span>
           </div>
           <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#b8956b]/30" />
@@ -345,10 +345,10 @@ const EventsPage = () => {
               <h2 className="font-display text-3xl md:text-4xl text-[#B8540B] mb-2">
                 {indianWedding.title}
               </h2>
-              <p className="font-cormorant text-xl text-[#7a7a72] italic">
+              <p className="font-cormorant text-xl text-[#5a5a52] italic">
                 {indianWedding.subtitle}
               </p>
-              <div className="flex items-center gap-2 mt-3 text-[#5a5a52] md:justify-end">
+              <div className="flex items-center gap-2 mt-3 text-[#3d3d38] md:justify-end">
                 <MapPin className="w-4 h-4 text-[#E89B3C]" />
                 <span className="text-sm">{indianWedding.location}</span>
               </div>
@@ -372,10 +372,10 @@ const EventsPage = () => {
       {/* Bottom Note */}
       <div className="max-w-3xl mx-auto px-6 mt-20 text-center">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-[#d4b896]/10">
-          <p className="font-cormorant text-xl md:text-2xl text-[#5a5a52] italic mb-4">
+          <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic mb-4">
             "Two cultures, two celebrations, one beautiful love story"
           </p>
-          <p className="text-[#7a7a72] text-sm">
+          <p className="text-[#5a5a52] text-sm">
             More details about venues and timings will be shared as we finalize our plans. 
             We can't wait to celebrate with you!
           </p>
