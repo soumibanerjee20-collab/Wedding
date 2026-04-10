@@ -94,7 +94,7 @@ const HomePage = () => {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/vi3rdgsl_oxbow-bend-4845483-Header_Mobile.webp')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1756916475010-64d80096a394?w=1920&q=85')`,
           }}
         >
           {/* Fade overlay - more faded for better text visibility */}

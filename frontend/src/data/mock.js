@@ -28,7 +28,7 @@ export const ourStory = {
   tagline: "Two strangers in a classroom. An unexpected friendship. A love that crossed oceans.",
   meetingDate: "October 2, 2023",
   meetingPlace: "University of Essex, Colchester",
-  narrative: "He was the serious one. She was the one who could light up a room. On paper, they made no sense. Soumi, a spirited Bengali dreamer chasing her MBA, and James, an Army Captain trading battlefields for business school. She remembers thinking he'd never crack a smile. He remembers thinking she was way out of his league. A canceled lunch brought them to the same table, and slowly, the serious one started to smile."
+  narrative: "An Army Captain and a Bengali dreamer sat down at the same table by accident. He was the serious one. She lit up every room. Two years later, they're walking down the aisle on purpose."
 };
 
 export const brideProfile = {
