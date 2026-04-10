@@ -419,12 +419,12 @@ export const weddingParty = {
       {
         name: "Mars",
         role: "Best Woman",
-        description: "The one who always knows exactly what to say and when to say nothing at all."
+        relation: "Friend of both Bride & Groom"
       },
       {
         name: "Devyani",
         role: "Best Woman",
-        description: "A soul sister who proved that the best friendships cross every border."
+        relation: "Friend of the Bride"
       }
     ]
   },
@@ -435,12 +435,12 @@ export const weddingParty = {
       {
         name: "Patrick Adams",
         role: "Groomsman",
-        description: "Twin brother, lifelong partner in crime, and the one who always has James's back."
+        relation: "Twin Brother of the Groom"
       },
       {
         name: "Robert Adams (Robby)",
         role: "Groomsman",
-        description: "The youngest Adams brother who brings energy and laughter to everything."
+        relation: "Youngest Brother of the Groom"
       }
     ]
   }

@@ -5,16 +5,9 @@ import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDeco
 
 const WeddingPartyPage = () => {
   return (
-    <div className="min-h-screen pt-20 relative">
-      {/* Background - Faded outdoor wedding photo */}
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1769812344142-00c7f6584885?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1920')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-[#faf8f4]/88" />
-      </div>
+    <div className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Soft sage-cream gradient background instead of loud photo */}
+      <div className="fixed inset-0 bg-gradient-to-b from-[#f0f4ed] via-[#faf8f4] to-[#f5f0e8]" />
 
       {/* Leaf Decorations */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
@@ -47,7 +40,7 @@ const WeddingPartyPage = () => {
           {/* Bride's Side */}
           <div>
             <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#f0f4ed] mb-4">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/80 mb-4 shadow-sm">
                 <Crown className="w-7 h-7 text-[#8a9a7c]" />
               </div>
               <h2 className="font-display text-2xl md:text-3xl text-[#b8956b] mb-2 tracking-wide">
@@ -63,23 +56,23 @@ const WeddingPartyPage = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               {weddingParty.bridesSide.members.map((member, index) => (
                 <div 
                   key={index}
-                  className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300 group"
+                  className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <Sparkles className="w-5 h-5 text-[#b8956b] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-3 mb-1">
+                    <Sparkles className="w-4 h-4 text-[#b8956b]" />
                     <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
                       {member.role}
                     </span>
                   </div>
-                  <h3 className="font-display text-xl text-[#3d3d38] mb-2">
+                  <h3 className="font-display text-xl text-[#3d3d38] mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-[#5a5a52] text-sm leading-relaxed font-cormorant text-base italic">
-                    "{member.description}"
+                  <p className="text-[#6b7c5e] text-sm italic">
+                    {member.relation}
                   </p>
                 </div>
               ))}
@@ -89,7 +82,7 @@ const WeddingPartyPage = () => {
           {/* Groom's Side */}
           <div>
             <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#f0f4ed] mb-4">
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/80 mb-4 shadow-sm">
                 <Shield className="w-7 h-7 text-[#8a9a7c]" />
               </div>
               <h2 className="font-display text-2xl md:text-3xl text-[#b8956b] mb-2 tracking-wide">
@@ -105,23 +98,23 @@ const WeddingPartyPage = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5">
               {weddingParty.groomsSide.members.map((member, index) => (
                 <div 
                   key={index}
-                  className="bg-white/90 backdrop-blur-sm p-8 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300 group"
+                  className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <Sparkles className="w-5 h-5 text-[#b8956b] group-hover:scale-110 transition-transform" />
+                  <div className="flex items-center gap-3 mb-1">
+                    <Sparkles className="w-4 h-4 text-[#b8956b]" />
                     <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
                       {member.role}
                     </span>
                   </div>
-                  <h3 className="font-display text-xl text-[#3d3d38] mb-2">
+                  <h3 className="font-display text-xl text-[#3d3d38] mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-[#5a5a52] text-sm leading-relaxed font-cormorant text-base italic">
-                    "{member.description}"
+                  <p className="text-[#6b7c5e] text-sm italic">
+                    {member.relation}
                   </p>
                 </div>
               ))}
@@ -147,15 +140,12 @@ const WeddingPartyPage = () => {
           </div>
         </div>
 
-        {/* Fun bottom quote */}
+        {/* Bottom quote */}
         <div className="mt-16 text-center">
           <div className="bg-[#8a9a7c] text-white p-8 rounded-lg">
             <Heart className="w-5 h-5 fill-white mx-auto mb-3" />
-            <p className="font-cormorant text-xl md:text-2xl italic mb-2">
-              "It takes a village to throw a wedding, and ours happens to be the best one."
-            </p>
-            <p className="text-white/80 text-sm">
-              We're so grateful to have these amazing people by our side.
+            <p className="font-cormorant text-xl md:text-2xl italic">
+              "The best things in life are the people you love, the places you've been, and the memories you've made along the way."
             </p>
           </div>
         </div>
