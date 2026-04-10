@@ -61,7 +61,10 @@ export const timeline = [
     date: "NOVEMBER 2023",
     title: "The Day Fate Intervened",
     description: "A friend canceled lunch at the last minute. What seemed like a small inconvenience became the beautiful beginning of everything. Over that unexpected meal, they discovered shared dreams, exchanged stories of their journeys, and found something rare - a connection that felt both new and familiar. Friendship bloomed naturally, one conversation at a time.",
-    location: "University of Essex"
+    location: "University of Essex",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/i8vhjlal_2048x1365.jpg"
+    ]
   },
   {
     date: "DECEMBER 2023",
@@ -195,13 +198,13 @@ export const events = {
     title: "Indian Wedding",
     subtitle: "Where Tradition Meets Love",
     location: "Kolkata, India",
-    date: "October 21-23, 2027",
+    date: "November 5-6, 2027 (Tentative)",
     image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
     events: [
       {
         id: 4,
         name: "Sangeet & Mehendi",
-        date: "October 21, 2027",
+        date: "November 5, 2027 (Tentative)",
         time: "Evening",
         venue: "Venue TBA",
         location: "Kolkata, India",
@@ -210,22 +213,12 @@ export const events = {
       },
       {
         id: 5,
-        name: "Wedding Ceremony",
-        date: "October 23, 2027",
-        time: "Auspicious Hour",
-        venue: "Venue TBA",
-        location: "Kolkata, India",
-        description: "A traditional Bengali wedding ceremony filled with sacred rituals, mantras, and the beautiful exchange of garlands. The bride and groom take seven steps together, promising a lifetime of love.",
-        icon: "mandap"
-      },
-      {
-        id: 6,
-        name: "Reception",
-        date: "October 23, 2027",
+        name: "Wedding Reception",
+        date: "November 6, 2027 (Tentative)",
         time: "Evening",
         venue: "Venue TBA",
         location: "Kolkata, India",
-        description: "A grand celebration to welcome the newlyweds. Exquisite Bengali cuisine, music, and blessings from loved ones as we celebrate this union.",
+        description: "A grand celebration to welcome the newlyweds. Exquisite Bengali cuisine, music, and blessings from loved ones as we celebrate this union of two cultures.",
         icon: "feast"
       }
     ]

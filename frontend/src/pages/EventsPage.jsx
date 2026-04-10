@@ -360,7 +360,7 @@ const EventsPage = () => {
             {/* Connecting line with marigold color */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#E89B3C]/20 via-[#E89B3C]/40 to-[#E89B3C]/20" />
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {indianWedding.events.map((event, index) => (
                 <EventCard key={event.id} event={event} isIndian={true} index={index} />
               ))}

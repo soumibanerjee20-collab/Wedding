@@ -21,7 +21,7 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 
 ## Core Features
 
-### ✅ Completed Features (January 2025)
+### Completed Features
 
 1. **Homepage with Intro Animation**
    - Multi-stage ~16.5 second intro with "Click to Enter"
@@ -29,12 +29,12 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
    - Wyoming mountain backdrop with logo
    - "TWO HEARTS, ONE JOURNEY" tagline
 
-2. **Wedding Countdown Timer** ✅ NEW
-   - Live countdown to September 26, 2026
+2. **Wedding Countdown Timer**
+   - Live countdown to August 8, 2026 (US Wedding)
    - Days, Hours, Minutes, Seconds display
    - Elegant frosted glass design
 
-3. **Polaroid Style Gallery** ✅ NEW
+3. **Polaroid Style Gallery**
    - Authentic scattered polaroid layout with random rotations
    - Handwritten-style captions (Caveat font)
    - Tape effect and hover animations
@@ -51,8 +51,9 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 
 6. **Timeline Page**
    - Chronological love story from October 2023 to present
-   - Photo galleries for key events (Edinburgh, Proposal)
+   - Photo galleries for key events (Edinburgh, Proposal, "The Day Fate Intervened")
    - Passive-voice, catchy titles
+   - Polaroid-style photos with Caveat font dates
 
 7. **Gallery Page**
    - User-arranged photo order
@@ -63,8 +64,9 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
    - Adams family
 
 9. **Events Page**
-   - US Wedding (Mid 2026, Wyoming/Ohio)
-   - Indian Reception (2027, Kolkata)
+   - US Wedding: August 7-8, 2026, Casper, Wyoming (Rehearsal Dinner, Ceremony, Reception)
+   - Indian Wedding: November 5-6, 2027 (Tentative), Kolkata (Sangeet & Mehendi on Nov 5, Wedding Reception on Nov 6)
+   - Dual cultural themes (sage green for US, marigold/alpana for India)
 
 10. **Travel & Stay Page**
     - Information for both US and India locations
@@ -74,11 +76,16 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
     - Leave messages functionality
     - localStorage persistence
 
-12. **RSVP Page (Placeholder)**
-    - Coming soon sections for both events
+12. **RSVP Page**
+    - US Wedding with plus-one logic
+    - Indian Wedding RSVP
+    - "Regretfully Decline" redirects to Guestbook for well wishes
 
 13. **Vercel Deployment Config**
     - vercel.json for client-side routing
+
+14. **WhatsApp Invite GIF**
+    - wedding-invite.gif generated from intro animation
 
 ## Pages & Routes
 - `/` - Homepage (with intro animation on first visit)
@@ -89,22 +96,23 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 - `/families` - Families
 - `/travel` - Travel & Stay
 - `/guestbook` - Guestbook
-- `/rsvp` - RSVP (placeholder)
+- `/rsvp` - RSVP
 
 ## Key Files
 - `/app/frontend/src/data/mock.js` - All content data
 - `/app/frontend/src/pages/HomePage.jsx` - Homepage with countdown
 - `/app/frontend/src/pages/GalleryPage.jsx` - Polaroid gallery
+- `/app/frontend/src/pages/EventsPage.jsx` - Dual-themed events
+- `/app/frontend/src/pages/TimelinePage.jsx` - Timeline with polaroid photos
+- `/app/frontend/src/pages/RSVPPage.jsx` - RSVP with conditional flows
 - `/app/frontend/src/components/IntroAnimation.jsx` - Intro sequence
 - `/app/frontend/src/context/AudioContext.jsx` - Global audio state
 - `/app/frontend/vercel.json` - Vercel deployment config
 
 ## Backlog (P0-P2)
 
-### P0 - High Priority
-- None currently
-
 ### P1 - Medium Priority
+- Vercel deployment debugging (user reported errors)
 - Guest photo upload feature (QR code to cloud drive)
 - Wedding registry links
 - Map integration for venues
@@ -112,10 +120,15 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 ### P2 - Low Priority
 - Dress code page with visual examples
 - Accommodation details when finalized
-- Full RSVP functionality when dates confirmed
+
+## Key Dates
+- US Wedding: August 8, 2026 (Casper, Wyoming)
+- Indian Wedding Sangeet & Mehendi: November 5, 2027 (Tentative, Kolkata)
+- Indian Wedding Reception: November 6, 2027 (Tentative, Kolkata)
 
 ## Notes
-- Wedding Date: September 26, 2026 (tentative)
 - All data is frontend-only (no backend database)
 - Logo URL stored in mock.js
 - Music file in public/assets/
+- All external image URLs hosted on customer-assets.emergentagent.com
+- "Made with Emergent" watermark only appears in preview, not on Vercel deployment
