@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { events } from '../data/mock';
 import { Calendar, MapPin, Music, Utensils, Heart, PartyPopper, Sparkles } from 'lucide-react';
+import { EucalyptusBranch, SingleLeaf } from '../components/LeafDecorations';
 
 // Subtle decorative patterns
 const AlpanaPattern = ({ className }) => (
@@ -190,9 +191,15 @@ const EventsPage = () => {
       </div>
 
       {/* US Wedding Section */}
-      <section className="relative mb-20">
+      <section className="relative mb-20 overflow-hidden">
         {/* Background accent */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#f0f4ed]/50 via-transparent to-transparent" />
+        
+        {/* Sage green leaves for US section */}
+        <EucalyptusBranch className="absolute top-0 left-0 w-20 md:w-24 h-auto text-[#8a9a7c]" />
+        <EucalyptusBranch className="absolute top-0 right-0 w-20 md:w-24 h-auto text-[#8a9a7c]" flip />
+        <SingleLeaf className="absolute top-1/3 right-4 w-8 h-12 text-[#8a9a7c] -rotate-12" />
+        <SingleLeaf className="absolute bottom-20 left-4 w-7 h-10 text-[#8a9a7c] rotate-20" />
         
         <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
           {/* Section Header */}

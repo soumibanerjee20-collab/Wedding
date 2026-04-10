@@ -17,7 +17,7 @@ const OurStoryPage = () => {
         }}
       >
         {/* Faded overlay - heavy enough for readability, light enough to see the photo */}
-        <div className="absolute inset-0 bg-[#faf8f4]/[0.93]" />
+        <div className="absolute inset-0 bg-[#faf8f4]/[0.91]" />
 
         {/* Leaf decorations */}
         <EucalyptusBranch className="absolute top-16 left-0 w-24 md:w-28 h-auto text-[#8a9a7c] z-[1]" />

@@ -419,12 +419,14 @@ export const weddingParty = {
       {
         name: "Mars",
         role: "Best Woman",
-        relation: "Friend of both Bride & Groom"
+        relation: "Friend of both Bride & Groom",
+        photo: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/pza09bg1_IMG_0136.jpeg"
       },
       {
         name: "Devyani",
         role: "Best Woman",
-        relation: "Friend of the Bride"
+        relation: "Friend of the Bride",
+        photo: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/69cm5hz1_IMG_0777.jpeg"
       }
     ]
   },

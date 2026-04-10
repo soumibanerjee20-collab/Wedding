@@ -13,7 +13,7 @@ const WeddingPartyPage = () => {
           backgroundImage: `url('https://images.unsplash.com/photo-1769812344142-00c7f6584885?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1920')`,
         }}
       >
-        <div className="absolute inset-0 bg-[#faf8f4]/[0.93]" />
+        <div className="absolute inset-0 bg-[#faf8f4]/[0.91]" />
       </div>
 
       {/* Leaf Decorations */}
@@ -69,18 +69,27 @@ const WeddingPartyPage = () => {
                   key={index}
                   className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-1">
-                    <Sparkles className="w-4 h-4 text-[#b8956b]" />
-                    <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
-                      {member.role}
-                    </span>
+                  <div className="flex items-center gap-5">
+                    {member.photo && (
+                      <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#d4b896]/30 shadow-sm">
+                        <img src={member.photo} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
+                      </div>
+                    )}
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <Sparkles className="w-4 h-4 text-[#b8956b]" />
+                        <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
+                          {member.role}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-xl text-[#3d3d38] mb-1">
+                        {member.name}
+                      </h3>
+                      <p className="text-[#6b7c5e] text-sm italic">
+                        {member.relation}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="font-display text-xl text-[#3d3d38] mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-[#6b7c5e] text-sm italic">
-                    {member.relation}
-                  </p>
                 </div>
               ))}
             </div>

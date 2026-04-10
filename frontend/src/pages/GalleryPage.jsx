@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { gallery } from '../data/mock';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDecorations';
 
 // Random rotation angles for authentic polaroid feel
 const rotations = [-6, 3, -4, 5, -3, 4, -5, 2, -2];
@@ -14,8 +15,16 @@ const GalleryPage = () => {
   const goPrev = () => setSelectedIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
 
   return (
-    <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 relative overflow-hidden">
+      {/* Leaf Decorations for Gallery */}
+      <EucalyptusBranch className="absolute top-20 left-0 w-20 md:w-28 h-auto text-[#8a9a7c]" />
+      <EucalyptusBranch className="absolute top-20 right-0 w-20 md:w-28 h-auto text-[#8a9a7c]" flip />
+      <SingleLeaf className="absolute top-1/3 right-6 w-8 h-12 text-[#8a9a7c] -rotate-12" />
+      <SingleLeaf className="absolute bottom-1/4 left-8 w-7 h-10 text-[#8a9a7c] rotate-25" />
+      <CornerVine className="absolute bottom-0 left-0 w-36 md:w-44 h-auto text-[#8a9a7c]" />
+      <CornerVine className="absolute bottom-0 right-0 w-36 md:w-44 h-auto text-[#8a9a7c]" flip />
+
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Title */}
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
