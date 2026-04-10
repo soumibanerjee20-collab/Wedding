@@ -137,13 +137,19 @@ export const timeline = [
     date: "APRIL 2025",
     title: "Cornwall, The Last Adventure",
     description: "Their final trip before graduation took them to Tintagel, Cornwall. Walking the dramatic coastal paths to Port William, watching the sunset paint the ocean in shades of gold and rose, James felt something profound settle in his heart. That evening, he called his parents - 'She's the one,' he told them. 'I'm sure.' The ancient cliffs, the endless horizon, the magic of Cornwall - it was the perfect ending to their UK chapter.",
-    location: "Tintagel, Cornwall"
+    location: "Tintagel, Cornwall",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/r83tpser_IMG_6447.jpeg"
+    ]
   },
   {
     date: "APRIL 10, 2025",
     title: "Graduation Day",
     description: "They walked across that stage side by side at the University of Essex. Two strangers who became study partners, then friends, then everything to each other. Caps thrown in the air, diplomas in hand, and a whole beautiful future stretching ahead. The MBA brought them together - but what they built was so much more than academic.",
-    location: "University of Essex"
+    location: "University of Essex",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ezbjsnoo_IMG_3265.jpeg"
+    ]
   },
   {
     date: "APRIL 12, 2025",
