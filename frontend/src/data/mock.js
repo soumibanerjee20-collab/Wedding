@@ -96,7 +96,10 @@ export const timeline = [
     date: "MAY 2024",
     title: "No More Pretending",
     description: "Over a dinner of sea bass, they made it official - not just dating, but building something intentional. A relationship with purpose, honoring each other's dreams. Every shared moment started making sense. The late-night study sessions, the coffee runs, the way their eyes found each other across crowded rooms. They were finally where they were meant to be.",
-    location: "Colchester, England"
+    location: "Colchester, England",
+    photos: [
+      "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/xxlfmx1a_IMG_0953.jpeg"
+    ]
   },
   {
     date: "SUMMER 2024",
@@ -284,12 +287,12 @@ export const families = {
       {
         name: "Somnath Banerjee",
         relation: "Father of the Bride",
-        description: "Soumi's loving father who supported her dreams across continents."
+        description: ""
       },
       {
         name: "Swapna Banerjee",
         relation: "Mother of the Bride",
-        description: "The heart of the family, who raised Soumi with grace and strength."
+        description: ""
       },
       {
         name: "Bruno Banerjee",
@@ -324,9 +327,9 @@ export const families = {
         description: "The youngest Adams brother, met Soumi just before departing for his own adventures."
       },
       {
-        name: "Michelle",
-        relation: "Patrick's Fiancée",
-        description: "Soon to be officially part of the family, a friend to Soumi."
+        name: "Michelle Ludwig",
+        relation: "Patrick's Wife",
+        description: ""
       }
     ]
   }

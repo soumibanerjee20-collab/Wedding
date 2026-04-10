@@ -57,12 +57,14 @@ const FamiliesPage = () => {
                       <h4 className="font-display text-lg text-[#b8956b] mb-1">
                         {member.name}
                       </h4>
-                      <p className="text-[#6b7c5e] text-sm mb-2 italic font-medium">
+                      <p className="text-[#6b7c5e] text-sm italic font-medium">
                         {member.relation}
                       </p>
-                      <p className="text-[#3d3d38] text-sm leading-relaxed">
-                        {member.description}
-                      </p>
+                      {member.isFurry && member.description && (
+                        <p className="text-[#3d3d38] text-sm leading-relaxed mt-2">
+                          {member.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -92,11 +94,8 @@ const FamiliesPage = () => {
                   <h4 className="font-display text-lg text-[#b8956b] mb-1">
                     {member.name}
                   </h4>
-                  <p className="text-[#6b7c5e] text-sm mb-2 italic font-medium">
+                  <p className="text-[#6b7c5e] text-sm italic font-medium">
                     {member.relation}
-                  </p>
-                  <p className="text-[#3d3d38] text-sm leading-relaxed">
-                    {member.description}
                   </p>
                 </div>
               ))}

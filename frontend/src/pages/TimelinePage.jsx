@@ -80,11 +80,13 @@ const TimelinePage = () => {
 
                     {/* Photos Grid - Right side - Polaroid Style */}
                     <div className={`mt-6 md:mt-0 ${index % 2 === 0 ? 'md:pl-12' : 'md:order-1 md:pr-12'}`}>
-                      <div className="flex flex-wrap justify-center gap-4">
+                      <div className={`flex flex-wrap justify-center gap-4 ${item.photos.length >= 3 ? 'flex-row items-start' : ''}`}>
                         {item.photos.map((photo, photoIndex) => {
                           // Slight random rotations for authentic polaroid feel
                           const rotations = [-3, 2, -2, 3, -1];
                           const rotation = rotations[photoIndex % rotations.length];
+                          // Smaller polaroids when there are 3+ photos
+                          const isCompact = item.photos.length >= 3;
                           
                           return (
                             <div 
@@ -96,13 +98,13 @@ const TimelinePage = () => {
                             >
                               {/* Polaroid Frame */}
                               <div 
-                                className="bg-white p-2 pb-12 shadow-lg hover:shadow-2xl transition-all duration-500 relative"
+                                className={`bg-white ${isCompact ? 'p-1.5 pb-8' : 'p-2 pb-12'} shadow-lg hover:shadow-2xl transition-all duration-500 relative`}
                                 style={{
                                   boxShadow: '0 4px 15px rgba(0,0,0,0.1), 0 10px 40px rgba(184, 149, 107, 0.2)',
                                 }}
                               >
                                 {/* Photo */}
-                                <div className="w-48 h-48 md:w-56 md:h-56 overflow-hidden bg-gray-100">
+                                <div className={`${isCompact ? 'w-32 h-32 md:w-40 md:h-40' : 'w-48 h-48 md:w-56 md:h-56'} overflow-hidden bg-gray-100`}>
                                   <img
                                     src={photo}
                                     alt={`${item.title} - Memory ${photoIndex + 1}`}
@@ -111,12 +113,12 @@ const TimelinePage = () => {
                                 </div>
                                 
                                 {/* Polaroid bottom - Date caption */}
-                                <div className="absolute bottom-3 left-0 right-0 text-center">
+                                <div className={`absolute ${isCompact ? 'bottom-1.5' : 'bottom-3'} left-0 right-0 text-center`}>
                                   <p 
-                                    className="text-[#7a7a72] text-sm"
+                                    className="text-[#7a7a72]"
                                     style={{
                                       fontFamily: "'Caveat', cursive, serif",
-                                      fontSize: '1rem',
+                                      fontSize: isCompact ? '0.85rem' : '1rem',
                                     }}
                                   >
                                     {item.date === "NOW" ? "Present Day" : item.date}

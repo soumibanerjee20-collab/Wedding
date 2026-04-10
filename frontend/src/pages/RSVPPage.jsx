@@ -140,8 +140,7 @@ const RSVPPage = () => {
           <div className="space-y-8">
             {/* US Wedding Card */}
             <div 
-              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#8a9a7c]/25 hover:border-[#8a9a7c]/50 transition-all cursor-pointer group rounded-lg"
-              onClick={() => setSelectedEvent('us')}
+              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#8a9a7c]/25 hover:border-[#8a9a7c]/40 transition-all rounded-lg"
               data-testid="us-wedding-rsvp-card"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -172,12 +171,15 @@ const RSVPPage = () => {
                       <span className="text-[#5a6b50] font-medium text-sm">Dress Code</span>
                     </div>
                     <p className="text-[#3d3d38] text-sm">
-                      Semi-Formal / Cocktail Attire — Think elegant but comfortable. Suits, dress shirts, or smart casual for men; dresses, jumpsuits, or dressy separates for women.
+                      Formal Attire — Suits for men; cocktail dresses for women.
                     </p>
                   </div>
                 </div>
                 
-                <button className="px-6 py-3 bg-[#8a9a7c] text-white rounded-full group-hover:bg-[#6b7c5e] transition-colors whitespace-nowrap">
+                <button 
+                  onClick={() => setSelectedEvent('us')}
+                  className="px-6 py-3 bg-[#8a9a7c] text-white rounded-full hover:bg-[#6b7c5e] transition-colors whitespace-nowrap cursor-pointer"
+                >
                   RSVP for US Wedding
                 </button>
               </div>
@@ -185,8 +187,7 @@ const RSVPPage = () => {
 
             {/* Indian Wedding Card */}
             <div 
-              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#E89B3C]/25 hover:border-[#E89B3C]/50 transition-all cursor-pointer group rounded-lg"
-              onClick={() => setSelectedEvent('india')}
+              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#E89B3C]/25 hover:border-[#E89B3C]/40 transition-all rounded-lg"
               data-testid="india-wedding-rsvp-card"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -222,7 +223,10 @@ const RSVPPage = () => {
                   </div>
                 </div>
                 
-                <button className="px-6 py-3 bg-[#E89B3C] text-white rounded-full group-hover:bg-[#D4740C] transition-colors whitespace-nowrap">
+                <button 
+                  onClick={() => setSelectedEvent('india')}
+                  className="px-6 py-3 bg-[#E89B3C] text-white rounded-full hover:bg-[#D4740C] transition-colors whitespace-nowrap cursor-pointer"
+                >
                   RSVP for Indian Wedding
                 </button>
               </div>
