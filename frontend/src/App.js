@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 import { AudioProvider } from "./context/AudioContext";
+import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -22,6 +23,7 @@ function App() {
       <AudioProvider>
         <Toaster position="top-center" richColors />
         <BrowserRouter>
+          <ScrollToTop />
           <Header />
           <main className="min-h-screen">
             <Routes>
