@@ -6,8 +6,15 @@ import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDeco
 const WeddingPartyPage = () => {
   return (
     <div className="min-h-screen pt-20 relative overflow-hidden">
-      {/* Soft sage-cream gradient background instead of loud photo */}
-      <div className="fixed inset-0 bg-gradient-to-b from-[#f0f4ed] via-[#faf8f4] to-[#f5f0e8]" />
+      {/* Faded outdoor wedding photo background */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1769812344142-00c7f6584885?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1920')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-[#faf8f4]/[0.93]" />
+      </div>
 
       {/* Leaf Decorations */}
       <div className="fixed inset-0 pointer-events-none z-[1]">
@@ -145,7 +152,7 @@ const WeddingPartyPage = () => {
           <div className="bg-[#8a9a7c] text-white p-8 rounded-lg">
             <Heart className="w-5 h-5 fill-white mx-auto mb-3" />
             <p className="font-cormorant text-xl md:text-2xl italic">
-              "The best things in life are the people you love, the places you've been, and the memories you've made along the way."
+              "Here's to the ones who make our love story even more beautiful — we couldn't do forever without you."
             </p>
           </div>
         </div>
