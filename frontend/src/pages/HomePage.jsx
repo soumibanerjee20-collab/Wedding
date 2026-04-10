@@ -92,9 +92,10 @@ const HomePage = () => {
       <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Background Image - Wyoming Grand Teton Mountains */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1756916475010-64d80096a394?w=1920&q=85')`,
+            backgroundPosition: 'center 60%',
           }}
         >
           {/* Fade overlay - more faded for better text visibility */}
