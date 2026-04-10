@@ -16,34 +16,33 @@ const OurStoryPage = () => {
           backgroundPosition: 'center',
         }}
       >
-        {/* Strong overlay */}
-        <div className="absolute inset-0 bg-[#faf8f4]/96" />
+        {/* Faded overlay - heavy enough for readability, light enough to see the photo */}
+        <div className="absolute inset-0 bg-[#faf8f4]/[0.93]" />
 
         {/* Leaf decorations */}
-        <EucalyptusBranch className="absolute top-16 left-0 w-24 md:w-28 h-auto text-[#8a9a7c]" />
-        <EucalyptusBranch className="absolute top-16 right-0 w-24 md:w-28 h-auto text-[#8a9a7c]" flip />
-        <CornerVine className="absolute bottom-0 left-0 w-36 md:w-44 h-auto text-[#8a9a7c]" />
-        <CornerVine className="absolute bottom-0 right-0 w-36 md:w-44 h-auto text-[#8a9a7c]" flip />
+        <EucalyptusBranch className="absolute top-16 left-0 w-24 md:w-28 h-auto text-[#8a9a7c] z-[1]" />
+        <EucalyptusBranch className="absolute top-16 right-0 w-24 md:w-28 h-auto text-[#8a9a7c] z-[1]" flip />
+        <CornerVine className="absolute bottom-0 left-0 w-36 md:w-44 h-auto text-[#8a9a7c] z-[1]" />
+        <CornerVine className="absolute bottom-0 right-0 w-36 md:w-44 h-auto text-[#8a9a7c] z-[1]" flip />
 
-        {/* Content */}
+        {/* Content - no card background, just readable text over faded image */}
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <div className="bg-[#faf8f4]/85 backdrop-blur-md p-12 rounded-lg">
           {/* Title */}
-          <h1 className="font-display text-5xl md:text-7xl text-[#b8956b] mb-8 tracking-wider">
+          <h1 className="font-display text-5xl md:text-7xl text-[#b8956b] mb-8 tracking-wider drop-shadow-sm">
             Our Story
           </h1>
 
           {/* Tagline */}
-          <p className="font-cormorant text-xl md:text-2xl lg:text-3xl text-[#3d3d38] italic mb-12 leading-relaxed">
+          <p className="font-cormorant text-xl md:text-2xl lg:text-3xl text-[#2d2d28] italic mb-12 leading-relaxed">
             {ourStory.tagline}
           </p>
 
           {/* Narrative */}
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-[#3d3d38] text-lg md:text-xl leading-relaxed">
-              <span className="text-[#b8956b] font-medium">{ourStory.meetingDate}</span> • <span className="text-[#5a6b50] font-medium">{ourStory.meetingPlace}</span>
+            <p className="text-[#2d2d28] text-lg md:text-xl leading-relaxed">
+              <span className="text-[#8B6914] font-semibold">{ourStory.meetingDate}</span> &bull; <span className="text-[#4a5a3e] font-semibold">{ourStory.meetingPlace}</span>
             </p>
-            <p className="text-[#3d3d38] text-lg md:text-xl leading-relaxed mt-4">
+            <p className="text-[#2d2d28] text-lg md:text-xl leading-relaxed mt-4">
               {ourStory.narrative}
             </p>
           </div>
@@ -56,7 +55,6 @@ const OurStoryPage = () => {
             Discover Their Journey
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
-          </div>
         </div>
       </section>
 

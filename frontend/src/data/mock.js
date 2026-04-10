@@ -16,6 +16,7 @@ export const navigationItems = [
   { id: 'our-story', label: 'OUR STORY', path: '/our-story' },
   { id: 'timeline', label: 'TIMELINE', path: '/timeline' },
   { id: 'events', label: 'EVENTS', path: '/events' },
+  { id: 'wedding-party', label: 'WEDDING PARTY', path: '/wedding-party' },
   { id: 'gallery', label: 'GALLERY', path: '/gallery' },
   { id: 'families', label: 'FAMILIES', path: '/families' },
   { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
@@ -183,7 +184,7 @@ export const events = {
         name: "Wedding Ceremony",
         date: "August 8, 2026",
         time: "Afternoon",
-        venue: "Outdoor Venue TBA",
+        venue: "Outdoor Ceremony",
         location: "Casper, Wyoming",
         description: "An intimate outdoor ceremony surrounded by Wyoming's natural beauty. Where two hearts officially become one under the open sky.",
         icon: "rings"
@@ -193,8 +194,8 @@ export const events = {
         name: "Reception",
         date: "August 8, 2026",
         time: "Evening",
-        venue: "Our New Home",
-        location: "Casper, Wyoming",
+        venue: "4450 Smoke Rise Road, Casper WY 82604",
+        location: "Our New Home",
         description: "Join us for an intimate celebration at our new home. Dinner, dancing, and making memories together as we begin our married life.",
         icon: "celebration"
       }
@@ -409,6 +410,42 @@ export const travelInfo = {
   },
   stayTuned: "More details about venues, accommodations, and travel logistics will be shared as we finalize our plans. Thank you for being part of our journey!"
 };
+
+export const weddingParty = {
+  bridesSide: {
+    title: "Soumi's Best Women",
+    subtitle: "My ride-or-dies, my forever girls",
+    members: [
+      {
+        name: "Mars",
+        role: "Best Woman",
+        description: "The one who always knows exactly what to say and when to say nothing at all."
+      },
+      {
+        name: "Devyani",
+        role: "Best Woman",
+        description: "A soul sister who proved that the best friendships cross every border."
+      }
+    ]
+  },
+  groomsSide: {
+    title: "James's Groomsmen",
+    subtitle: "Brothers by blood, best friends by choice",
+    members: [
+      {
+        name: "Patrick Adams",
+        role: "Groomsman",
+        description: "Twin brother, lifelong partner in crime, and the one who always has James's back."
+      },
+      {
+        name: "Robert Adams (Robby)",
+        role: "Groomsman",
+        description: "The youngest Adams brother who brings energy and laughter to everything."
+      }
+    ]
+  }
+};
+
 
 export const rsvpInfo = {
   title: "RSVP",

@@ -40,12 +40,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 lg:space-x-10">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.path}
-                className={`text-sm tracking-[0.12em] font-medium transition-colors duration-300 relative group ${
+                className={`text-xs tracking-[0.1em] font-medium transition-colors duration-300 relative group whitespace-nowrap ${
                   isActive(item.path)
                     ? 'text-[#b8956b]'
                     : 'text-[#5a5a52] hover:text-[#b8956b]'
@@ -78,7 +78,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button & Mute */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-2">
             {/* Music Mute Button - Mobile */}
             {hasStarted && (
               <button
@@ -127,7 +127,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${
+          className={`lg:hidden overflow-hidden transition-all duration-300 ${
             mobileMenuOpen ? 'max-h-96 mt-4' : 'max-h-0'
           }`}
         >

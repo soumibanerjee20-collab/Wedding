@@ -14,6 +14,7 @@ import FamiliesPage from "./pages/FamiliesPage";
 import TravelPage from "./pages/TravelPage";
 import RSVPPage from "./pages/RSVPPage";
 import GuestbookPage from "./pages/GuestbookPage";
+import WeddingPartyPage from "./pages/WeddingPartyPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/our-story" element={<OurStoryPage />} />
               <Route path="/timeline" element={<TimelinePage />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/wedding-party" element={<WeddingPartyPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/families" element={<FamiliesPage />} />
               <Route path="/travel" element={<TravelPage />} />
