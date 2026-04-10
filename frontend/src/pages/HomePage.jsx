@@ -95,7 +95,7 @@ const HomePage = () => {
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1756916475010-64d80096a394?w=1920&q=85')`,
-            backgroundPosition: 'center 60%',
+            backgroundPosition: 'center 75%',
           }}
         >
           {/* Fade overlay - more faded for better text visibility */}
