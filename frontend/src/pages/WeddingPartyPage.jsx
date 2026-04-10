@@ -13,7 +13,7 @@ const WeddingPartyPage = () => {
           backgroundImage: `url('https://images.unsplash.com/photo-1769812344142-00c7f6584885?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=1920')`,
         }}
       >
-        <div className="absolute inset-0 bg-[#faf8f4]/[0.91]" />
+        <div className="absolute inset-0 bg-[#faf8f4]/[0.87]" />
       </div>
 
       {/* Leaf Decorations */}
