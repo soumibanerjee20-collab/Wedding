@@ -5,7 +5,7 @@ import IntroAnimation from '../components/IntroAnimation';
 
 import { Lock } from 'lucide-react';
 
-// Password Gate Component
+// Password Gate Component - styled to match intro animation
 const PasswordGate = ({ onSuccess }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -16,7 +16,7 @@ const PasswordGate = ({ onSuccess }) => {
     if (password === 'ForeverBegins2026') {
       setFadeOut(true);
       sessionStorage.setItem('siteUnlocked', 'true');
-      setTimeout(() => onSuccess(), 800);
+      setTimeout(() => onSuccess(), 600);
     } else {
       setError(true);
       setTimeout(() => setError(false), 2000);
@@ -24,49 +24,88 @@ const PasswordGate = ({ onSuccess }) => {
   };
 
   return (
-    <div className={`fixed inset-0 z-[100] bg-[#faf8f4] flex items-center justify-center transition-opacity duration-700 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="text-center px-6 max-w-md w-full">
-        {/* Logo / Names */}
+    <div 
+      className="fixed inset-0 z-[100] flex items-center justify-center"
+      style={{
+        background: 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
+      }}
+    >
+      {/* Ambient glow */}
+      <div 
+        className="absolute"
+        style={{
+          width: '400px',
+          height: '400px',
+          background: 'radial-gradient(circle, rgba(212,184,150,0.08) 0%, transparent 70%)',
+          filter: 'blur(40px)',
+        }}
+      />
+
+      <div className={`text-center px-6 max-w-md w-full relative z-10 transition-all duration-500 ${fadeOut ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}>
+        {/* Logo */}
+        <img
+          src={coupleInfo.logoUrl}
+          alt="S & J Monogram"
+          className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-6 opacity-60"
+        />
+
+        {/* Names */}
         <div className="mb-10">
-          <p className="text-[#b8956b] text-sm tracking-[0.3em] uppercase mb-3">You are invited to</p>
-          <h1 className="font-display text-4xl md:text-5xl text-[#b8956b] tracking-wider">
+          <p 
+            className="text-sm tracking-[0.3em] uppercase mb-3 font-cormorant"
+            style={{ color: '#d4c4a8', textShadow: '0 0 20px rgba(212,196,168,0.2)' }}
+          >
+            You are invited to
+          </p>
+          <h1 className="font-display text-4xl md:text-5xl tracking-wider" style={{ color: '#f0e6d3' }}>
             Soumi & James
           </h1>
-          <div className="w-16 h-[1px] bg-[#d4b896] mx-auto mt-4" />
+          <div className="w-16 h-[1px] mx-auto mt-4" style={{ background: 'rgba(212,184,150,0.3)' }} />
         </div>
 
         {/* Password Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="relative">
-            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#b8956b]/60" />
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: 'rgba(212,184,150,0.4)' }} />
             <input
               type="password"
               value={password}
               onChange={(e) => { setPassword(e.target.value); setError(false); }}
               placeholder="Enter password"
-              className={`w-full pl-11 pr-4 py-3.5 border rounded-full text-center text-sm tracking-wider focus:outline-none transition-all bg-transparent ${
-                error 
-                  ? 'border-red-400 text-red-500' 
-                  : 'border-[#d4b896]/50 text-[#3d3d38] focus:border-[#b8956b]'
-              }`}
+              className="w-full pl-11 pr-4 py-3.5 rounded-full text-center text-sm tracking-wider focus:outline-none transition-all bg-transparent"
+              style={{
+                border: error ? '1px solid rgba(239,68,68,0.5)' : '1px solid rgba(212,184,150,0.25)',
+                color: error ? '#ef4444' : '#e8dcc8',
+              }}
               autoFocus
               data-testid="password-input"
             />
           </div>
           
           {error && (
-            <p className="text-red-400 text-xs tracking-wide">Incorrect password, please try again</p>
+            <p className="text-xs tracking-wide" style={{ color: 'rgba(239,68,68,0.7)' }}>
+              Incorrect password, please try again
+            </p>
           )}
 
           <button
             type="submit"
-            className="w-full py-3.5 bg-[#8a9a7c] text-white rounded-full text-sm tracking-[0.15em] hover:bg-[#6b7c5e] transition-colors"
+            className="w-full py-3.5 rounded-full text-sm tracking-[0.15em] transition-all duration-300 hover:brightness-110"
+            style={{
+              background: 'rgba(138,154,124,0.3)',
+              border: '1px solid rgba(138,154,124,0.4)',
+              color: '#d4c4a8',
+            }}
             data-testid="password-submit"
           >
             ENTER
           </button>
         </form>
       </div>
+
+      {/* Subtle particles */}
+      <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-[#d4b896] rounded-full animate-pulse opacity-20" />
+      <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-[#8a9a7c] rounded-full animate-pulse opacity-15" style={{ animationDelay: '0.5s' }} />
     </div>
   );
 };
