@@ -3,6 +3,74 @@ import { Link } from 'react-router-dom';
 import { coupleInfo } from '../data/mock';
 import IntroAnimation from '../components/IntroAnimation';
 
+import { Lock } from 'lucide-react';
+
+// Password Gate Component
+const PasswordGate = ({ onSuccess }) => {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === 'ForeverBegins2026') {
+      setFadeOut(true);
+      sessionStorage.setItem('siteUnlocked', 'true');
+      setTimeout(() => onSuccess(), 800);
+    } else {
+      setError(true);
+      setTimeout(() => setError(false), 2000);
+    }
+  };
+
+  return (
+    <div className={`fixed inset-0 z-[100] bg-[#faf8f4] flex items-center justify-center transition-opacity duration-700 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+      <div className="text-center px-6 max-w-md w-full">
+        {/* Logo / Names */}
+        <div className="mb-10">
+          <p className="text-[#b8956b] text-sm tracking-[0.3em] uppercase mb-3">You are invited to</p>
+          <h1 className="font-display text-4xl md:text-5xl text-[#b8956b] tracking-wider">
+            Soumi & James
+          </h1>
+          <div className="w-16 h-[1px] bg-[#d4b896] mx-auto mt-4" />
+        </div>
+
+        {/* Password Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div className="relative">
+            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#b8956b]/60" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => { setPassword(e.target.value); setError(false); }}
+              placeholder="Enter password"
+              className={`w-full pl-11 pr-4 py-3.5 border rounded-full text-center text-sm tracking-wider focus:outline-none transition-all bg-transparent ${
+                error 
+                  ? 'border-red-400 text-red-500' 
+                  : 'border-[#d4b896]/50 text-[#3d3d38] focus:border-[#b8956b]'
+              }`}
+              autoFocus
+              data-testid="password-input"
+            />
+          </div>
+          
+          {error && (
+            <p className="text-red-400 text-xs tracking-wide">Incorrect password, please try again</p>
+          )}
+
+          <button
+            type="submit"
+            className="w-full py-3.5 bg-[#8a9a7c] text-white rounded-full text-sm tracking-[0.15em] hover:bg-[#6b7c5e] transition-colors"
+            data-testid="password-submit"
+          >
+            ENTER
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
 // Wedding Countdown Component
 const WeddingCountdown = ({ visible }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -66,11 +134,15 @@ const WeddingCountdown = ({ visible }) => {
 };
 
 const HomePage = () => {
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
 
-  // Check if intro was already shown in this session
   useEffect(() => {
+    const unlocked = sessionStorage.getItem('siteUnlocked');
+    if (unlocked) {
+      setIsUnlocked(true);
+    }
     const introShown = sessionStorage.getItem('introShown');
     if (introShown) {
       setShowIntro(false);
@@ -78,16 +150,20 @@ const HomePage = () => {
     }
   }, []);
 
+  const handlePasswordSuccess = () => {
+    setIsUnlocked(true);
+  };
+
   const handleIntroComplete = () => {
     sessionStorage.setItem('introShown', 'true');
     setShowIntro(false);
-    // Small delay before showing content for smooth transition
     setTimeout(() => setContentVisible(true), 100);
   };
 
   return (
     <>
-      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+      {!isUnlocked && <PasswordGate onSuccess={handlePasswordSuccess} />}
+      {isUnlocked && showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
       
       <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Background Image - Wyoming Grand Teton Mountains */}
