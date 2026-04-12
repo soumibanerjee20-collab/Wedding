@@ -45,10 +45,10 @@ export const AudioProvider = ({ children }) => {
       const currentVolume = audioRef.current.volume;
       let volume = currentVolume;
       const fadeDown = setInterval(() => {
-        if (volume > 0.15) {
+        if (volume > 0.35) {
           volume -= 0.02;
           if (audioRef.current) {
-            audioRef.current.volume = Math.max(volume, 0.15);
+            audioRef.current.volume = Math.max(volume, 0.35);
           }
         } else {
           clearInterval(fadeDown);
