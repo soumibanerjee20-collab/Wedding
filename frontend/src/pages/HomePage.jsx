@@ -49,17 +49,14 @@ const PasswordGate = ({ onSuccess }) => {
           className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-6 opacity-60"
         />
 
-        {/* Names */}
+        {/* Text */}
         <div className="mb-10">
           <p 
             className="text-sm tracking-[0.3em] uppercase mb-3 font-cormorant"
             style={{ color: '#d4c4a8', textShadow: '0 0 20px rgba(212,196,168,0.2)' }}
           >
-            You are invited to
+            Enter to celebrate with us
           </p>
-          <h1 className="font-display text-4xl md:text-5xl tracking-wider" style={{ color: '#f0e6d3' }}>
-            Soumi & James
-          </h1>
           <div className="w-16 h-[1px] mx-auto mt-4" style={{ background: 'rgba(212,184,150,0.3)' }} />
         </div>
 
