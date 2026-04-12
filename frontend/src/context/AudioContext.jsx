@@ -77,7 +77,7 @@ export const AudioProvider = ({ children }) => {
       {/* Audio Element - River Flows in You by Yiruma */}
       <audio
         ref={audioRef}
-        src="https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/vpapux1j_Yiruma%20%20-%20River%20Flows%20in%20You.mp3"
+        src="https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/baw44cd1_Ruelle%20-%20I%20Get%20To%20Love%20You%20%20Piano%20and%20Strings%20Cover.mp3"
         loop
         preload="auto"
       />
