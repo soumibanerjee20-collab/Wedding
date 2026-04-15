@@ -19,15 +19,15 @@ export const AudioProvider = ({ children }) => {
   // Start playing music (called when user clicks "Enter")
   const startMusic = useCallback(() => {
     if (audioRef.current && !hasStarted) {
-      audioRef.current.volume = 0;
+      audioRef.current.volume = 0.3;
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         setHasStarted(true);
-        // Fade in to full volume during intro
-        let volume = 0;
+        // Fade in from 0.3 to 0.7
+        let volume = 0.3;
         const fadeIn = setInterval(() => {
           if (volume < 0.7) {
-            volume += 0.03;
+            volume += 0.04;
             if (audioRef.current) {
               audioRef.current.volume = Math.min(volume, 0.7);
             }
