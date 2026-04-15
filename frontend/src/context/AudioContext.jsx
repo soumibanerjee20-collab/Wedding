@@ -19,22 +19,22 @@ export const AudioProvider = ({ children }) => {
   // Start playing music (called when user clicks "Enter")
   const startMusic = useCallback(() => {
     if (audioRef.current && !hasStarted) {
-      audioRef.current.volume = 0.3;
+      audioRef.current.volume = 0.5;
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         setHasStarted(true);
-        // Fade in from 0.3 to 0.7
-        let volume = 0.3;
+        // Fade in from 0.5 to 0.8
+        let volume = 0.5;
         const fadeIn = setInterval(() => {
-          if (volume < 0.7) {
-            volume += 0.04;
+          if (volume < 0.8) {
+            volume += 0.05;
             if (audioRef.current) {
-              audioRef.current.volume = Math.min(volume, 0.7);
+              audioRef.current.volume = Math.min(volume, 0.8);
             }
           } else {
             clearInterval(fadeIn);
           }
-        }, 100);
+        }, 80);
       }).catch(err => console.log('Audio play failed:', err));
     }
   }, [hasStarted]);
@@ -45,10 +45,10 @@ export const AudioProvider = ({ children }) => {
       const currentVolume = audioRef.current.volume;
       let volume = currentVolume;
       const fadeDown = setInterval(() => {
-        if (volume > 0.35) {
+        if (volume > 0.4) {
           volume -= 0.02;
           if (audioRef.current) {
-            audioRef.current.volume = Math.max(volume, 0.35);
+            audioRef.current.volume = Math.max(volume, 0.4);
           }
         } else {
           clearInterval(fadeDown);
@@ -80,6 +80,7 @@ export const AudioProvider = ({ children }) => {
         src="https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/baw44cd1_Ruelle%20-%20I%20Get%20To%20Love%20You%20%20Piano%20and%20Strings%20Cover.mp3"
         loop
         preload="auto"
+        onCanPlayThrough={() => console.log('Audio ready to play')}
       />
       {children}
     </AudioContext.Provider>
