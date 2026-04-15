@@ -170,25 +170,16 @@ const WeddingCountdown = ({ visible }) => {
 };
 
 const HomePage = () => {
-  const [isUnlocked, setIsUnlocked] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    const unlocked = sessionStorage.getItem('siteUnlocked');
-    if (unlocked) {
-      setIsUnlocked(true);
-    }
     const introShown = sessionStorage.getItem('introShown');
     if (introShown) {
       setShowIntro(false);
       setContentVisible(true);
     }
   }, []);
-
-  const handlePasswordSuccess = () => {
-    setIsUnlocked(true);
-  };
 
   const handleIntroComplete = () => {
     sessionStorage.setItem('introShown', 'true');
@@ -198,8 +189,7 @@ const HomePage = () => {
 
   return (
     <>
-      {!isUnlocked && <PasswordGate onSuccess={handlePasswordSuccess} />}
-      {isUnlocked && showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
+      {showIntro && <IntroAnimation onComplete={handleIntroComplete} />}
       
       <section className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-opacity duration-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Background Image - Wyoming Grand Teton Mountains */}
