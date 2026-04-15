@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -68,6 +69,28 @@ async def get_status_checks():
 
 # Include the router in the main app
 app.include_router(api_router)
+
+@app.get("/api/video/wedding-invite")
+async def serve_wedding_video():
+    video_path = ROOT_DIR / "wedding-invite-video.mp4"
+    if video_path.exists():
+        return FileResponse(
+            path=str(video_path),
+            media_type="video/mp4",
+            filename="Soumi-James-Wedding-Invite.mp4"
+        )
+    return {"error": "Video not found"}
+
+@app.get("/api/video/wedding-invite-webm")
+async def serve_wedding_video_webm():
+    video_path = ROOT_DIR / "wedding-invite-video.webm"
+    if video_path.exists():
+        return FileResponse(
+            path=str(video_path),
+            media_type="video/webm",
+            filename="Soumi-James-Wedding-Invite.webm"
+        )
+    return {"error": "Video not found"}
 
 app.add_middleware(
     CORSMiddleware,

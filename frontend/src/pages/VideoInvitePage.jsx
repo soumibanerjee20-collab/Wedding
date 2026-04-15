@@ -1,43 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import { coupleInfo } from '../data/mock';
-
-const PHOTOS = [
-  "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/jb80d38v_IMG_0699.jpeg",
-  "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/r83tpser_IMG_6447.jpeg",
-  "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/xxlfmx1a_IMG_0953.jpeg",
-];
+import React, { useEffect, useRef, useState } from 'react';
 
 const VideoInvitePage = () => {
-  const [stage, setStage] = useState(0);
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [videoSrc, setVideoSrc] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const videoUrl = `${process.env.REACT_APP_BACKEND_URL}/api/video/wedding-invite`;
+  const videoWebmUrl = `${process.env.REACT_APP_BACKEND_URL}/api/video/wedding-invite-webm`;
 
   useEffect(() => {
-    // Hide header for clean video
     const header = document.querySelector('header');
     if (header) header.style.display = 'none';
     return () => { if (header) header.style.display = ''; };
   }, []);
 
+  // Fetch video as blob to avoid range request issues
   useEffect(() => {
-    const timings = [
-      { delay: 300, next: 1 },     // 0.3s: logo appears
-      { delay: 2200, next: 2 },    // 2.2s: "You're Invited" 
-      { delay: 4200, next: 3 },    // 4.2s: Photo 1
-      { delay: 5800, next: 4 },    // 5.8s: Photo 2
-      { delay: 7400, next: 5 },    // 7.4s: Photo 3
-      { delay: 9500, next: 6 },    // 9.5s: Names
-      { delay: 11500, next: 7 },   // 11.5s: Dates + link
-    ];
+    let cancelled = false;
+    const loadVideo = async () => {
+      try {
+        // Try WebM first (better browser support without proprietary codecs), fallback to MP4
+        let res = await fetch(videoWebmUrl);
+        if (!res.ok) {
+          res = await fetch(videoUrl);
+        }
+        if (!res.ok) throw new Error('Failed to load video');
+        const blob = await res.blob();
+        if (!cancelled) {
+          const url = URL.createObjectURL(blob);
+          setVideoSrc(url);
+          setLoading(false);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setError(err.message);
+          setLoading(false);
+        }
+      }
+    };
+    loadVideo();
+    return () => { cancelled = true; };
+  }, [videoUrl, videoWebmUrl]);
 
-    const timeouts = timings.map(t => 
-      setTimeout(() => setStage(t.next), t.delay)
-    );
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
-    return () => timeouts.forEach(clearTimeout);
-  }, []);
+  const handleVideoClick = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const handleDownload = async () => {
+    try {
+      const res = await fetch(videoUrl);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Soumi-James-Wedding-Invite.mp4';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      window.open(videoUrl, '_blank');
+    }
+  };
 
   return (
     <div 
-      className="fixed inset-0 flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 25%, #1f2f24 50%, #283828 75%, #1a2a1f 100%)',
         zIndex: 9999,
@@ -55,119 +99,106 @@ const VideoInvitePage = () => {
         }}
       />
 
-      {/* Stage 1: Logo */}
+      {/* Video Container */}
       <div 
-        className="absolute flex flex-col items-center transition-all duration-[1200ms]"
-        style={{
-          opacity: stage >= 1 && stage < 3 ? 1 : 0,
-          transform: stage >= 1 && stage < 3 ? 'scale(1)' : 'scale(0.85)',
+        className="relative rounded-lg overflow-hidden shadow-2xl cursor-pointer"
+        style={{ 
+          maxWidth: '360px',
+          maxHeight: '75vh',
+          boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
+          border: '1px solid rgba(212,184,150,0.15)',
         }}
+        onClick={handleVideoClick}
+        data-testid="video-container"
       >
-        <img
-          src={coupleInfo.logoUrl}
-          alt="Monogram"
-          className="w-24 h-24 object-contain"
-          style={{ filter: 'brightness(0.7) sepia(0.3)' }}
-        />
-      </div>
-
-      {/* Stage 2: "You're Invited" */}
-      <div 
-        className="absolute transition-all duration-[1200ms]"
-        style={{
-          opacity: stage >= 2 && stage < 3 ? 1 : 0,
-          transform: stage >= 2 && stage < 3 ? 'translateY(0)' : 'translateY(12px)',
-          top: '60%',
-        }}
-      >
-        <p 
-          className="font-cormorant text-2xl italic tracking-wide text-center"
-          style={{ color: '#d4c4a8', textShadow: '0 0 30px rgba(212,196,168,0.3)' }}
-        >
-          You're Invited
-        </p>
-      </div>
-
-      {/* Stages 3-5: Photos as polaroids */}
-      {PHOTOS.map((photo, i) => {
-        const rotations = [-6, 4, -2];
-        const positions = [
-          { top: '28%', left: '15%' },
-          { top: '22%', left: '48%' },
-          { top: '45%', left: '30%' },
-        ];
-        const photoStage = i + 3;
-        const isVisible = stage >= photoStage && stage < 6;
-
-        return (
-          <div
-            key={i}
-            className="absolute transition-all duration-700"
-            style={{
-              ...positions[i],
-              transform: isVisible
-                ? `rotate(${rotations[i]}deg) scale(1)`
-                : `rotate(${rotations[i]}deg) scale(0.7)`,
-              opacity: isVisible ? 1 : 0,
-            }}
-          >
-            <div 
-              className="bg-white p-1.5 pb-6"
-              style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.4)' }}
-            >
-              <div className="w-28 h-28 overflow-hidden">
-                <img 
-                  src={photo} 
-                  alt="" 
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: 'center 25%' }}
-                />
-              </div>
+        {loading && (
+          <div className="flex items-center justify-center" style={{ width: '360px', height: '500px' }}>
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-8 h-8 border-2 border-t-transparent rounded-full animate-spin" 
+                   style={{ borderColor: 'rgba(212,184,150,0.4)', borderTopColor: 'transparent' }} />
+              <p className="text-xs tracking-widest" style={{ color: 'rgba(212,184,150,0.5)' }}>
+                LOADING VIDEO
+              </p>
             </div>
           </div>
-        );
-      })}
+        )}
 
-      {/* Stage 6: Names */}
-      <div 
-        className="absolute text-center transition-all duration-[1200ms]"
-        style={{
-          opacity: stage >= 6 ? 1 : 0,
-          transform: stage >= 6 ? 'translateY(0)' : 'translateY(16px)',
-          top: '35%',
-        }}
-      >
-        <div style={{ width: '32px', height: '1px', background: 'rgba(212,184,150,0.4)', margin: '0 auto 14px' }} />
-        <h1 
-          className="font-display text-4xl tracking-wider"
-          style={{ color: '#f0e6d3', textShadow: '0 0 40px rgba(240,230,211,0.2)' }}
-        >
-          Soumi & James
-        </h1>
-        <div style={{ width: '32px', height: '1px', background: 'rgba(212,184,150,0.4)', margin: '14px auto 0' }} />
+        {error && (
+          <div className="flex items-center justify-center p-8" style={{ width: '360px', height: '300px' }}>
+            <p className="text-sm text-center" style={{ color: 'rgba(212,184,150,0.6)' }}>
+              Video unavailable. Use download button below.
+            </p>
+          </div>
+        )}
+
+        {videoSrc && (
+          <>
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              playsInline
+              muted={false}
+              preload="auto"
+              className="w-full h-full object-cover"
+              style={{ maxHeight: '75vh' }}
+              data-testid="video-player"
+              onEnded={() => setIsPlaying(false)}
+            />
+
+            {/* Play overlay */}
+            {!isPlaying && (
+              <div 
+                className="absolute inset-0 flex items-center justify-center"
+                style={{ background: 'rgba(0,0,0,0.35)' }}
+              >
+                <button
+                  onClick={(e) => { e.stopPropagation(); handlePlay(); }}
+                  className="w-16 h-16 rounded-full flex items-center justify-center transition-transform hover:scale-110"
+                  style={{
+                    background: 'rgba(212,184,150,0.2)',
+                    backdropFilter: 'blur(12px)',
+                    border: '2px solid rgba(212,184,150,0.4)',
+                  }}
+                  data-testid="play-button"
+                >
+                  <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
+                    <path d="M2 2L22 14L2 26V2Z" fill="rgba(240,230,211,0.9)" />
+                  </svg>
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
 
-      {/* Stage 7: Dates + Link */}
-      <div 
-        className="absolute text-center transition-all duration-[1200ms]"
-        style={{
-          opacity: stage >= 7 ? 1 : 0,
-          transform: stage >= 7 ? 'translateY(0)' : 'translateY(12px)',
-          bottom: '22%',
-        }}
-      >
-        <p className="text-xs tracking-[0.2em] uppercase mb-3" style={{ color: '#8a9a7c' }}>
-          Save the Dates
+      {/* Title & Download */}
+      <div className="mt-6 text-center relative z-10">
+        <p 
+          className="font-cormorant text-xl tracking-wide mb-1"
+          style={{ color: '#d4c4a8' }}
+        >
+          Soumi & James
         </p>
-        <p className="font-cormorant text-base mb-1" style={{ color: '#d4c4a8' }}>
-          August 8, 2026 &bull; Casper, Wyoming
+        <p 
+          className="text-xs tracking-[0.2em] uppercase mb-5"
+          style={{ color: 'rgba(138,154,124,0.7)' }}
+        >
+          Wedding Invitation
         </p>
-        <p className="font-cormorant text-base mb-4" style={{ color: '#d4c4a8' }}>
-          November 5-6, 2027 &bull; Kolkata, India
-        </p>
-        <p className="text-xs tracking-[0.15em]" style={{ color: 'rgba(138,154,124,0.6)' }}>
-          soumiandjames.com
-        </p>
+
+        <button
+          onClick={handleDownload}
+          className="px-6 py-2.5 rounded-full text-sm tracking-wider transition-all hover:scale-105"
+          style={{
+            background: 'rgba(212,184,150,0.15)',
+            border: '1px solid rgba(212,184,150,0.3)',
+            color: '#d4c4a8',
+            backdropFilter: 'blur(8px)',
+          }}
+          data-testid="download-button"
+        >
+          Download for WhatsApp
+        </button>
       </div>
     </div>
   );
