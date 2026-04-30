@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const ADMIN_PASSWORD = 'casper';
 
 const INVITE_MESSAGE = (name) => 
   `Hi ${name}! We're getting married! Nothing would make our day more special than having you by our side. Your presence means the world to us. Celebrate with us: https://soumiandjameswedding.netlify.app`;
 
+const generateId = () => Math.random().toString(36).substr(2, 9);
+
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
   const [error, setError] = useState('');
   const [guests, setGuests] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
-  const [loading, setLoading] = useState(false);
 
   // Hide header/footer for admin page
   useEffect(() => {
@@ -27,95 +27,62 @@ const AdminPage = () => {
     };
   }, []);
 
-  const fetchGuests = useCallback(async (adminToken) => {
-    try {
-      const res = await fetch(`${API_URL}/api/admin/guests`, {
-        headers: { 'x-admin-token': adminToken }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setGuests(data);
-      }
-    } catch (err) {
-      console.error('Failed to fetch guests');
+  // Load guests from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('wedding_guests');
+    if (saved) {
+      setGuests(JSON.parse(saved));
     }
   }, []);
 
-  const handleLogin = async (e) => {
+  // Save guests to localStorage whenever they change
+  const saveGuests = (updatedGuests) => {
+    setGuests(updatedGuests);
+    localStorage.setItem('wedding_guests', JSON.stringify(updatedGuests));
+  };
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    setError('');
-    try {
-      const res = await fetch(`${API_URL}/api/admin/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password })
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setToken(data.token);
-        setAuthenticated(true);
-        fetchGuests(data.token);
-      } else {
-        setError('Wrong password');
-      }
-    } catch {
-      setError('Connection error');
+    if (password === ADMIN_PASSWORD) {
+      setAuthenticated(true);
+      setError('');
+    } else {
+      setError('Wrong password');
     }
   };
 
-  const handleAddGuest = async (e) => {
+  const handleAddGuest = (e) => {
     e.preventDefault();
     if (!newName.trim() || !newPhone.trim()) return;
-    setLoading(true);
-    try {
-      const res = await fetch(`${API_URL}/api/admin/guests`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-admin-token': token },
-        body: JSON.stringify({ name: newName.trim(), phone: newPhone.trim() })
-      });
-      if (res.ok) {
-        setNewName('');
-        setNewPhone('');
-        fetchGuests(token);
-      }
-    } catch {
-      console.error('Failed to add guest');
-    }
-    setLoading(false);
+    const newGuest = {
+      id: generateId(),
+      name: newName.trim(),
+      phone: newPhone.trim(),
+      invited: false,
+      invited_at: null,
+      created_at: new Date().toISOString(),
+    };
+    saveGuests([newGuest, ...guests]);
+    setNewName('');
+    setNewPhone('');
   };
 
-  const handleSendInvite = async (guest) => {
-    // Clean phone number (remove spaces, dashes, keep + prefix)
+  const handleSendInvite = (guest) => {
     const cleanPhone = guest.phone.replace(/[\s\-()]/g, '');
     const message = encodeURIComponent(INVITE_MESSAGE(guest.name));
     const waUrl = `https://wa.me/${cleanPhone}?text=${message}`;
-    
-    // Open WhatsApp in new tab
     window.open(waUrl, '_blank');
-    
+
     // Mark as invited
-    try {
-      await fetch(`${API_URL}/api/admin/guests/${guest.id}/mark-invited`, {
-        method: 'PUT',
-        headers: { 'x-admin-token': token }
-      });
-      fetchGuests(token);
-    } catch {
-      console.error('Failed to mark invited');
-    }
+    const updated = guests.map(g => 
+      g.id === guest.id ? { ...g, invited: true, invited_at: new Date().toISOString() } : g
+    );
+    saveGuests(updated);
   };
 
-  const handleDelete = async (guestId) => {
+  const handleDelete = (guestId) => {
     if (!window.confirm('Remove this guest?')) return;
-    try {
-      await fetch(`${API_URL}/api/admin/guests/${guestId}`, {
-        method: 'DELETE',
-        headers: { 'x-admin-token': token }
-      });
-      fetchGuests(token);
-    } catch {
-      console.error('Failed to delete');
-    }
+    saveGuests(guests.filter(g => g.id !== guestId));
   };
 
   // Login screen
@@ -204,12 +171,11 @@ const AdminPage = () => {
           />
           <button
             type="submit"
-            disabled={loading}
             className="px-6 py-2.5 rounded-lg text-sm tracking-wider transition-all hover:scale-[1.02]"
             style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}
             data-testid="add-guest-btn"
           >
-            {loading ? '...' : 'Add'}
+            Add
           </button>
         </form>
       </div>
