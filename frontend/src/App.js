@@ -16,6 +16,7 @@ import TravelPage from "./pages/TravelPage";
 import RSVPPage from "./pages/RSVPPage";
 import GuestbookPage from "./pages/GuestbookPage";
 import WeddingPartyPage from "./pages/WeddingPartyPage";
+import AdminPage from "./pages/AdminPage";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
               <Route path="/travel" element={<TravelPage />} />
               <Route path="/rsvp" element={<RSVPPage />} />
               <Route path="/guestbook" element={<GuestbookPage />} />
+              <Route path="/admin" element={<AdminPage />} />
             </Routes>
           </main>
           <Footer />
