@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const INVITE_MESSAGE = (name) => 
-  `Hi ${name}! You're warmly invited to celebrate the wedding of Soumi & James. We'd love to have you there! View all the details here: https://soumiandjameswedding.netlify.app`;
+  `Hi ${name}! We're getting married! Nothing would make our day more special than having you by our side. Your presence means the world to us. Celebrate with us: https://soumiandjameswedding.netlify.app`;
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
