@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 import { AudioProvider } from "./context/AudioContext";
 import ScrollToTop from "./components/ScrollToTop";
+import PasswordGate from "./components/PasswordGate";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -18,6 +19,35 @@ import GuestbookPage from "./pages/GuestbookPage";
 import WeddingPartyPage from "./pages/WeddingPartyPage";
 import AdminPage from "./pages/AdminPage";
 
+const AppContent = () => {
+  const location = useLocation();
+  const isAdmin = location.pathname === '/admin';
+
+  if (isAdmin) {
+    return <AdminPage />;
+  }
+
+  return (
+    <PasswordGate>
+      <Header />
+      <main className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/our-story" element={<OurStoryPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/wedding-party" element={<WeddingPartyPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/families" element={<FamiliesPage />} />
+          <Route path="/travel" element={<TravelPage />} />
+          <Route path="/rsvp" element={<RSVPPage />} />
+          <Route path="/guestbook" element={<GuestbookPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </PasswordGate>
+  );
+};
 
 function App() {
   return (
@@ -26,23 +56,7 @@ function App() {
         <Toaster position="top-center" richColors />
         <BrowserRouter>
           <ScrollToTop />
-          <Header />
-          <main className="min-h-screen">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/our-story" element={<OurStoryPage />} />
-              <Route path="/timeline" element={<TimelinePage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/wedding-party" element={<WeddingPartyPage />} />
-              <Route path="/gallery" element={<GalleryPage />} />
-              <Route path="/families" element={<FamiliesPage />} />
-              <Route path="/travel" element={<TravelPage />} />
-              <Route path="/rsvp" element={<RSVPPage />} />
-              <Route path="/guestbook" element={<GuestbookPage />} />
-              <Route path="/admin" element={<AdminPage />} />
-            </Routes>
-          </main>
-          <Footer />
+          <AppContent />
         </BrowserRouter>
       </AudioProvider>
     </div>
