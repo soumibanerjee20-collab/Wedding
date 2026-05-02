@@ -1,7 +1,39 @@
 import React, { useState } from 'react';
 import { events } from '../data/mock';
-import { Calendar, MapPin, Music, Utensils, Heart, PartyPopper, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Music, Utensils, Heart, PartyPopper, Sparkles, ChevronDown } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf } from '../components/LeafDecorations';
+
+const FAQItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div 
+      className="rounded-lg overflow-hidden transition-all duration-300"
+      style={{ 
+        background: isOpen ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.6)',
+        border: isOpen ? '1px solid rgba(184,149,107,0.2)' : '1px solid rgba(184,149,107,0.08)',
+      }}
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between px-5 py-4 text-left transition-colors duration-200"
+        data-testid={`faq-${question.slice(0, 20).toLowerCase().replace(/\s/g, '-')}`}
+      >
+        <span className="font-cormorant text-lg text-[#3d3d38] pr-4">{question}</span>
+        <ChevronDown 
+          className={`w-5 h-5 text-[#b8956b] flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} 
+        />
+      </button>
+      <div 
+        className="overflow-hidden transition-all duration-300"
+        style={{ maxHeight: isOpen ? '300px' : '0', opacity: isOpen ? 1 : 0 }}
+      >
+        <p className="px-5 pb-4 text-sm text-[#5a5a52] leading-relaxed">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 // Subtle decorative patterns
 const AlpanaPattern = ({ className }) => (
@@ -375,6 +407,51 @@ const EventsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <div className="max-w-3xl mx-auto px-6 mt-20 mb-8">
+        <div className="text-center mb-10">
+          <h2 className="font-display text-3xl md:text-4xl text-[#b8956b] mb-3 tracking-wider">
+            Questions & Answers
+          </h2>
+          <div className="w-16 h-[1px] bg-[#b8956b] mx-auto" />
+        </div>
+
+        <div className="space-y-4">
+          <FAQItem 
+            question="Why don't we have exact dates yet?"
+            answer="Soumi is currently going through the US immigration process, which has unpredictable government timelines. She is likely to arrive between June and September 2026, but we cannot confirm exact dates until her Embassy interview in London is scheduled. We appreciate your patience and flexibility!"
+          />
+          <FAQItem 
+            question="How much notice will I get before the wedding?"
+            answer="Due to the strict US government timelines, you will likely receive 30 to 90 days' notice before the wedding. We know this is short, and we truly appreciate you keeping some flexibility in your schedule for us."
+          />
+          <FAQItem 
+            question="Where will the US ceremony be held?"
+            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a potentially remote and beautiful area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
+          />
+          <FAQItem 
+            question="What should I wear?"
+            answer="For the Wyoming ceremony, think elegant outdoor attire — we'll be in nature, so comfortable yet dressy works well. Think cocktail or semi-formal. For the Kolkata celebrations, traditional Indian attire is warmly welcomed (sarees, kurtas) or formal western wear. More specific guidance will follow closer to both events."
+          />
+          <FAQItem 
+            question="Will there be accommodation options nearby?"
+            answer="Yes! We'll share recommended hotels and lodging in the Casper, Wyoming area once the date is confirmed. For the Kolkata wedding, we'll provide options ranging from nearby hotels to family homes. Travel details will be on the Travel page soon."
+          />
+          <FAQItem 
+            question="Can I bring a plus one?"
+            answer="We'd love to keep our celebration intimate. Your RSVP invitation will indicate if a plus one is included. If you have questions, please don't hesitate to reach out to us directly."
+          />
+          <FAQItem 
+            question="What about gifts?"
+            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the short notice and travel involved. If you'd still like to give, details will be shared closer to the date."
+          />
+          <FAQItem 
+            question="Will the Indian wedding be a separate trip?"
+            answer="Yes, the Kolkata celebrations are planned for November 2027 — a separate, grand Indian wedding celebration. This gives everyone plenty of time to plan. More details will follow as we get closer."
+          />
+        </div>
+      </div>
 
       {/* Bottom Note */}
       <div className="max-w-3xl mx-auto px-6 mt-20 text-center">
