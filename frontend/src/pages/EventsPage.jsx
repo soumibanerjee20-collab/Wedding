@@ -412,23 +412,19 @@ const EventsPage = () => {
       <div className="max-w-3xl mx-auto px-6 mt-20 mb-8">
         <div className="text-center mb-10">
           <h2 className="font-display text-3xl md:text-4xl text-[#b8956b] mb-3 tracking-wider">
-            Questions & Answers
+            FAQ
           </h2>
           <div className="w-16 h-[1px] bg-[#b8956b] mx-auto" />
         </div>
 
         <div className="space-y-4">
           <FAQItem 
-            question="Why don't we have exact dates yet?"
-            answer="Soumi is currently going through the US immigration process, which has unpredictable government timelines. She is likely to arrive between June and September 2026, but we cannot confirm exact dates until her Embassy interview in London is scheduled. We appreciate your patience and flexibility!"
-          />
-          <FAQItem 
-            question="How much notice will I get before the wedding?"
-            answer="Due to the strict US government timelines, you will likely receive 30 to 90 days' notice before the wedding. We know this is short, and we truly appreciate you keeping some flexibility in your schedule for us."
+            question="Why the short notice?"
+            answer="Due to the nature of the US immigration process, our wedding date depends on government timelines that are beyond our control. This means you may receive only 30 to 90 days' notice before the celebration. We truly appreciate your patience and flexibility in keeping some room in your schedule for us!"
           />
           <FAQItem 
             question="Where will the US ceremony be held?"
-            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a potentially remote and beautiful area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
+            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a beautiful and potentially remote area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
           />
           <FAQItem 
             question="What should I wear?"
@@ -444,11 +440,11 @@ const EventsPage = () => {
           />
           <FAQItem 
             question="What about gifts?"
-            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the short notice and travel involved. If you'd still like to give, details will be shared closer to the date."
+            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the travel involved. If you'd still like to give, details will be shared closer to the date."
           />
           <FAQItem 
-            question="Will the Indian wedding be a separate trip?"
-            answer="Yes, the Kolkata celebrations are planned for November 2027 — a separate, grand Indian wedding celebration. This gives everyone plenty of time to plan. More details will follow as we get closer."
+            question="What about the Indian wedding?"
+            answer="We are planning a traditional Bengali Hindu wedding celebration in Kolkata, India. This will be a separate celebration, and dates are yet to be determined. More details will follow as plans take shape — stay tuned!"
           />
         </div>
       </div>
