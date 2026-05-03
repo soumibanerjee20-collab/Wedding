@@ -295,6 +295,47 @@ const EventsPage = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <div className="max-w-3xl mx-auto px-6 mt-20 mb-8">
+        <div className="text-center mb-10">
+          <h2 className="font-display text-3xl md:text-4xl text-[#b8956b] mb-3 tracking-wider">
+            FAQ
+          </h2>
+          <div className="w-16 h-[1px] bg-[#b8956b] mx-auto" />
+        </div>
+
+        <div className="space-y-4">
+          <FAQItem 
+            question="Why the short notice?"
+            answer="Due to the nature of the US immigration process, our wedding date depends on government timelines that are beyond our control. This means you may receive only 30 to 90 days' notice before the celebration. We truly appreciate your patience and flexibility in keeping some room in your schedule for us!"
+          />
+          <FAQItem 
+            question="Where will the US ceremony be held?"
+            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a beautiful and potentially remote area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
+          />
+          <FAQItem 
+            question="What should I wear?"
+            answer="For the Wyoming ceremony, think elegant outdoor attire — we'll be in nature, so comfortable yet dressy works well. Think cocktail or semi-formal. For the Kolkata celebrations, traditional Indian attire is warmly welcomed (sarees, kurtas) or formal western wear. More specific guidance will follow closer to both events."
+          />
+          <FAQItem 
+            question="Will there be accommodation options nearby?"
+            answer="Yes! We'll share recommended hotels and lodging in the Casper, Wyoming area once the date is confirmed. For the Kolkata wedding, we'll provide options ranging from nearby hotels to family homes. Travel details will be on the Travel page soon."
+          />
+          <FAQItem 
+            question="Can I bring a plus one?"
+            answer="We'd love to keep our celebration intimate. Your RSVP invitation will indicate if a plus one is included. If you have questions, please don't hesitate to reach out to us directly."
+          />
+          <FAQItem 
+            question="What about gifts?"
+            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the travel involved. If you'd still like to give, details will be shared closer to the date."
+          />
+          <FAQItem 
+            question="What about the Indian wedding?"
+            answer="We are planning a traditional Bengali Hindu wedding celebration in Kolkata, India. This will be a separate celebration, and dates are yet to be determined. More details will follow as plans take shape — stay tuned!"
+          />
+        </div>
+      </div>
+
       {/* Divider */}
       <div className="max-w-xl mx-auto px-6 mb-20">
         <div className="flex items-center justify-center gap-4">
@@ -407,47 +448,6 @@ const EventsPage = () => {
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      <div className="max-w-3xl mx-auto px-6 mt-20 mb-8">
-        <div className="text-center mb-10">
-          <h2 className="font-display text-3xl md:text-4xl text-[#b8956b] mb-3 tracking-wider">
-            FAQ
-          </h2>
-          <div className="w-16 h-[1px] bg-[#b8956b] mx-auto" />
-        </div>
-
-        <div className="space-y-4">
-          <FAQItem 
-            question="Why the short notice?"
-            answer="Due to the nature of the US immigration process, our wedding date depends on government timelines that are beyond our control. This means you may receive only 30 to 90 days' notice before the celebration. We truly appreciate your patience and flexibility in keeping some room in your schedule for us!"
-          />
-          <FAQItem 
-            question="Where will the US ceremony be held?"
-            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a beautiful and potentially remote area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
-          />
-          <FAQItem 
-            question="What should I wear?"
-            answer="For the Wyoming ceremony, think elegant outdoor attire — we'll be in nature, so comfortable yet dressy works well. Think cocktail or semi-formal. For the Kolkata celebrations, traditional Indian attire is warmly welcomed (sarees, kurtas) or formal western wear. More specific guidance will follow closer to both events."
-          />
-          <FAQItem 
-            question="Will there be accommodation options nearby?"
-            answer="Yes! We'll share recommended hotels and lodging in the Casper, Wyoming area once the date is confirmed. For the Kolkata wedding, we'll provide options ranging from nearby hotels to family homes. Travel details will be on the Travel page soon."
-          />
-          <FAQItem 
-            question="Can I bring a plus one?"
-            answer="We'd love to keep our celebration intimate. Your RSVP invitation will indicate if a plus one is included. If you have questions, please don't hesitate to reach out to us directly."
-          />
-          <FAQItem 
-            question="What about gifts?"
-            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the travel involved. If you'd still like to give, details will be shared closer to the date."
-          />
-          <FAQItem 
-            question="What about the Indian wedding?"
-            answer="We are planning a traditional Bengali Hindu wedding celebration in Kolkata, India. This will be a separate celebration, and dates are yet to be determined. More details will follow as plans take shape — stay tuned!"
-          />
-        </div>
-      </div>
 
       {/* Bottom Note */}
       <div className="max-w-3xl mx-auto px-6 mt-20 text-center">
