@@ -59,7 +59,7 @@ const GalleryPage = () => {
                   <img
                     src={image.src}
                     alt="Our moment"
-                    loading="lazy"
+                    loading="eager"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     style={{ objectPosition: 'center 25%' }}
                   />
