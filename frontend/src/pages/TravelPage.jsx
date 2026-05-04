@@ -67,6 +67,23 @@ const TravelPage = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Google Map */}
+              <div className="mt-8">
+                <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">Find Casper, Wyoming</h4>
+                <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15">
+                  <iframe
+                    title="Casper Wyoming Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185091.4572508484!2d-106.43089565!3d42.8501025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8760b0ae0e498525%3A0x3253e5e161fcfbec!2sCasper%2C%20WY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                    width="100%"
+                    height="280"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

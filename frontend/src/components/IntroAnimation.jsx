@@ -55,9 +55,9 @@ const IntroAnimation = ({ onComplete }) => {
 
   // Handle user clicking to start
   const handleStart = () => {
+    startMusic(); // Start music IMMEDIATELY on click
     setHasStarted(true);
     setPhase(1);
-    startMusic(); // Start the global music
   };
 
   useEffect(() => {
