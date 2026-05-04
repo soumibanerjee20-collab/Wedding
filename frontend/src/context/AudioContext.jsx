@@ -19,23 +19,29 @@ export const AudioProvider = ({ children }) => {
   // Start playing music (called when user clicks "Enter")
   const startMusic = useCallback(() => {
     if (audioRef.current && !hasStarted) {
+      // Set currentTime to 0 to ensure it plays from start
+      audioRef.current.currentTime = 0;
       audioRef.current.volume = 0.5;
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-        setHasStarted(true);
-        // Fade in from 0.5 to 0.8
-        let volume = 0.5;
-        const fadeIn = setInterval(() => {
-          if (volume < 0.8) {
-            volume += 0.05;
-            if (audioRef.current) {
-              audioRef.current.volume = Math.min(volume, 0.8);
+      setHasStarted(true);
+      setIsPlaying(true);
+      // Play immediately - audio should already be buffered via preload
+      const playPromise = audioRef.current.play();
+      if (playPromise) {
+        playPromise.then(() => {
+          // Fade in from 0.5 to 0.8
+          let volume = 0.5;
+          const fadeIn = setInterval(() => {
+            if (volume < 0.8) {
+              volume += 0.05;
+              if (audioRef.current) {
+                audioRef.current.volume = Math.min(volume, 0.8);
+              }
+            } else {
+              clearInterval(fadeIn);
             }
-          } else {
-            clearInterval(fadeIn);
-          }
-        }, 80);
-      }).catch(err => console.log('Audio play failed:', err));
+          }, 80);
+        }).catch(err => console.log('Audio play failed:', err));
+      }
     }
   }, [hasStarted]);
 

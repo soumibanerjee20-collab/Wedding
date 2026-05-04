@@ -56,8 +56,11 @@ const IntroAnimation = ({ onComplete }) => {
   // Handle user clicking to start
   const handleStart = () => {
     startMusic(); // Start music IMMEDIATELY on click
-    setHasStarted(true);
-    setPhase(1);
+    // Small delay before visual animation so first notes are heard
+    setTimeout(() => {
+      setHasStarted(true);
+      setPhase(1);
+    }, 300);
   };
 
   useEffect(() => {

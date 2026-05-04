@@ -61,31 +61,31 @@ const FAQPage = () => {
         <div className="space-y-4">
           <FAQItem 
             question="Why the short notice?"
-            answer="Due to the nature of the US immigration process, our wedding date depends on government timelines that are beyond our control. This means you may receive only 30 to 90 days' notice before the celebration. We truly appreciate your patience and flexibility in keeping some room in your schedule for us!"
+            answer="Our wedding date depends on Soumi's US immigration process, which has government timelines we can't control. This means you may receive only 30 to 90 days' notice before the celebration. We know that's not a lot of time, and we're so grateful for your patience and flexibility. It means more than you know!"
           />
           <FAQItem 
             question="Where will the US ceremony be held?"
-            answer="The wedding will be held in or near Casper, Wyoming. We anticipate the venue to be outdoors, in a beautiful and potentially remote area within 1 to 2 hours of Casper. A reception will follow at James's home afterwards. Exact details will be shared once confirmed."
+            answer="We'll be getting married in or near Casper, Wyoming. The venue will likely be outdoors somewhere beautiful, possibly in a remote area about 1 to 2 hours from town. After the ceremony, we'll head back to James's home for the reception. We'll share exact details as soon as we have them!"
           />
           <FAQItem 
             question="What should I wear?"
-            answer="For the Wyoming ceremony, think elegant outdoor attire — we'll be in nature, so comfortable yet dressy works well. Think cocktail or semi-formal. For the Kolkata celebrations, traditional Indian attire is warmly welcomed (sarees, kurtas) or formal western wear. More specific guidance will follow closer to both events."
+            answer="For Wyoming, think elegant but comfortable. We'll be outdoors in nature, so cocktail or semi-formal works great. For Kolkata, traditional Indian attire is warmly welcomed (sarees, kurtas, lehengas) or you can go with formal western wear. We'll send more specific guidance closer to each event."
           />
           <FAQItem 
             question="Will there be accommodation options nearby?"
-            answer="Yes! We'll share recommended hotels and lodging in the Casper, Wyoming area once the date is confirmed. For the Kolkata wedding, we'll provide options ranging from nearby hotels to family homes. Travel details will be on the Travel page soon."
+            answer="Absolutely! We'll share a list of recommended hotels and lodging in the Casper area once the date is set. For Kolkata, we'll have options from nearby hotels to family homes. Keep an eye on the Travel page for updates."
           />
           <FAQItem 
             question="Can I bring a plus one?"
-            answer="We'd love to keep our celebration intimate. Your RSVP invitation will indicate if a plus one is included. If you have questions, please don't hesitate to reach out to us directly."
+            answer="We'd love to keep things intimate. Your invitation will let you know if a plus one is included. If you're unsure, just reach out to us directly and we'll sort it out!"
           />
           <FAQItem 
             question="What about gifts?"
-            answer="Your presence at our wedding is the greatest gift we could ask for — especially given the travel involved. If you'd still like to give, details will be shared closer to the date."
+            answer="Honestly, your presence is the greatest gift. Just having you there to celebrate with us is all we could ask for. If you'd still like to give something, we'll share details closer to the date."
           />
           <FAQItem 
             question="What about the Indian wedding?"
-            answer="We are planning a traditional Bengali Hindu wedding celebration in Kolkata, India. This will be a separate celebration, and dates are yet to be determined. More details will follow as plans take shape — stay tuned!"
+            answer="We're planning a traditional Bengali Hindu wedding in Kolkata, India! This will be a separate celebration, and dates are still to be determined. We'll share all the details as plans take shape. Stay tuned!"
           />
         </div>
       </div>
