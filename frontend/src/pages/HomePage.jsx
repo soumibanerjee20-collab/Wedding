@@ -170,16 +170,18 @@ const WeddingCountdown = ({ visible }) => {
       {/* Thin divider */}
       <div className="w-20 h-[1px] bg-[#b8956b]/40 mx-auto mb-5" />
 
-      {/* Days countdown */}
-      <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-2 font-semibold">
+      {/* Countdown */}
+      <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-3 font-semibold">
         Counting Down To Forever
       </p>
-      <div className="flex items-baseline justify-center gap-3">
-        <span className="font-display text-5xl md:text-6xl text-[#6b5a1a] relative">
-          <span className="absolute -inset-x-4 -inset-y-1 bg-[#8a9a7c]/15 rounded-lg -z-10" />
-          {timeLeft.days}
-        </span>
-        <span className="text-[#4a4a42] text-base md:text-lg tracking-wider font-semibold">days to go</span>
+      <div className="flex items-center justify-center gap-2 md:gap-4">
+        <TimeBlock value={timeLeft.days} label="Days" />
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
+        <TimeBlock value={timeLeft.hours} label="Hours" />
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
+        <TimeBlock value={timeLeft.minutes} label="Mins" />
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
+        <TimeBlock value={timeLeft.seconds} label="Secs" />
       </div>
     </div>
   );
