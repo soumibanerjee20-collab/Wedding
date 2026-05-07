@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const ADMIN_PASSWORD = 'casper';
 
 const INVITE_MESSAGE = (name) => 
-  `Hi ${name}! After months apart, thousands of miles between us, and more video calls than we can count, the wait is finally over. We're getting married on September 9, 2026! Nothing would make our day more special than having you by our side. Your presence means the world to us. Celebrate with us: https://soumiandjameswedding.netlify.app (Password: sj2026)`;
+  `Hi ${name}!\n\nAfter months apart, thousands of miles between us, and more video calls than we can count, the wait is finally over. We're getting married on September 9, 2026!\n\nNothing would make our day more special than having you by our side. Your presence means the world to us.\n\nCelebrate with us:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
