@@ -62,7 +62,7 @@ export const timeline = [
   {
     date: "NOVEMBER 2023",
     title: "The Day Fate Intervened",
-    description: "A friend canceled lunch at the last minute. What seemed like a small inconvenience became the beautiful beginning of everything. Over that unexpected meal, they discovered shared dreams, exchanged stories of their journeys, and found something rare - a connection that felt both new and familiar. Friendship bloomed naturally, one conversation at a time.",
+    description: "A friend canceled lunch at the last minute. What seemed like a small inconvenience became the beautiful beginning of everything. Over that unexpected meal, they discovered shared dreams, exchanged stories of their journeys, and found something rare: a connection that felt both new and familiar. Friendship bloomed naturally, one conversation at a time.",
     location: "University of Essex",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/i8vhjlal_2048x1365.jpg"
@@ -80,7 +80,7 @@ export const timeline = [
   {
     date: "MARCH 2024",
     title: "A Question That Changed Everything",
-    description: "At Romano Lounge over lunch, James gathered his courage and asked a simple question: 'Would you come to Edinburgh with me?' Her eyes lit up. That evening, under soft lights and the hum of possibility, the boundaries of friendship began to blur. She said yes - to Edinburgh, and unknowingly, to the beginning of forever.",
+    description: "At Romano Lounge over lunch, James gathered his courage and asked a simple question: 'Would you come to Edinburgh with me?' Her eyes lit up. That evening, under soft lights and the hum of possibility, the boundaries of friendship began to blur. She said yes, to Edinburgh, and unknowingly, to the beginning of forever.",
     location: "Romano Lounge, Colchester",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/84a6xfiv_IMG_0418.jpeg"
@@ -89,7 +89,7 @@ export const timeline = [
   {
     date: "APRIL 2024",
     title: "Edinburgh, Where Magic Happened",
-    description: "The cobblestone streets of Victoria Street felt like stepping into a dream. Edinburgh Castle glowing against the night sky. Cozy dinners with wine and laughter. Their first real date at Howies restaurant, followed by moonlit walks along ancient streets. When Soumi finally saw the city she'd only imagined through Harry Potter books, tears of pure joy streamed down her face. James held space for her quietly, and in that moment, both knew - this was more than friendship. Saying goodbye at the train station, watching her face through the window as it pulled away, James felt fear of losing something precious. They'd found each other.",
+    description: "The cobblestone streets of Victoria Street felt like stepping into a dream. Edinburgh Castle glowing against the night sky. Cozy dinners with wine and laughter. Their first real date at Howies restaurant, followed by moonlit walks along ancient streets. When Soumi finally saw the city she'd only imagined through Harry Potter books, tears of pure joy streamed down her face. James held space for her quietly, and in that moment, both knew this was more than friendship. Saying goodbye at the train station, watching her face through the window as it pulled away, James felt fear of losing something precious. They'd found each other.",
     location: "Edinburgh, Scotland",
     photos: [
       "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/jb80d38v_IMG_0699.jpeg",
@@ -100,7 +100,7 @@ export const timeline = [
   {
     date: "MAY 2024",
     title: "No More Pretending",
-    description: "Over a dinner of sea bass, they made it official - not just dating, but building something intentional. A relationship with purpose, honoring each other's dreams. Every shared moment started making sense. The late-night study sessions, the coffee runs, the way their eyes found each other across crowded rooms. They were finally where they were meant to be.",
+    description: "Over a dinner of sea bass, they made it official. Not just dating, but building something intentional. A relationship with purpose, honoring each other's dreams. Every shared moment started making sense. The late-night study sessions, the coffee runs, the way their eyes found each other across crowded rooms. They were finally where they were meant to be.",
     location: "Colchester, England",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/xxlfmx1a_IMG_0953.jpeg"
@@ -109,7 +109,7 @@ export const timeline = [
   {
     date: "SUMMER 2024",
     title: "Welcome to the Family",
-    description: "Meeting James's family felt like coming home. Judy wrapped Soumi in warmth from the first moment - a mother-daughter bond that felt instant and true. Mark saw the way James looked at Soumi and knew before anyone said a word. Patrick and Michelle welcomed her like she'd always been part of their lives. Through video calls, James connected with Soumi's parents too, building bridges across continents with genuine warmth and respect.",
+    description: "Meeting James's family felt like coming home. Judy wrapped Soumi in warmth from the first moment, a mother-daughter bond that felt instant and true. Mark saw the way James looked at Soumi and knew before anyone said a word. Patrick and Michelle welcomed her like she'd always been part of their lives. Through video calls, James connected with Soumi's parents too, building bridges across continents with genuine warmth and respect.",
     location: "England",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/77wntpqf_c4641ccd-2468-4765-9832-06d4346fc397.jpeg"
@@ -118,7 +118,7 @@ export const timeline = [
   {
     date: "DECEMBER 2024",
     title: "Adventures and Revelations",
-    description: "Chester's historic streets during Christmas markets. Conwy, Wales with its ancient castle. At a candlelit steakhouse, watching Soumi laugh over wine, James felt something shift - this wasn't just a girlfriend, this was his future. During a challenging hike in Wales, Soumi surprised herself with every step forward. James watched her grow more confident, more fearless, and fell deeper in love with every mile they conquered together.",
+    description: "Chester's historic streets during Christmas markets. Conwy, Wales with its ancient castle. At a candlelit steakhouse, watching Soumi laugh over wine, James felt something shift. This wasn't just a girlfriend, this was his future. During a challenging hike in Wales, Soumi surprised herself with every step forward. James watched her grow more confident, more fearless, and fell deeper in love with every mile they conquered together.",
     location: "Chester & Conwy, Wales",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/mii6ps9u_IMG_3730.jpeg",
@@ -128,7 +128,7 @@ export const timeline = [
   {
     date: "MARCH 2025",
     title: "Finding Strength Together",
-    description: "The Peak District became their proving ground. Soumi ran her first 10K alongside James through Hope Valley's winding trails - something she never imagined she could do. With every step, she discovered strength she didn't know existed. He was there beside her, not leading, but running together. In those moments of shared triumph, they learned what partnership truly meant.",
+    description: "The Peak District became their proving ground. Soumi ran her first 10K alongside James through Hope Valley's winding trails, something she never imagined she could do. With every step, she discovered strength she didn't know existed. He was there beside her, not leading, but running together. In those moments of shared triumph, they learned what partnership truly meant.",
     location: "Peak District, England",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ec88udup_IMG_5172.jpeg"
@@ -137,7 +137,7 @@ export const timeline = [
   {
     date: "APRIL 2025",
     title: "Cornwall, The Last Adventure",
-    description: "Their final trip before graduation took them to Tintagel, Cornwall. Walking the dramatic coastal paths to Port William, watching the sunset paint the ocean in shades of gold and rose, James felt something profound settle in his heart. That evening, he called his parents - 'She's the one,' he told them. 'I'm sure.' The ancient cliffs, the endless horizon, the magic of Cornwall - it was the perfect ending to their UK chapter.",
+    description: "Their final trip before graduation took them to Tintagel, Cornwall. Walking the dramatic coastal paths to Port William, watching the sunset paint the ocean in shades of gold and rose, James felt something profound settle in his heart. That evening, he called his parents: 'She's the one,' he told them. 'I'm sure.' The ancient cliffs, the endless horizon, the magic of Cornwall. It was the perfect ending to their UK chapter.",
     location: "Tintagel, Cornwall",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/r83tpser_IMG_6447.jpeg"
@@ -146,7 +146,7 @@ export const timeline = [
   {
     date: "APRIL 10, 2025",
     title: "Graduation Day",
-    description: "They walked across that stage side by side at the University of Essex. Two strangers who became study partners, then friends, then everything to each other. Caps thrown in the air, diplomas in hand, and a whole beautiful future stretching ahead. The MBA brought them together - but what they built was so much more than academic.",
+    description: "They walked across that stage side by side at the University of Essex. Two strangers who became study partners, then friends, then everything to each other. Caps thrown in the air, diplomas in hand, and a whole beautiful future stretching ahead. The MBA brought them together, but what they built was so much more than academic.",
     location: "University of Essex",
     photos: [
       "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ezbjsnoo_IMG_3265.jpeg"
@@ -155,7 +155,7 @@ export const timeline = [
   {
     date: "APRIL 12, 2025",
     title: "The Hardest Goodbye",
-    description: "Heathrow Airport. The longest hug. Tears that wouldn't stop. James was leaving for Wyoming to start his new career, and every step toward that departure gate felt impossible. But beneath the heartbreak was something stronger - hope. A shared belief that this separation was temporary, that they were moving toward something beautiful. The visa process began, and with it, the countdown to forever.",
+    description: "Heathrow Airport. The longest hug. Tears that wouldn't stop. James was leaving for Wyoming to start his new career, and every step toward that departure gate felt impossible. But beneath the heartbreak was something stronger: hope. A shared belief that this separation was temporary, that they were moving toward something beautiful. The visa process began, and with it, the countdown to forever.",
     location: "Heathrow Airport, London",
     photos: [
       "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/vamb76r2_IMG_6897.jpeg"
@@ -164,7 +164,7 @@ export const timeline = [
   {
     date: "OCTOBER 2025",
     title: "A Surprise She'll Never Forget",
-    description: "After six long months apart, James returned to the UK. On a crisp autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a sparkling ring. Six months of video calls, of longing, of counting days - all leading to this magical moment. The friends who had watched their love story unfold from the very beginning were there to witness it. Time stood still. Her heart raced. He asked. She said yes.",
+    description: "After six long months apart, James returned to the UK. On a crisp autumn day at Colchester Castle Park, surrounded by their closest friends, he got down on one knee with a sparkling ring. Six months of video calls, of longing, of counting days, all leading to this magical moment. The friends who had watched their love story unfold from the very beginning were there to witness it. Time stood still. Her heart raced. He asked. She said yes.",
     location: "Colchester Castle Park, England",
     photos: [
       "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg"
@@ -366,7 +366,7 @@ export const travelInfo = {
     location: "Wyoming / Ohio, USA",
     description: "Where James works and where our US celebration will take place.",
     image: "https://images.unsplash.com/photo-1554600774-47a4ca56c66b?w=800&q=80",
-    history: "Casper sits at the crossroads of the Oregon, California, Mormon Pioneer, and Pony Express trails. Known as 'The Oil City' for its petroleum heritage, it's surrounded by stunning Wyoming landscapes including the nearby Grand Tetons - some of the most dramatic mountain scenery in North America.",
+    history: "Casper sits at the crossroads of the Oregon, California, Mormon Pioneer, and Pony Express trails. Known as 'The Oil City' for its petroleum heritage, it's surrounded by stunning Wyoming landscapes including the nearby Grand Tetons, some of the most dramatic mountain scenery in North America.",
     landmarks: [
       {
         name: "Grand Teton National Park",
@@ -382,7 +382,7 @@ export const travelInfo = {
       },
       {
         name: "Independence Rock",
-        description: "A massive granite dome carved with thousands of emigrant names from the 1800s Oregon Trail - history etched in stone."
+        description: "A massive granite dome carved with thousands of emigrant names from the 1800s Oregon Trail. History etched in stone."
       },
       {
         name: "Garden Creek Falls",
@@ -393,9 +393,9 @@ export const travelInfo = {
   indiaLocation: {
     title: "Kolkata, India",
     location: "Kolkata, West Bengal",
-    description: "The City of Joy - Soumi's hometown and where our Indian celebration will be held.",
+    description: "The City of Joy, Soumi's hometown and where our Indian celebration will be held.",
     image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
-    history: "Kolkata, formerly Calcutta, served as the capital of British India until 1911. It's a city of literature, art, film, and intellectual heritage - having produced Nobel laureates like Rabindranath Tagore and acclaimed filmmakers like Satyajit Ray. Known for its colonial architecture, vibrant Durga Puja festivals, legendary sweets, and the warmest hospitality you'll ever experience.",
+    history: "Kolkata, formerly Calcutta, served as the capital of British India until 1911. It's a city of literature, art, film, and intellectual heritage, having produced Nobel laureates like Rabindranath Tagore and acclaimed filmmakers like Satyajit Ray. Known for its colonial architecture, vibrant Durga Puja festivals, legendary sweets, and the warmest hospitality you'll ever experience.",
     landmarks: [
       {
         name: "Victoria Memorial",

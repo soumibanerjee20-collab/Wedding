@@ -185,7 +185,7 @@ const RSVPPage = () => {
                       <span className="text-[#5a6b50] font-medium text-sm">Dress Code</span>
                     </div>
                     <p className="text-[#3d3d38] text-sm">
-                      Formal Attire — Suits for men; cocktail dresses for women.
+                      Formal Attire. Suits for men, cocktail dresses for women.
                     </p>
                   </div>
                 </div>

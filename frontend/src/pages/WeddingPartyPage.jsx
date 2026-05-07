@@ -147,7 +147,7 @@ const WeddingPartyPage = () => {
             </h3>
             <p className="text-[#3d3d38] text-sm leading-relaxed">
               For our Indian celebration, every family member and friend is part of the wedding party. 
-              In Bengali tradition, the entire community comes together to bless the couple — no roles needed, 
+              In Bengali tradition, the entire community comes together to bless the couple. No roles needed, 
               just love, laughter, and togetherness.
             </p>
             <p className="text-[#5a5a52] text-xs mt-3 italic">
@@ -161,7 +161,7 @@ const WeddingPartyPage = () => {
           <div className="bg-[#8a9a7c] text-white p-8 rounded-lg">
             <Heart className="w-5 h-5 fill-white mx-auto mb-3" />
             <p className="font-cormorant text-xl md:text-2xl italic">
-              "Here's to the ones who make our love story even more beautiful — we couldn't do forever without you."
+              "Here's to the ones who make our love story even more beautiful. We couldn't do forever without you."
             </p>
           </div>
         </div>
