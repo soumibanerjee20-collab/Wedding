@@ -192,7 +192,7 @@ export const events = {
       {
         id: 1,
         name: "Rehearsal Dinner",
-        date: "August 7, 2026",
+        date: "September 8, 2026",
         time: "Evening",
         venue: "Restaurant TBA",
         location: "Casper, Wyoming",
