@@ -150,21 +150,39 @@ const WeddingCountdown = ({ visible }) => {
 
   return (
     <div className={`transition-all duration-1000 delay-900 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      <p className="text-[#5a6b4e] text-sm tracking-[0.2em] uppercase mb-4 font-semibold">
+      {/* Big date display */}
+      <div className="mb-6">
+        <p className="text-[#5a6b4e] text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
+          Save the Date
+        </p>
+        <div className="flex items-center justify-center gap-3 md:gap-5">
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">09</span>
+          <span className="font-cormorant text-3xl md:text-5xl text-[#b8956b] italic">.</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">09</span>
+          <span className="font-cormorant text-3xl md:text-5xl text-[#b8956b] italic">.</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">2026</span>
+        </div>
+        <p className="text-[#5a5a52] text-sm mt-2 tracking-wider">
+          Casper, Wyoming
+        </p>
+      </div>
+
+      {/* Thin divider */}
+      <div className="w-20 h-[1px] bg-[#b8956b]/40 mx-auto mb-5" />
+
+      {/* Countdown */}
+      <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-3 font-semibold">
         Counting Down To Forever
       </p>
-      <div className="flex items-center justify-center gap-3 md:gap-6">
+      <div className="flex items-center justify-center gap-2 md:gap-4">
         <TimeBlock value={timeLeft.days} label="Days" />
-        <span className="text-[#b8956b] text-2xl md:text-3xl font-bold mb-6">:</span>
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
         <TimeBlock value={timeLeft.hours} label="Hours" />
-        <span className="text-[#b8956b] text-2xl md:text-3xl font-bold mb-6">:</span>
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
         <TimeBlock value={timeLeft.minutes} label="Mins" />
-        <span className="text-[#b8956b] text-2xl md:text-3xl font-bold mb-6">:</span>
+        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
         <TimeBlock value={timeLeft.seconds} label="Secs" />
       </div>
-      <p className="text-[#5a5a52] text-sm mt-4 font-medium">
-        September 9, 2026
-      </p>
     </div>
   );
 };
