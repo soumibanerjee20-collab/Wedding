@@ -156,13 +156,13 @@ const WeddingCountdown = ({ visible }) => {
           Save the Date
         </p>
         <div className="flex items-center justify-center gap-3 md:gap-5">
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">09</span>
-          <span className="font-cormorant text-3xl md:text-5xl text-[#b8956b] italic">.</span>
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">09</span>
-          <span className="font-cormorant text-3xl md:text-5xl text-[#b8956b] italic">.</span>
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] font-bold">2026</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">09</span>
+          <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">09</span>
+          <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">2026</span>
         </div>
-        <p className="text-[#5a5a52] text-sm mt-2 tracking-wider">
+        <p className="text-[#4a4a42] text-sm mt-2 tracking-[0.15em] font-semibold">
           Casper, Wyoming
         </p>
       </div>
