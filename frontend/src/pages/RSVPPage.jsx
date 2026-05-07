@@ -187,9 +187,9 @@ const RSVPPage = () => {
               </div>
             </div>
 
-            {/* Indian Wedding Card */}
+            {/* Indian Wedding Card - Coming Soon */}
             <div 
-              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#E89B3C]/25 hover:border-[#E89B3C]/40 transition-all rounded-lg"
+              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#E89B3C]/25 rounded-lg opacity-75"
               data-testid="india-wedding-rsvp-card"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -207,30 +207,18 @@ const RSVPPage = () => {
                   </div>
                   <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
                     <Calendar className="w-4 h-4 text-[#D4740C]" />
-                    <span>November 5-6, 2027 (Tentative)</span>
+                    <span>Dates to be announced</span>
                   </div>
                   <p className="text-[#3d3d38] text-sm mb-4">
-                    A traditional Bengali celebration in the City of Joy. Join us for sangeet, mehendi, and a grand reception filled with rituals, blessings, music, and love!
+                    A traditional Bengali Hindu wedding celebration in the City of Joy. RSVP will open once details are finalized.
                   </p>
-                  
-                  {/* Dress Code */}
-                  <div className="bg-[#FFF9F0] p-4 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Shirt className="w-4 h-4 text-[#D4740C]" />
-                      <span className="text-[#B8540B] font-medium text-sm">Dress Code</span>
-                    </div>
-                    <p className="text-[#3d3d38] text-sm">
-                      Traditional Indian Attire — Sarees, lehengas, or elegant Indian wear for women; kurta-pajama, sherwani, or suits for men. Bright colors are encouraged!
-                    </p>
-                  </div>
                 </div>
                 
-                <button 
-                  onClick={() => setSelectedEvent('india')}
-                  className="px-6 py-3 bg-[#E89B3C] text-white rounded-full hover:bg-[#D4740C] transition-colors whitespace-nowrap cursor-pointer"
+                <div 
+                  className="px-6 py-3 bg-[#E89B3C]/30 text-[#B8540B] rounded-full text-sm tracking-wide whitespace-nowrap text-center"
                 >
-                  RSVP for Indian Wedding
-                </button>
+                  Coming Soon
+                </div>
               </div>
             </div>
 
