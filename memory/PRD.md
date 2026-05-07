@@ -1,54 +1,60 @@
 # Soumi & James Wedding Website - PRD
 
 ## Original Problem Statement
-Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a regal, elegant, magical, and classic feel.
+Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a regal, elegant, magical, and classic feel. Sage green, cream, and warm gold color palette. Two cultural celebrations: US Wedding in Casper, Wyoming (Sept 9, 2026) and Indian Wedding in Kolkata, India (TBD).
 
-## Design Requirements
-- **Color Palette:** Sage green (#8a9a7c, #6b7c5e), cream (#faf8f4), warm gold (#b8956b, #8B6914)
-- **Typography:** Elegant display fonts, Caveat for handwritten accents, Cormorant for quotes
-- **Decorations:** Sage green botanical leaf SVGs across all secondary pages
-- **Text:** Dark readable fonts (#2d2d28/#3d3d38), no font-light
+## Architecture
+- **Frontend**: React + TailwindCSS + React Router (deployed on Netlify)
+- **Backend**: FastAPI + MongoDB (used for admin features on preview)
+- **Admin**: localStorage-based guest management (Netlify-compatible)
+- **Deployment**: Netlify at https://soumiandjameswedding.netlify.app
 
-## Tech Stack
-- React, React Router, TailwindCSS, localStorage, Vercel deployment
+## What's Been Implemented
 
-## All Pages & Routes
-- `/` - Homepage (intro animation + countdown)
-- `/our-story` - Our Story (faded London backdrop)
-- `/timeline` - Timeline (polaroid photos, object-position: center 25%)
-- `/events` - Events (US + Indian dual themes)
-- `/wedding-party` - **NEW** Wedding Party (outdoor wedding backdrop)
-- `/gallery` - Gallery (polaroid style)
-- `/families` - Families (names + roles only, Bruno keeps description)
-- `/travel` - Travel (panoramic images, leaf decorations)
-- `/guestbook` - Guestbook (leaf decorations)
-- `/rsvp` - RSVP (button-only click, formal dress code)
+### Pages
+- Homepage (with countdown to Sept 9, 2026)
+- Our Story
+- Timeline
+- Events (US + Indian wedding sections)
+- Wedding Party
+- Gallery (polaroid-style)
+- Families
+- Travel & Stay (with Google Maps embed for Casper, WY)
+- FAQ (separate page, 7 questions)
+- Guestbook
+- RSVP (US wedding active, Indian wedding disabled/Coming Soon)
+- Admin (/admin, password: casper)
 
-## Key Dates & Venues
-- **US Wedding Ceremony**: August 8, 2026 — Outdoor, Casper, Wyoming
-- **US Reception**: August 8, 2026 — 4450 Smoke Rise Road, Casper WY 82604
-- **Indian Sangeet & Mehendi**: November 5, 2027 (Tentative) — Kolkata
-- **Indian Reception**: November 6, 2027 (Tentative) — Kolkata
+### Features
+- Password gate (password: sj2026) before site entry
+- Intro animation with background music ("I Get To Love You")
+- Audio starts immediately on click, 300ms before animation
+- Scroll-to-top on route change
+- Leaf decorations across pages
+- WhatsApp invite manager (Admin page, localStorage)
+- Invite message: "Hi [Name]! We're getting married! Nothing would make our day more special than having you by our side. Your presence means the world to us. Celebrate with us: https://soumiandjameswedding.netlify.app"
+- RSVP with meal preference (Vegetarian/Vegan/Non-Vegetarian) for US wedding
+- Post-RSVP guestbook prompt for all guests (attending or declining)
+- Indian wedding RSVP disabled with "Coming Soon"
+- Netlify _redirects file for SPA routing
+- Removed "Made with Emergent" watermark
 
-## Wedding Party (US Wedding)
-- **Bride's Best Women**: Mars, Devyani
-- **Groomsmen**: Patrick Adams, Robert Adams (Robby)
-- **Indian Wedding**: Everyone is part of the wedding party (Bengali tradition)
+### Cleanup Done
+- Removed VideoInvitePage, record_video.py, generate_sora_video.py
+- Removed video files and backend video endpoints
 
-## Key Files
-- `/app/frontend/src/data/mock.js` - All content data + wedding party
-- `/app/frontend/src/components/LeafDecorations.jsx` - Shared SVG components
-- `/app/frontend/src/pages/WeddingPartyPage.jsx` - NEW Wedding Party page
-- `/app/frontend/src/pages/*.jsx` - All page components
-- `/app/frontend/vercel.json` - Vercel deployment config
+## Pending / Future Tasks
+- P1: Full program itinerary (once date details finalized)
+- P2: Guest photo upload (QR code → Google Shared Album)
+- P3: Wedding registry links
+- P4: Dress code / Accommodation details
+- P5: Mobile responsiveness review
+- P6: Social meta tags (WhatsApp/Facebook link previews)
+- P7: Indian wedding RSVP (re-enable when ready)
+- P8: Update password from sj2026 if needed after date change
 
-## Backlog
-### P1
-- Vercel deployment debugging
-- Guest photo upload (QR code)
-- Wedding registry links
-- Map integration for venues
-
-### P2
-- Dress code page with visuals
-- Accommodation details when finalized
+## Key Credentials
+- Site password: sj2026
+- Admin password: casper
+- Wedding date: September 9, 2026
+- Live URL: https://soumiandjameswedding.netlify.app
