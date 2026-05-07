@@ -85,27 +85,39 @@ const RSVPPage = () => {
             <Check className="w-10 h-10 text-white" />
           </div>
           <h2 className="font-display text-3xl text-[#b8956b] mb-4">
-            {isDecline ? 'We\'ll Miss You!' : 'Thank You!'}
+            {isDecline ? 'We\'ll Miss You!' : 'We Can\'t Wait to See You!'}
           </h2>
           <p className="text-[#3d3d38] mb-8">
             {isDecline 
-              ? 'Your response has been recorded. We understand and will miss having you there!' 
-              : 'Your RSVP has been received. We\'re so excited to celebrate with you!'}
+              ? 'Your response has been recorded. We understand and will miss having you there.' 
+              : 'Your RSVP has been received. This is going to be such a special day with you there!'}
           </p>
           
-          {isDecline && (
+          {/* Guestbook prompt for everyone */}
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-6 border border-[#d4b896]/15 shadow-sm">
+            <Heart className="w-6 h-6 text-[#b8956b] mx-auto mb-3" />
+            <p className="font-cormorant text-xl text-[#3d3d38] italic mb-2">
+              {isDecline 
+                ? 'Even though you can\'t be there in person, your words mean the world to us.'
+                : 'Before you go, we\'d love to hear from you!'}
+            </p>
+            <p className="text-[#5a5a52] text-sm mb-5">
+              {isDecline
+                ? 'Drop a note in our guestbook? We\'ll read every single one.'
+                : 'Leave a wish, a piece of advice, or just say hi in our guestbook. We\'ll treasure every message.'}
+            </p>
             <button
               onClick={() => navigate('/guestbook')}
-              className="px-6 py-3 bg-[#b8956b] text-white rounded-full hover:bg-[#a07c5a] transition-colors mb-4 flex items-center gap-2 mx-auto"
+              className="px-6 py-3 bg-[#b8956b] text-white rounded-full hover:bg-[#a07c5a] transition-all hover:scale-105 flex items-center gap-2 mx-auto"
             >
               <MessageCircle className="w-5 h-5" />
-              Leave Your Wishes in Guestbook
+              Leave Your Wishes
             </button>
-          )}
+          </div>
           
           <button
             onClick={resetForm}
-            className={`px-6 py-3 ${isDecline ? 'bg-transparent border border-[#8a9a7c] text-[#5a6b50]' : 'bg-[#8a9a7c] text-white'} rounded-full hover:bg-[#6b7c5e] hover:text-white transition-colors`}
+            className="px-6 py-3 bg-transparent border border-[#8a9a7c]/40 text-[#5a6b50] rounded-full hover:bg-[#6b7c5e] hover:text-white transition-colors text-sm"
           >
             Submit Another RSVP
           </button>
