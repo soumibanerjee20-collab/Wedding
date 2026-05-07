@@ -111,8 +111,8 @@ const PasswordGate = ({ onSuccess }) => {
 const WeddingCountdown = ({ visible }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   
-  // Wedding date: August 8, 2026
-  const weddingDate = new Date('2026-08-08T00:00:00');
+  // Wedding date: September 9, 2026
+  const weddingDate = new Date('2026-09-09T00:00:00');
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -163,7 +163,7 @@ const WeddingCountdown = ({ visible }) => {
         <TimeBlock value={timeLeft.seconds} label="Secs" />
       </div>
       <p className="text-[#5a5a52] text-sm mt-4 font-medium">
-        August 8, 2026
+        September 9, 2026
       </p>
     </div>
   );

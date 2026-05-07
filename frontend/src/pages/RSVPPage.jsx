@@ -13,6 +13,7 @@ const RSVPPage = () => {
     attending: '',
     numberOfGuests: '1',
     plusOneNames: '',
+    dietaryPreference: '',
     dietaryRestrictions: [],
     otherDietary: '',
     songRequest: '',
@@ -60,6 +61,7 @@ const RSVPPage = () => {
       attending: '',
       numberOfGuests: '1',
       plusOneNames: '',
+      dietaryPreference: '',
       dietaryRestrictions: [],
       otherDietary: '',
       songRequest: '',
@@ -158,7 +160,7 @@ const RSVPPage = () => {
                   </div>
                   <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
                     <Calendar className="w-4 h-4 text-[#6b7c5e]" />
-                    <span>August 8, 2026</span>
+                    <span>September 9, 2026</span>
                   </div>
                   <p className="text-[#3d3d38] text-sm mb-4">
                     Join us for an intimate outdoor ceremony followed by a reception at our new home, surrounded by the beautiful Wyoming landscape.
@@ -257,7 +259,7 @@ const RSVPPage = () => {
                 {selectedEvent === 'us' ? 'RSVP: US Wedding' : 'RSVP: Indian Wedding & Reception'}
               </h2>
               <p className="text-[#5a5a52] text-sm mb-6">
-                {selectedEvent === 'us' ? 'August 8, 2026 • Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
+                {selectedEvent === 'us' ? 'September 9, 2026 • Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -410,35 +412,66 @@ const RSVPPage = () => {
                       </div>
                     )}
 
-                    {/* Dietary Restrictions */}
+                    {/* Dietary Preferences */}
                     <div>
                       <label className="block text-[#3d3d38] text-sm font-medium mb-3">
                         <Utensils className="w-4 h-4 inline mr-2" />
-                        Dietary Preferences / Restrictions
+                        {selectedEvent === 'us' ? 'Meal Preference *' : 'Dietary Preferences / Restrictions'}
                       </label>
-                      <div className="grid grid-cols-2 gap-3">
-                        {['Vegetarian', 'Non-Vegetarian', 'Gluten-Free', 'Vegan', 'No Restrictions'].map((option) => (
-                          <label key={option} className="flex items-center gap-2 cursor-pointer">
-                            <input
-                              type="checkbox"
-                              name="dietary"
-                              value={option}
-                              checked={formData.dietaryRestrictions.includes(option)}
-                              onChange={handleInputChange}
-                              className={`w-4 h-4 ${selectedEvent === 'us' ? 'accent-[#8a9a7c]' : 'accent-[#D4740C]'}`}
-                            />
-                            <span className="text-[#3d3d38] text-sm">{option}</span>
-                          </label>
-                        ))}
-                      </div>
-                      <input
-                        type="text"
-                        name="otherDietary"
-                        value={formData.otherDietary}
-                        onChange={handleInputChange}
-                        className="w-full mt-3 px-4 py-2 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-sm text-[#3d3d38]"
-                        placeholder="Other allergies or dietary needs..."
-                      />
+                      
+                      {selectedEvent === 'us' ? (
+                        <>
+                          <div className="space-y-3">
+                            {['Vegetarian', 'Vegan', 'Non-Vegetarian'].map((option) => (
+                              <label key={option} className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${formData.dietaryPreference === option ? 'bg-[#f0f4ed] border border-[#8a9a7c]/40' : 'border border-transparent hover:bg-[#faf8f4]'}`}>
+                                <input
+                                  type="radio"
+                                  name="dietaryPreference"
+                                  value={option}
+                                  checked={formData.dietaryPreference === option}
+                                  onChange={handleInputChange}
+                                  className="w-4 h-4 accent-[#8a9a7c]"
+                                />
+                                <span className="text-[#3d3d38] text-sm">{option}</span>
+                              </label>
+                            ))}
+                          </div>
+                          <input
+                            type="text"
+                            name="otherDietary"
+                            value={formData.otherDietary}
+                            onChange={handleInputChange}
+                            className="w-full mt-3 px-4 py-2 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-sm text-[#3d3d38]"
+                            placeholder="Any allergies or other dietary needs?"
+                          />
+                        </>
+                      ) : (
+                        <>
+                          <div className="grid grid-cols-2 gap-3">
+                            {['Vegetarian', 'Non-Vegetarian', 'Gluten-Free', 'Vegan', 'No Restrictions'].map((option) => (
+                              <label key={option} className="flex items-center gap-2 cursor-pointer">
+                                <input
+                                  type="checkbox"
+                                  name="dietary"
+                                  value={option}
+                                  checked={formData.dietaryRestrictions.includes(option)}
+                                  onChange={handleInputChange}
+                                  className="w-4 h-4 accent-[#D4740C]"
+                                />
+                                <span className="text-[#3d3d38] text-sm">{option}</span>
+                              </label>
+                            ))}
+                          </div>
+                          <input
+                            type="text"
+                            name="otherDietary"
+                            value={formData.otherDietary}
+                            onChange={handleInputChange}
+                            className="w-full mt-3 px-4 py-2 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-sm text-[#3d3d38]"
+                            placeholder="Other allergies or dietary needs..."
+                          />
+                        </>
+                      )}
                     </div>
 
                     {/* Song Request */}

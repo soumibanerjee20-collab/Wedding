@@ -186,7 +186,7 @@ export const events = {
     title: "American Wedding",
     subtitle: "Where The West Meets Forever",
     location: "Casper, Wyoming",
-    date: "August 8, 2026",
+    date: "September 9, 2026",
     image: "https://images.unsplash.com/photo-1554600774-47a4ca56c66b?w=800&q=80",
     events: [
       {
@@ -202,7 +202,7 @@ export const events = {
       {
         id: 2,
         name: "Wedding Ceremony",
-        date: "August 8, 2026",
+        date: "September 9, 2026",
         time: "Afternoon",
         venue: "Outdoor Ceremony",
         location: "Casper, Wyoming",
@@ -212,7 +212,7 @@ export const events = {
       {
         id: 3,
         name: "Reception",
-        date: "August 8, 2026",
+        date: "September 9, 2026",
         time: "Evening",
         venue: "4450 Smoke Rise Road, Casper WY 82604",
         location: "Our New Home",
