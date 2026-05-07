@@ -12,17 +12,17 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 ## What's Been Implemented
 
 ### Pages
-- Homepage (with countdown to Sept 9, 2026)
+- Homepage (with big 09.09.2026 date display + full countdown)
 - Our Story
-- Timeline
+- Timeline (polaroid photos, alternating layout)
 - Events (US + Indian wedding sections)
 - Wedding Party
 - Gallery (polaroid-style)
 - Families
 - Travel & Stay (with Google Maps embed for Casper, WY)
-- FAQ (separate page, 7 questions)
+- FAQ (separate page, 7 questions, warm personal tone)
 - Guestbook
-- RSVP (US wedding active, Indian wedding disabled/Coming Soon)
+- RSVP (US wedding active with meal preference, Indian wedding disabled/Coming Soon)
 - Admin (/admin, password: casper)
 
 ### Features
@@ -32,26 +32,29 @@ Build a pixel-perfect, multi-page wedding website for "Soumi & James" with a reg
 - Scroll-to-top on route change
 - Leaf decorations across pages
 - WhatsApp invite manager (Admin page, localStorage)
-- Invite message: "Hi [Name]! We're getting married! Nothing would make our day more special than having you by our side. Your presence means the world to us. Celebrate with us: https://soumiandjameswedding.netlify.app"
+- Invite message includes date, personal story, website link, and password
 - RSVP with meal preference (Vegetarian/Vegan/Non-Vegetarian) for US wedding
 - Post-RSVP guestbook prompt for all guests (attending or declining)
 - Indian wedding RSVP disabled with "Coming Soon"
 - Netlify _redirects file for SPA routing
 - Removed "Made with Emergent" watermark
+- All dashes removed from user-facing content
+- Google Maps embed on Travel page
 
-### Cleanup Done
-- Removed VideoInvitePage, record_video.py, generate_sora_video.py
-- Removed video files and backend video endpoints
+### Key Dates
+- US Wedding: September 9, 2026
+- Rehearsal Dinner: September 8, 2026
+- Indian Wedding: TBD (Kolkata, India)
 
 ## Pending / Future Tasks
-- P1: Full program itinerary (once date details finalized)
-- P2: Guest photo upload (QR code → Google Shared Album)
+- P1: Full program itinerary (once ceremony details finalized)
+- P2: Guest photo upload (QR code -> Google Shared Album)
 - P3: Wedding registry links
-- P4: Dress code / Accommodation details
+- P4: Dress code / Accommodation details update
 - P5: Mobile responsiveness review
 - P6: Social meta tags (WhatsApp/Facebook link previews)
 - P7: Indian wedding RSVP (re-enable when ready)
-- P8: Update password from sj2026 if needed after date change
+- P8: Update password from sj2026 if needed
 
 ## Key Credentials
 - Site password: sj2026
