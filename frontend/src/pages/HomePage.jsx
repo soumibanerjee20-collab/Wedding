@@ -171,12 +171,14 @@ const WeddingCountdown = ({ visible }) => {
       <div className="w-20 h-[1px] bg-[#b8956b]/40 mx-auto mb-5" />
 
       {/* Days countdown */}
-      <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-2 font-semibold">
-        Counting Down To Forever
-      </p>
-      <div className="flex items-center justify-center gap-3">
-        <span className="font-display text-4xl md:text-5xl text-[#6b5a1a]">{timeLeft.days}</span>
-        <span className="text-[#5a5a52] text-base md:text-lg tracking-wider font-medium">days to go</span>
+      <div className="inline-flex flex-col items-center bg-white/80 backdrop-blur-sm rounded-2xl px-10 py-5 shadow-md border border-[#b8956b]/20">
+        <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-2 font-semibold">
+          Counting Down To Forever
+        </p>
+        <div className="flex items-baseline justify-center gap-3">
+          <span className="font-display text-5xl md:text-6xl text-[#6b5a1a]">{timeLeft.days}</span>
+          <span className="text-[#5a5a52] text-base md:text-lg tracking-wider font-medium">days to go</span>
+        </div>
       </div>
     </div>
   );
