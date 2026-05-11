@@ -187,7 +187,7 @@ export const events = {
     subtitle: "Where The West Meets Forever",
     location: "Casper, Wyoming",
     date: "September 9, 2026",
-    image: "https://images.unsplash.com/photo-1554600774-47a4ca56c66b?w=800&q=80",
+    image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/15nubjk7_WhatsApp%20Image%202026-05-10%20at%2017.38.18.jpeg",
     events: [
       {
         id: 1,
