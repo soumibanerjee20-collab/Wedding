@@ -9,7 +9,7 @@ const TimelinePage = () => {
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=1920&q=80')`,
+          backgroundImage: `url('https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/tk08slwj_WhatsApp%20Image%202026-05-09%20at%2020.19.06.jpeg')`,
         }}
       >
         <div className="absolute inset-0 bg-[#faf8f4]/75" />
