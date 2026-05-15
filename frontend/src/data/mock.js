@@ -226,7 +226,7 @@ export const events = {
     subtitle: "Where Tradition Meets Love",
     location: "Kolkata, India",
     date: "November 5-6, 2027 (Tentative)",
-    image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
+    image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/89ivhx05_87570a88-61e5-4c39-94f0-9dd3d8504dee.jpg",
     events: [
       {
         id: 4,
@@ -394,7 +394,7 @@ export const travelInfo = {
     title: "Kolkata, India",
     location: "Kolkata, West Bengal",
     description: "The City of Joy, Soumi's hometown and where our Indian celebration will be held.",
-    image: "https://images.unsplash.com/photo-1558431382-27e303142255?w=800&q=80",
+    image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/tbzn52uf_beautiful-kolkata-beautiful-bengal-%E0%A6%AC-%E0%A6%B2-%E0%A6%B0-%E0%A6%AE-%E0%A6%9F-%E0%A6%AC-%E0%A6%B2-%E0%A6%B0-%E0%A6%9C%E0%A6%B2-%E0%A6%9B-%E0%A6%AC-%E0%A6%B8-v0-edv1cqskhydb1.png.webp",
     history: "Kolkata, formerly Calcutta, served as the capital of British India until 1911. It's a city of literature, art, film, and intellectual heritage, having produced Nobel laureates like Rabindranath Tagore and acclaimed filmmakers like Satyajit Ray. Known for its colonial architecture, vibrant Durga Puja festivals, legendary sweets, and the warmest hospitality you'll ever experience.",
     landmarks: [
       {
