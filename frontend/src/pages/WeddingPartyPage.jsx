@@ -71,7 +71,7 @@ const WeddingPartyPage = () => {
                 >
                   <div className="flex items-center gap-5">
                     {member.photo && (
-                      <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#d4b896]/30 shadow-sm">
+                      <div className="w-28 h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#d4b896]/30 shadow-sm">
                         <img src={member.photo} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
                       </div>
                     )}
