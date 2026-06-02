@@ -5,6 +5,15 @@ import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDeco
 const RegistryPage = () => {
   return (
     <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/73ckz57w_WhatsApp%20Image%202026-05-21%20at%2017.18.48.jpeg')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-[#faf8f4]/85" />
+      </div>
       {/* Leaf Decorations */}
       <EucalyptusBranch className="absolute top-20 left-0 w-20 md:w-28 h-auto text-[#8a9a7c]" />
       <EucalyptusBranch className="absolute top-20 right-0 w-20 md:w-28 h-auto text-[#8a9a7c]" flip />
