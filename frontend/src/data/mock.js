@@ -21,6 +21,7 @@ export const navigationItems = [
   { id: 'families', label: 'FAMILIES', path: '/families' },
   { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
   { id: 'faq', label: 'FAQ', path: '/faq' },
+  { id: 'registry', label: 'REGISTRY', path: '/registry' },
   { id: 'guestbook', label: 'GUESTBOOK', path: '/guestbook' },
   { id: 'rsvp', label: 'RSVP', path: '/rsvp' }
 ];

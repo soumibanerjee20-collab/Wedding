@@ -18,6 +18,7 @@ import RSVPPage from "./pages/RSVPPage";
 import GuestbookPage from "./pages/GuestbookPage";
 import WeddingPartyPage from "./pages/WeddingPartyPage";
 import FAQPage from "./pages/FAQPage";
+import RegistryPage from "./pages/RegistryPage";
 import AdminPage from "./pages/AdminPage";
 
 const AppContent = () => {
@@ -43,6 +44,7 @@ const AppContent = () => {
           <Route path="/travel" element={<TravelPage />} />
           <Route path="/rsvp" element={<RSVPPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/registry" element={<RegistryPage />} />
           <Route path="/guestbook" element={<GuestbookPage />} />
         </Routes>
       </main>
