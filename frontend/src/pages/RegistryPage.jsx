@@ -44,7 +44,7 @@ const RegistryPage = () => {
             Amazon Wedding Registry
           </h3>
           <p className="text-[#5a5a52] text-sm mb-6">
-            A few things to help us build our home in Wyoming.
+            A few things we've picked out to help us start this next chapter together.
           </p>
           <a
             href="https://www.amazon.com/wedding/share/soumiandjameswedding2026"
