@@ -81,7 +81,7 @@ const FAQPage = () => {
           />
           <FAQItem 
             question="What about gifts?"
-            answer="Honestly, your presence is the greatest gift. Just having you there to celebrate with us is all we could ask for. If you'd still like to give something, we'll share details closer to the date."
+            answer="Your presence is truly the greatest gift. Just having you there to celebrate with us is all we could ask for. If you'd still like to give something, we've set up a small registry. You can find it on our Registry page."
           />
           <FAQItem 
             question="What about the Indian wedding?"
