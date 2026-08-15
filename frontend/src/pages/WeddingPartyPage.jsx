@@ -37,7 +37,7 @@ const WeddingPartyPage = () => {
             The incredible humans standing beside us as we say "I do" in Wyoming
           </p>
           <p className="text-[#6b7c5e] text-sm mt-3 tracking-wide">
-            September 9, 2026 &bull; Casper, Wyoming
+            October 25, 2026 &bull; Casper, Wyoming
           </p>
         </div>
 

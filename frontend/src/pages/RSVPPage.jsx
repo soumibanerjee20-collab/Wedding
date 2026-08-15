@@ -172,7 +172,7 @@ const RSVPPage = () => {
                   </div>
                   <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
                     <Calendar className="w-4 h-4 text-[#6b7c5e]" />
-                    <span>September 9, 2026</span>
+                    <span>October 25, 2026</span>
                   </div>
                   <p className="text-[#3d3d38] text-sm mb-4">
                     Join us for an intimate outdoor ceremony followed by a reception at our new home, surrounded by the beautiful Wyoming landscape.
@@ -259,7 +259,7 @@ const RSVPPage = () => {
                 {selectedEvent === 'us' ? 'RSVP: US Wedding' : 'RSVP: Indian Wedding & Reception'}
               </h2>
               <p className="text-[#5a5a52] text-sm mb-6">
-                {selectedEvent === 'us' ? 'September 9, 2026 • Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
+                {selectedEvent === 'us' ? 'October 25, 2026 • Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">

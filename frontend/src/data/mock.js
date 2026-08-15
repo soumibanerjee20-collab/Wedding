@@ -187,13 +187,13 @@ export const events = {
     title: "American Wedding",
     subtitle: "Where The West Meets Forever",
     location: "Casper, Wyoming",
-    date: "September 9, 2026",
+    date: "October 25, 2026",
     image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/15nubjk7_WhatsApp%20Image%202026-05-10%20at%2017.38.18.jpeg",
     events: [
       {
         id: 1,
         name: "Rehearsal Dinner",
-        date: "September 8, 2026",
+        date: "October 24, 2026",
         time: "Evening",
         venue: "Restaurant TBA",
         location: "Casper, Wyoming",
@@ -203,7 +203,7 @@ export const events = {
       {
         id: 2,
         name: "Wedding Ceremony",
-        date: "September 9, 2026",
+        date: "October 25, 2026",
         time: "Afternoon",
         venue: "Outdoor Ceremony",
         location: "Casper, Wyoming",
@@ -213,7 +213,7 @@ export const events = {
       {
         id: 3,
         name: "Reception",
-        date: "September 9, 2026",
+        date: "October 25, 2026",
         time: "Evening",
         venue: "4450 Smoke Rise Road, Casper WY 82604",
         location: "Our New Home",
