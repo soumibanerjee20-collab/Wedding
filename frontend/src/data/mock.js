@@ -183,8 +183,8 @@ export const timeline = [
   {
     date: "NOW",
     title: "Counting Down to Forever",
-    description: "They're finally in the same place, in the same home, under the same sky. No more video calls across time zones, no more counting days. Just morning coffee together, evening walks, and the excitement of planning the most beautiful day of their lives. The countdown to October 25th has begun, and every day feels like a gift.",
-    location: "Casper, Wyoming",
+    description: "An ocean apart but never truly separated. Video calls that bridge time zones. Messages that say 'I love you' at midnight and dawn. The visa paperwork is underway, each form a step closer to home. Every day apart is one day closer to the moment she arrives in Wyoming, to the life they'll build together. Distance is just a temporary chapter in their forever story.",
+    location: "Wyoming & India",
     photos: [
       "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/x50vhte2_IMG_9275.jpeg"
     ]
