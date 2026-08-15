@@ -172,21 +172,21 @@ export const timeline = [
     ]
   },
   {
-    date: "JULY 16, 2026",
-    title: "Home at Last",
-    description: "After all the waiting, the paperwork, and the prayers, the day finally arrived. Soumi landed in Denver on July 16th, and there at the airport was James with his mom Judy, ready to drive her to their new home. The 4-hour drive from Denver to Casper felt like a dream. The wide open Wyoming sky, the endless prairies, and the man she loved right beside her. When they pulled up to the house in Casper, Soumi stepped out and took a deep breath of mountain air. She was finally home.",
-    location: "Denver to Casper, Wyoming",
-    photos: [
-      "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ojn0o52l_148AA98A-A0A4-4DCD-A54A-320C0C871D73.jpeg"
-    ]
-  },
-  {
     date: "NOW",
     title: "Counting Down to Forever",
     description: "An ocean apart but never truly separated. Video calls that bridge time zones. Messages that say 'I love you' at midnight and dawn. The visa paperwork is underway, each form a step closer to home. Every day apart is one day closer to the moment she arrives in Wyoming, to the life they'll build together. Distance is just a temporary chapter in their forever story.",
     location: "Wyoming & India",
     photos: [
       "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/x50vhte2_IMG_9275.jpeg"
+    ]
+  },
+  {
+    date: "JULY 16, 2026",
+    title: "Home at Last",
+    description: "After all the counting, all the waiting, and all those prayers, the day finally came. Soumi landed in Denver on July 16th, and there at the airport was James with his mom Judy, ready to take her home. The 4-hour drive from Denver to Casper felt like a dream. The wide open Wyoming sky, the endless prairies, and the man she loved right beside her. When they pulled up to the house in Casper, she took a deep breath of mountain air. After all those days of counting down to forever, she was finally with him. She was finally home.",
+    location: "Denver to Casper, Wyoming",
+    photos: [
+      "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ojn0o52l_148AA98A-A0A4-4DCD-A54A-320C0C871D73.jpeg"
     ]
   }
 ];
