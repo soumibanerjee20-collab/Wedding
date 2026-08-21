@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 const ADMIN_PASSWORD = 'casper';
 
-const INVITE_IMAGE_URL = 'https://soumiandjameswedding.netlify.app/wedding-invite-card.jpg';
+const SITE_URL = 'https://soumiandjameswedding.netlify.app?v=5';
 
 const WEDDING_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026\n\nView your invitation:\n${INVITE_IMAGE_URL}`;
+  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\n${SITE_URL}\n\nPassword: sj2026`;
 
 const REHEARSAL_AND_WEDDING_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married!*\n\nAs one of our closest family and friends, we would love for you to join us for both celebrations:\n\n*Rehearsal Dinner: October 24, 2026*\nAn intimate evening of stories, laughter, and love the night before the big day.\n\n*Wedding Ceremony & Reception: October 25, 2026*\nAt the Tate Pumphouse, Casper, Wyoming.\n\nCome celebrate with us under the wide Wyoming sky, surrounded by the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026\n\nView your invitation:\n${INVITE_IMAGE_URL}`;
+  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married!*\n\nAs one of our closest family and friends, we would love for you to join us for both celebrations:\n\n*Rehearsal Dinner: October 24, 2026*\nAn intimate evening of stories, laughter, and love the night before the big day.\n\n*Wedding Ceremony & Reception: October 25, 2026*\nAt the Tate Pumphouse, Casper, Wyoming.\n\nCome celebrate with us under the wide Wyoming sky, surrounded by the people we love most.\n\nFormal invitation and all the details:\n${SITE_URL}\n\nPassword: sj2026`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
