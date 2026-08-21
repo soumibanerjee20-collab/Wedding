@@ -139,7 +139,7 @@ const AdminPage = () => {
     const message = getMessage(guest, inviteType);
     try {
       // Fetch the invite image as a blob
-      const res = await fetch('/wedding-invite-card.jpg');
+      const res = await fetch('/invite-v2.jpg');
       const blob = await res.blob();
       const file = new File([blob], 'Soumi-James-Wedding-Invite.jpg', { type: 'image/jpeg' });
 
@@ -278,13 +278,13 @@ const AdminPage = () => {
           {/* Invite Card Preview & Download */}
           <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl flex items-center gap-5"
                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
-            <img src="/wedding-invite-card.jpg" alt="Invite Card" className="w-20 h-28 object-cover rounded-md border border-white/10" />
+            <img src="/invite-v2.jpg" alt="Invite Card" className="w-20 h-28 object-cover rounded-md border border-white/10" />
             <div className="flex-1">
               <p className="text-sm mb-1" style={{ color: '#d4c4a8' }}>Wedding Invite Card</p>
               <p className="text-xs mb-3" style={{ color: 'rgba(212,184,150,0.5)' }}>
                 Download this image first. When sending via WA or SMS, attach it manually along with the text message.
               </p>
-              <a href="/wedding-invite-card.jpg" download="Soumi-James-Wedding-Invite.jpg"
+              <a href="/invite-v2.jpg" download="Soumi-James-Wedding-Invite.jpg"
                  className="inline-block px-4 py-2 rounded-lg text-xs tracking-wider transition-all hover:scale-105"
                  style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}>
                 Download Image
