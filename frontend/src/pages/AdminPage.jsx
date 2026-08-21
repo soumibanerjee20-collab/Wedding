@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 const ADMIN_PASSWORD = 'casper';
 
+const INVITE_IMAGE_URL = 'https://soumiandjameswedding.netlify.app/wedding-invite-card.jpg';
+
 const WEDDING_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026`;
+  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026\n\nView your invitation:\n${INVITE_IMAGE_URL}`;
 
 const REHEARSAL_AND_WEDDING_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married!*\n\nAs one of our closest family and friends, we would love for you to join us for both celebrations:\n\n*Rehearsal Dinner: October 24, 2026*\nAn intimate evening of stories, laughter, and love the night before the big day.\n\n*Wedding Ceremony & Reception: October 25, 2026*\nAt the Tate Pumphouse, Casper, Wyoming.\n\nCome celebrate with us under the wide Wyoming sky, surrounded by the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026`;
+  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married!*\n\nAs one of our closest family and friends, we would love for you to join us for both celebrations:\n\n*Rehearsal Dinner: October 24, 2026*\nAn intimate evening of stories, laughter, and love the night before the big day.\n\n*Wedding Ceremony & Reception: October 25, 2026*\nAt the Tate Pumphouse, Casper, Wyoming.\n\nCome celebrate with us under the wide Wyoming sky, surrounded by the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026\n\nView your invitation:\n${INVITE_IMAGE_URL}`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -131,6 +133,38 @@ const AdminPage = () => {
       setTimeout(() => setCopied(null), 2000);
       markInvited(guest.id, 'copied', inviteType);
     });
+  };
+
+  const handleShare = async (guest, inviteType) => {
+    const message = getMessage(guest, inviteType);
+    try {
+      // Fetch the invite image as a blob
+      const res = await fetch('/wedding-invite-card.jpg');
+      const blob = await res.blob();
+      const file = new File([blob], 'Soumi-James-Wedding-Invite.jpg', { type: 'image/jpeg' });
+
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          text: message,
+          files: [file],
+        });
+        markInvited(guest.id, 'shared', inviteType);
+      } else {
+        // Fallback: copy message and alert to attach image manually
+        await navigator.clipboard.writeText(message);
+        setCopied(guest.id + inviteType);
+        setTimeout(() => setCopied(null), 2000);
+        alert('Message copied! Please paste in WhatsApp and attach the invite image from your gallery.');
+        markInvited(guest.id, 'copied', inviteType);
+      }
+    } catch (err) {
+      // If share was cancelled or failed, try clipboard
+      try {
+        await navigator.clipboard.writeText(message);
+        setCopied(guest.id + inviteType);
+        setTimeout(() => setCopied(null), 2000);
+      } catch {}
+    }
   };
 
   const handleDelete = (guestId) => {
@@ -365,6 +399,11 @@ const AdminPage = () => {
                 {/* Wedding invite buttons */}
                 <div className="flex gap-1.5 items-center">
                   <span className="text-xs mr-1" style={{ color: 'rgba(106,130,108,0.6)' }}>Wedding:</span>
+                  <button onClick={() => handleShare(guest, 'wedding')}
+                    className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
+                    style={{ background: 'rgba(147,51,234,0.15)', border: '1px solid rgba(147,51,234,0.3)', color: '#a78bfa' }}>
+                    Share
+                  </button>
                   <button onClick={() => handleWhatsApp(guest, 'wedding')}
                     className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                     style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
@@ -386,6 +425,11 @@ const AdminPage = () => {
                 {guest.group === 'rehearsal' && (
                   <div className="flex gap-1.5 items-center">
                     <span className="text-xs mr-1" style={{ color: 'rgba(184,149,107,0.6)' }}>Dinner:</span>
+                    <button onClick={() => handleShare(guest, 'rehearsal')}
+                      className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
+                      style={{ background: 'rgba(147,51,234,0.15)', border: '1px solid rgba(147,51,234,0.3)', color: '#a78bfa' }}>
+                      Share
+                    </button>
                     <button onClick={() => handleWhatsApp(guest, 'rehearsal')}
                       className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                       style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
