@@ -70,12 +70,12 @@ const TravelPage = () => {
                 <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">
                   Wedding Venue: Tate Pumphouse
                 </h4>
-                <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15">
+                <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15 transition-all duration-500" style={{ height: selectedHotel ? '450px' : '300px' }}>
                   <iframe
                     title="Tate Pumphouse Map"
                     src={getMapSrc(selectedHotel)}
                     width="100%"
-                    height="300"
+                    height="100%"
                     style={{ border: 0 }}
                     allowFullScreen=""
                     loading="lazy"
