@@ -46,6 +46,18 @@ class GuestCreate(BaseModel):
     name: str
     phone: str
 
+class RSVPSubmit(BaseModel):
+    name: str
+    email: str = ""
+    phone: str = ""
+    attending: str
+    numberOfGuests: str = "1"
+    plusOneNames: str = ""
+    dietaryPreference: str = ""
+    otherDietary: str = ""
+    songRequest: str = ""
+    source: str = "website"
+
 class GuestUpdate(BaseModel):
     name: Optional[str] = None
     phone: Optional[str] = None
@@ -138,6 +150,34 @@ async def delete_guest(guest_id: str, x_admin_token: str = Header()):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Guest not found")
     return {"success": True}
+
+
+# RSVP routes (no admin auth needed - guests submit these)
+@api_router.post("/rsvp")
+async def submit_rsvp(body: RSVPSubmit):
+    rsvp = {
+        "id": str(uuid.uuid4()),
+        "name": body.name,
+        "email": body.email,
+        "phone": body.phone,
+        "attending": body.attending,
+        "numberOfGuests": body.numberOfGuests,
+        "plusOneNames": body.plusOneNames,
+        "dietaryPreference": body.dietaryPreference,
+        "otherDietary": body.otherDietary,
+        "songRequest": body.songRequest,
+        "source": body.source,
+        "submitted_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.rsvps.insert_one(rsvp)
+    rsvp.pop("_id", None)
+    return {"success": True, "rsvp": rsvp}
+
+@api_router.get("/admin/rsvps")
+async def get_rsvps(x_admin_token: str = Header()):
+    verify_admin(x_admin_token)
+    rsvps = await db.rsvps.find({}, {"_id": 0}).sort("submitted_at", -1).to_list(1000)
+    return rsvps
 
 
 # Include the router in the main app

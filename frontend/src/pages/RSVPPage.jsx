@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Calendar, Heart, Mail, User, Phone, Users, Utensils, Music, Shirt, MapPin, Check, Sparkles, MessageCircle } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine, LeafGarland } from '../components/LeafDecorations';
 
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
 const RSVPPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const isDirect = searchParams.get('direct') === 'true';
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Auto-select US wedding if coming from QR code
+  useEffect(() => {
+    if (isDirect) {
+      setSelectedEvent('us');
+    }
+  }, [isDirect]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,8 +54,11 @@ const RSVPPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    
+    // Save to localStorage
     const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
     const newRSVP = {
       ...formData,
@@ -51,6 +66,30 @@ const RSVPPage = () => {
       submittedAt: new Date().toISOString()
     };
     localStorage.setItem('weddingRSVPs', JSON.stringify([...existingRSVPs, newRSVP]));
+    
+    // Also submit to backend
+    try {
+      await fetch(`${API_URL}/api/rsvp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          attending: formData.attending,
+          numberOfGuests: formData.numberOfGuests,
+          plusOneNames: formData.plusOneNames,
+          dietaryPreference: formData.dietaryPreference,
+          otherDietary: formData.otherDietary,
+          songRequest: formData.songRequest,
+          source: isDirect ? 'qr_code' : 'website',
+        })
+      });
+    } catch {
+      // Still show success even if backend fails (localStorage has the data)
+    }
+    
+    setSubmitting(false);
     setSubmitted(true);
   };
 
@@ -497,14 +536,14 @@ const RSVPPage = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={!formData.attending || !formData.name || !formData.email || !formData.phone}
+                  disabled={!formData.attending || !formData.name || !formData.email || !formData.phone || submitting}
                   className={`w-full py-4 rounded-full text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                     selectedEvent === 'us' 
                       ? 'bg-[#8a9a7c] hover:bg-[#6b7c5e]' 
                       : 'bg-[#E89B3C] hover:bg-[#D4740C]'
                   }`}
                 >
-                  {formData.attending === 'no' ? 'Submit Response' : 'Submit RSVP'}
+                  {submitting ? 'Submitting...' : formData.attending === 'no' ? 'Submit Response' : 'Submit RSVP'}
                 </button>
               </form>
             </div>

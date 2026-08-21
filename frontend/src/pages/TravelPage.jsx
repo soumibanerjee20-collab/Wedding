@@ -166,9 +166,12 @@ const TravelPage = () => {
           </div>
         </div>
 
-        {/* India Section */}
-        <div className="mb-16">
-          <div className="bg-white/95 backdrop-blur-sm overflow-hidden border border-[#8a9a7c]/15 rounded-lg shadow-sm">
+        {/* India Section - Coming Later */}
+        <div className="mb-16 opacity-50">
+          <div className="bg-white/95 backdrop-blur-sm overflow-hidden border border-[#8a9a7c]/15 rounded-lg shadow-sm relative">
+            <div className="absolute top-4 right-4 z-10 px-4 py-1.5 bg-[#b8956b]/90 text-white text-xs tracking-wider rounded-full">
+              Coming 2027
+            </div>
             <div className="relative aspect-[21/9] overflow-hidden bg-[#e8e4de]">
               <img
                 src={travelInfo.indiaLocation.image}

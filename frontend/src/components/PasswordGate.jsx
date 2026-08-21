@@ -12,6 +12,11 @@ const PasswordGate = ({ children }) => {
   useEffect(() => {
     const saved = sessionStorage.getItem('siteUnlocked');
     if (saved === 'true') setUnlocked(true);
+    // Allow direct RSVP access via QR code
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('direct') === 'true' && window.location.pathname === '/rsvp') {
+      setUnlocked(true);
+    }
   }, []);
 
   const handleSubmit = (e) => {

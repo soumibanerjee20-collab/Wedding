@@ -10,16 +10,21 @@ const REHEARSAL_MESSAGE = (name) =>
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
+const API_URL = process.env.REACT_APP_BACKEND_URL;
+
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [token, setToken] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [guests, setGuests] = useState([]);
+  const [rsvps, setRsvps] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
   const [newGroup, setNewGroup] = useState('wedding');
   const [copied, setCopied] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [activeTab, setActiveTab] = useState('invites');
 
   useEffect(() => {
     const header = document.querySelector('header');
@@ -59,9 +64,25 @@ const AdminPage = () => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       setAuthenticated(true);
+      setToken(password);
       setError('');
+      fetchRsvps(password);
     } else {
       setError('Wrong password');
+    }
+  };
+
+  const fetchRsvps = async (adminToken) => {
+    try {
+      const res = await fetch(`${API_URL}/api/admin/rsvps`, {
+        headers: { 'x-admin-token': adminToken }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setRsvps(data);
+      }
+    } catch {
+      console.error('Failed to fetch RSVPs');
     }
   };
 
@@ -157,6 +178,10 @@ const AdminPage = () => {
   const rehearsalCount = guests.filter(g => g.group === 'rehearsal').length;
   const invitedCount = guests.filter(g => g.invited).length;
 
+  const rsvpYesCount = rsvps.filter(r => r.attending === 'yes').length;
+  const rsvpNoCount = rsvps.filter(r => r.attending === 'no').length;
+  const totalGuestsCount = rsvps.filter(r => r.attending === 'yes').reduce((sum, r) => sum + parseInt(r.numberOfGuests || '1'), 0);
+
   return (
     <div className="min-h-screen p-6" 
          style={{ background: 'linear-gradient(135deg, #1a2a1f 0%, #2d3d32 50%, #1f2f24 100%)' }}
@@ -165,18 +190,58 @@ const AdminPage = () => {
       {/* Header */}
       <div className="max-w-5xl mx-auto mb-6">
         <h1 className="font-cormorant text-3xl mb-2" style={{ color: '#d4c4a8' }}>
-          Invite Manager
+          Wedding Dashboard
         </h1>
-        <div className="flex gap-4 text-sm" style={{ color: 'rgba(212,184,150,0.5)' }}>
-          <span>{invitedCount} invited / {guests.length} total</span>
+        <div className="flex gap-4 text-sm flex-wrap" style={{ color: 'rgba(212,184,150,0.5)' }}>
+          <span>{invitedCount} invited / {guests.length} total guests</span>
           <span>|</span>
-          <span>{weddingCount} wedding</span>
+          <span>{rsvps.length} RSVPs ({rsvpYesCount} attending, {rsvpNoCount} declined)</span>
           <span>|</span>
-          <span>{rehearsalCount} rehearsal dinner</span>
+          <span>{totalGuestsCount} total headcount</span>
         </div>
       </div>
 
-      {/* Add Guest Form */}
+      {/* Tab Navigation */}
+      <div className="max-w-5xl mx-auto mb-6 flex gap-3">
+        <button
+          onClick={() => setActiveTab('invites')}
+          className="px-5 py-2.5 rounded-lg text-sm tracking-wider transition-all"
+          style={{
+            background: activeTab === 'invites' ? 'rgba(106,130,108,0.3)' : 'rgba(255,255,255,0.03)',
+            border: activeTab === 'invites' ? '1px solid rgba(106,130,108,0.5)' : '1px solid rgba(212,184,150,0.08)',
+            color: activeTab === 'invites' ? '#c8d4c0' : 'rgba(212,184,150,0.5)'
+          }}
+        >
+          Invite Manager
+        </button>
+        <button
+          onClick={() => { setActiveTab('rsvps'); fetchRsvps(token); }}
+          className="px-5 py-2.5 rounded-lg text-sm tracking-wider transition-all"
+          style={{
+            background: activeTab === 'rsvps' ? 'rgba(184,149,107,0.3)' : 'rgba(255,255,255,0.03)',
+            border: activeTab === 'rsvps' ? '1px solid rgba(184,149,107,0.5)' : '1px solid rgba(212,184,150,0.08)',
+            color: activeTab === 'rsvps' ? '#d4c4a8' : 'rgba(212,184,150,0.5)'
+          }}
+        >
+          RSVP Responses ({rsvps.length})
+        </button>
+        <button
+          onClick={() => setActiveTab('qr')}
+          className="px-5 py-2.5 rounded-lg text-sm tracking-wider transition-all"
+          style={{
+            background: activeTab === 'qr' ? 'rgba(184,149,107,0.3)' : 'rgba(255,255,255,0.03)',
+            border: activeTab === 'qr' ? '1px solid rgba(184,149,107,0.5)' : '1px solid rgba(212,184,150,0.08)',
+            color: activeTab === 'qr' ? '#d4c4a8' : 'rgba(212,184,150,0.5)'
+          }}
+        >
+          QR Code
+        </button>
+      </div>
+
+      {/* Invites Tab */}
+      {activeTab === 'invites' && (
+        <>
+          {/* Add Guest Form */}
       <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
         <h2 className="text-sm tracking-wider mb-4" style={{ color: 'rgba(212,184,150,0.7)' }}>
@@ -350,6 +415,138 @@ const AdminPage = () => {
           ))}
         </div>
       </div>
+      </>
+      )}
+
+      {/* RSVP Responses Tab */}
+      {activeTab === 'rsvps' && (
+        <div className="max-w-5xl mx-auto">
+          {/* Summary Cards */}
+          <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="p-4 rounded-xl text-center" style={{ background: 'rgba(106,130,108,0.15)', border: '1px solid rgba(106,130,108,0.3)' }}>
+              <p className="text-2xl font-bold" style={{ color: '#a8c4a0' }}>{rsvpYesCount}</p>
+              <p className="text-xs" style={{ color: 'rgba(168,196,160,0.7)' }}>Attending</p>
+            </div>
+            <div className="p-4 rounded-xl text-center" style={{ background: 'rgba(180,80,80,0.1)', border: '1px solid rgba(180,80,80,0.2)' }}>
+              <p className="text-2xl font-bold" style={{ color: '#d4a0a0' }}>{rsvpNoCount}</p>
+              <p className="text-xs" style={{ color: 'rgba(212,160,160,0.7)' }}>Declined</p>
+            </div>
+            <div className="p-4 rounded-xl text-center" style={{ background: 'rgba(184,149,107,0.15)', border: '1px solid rgba(184,149,107,0.3)' }}>
+              <p className="text-2xl font-bold" style={{ color: '#d4c4a8' }}>{totalGuestsCount}</p>
+              <p className="text-xs" style={{ color: 'rgba(212,196,168,0.7)' }}>Total Headcount</p>
+            </div>
+          </div>
+
+          {/* Meal Preferences Summary */}
+          {rsvpYesCount > 0 && (
+            <div className="mb-6 p-4 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
+              <h3 className="text-sm tracking-wider mb-3" style={{ color: 'rgba(212,184,150,0.7)' }}>MEAL PREFERENCES</h3>
+              <div className="flex gap-4 flex-wrap">
+                {['Vegetarian', 'Vegan', 'Non-Vegetarian'].map(pref => {
+                  const count = rsvps.filter(r => r.attending === 'yes' && r.dietaryPreference === pref).length;
+                  return count > 0 ? (
+                    <span key={pref} className="px-3 py-1 rounded-full text-xs" style={{ background: 'rgba(106,130,108,0.15)', color: '#a8c4a0' }}>
+                      {pref}: {count}
+                    </span>
+                  ) : null;
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* RSVP List */}
+          <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(212,184,150,0.1)' }}>
+            <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider"
+                 style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(212,184,150,0.5)' }}>
+              <div className="col-span-2">NAME</div>
+              <div className="col-span-2">CONTACT</div>
+              <div className="col-span-1">STATUS</div>
+              <div className="col-span-1">GUESTS</div>
+              <div className="col-span-2">MEAL</div>
+              <div className="col-span-2">SONG</div>
+              <div className="col-span-1">SOURCE</div>
+              <div className="col-span-1">DATE</div>
+            </div>
+
+            {rsvps.length === 0 && (
+              <div className="px-5 py-8 text-center text-sm" style={{ color: 'rgba(212,184,150,0.4)' }}>
+                No RSVP responses yet.
+              </div>
+            )}
+
+            {rsvps.map((rsvp) => (
+              <div key={rsvp.id}
+                   className="grid grid-cols-12 gap-2 px-5 py-3 items-center"
+                   style={{ borderTop: '1px solid rgba(212,184,150,0.06)' }}>
+                <div className="col-span-2 text-sm truncate" style={{ color: '#e8dfd0' }}>
+                  {rsvp.name}
+                  {rsvp.plusOneNames && <p className="text-xs truncate" style={{ color: 'rgba(212,184,150,0.5)' }}>+{rsvp.plusOneNames}</p>}
+                </div>
+                <div className="col-span-2 text-xs truncate" style={{ color: 'rgba(212,184,150,0.6)' }}>
+                  <div>{rsvp.email}</div>
+                  <div>{rsvp.phone}</div>
+                </div>
+                <div className="col-span-1">
+                  <span className="px-2 py-0.5 rounded-full text-xs"
+                        style={{ 
+                          background: rsvp.attending === 'yes' ? 'rgba(106,130,108,0.2)' : 'rgba(180,80,80,0.15)',
+                          color: rsvp.attending === 'yes' ? '#a8c4a0' : '#d4a0a0'
+                        }}>
+                    {rsvp.attending === 'yes' ? 'Yes' : 'No'}
+                  </span>
+                </div>
+                <div className="col-span-1 text-sm" style={{ color: '#e8dfd0' }}>
+                  {rsvp.attending === 'yes' ? rsvp.numberOfGuests : ''}
+                </div>
+                <div className="col-span-2 text-xs" style={{ color: 'rgba(212,184,150,0.7)' }}>
+                  {rsvp.dietaryPreference || ''}
+                  {rsvp.otherDietary ? ` (${rsvp.otherDietary})` : ''}
+                </div>
+                <div className="col-span-2 text-xs truncate" style={{ color: 'rgba(212,184,150,0.5)' }}>
+                  {rsvp.songRequest || ''}
+                </div>
+                <div className="col-span-1">
+                  <span className="px-2 py-0.5 rounded-full text-xs"
+                        style={{ 
+                          background: rsvp.source === 'qr_code' ? 'rgba(59,130,246,0.15)' : 'rgba(106,130,108,0.15)',
+                          color: rsvp.source === 'qr_code' ? '#60a5fa' : '#a8c4a0'
+                        }}>
+                    {rsvp.source === 'qr_code' ? 'QR' : 'Web'}
+                  </span>
+                </div>
+                <div className="col-span-1 text-xs" style={{ color: 'rgba(212,184,150,0.4)' }}>
+                  {rsvp.submitted_at ? new Date(rsvp.submitted_at).toLocaleDateString() : ''}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* QR Code Tab */}
+      {activeTab === 'qr' && (
+        <div className="max-w-5xl mx-auto">
+          <div className="max-w-md mx-auto text-center p-8 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
+            <h2 className="font-cormorant text-2xl mb-4" style={{ color: '#d4c4a8' }}>RSVP QR Code</h2>
+            <p className="text-sm mb-6" style={{ color: 'rgba(212,184,150,0.6)' }}>
+              Guests can scan this QR code to RSVP directly without needing the website password. Print it on your physical invitations or share it digitally.
+            </p>
+            <div className="bg-white rounded-lg p-4 inline-block mb-4">
+              <img src="/rsvp-qr.png" alt="RSVP QR Code" className="w-64 h-64 mx-auto" />
+            </div>
+            <div className="flex gap-3 justify-center">
+              <a href="/rsvp-qr.png" download="Soumi-James-RSVP-QR.png"
+                 className="px-5 py-2 rounded-lg text-sm transition-all hover:scale-105"
+                 style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}>
+                Download QR
+              </a>
+            </div>
+            <p className="text-xs mt-4" style={{ color: 'rgba(212,184,150,0.4)' }}>
+              Links to: soumiandjameswedding.netlify.app/rsvp?direct=true
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
