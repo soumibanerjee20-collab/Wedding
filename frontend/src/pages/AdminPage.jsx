@@ -5,8 +5,8 @@ const ADMIN_PASSWORD = 'casper';
 const WEDDING_MESSAGE = (name) => 
   `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026`;
 
-const REHEARSAL_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Soumi & James!\n\nAs one of our closest family and friends, we would love for you to join us for our *Rehearsal Dinner on October 24, 2026* the evening before the wedding.\n\nIt will be an intimate gathering to celebrate, share stories, and enjoy a wonderful evening together before the big day.\n\nMore details to follow soon!`;
+const REHEARSAL_AND_WEDDING_MESSAGE = (name) => 
+  `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married!*\n\nAs one of our closest family and friends, we would love for you to join us for both celebrations:\n\n*Rehearsal Dinner: October 24, 2026*\nAn intimate evening of stories, laughter, and love the night before the big day.\n\n*Wedding Ceremony & Reception: October 25, 2026*\nAt the Tate Pumphouse, Casper, Wyoming.\n\nCome celebrate with us under the wide Wyoming sky, surrounded by the people we love most.\n\nFormal invitation and all the details:\nhttps://soumiandjameswedding.netlify.app\n\nPassword: sj2026`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -106,7 +106,7 @@ const AdminPage = () => {
   };
 
   const getMessage = (guest, inviteType) => {
-    if (inviteType === 'rehearsal') return REHEARSAL_MESSAGE(guest.name);
+    if (inviteType === 'rehearsal') return REHEARSAL_AND_WEDDING_MESSAGE(guest.name);
     return WEDDING_MESSAGE(guest.name);
   };
 
