@@ -200,21 +200,11 @@ export const events = {
     image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/15nubjk7_WhatsApp%20Image%202026-05-10%20at%2017.38.18.jpeg",
     events: [
       {
-        id: 1,
-        name: "Rehearsal Dinner",
-        date: "October 24, 2026",
-        time: "Evening",
-        venue: "Restaurant TBA",
-        location: "Casper, Wyoming",
-        description: "An intimate evening with our closest family and friends to celebrate the night before. Good food, great company, and cherished moments.",
-        icon: "dinner"
-      },
-      {
         id: 2,
         name: "Wedding Ceremony",
         date: "October 25, 2026",
         time: "Afternoon",
-        venue: "Outdoor Ceremony",
+        venue: "Tate Pumphouse",
         location: "Casper, Wyoming",
         description: "An intimate outdoor ceremony surrounded by Wyoming's natural beauty. Where two hearts officially become one under the open sky.",
         icon: "rings"
@@ -224,9 +214,9 @@ export const events = {
         name: "Reception",
         date: "October 25, 2026",
         time: "Evening",
-        venue: "4450 Smoke Rise Road, Casper WY 82604",
-        location: "Our New Home",
-        description: "Join us for an intimate celebration at our new home. Dinner, dancing, and making memories together as we begin our married life.",
+        venue: "Tate Pumphouse",
+        location: "Casper, Wyoming",
+        description: "Join us for an evening of celebration, dinner, dancing, and making memories together as we begin our married life.",
         icon: "celebration"
       }
     ]

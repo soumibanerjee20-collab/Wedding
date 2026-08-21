@@ -65,7 +65,7 @@ const FAQPage = () => {
           />
           <FAQItem 
             question="Where will the US ceremony be held?"
-            answer="We'll be getting married in or near Casper, Wyoming. The venue will likely be outdoors somewhere beautiful, possibly in a remote area about 1 to 2 hours from town. After the ceremony, we'll head back to James's home for the reception. We'll share exact details as soon as we have them!"
+            answer="We'll be getting married at the Tate Pumphouse in Casper, Wyoming. The ceremony will be in the afternoon followed by a reception in the evening at the same venue. We'll share exact timings as soon as we have them!"
           />
           <FAQItem 
             question="What should I wear?"
