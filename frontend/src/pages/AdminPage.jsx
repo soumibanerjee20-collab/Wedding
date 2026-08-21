@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const ADMIN_PASSWORD = 'casper';
 
-const SITE_URL = 'https://soumiandjameswedding.netlify.app?v=5';
+const SITE_URL = 'https://soumiandjameswedding.netlify.app?v=6';
 
 const WEDDING_MESSAGE = (name) => 
   `Hi ${name}!\nIt's Soumi & James!\n\nWe survived long distance, immigration paperwork, and 7 time zones. Now there's only one thing left to do: *We're getting married on October 25, 2026!*\n\nCome celebrate with us under the wide Wyoming sky, surrounded by Casper mountains, wild prairies, and the people we love most.\n\nFormal invitation and all the details:\n${SITE_URL}\n\nPassword: sj2026`;
