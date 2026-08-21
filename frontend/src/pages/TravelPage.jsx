@@ -3,21 +3,22 @@ import { travelInfo } from '../data/mock';
 import { Plane, MapPin, Heart, Mountain, Building, Hotel, Navigation, ExternalLink } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDecorations';
 
-const TATE_PUMPHOUSE_PLACE_ID = 'ChIJO4YpyoJ5RIcRBn6AO4xbM4Q';
-const TATE_PUMPHOUSE_COORDS = '42.8441,-106.3177';
-
 const TravelPage = () => {
   const [selectedHotel, setSelectedHotel] = useState(null);
 
   const getDirectionsUrl = (hotel) => {
-    return `https://www.google.com/maps/dir/${hotel.mapQuery}/Tate+Pumphouse+Casper+WY`;
+    const origin = encodeURIComponent(hotel.name + ', Casper, WY');
+    const destination = encodeURIComponent('Tate Pumphouse, Casper, WY');
+    return `https://www.google.com/maps/dir/${origin}/${destination}`;
   };
 
   const getMapSrc = (hotel) => {
     if (hotel) {
-      return `https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d50000!2d-106.32!3d42.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x0:0x0!2s${encodeURIComponent(hotel.address)}!3m2!1d42.85!2d-106.32!4m5!1s0x0:0x0!2sTate+Pumphouse+Casper+WY!3m2!1d42.8441!2d-106.3177!5e0!3m2!1sen!2sus`;
+      const origin = encodeURIComponent(hotel.name + ', Casper, WY');
+      const destination = encodeURIComponent('Tate Pumphouse, Casper, WY');
+      return `https://www.google.com/maps?saddr=${origin}&daddr=${destination}&output=embed`;
     }
-    return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d-106.3177!3d42.8441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s${TATE_PUMPHOUSE_PLACE_ID}!2sTate%20Pumphouse!5e0!3m2!1sen!2sus`;
+    return `https://www.google.com/maps?q=${encodeURIComponent('Tate Pumphouse, Casper, WY')}&output=embed`;
   };
 
   return (
