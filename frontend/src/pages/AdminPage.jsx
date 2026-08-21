@@ -275,6 +275,23 @@ const AdminPage = () => {
       {/* Invites Tab */}
       {activeTab === 'invites' && (
         <>
+          {/* Invite Card Preview & Download */}
+          <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl flex items-center gap-5"
+               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
+            <img src="/wedding-invite-card.jpg" alt="Invite Card" className="w-20 h-28 object-cover rounded-md border border-white/10" />
+            <div className="flex-1">
+              <p className="text-sm mb-1" style={{ color: '#d4c4a8' }}>Wedding Invite Card</p>
+              <p className="text-xs mb-3" style={{ color: 'rgba(212,184,150,0.5)' }}>
+                Download this image first. When sending via WA or SMS, attach it manually along with the text message.
+              </p>
+              <a href="/wedding-invite-card.jpg" download="Soumi-James-Wedding-Invite.jpg"
+                 className="inline-block px-4 py-2 rounded-lg text-xs tracking-wider transition-all hover:scale-105"
+                 style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}>
+                Download Image
+              </a>
+            </div>
+          </div>
+
           {/* Add Guest Form */}
       <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
@@ -399,11 +416,6 @@ const AdminPage = () => {
                 {/* Wedding invite buttons */}
                 <div className="flex gap-1.5 items-center">
                   <span className="text-xs mr-1" style={{ color: 'rgba(106,130,108,0.6)' }}>Wedding:</span>
-                  <button onClick={() => handleShare(guest, 'wedding')}
-                    className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
-                    style={{ background: 'rgba(147,51,234,0.15)', border: '1px solid rgba(147,51,234,0.3)', color: '#a78bfa' }}>
-                    Share
-                  </button>
                   <button onClick={() => handleWhatsApp(guest, 'wedding')}
                     className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                     style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
@@ -424,12 +436,7 @@ const AdminPage = () => {
                 {/* Rehearsal dinner buttons - only for rehearsal group */}
                 {guest.group === 'rehearsal' && (
                   <div className="flex gap-1.5 items-center">
-                    <span className="text-xs mr-1" style={{ color: 'rgba(184,149,107,0.6)' }}>Dinner:</span>
-                    <button onClick={() => handleShare(guest, 'rehearsal')}
-                      className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
-                      style={{ background: 'rgba(147,51,234,0.15)', border: '1px solid rgba(147,51,234,0.3)', color: '#a78bfa' }}>
-                      Share
-                    </button>
+                    <span className="text-xs mr-1" style={{ color: 'rgba(184,149,107,0.6)' }}>R+W:</span>
                     <button onClick={() => handleWhatsApp(guest, 'rehearsal')}
                       className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                       style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
