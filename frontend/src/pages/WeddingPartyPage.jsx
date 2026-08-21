@@ -10,7 +10,7 @@ const WeddingPartyPage = () => {
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/dctj74d0_mormon-row-elopement-jackson-wyoming-grand-teton.jpg.webp')`,
+          backgroundImage: `url('https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/31wcto03_4425205_lg.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-[#faf8f4]/[0.87]" />

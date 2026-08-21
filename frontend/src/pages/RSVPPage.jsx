@@ -13,6 +13,7 @@ const RSVPPage = () => {
     attending: '',
     numberOfGuests: '1',
     plusOneNames: '',
+    attendingRehearsalDinner: '',
     dietaryPreference: '',
     dietaryRestrictions: [],
     otherDietary: '',
@@ -61,6 +62,7 @@ const RSVPPage = () => {
       attending: '',
       numberOfGuests: '1',
       plusOneNames: '',
+      attendingRehearsalDinner: '',
       dietaryPreference: '',
       dietaryRestrictions: [],
       otherDietary: '',
@@ -175,7 +177,7 @@ const RSVPPage = () => {
                     <span>October 25, 2026</span>
                   </div>
                   <p className="text-[#3d3d38] text-sm mb-4">
-                    Join us for an intimate outdoor ceremony followed by a reception at our new home, surrounded by the beautiful Wyoming landscape.
+                    Join us for an intimate ceremony followed by a reception at the Tate Pumphouse, surrounded by the beautiful Wyoming landscape.
                   </p>
                   
                   {/* Dress Code */}
@@ -259,7 +261,7 @@ const RSVPPage = () => {
                 {selectedEvent === 'us' ? 'RSVP: US Wedding' : 'RSVP: Indian Wedding & Reception'}
               </h2>
               <p className="text-[#5a5a52] text-sm mb-6">
-                {selectedEvent === 'us' ? 'October 25, 2026 • Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
+                {selectedEvent === 'us' ? 'October 25, 2026 • Tate Pumphouse, Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -409,6 +411,29 @@ const RSVPPage = () => {
                         <p className="text-[#5a5a52] text-xs mt-2">
                           Please list the full names of everyone attending with you
                         </p>
+                      </div>
+                    )}
+
+                    {/* Rehearsal Dinner - US Wedding Only */}
+                    {selectedEvent === 'us' && (
+                      <div className="bg-[#f5f2eb]/60 p-5 rounded-lg border border-[#d4b896]/20">
+                        <label className="block text-[#3d3d38] text-sm font-medium mb-3">
+                          <Calendar className="w-4 h-4 inline mr-2" />
+                          Rehearsal Dinner (October 24, 2026)
+                        </label>
+                        <p className="text-[#5a5a52] text-xs mb-3">
+                          An intimate evening the night before the wedding for close family and friends.
+                        </p>
+                        <div className="flex gap-4">
+                          <label className={`flex-1 p-3 border rounded-lg cursor-pointer transition-all text-center ${formData.attendingRehearsalDinner === 'yes' ? 'border-[#b8956b] bg-[#f5f2eb]' : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
+                            <input type="radio" name="attendingRehearsalDinner" value="yes" checked={formData.attendingRehearsalDinner === 'yes'} onChange={handleInputChange} className="sr-only" />
+                            <span className="text-[#3d3d38] text-sm font-medium">Will Attend</span>
+                          </label>
+                          <label className={`flex-1 p-3 border rounded-lg cursor-pointer transition-all text-center ${formData.attendingRehearsalDinner === 'no' ? 'border-[#b8956b] bg-[#f5f2eb]' : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
+                            <input type="radio" name="attendingRehearsalDinner" value="no" checked={formData.attendingRehearsalDinner === 'no'} onChange={handleInputChange} className="sr-only" />
+                            <span className="text-[#3d3d38] text-sm font-medium">Wedding Day Only</span>
+                          </label>
+                        </div>
                       </div>
                     )}
 
