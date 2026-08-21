@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { travelInfo } from '../data/mock';
-import { Plane, MapPin, Heart, Mountain, Building, Hotel } from 'lucide-react';
+import { Plane, MapPin, Heart, Mountain, Building, Hotel, Navigation, ExternalLink } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDecorations';
 
+const TATE_PUMPHOUSE_PLACE_ID = 'ChIJO4YpyoJ5RIcRBn6AO4xbM4Q';
+const TATE_PUMPHOUSE_COORDS = '42.8441,-106.3177';
+
 const TravelPage = () => {
+  const [selectedHotel, setSelectedHotel] = useState(null);
+
+  const getDirectionsUrl = (hotel) => {
+    return `https://www.google.com/maps/dir/${hotel.mapQuery}/Tate+Pumphouse+Casper+WY`;
+  };
+
+  const getMapSrc = (hotel) => {
+    if (hotel) {
+      return `https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d50000!2d-106.32!3d42.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x0:0x0!2s${encodeURIComponent(hotel.address)}!3m2!1d42.85!2d-106.32!4m5!1s0x0:0x0!2sTate+Pumphouse+Casper+WY!3m2!1d42.8441!2d-106.3177!5e0!3m2!1sen!2sus`;
+    }
+    return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000!2d-106.3177!3d42.8441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s${TATE_PUMPHOUSE_PLACE_ID}!2sTate%20Pumphouse!5e0!3m2!1sen!2sus`;
+  };
+
   return (
     <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 relative overflow-hidden">
       {/* Leaf Decorations */}
@@ -18,7 +34,7 @@ const TravelPage = () => {
         {/* Section Title */}
         <div className="text-center mb-16">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
-            Travel & Accommodation
+            Travel & Stay
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-6" />
           <p className="text-[#3d3d38] text-sm md:text-base tracking-wide max-w-xl mx-auto">
@@ -29,7 +45,6 @@ const TravelPage = () => {
         {/* US Section */}
         <div className="mb-16">
           <div className="bg-white/95 backdrop-blur-sm overflow-hidden border border-[#8a9a7c]/15 rounded-lg shadow-sm">
-            {/* Image - taller with contain to show full photo */}
             <div className="relative aspect-[21/9] overflow-hidden bg-[#e8ebe4]">
               <img
                 src={travelInfo.usLocation.image}
@@ -37,7 +52,6 @@ const TravelPage = () => {
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center 40%' }}
               />
-              {/* Gradient overlay at bottom for text readability */}
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/30 to-transparent" />
               <div className="absolute bottom-4 left-6 flex items-center gap-3">
                 <Mountain className="w-5 h-5 text-white" />
@@ -47,10 +61,90 @@ const TravelPage = () => {
               </div>
             </div>
             <div className="p-8">
-              {/* History */}
               <p className="text-[#3d3d38] text-sm md:text-base mb-8 leading-relaxed">
                 {travelInfo.usLocation.history}
               </p>
+
+              {/* Venue & Map */}
+              <div className="mb-8">
+                <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">
+                  Wedding Venue: Tate Pumphouse
+                </h4>
+                <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15">
+                  <iframe
+                    title="Tate Pumphouse Map"
+                    src={getMapSrc(selectedHotel)}
+                    width="100%"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+                {selectedHotel && (
+                  <div className="mt-3 flex items-center justify-between bg-[#f0f4ed] p-3 rounded-lg border border-[#8a9a7c]/15">
+                    <div className="flex items-center gap-2">
+                      <Navigation className="w-4 h-4 text-[#6b7c5e]" />
+                      <span className="text-[#3d3d38] text-sm">
+                        Directions from <strong>{selectedHotel.name}</strong> to Tate Pumphouse
+                      </span>
+                    </div>
+                    <div className="flex gap-2">
+                      <a
+                        href={getDirectionsUrl(selectedHotel)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 px-3 py-1.5 bg-[#8a9a7c] text-white text-xs rounded-md hover:bg-[#6b7c5e] transition-colors"
+                      >
+                        Open in Maps <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <button
+                        onClick={() => setSelectedHotel(null)}
+                        className="px-3 py-1.5 text-[#5a5a52] text-xs border border-[#8a9a7c]/20 rounded-md hover:bg-white transition-colors"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Hotels */}
+              <div className="mb-8">
+                <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">
+                  Recommended Hotels
+                </h4>
+                <p className="text-[#5a5a52] text-xs mb-4">
+                  Click on a hotel to see directions from there to the venue.
+                </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {travelInfo.usLocation.hotels.map((hotel, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedHotel(hotel)}
+                      className={`text-left p-4 rounded-lg border transition-all duration-300 hover:shadow-md ${
+                        selectedHotel?.name === hotel.name 
+                          ? 'bg-[#f0f4ed] border-[#8a9a7c]/40 shadow-sm' 
+                          : 'bg-[#f8faf7] border-[#8a9a7c]/10 hover:border-[#8a9a7c]/30'
+                      }`}
+                      data-testid={`hotel-${index}`}
+                    >
+                      <div className="flex items-start gap-2">
+                        <Hotel className={`w-4 h-4 mt-0.5 flex-shrink-0 ${selectedHotel?.name === hotel.name ? 'text-[#6b7c5e]' : 'text-[#8a9a7c]'}`} />
+                        <div>
+                          <h5 className="font-medium text-[#3d3d38] text-sm mb-1">{hotel.name}</h5>
+                          <p className="text-[#5a5a52] text-xs">{hotel.address}</p>
+                          <span className="inline-flex items-center gap-1 text-[#6b7c5e] text-xs mt-2">
+                            <Navigation className="w-3 h-3" />
+                            Get directions to venue
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
               
               {/* Landmarks */}
               <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">Places to Explore</h4>
@@ -67,23 +161,6 @@ const TravelPage = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Google Map */}
-              <div className="mt-8">
-                <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">Find Casper, Wyoming</h4>
-                <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15">
-                  <iframe
-                    title="Casper Wyoming Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185091.4572508484!2d-106.43089565!3d42.8501025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8760b0ae0e498525%3A0x3253e5e161fcfbec!2sCasper%2C%20WY!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                    width="100%"
-                    height="280"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -91,15 +168,13 @@ const TravelPage = () => {
         {/* India Section */}
         <div className="mb-16">
           <div className="bg-white/95 backdrop-blur-sm overflow-hidden border border-[#8a9a7c]/15 rounded-lg shadow-sm">
-            {/* Image - taller with contain to show full photo */}
             <div className="relative aspect-[21/9] overflow-hidden bg-[#e8e4de]">
               <img
                 src={travelInfo.indiaLocation.image}
-                alt="Victoria Memorial, Kolkata"
+                alt="Kolkata"
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center 35%' }}
               />
-              {/* Gradient overlay at bottom */}
               <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/30 to-transparent" />
               <div className="absolute bottom-4 left-6 flex items-center gap-3">
                 <Building className="w-5 h-5 text-white" />
@@ -109,12 +184,10 @@ const TravelPage = () => {
               </div>
             </div>
             <div className="p-8">
-              {/* History */}
               <p className="text-[#3d3d38] text-sm md:text-base mb-8 leading-relaxed">
                 {travelInfo.indiaLocation.history}
               </p>
               
-              {/* Landmarks */}
               <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">Iconic Landmarks</h4>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {travelInfo.indiaLocation.landmarks.map((landmark, index) => (
@@ -129,24 +202,6 @@ const TravelPage = () => {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Accommodation Section */}
-        <div className="mb-12">
-          <div className="bg-white/95 backdrop-blur-sm p-8 border border-[#8a9a7c]/15 rounded-lg shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <Hotel className="w-6 h-6 text-[#6b7c5e]" />
-              <h3 className="font-display text-2xl text-[#b8956b] tracking-wide">
-                Accommodation
-              </h3>
-            </div>
-            <p className="text-[#3d3d38] text-sm md:text-base leading-relaxed mb-4">
-              {travelInfo.accommodation.description}
-            </p>
-            <div className="inline-block px-4 py-2 bg-[#8a9a7c]/10 border border-[#8a9a7c]/30 rounded-full">
-              <span className="text-[#5a6b50] text-sm font-medium">Details Coming Soon</span>
             </div>
           </div>
         </div>

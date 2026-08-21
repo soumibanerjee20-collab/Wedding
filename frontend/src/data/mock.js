@@ -365,7 +365,7 @@ export const travelInfo = {
     title: "Casper, Wyoming, USA",
     location: "Wyoming / Ohio, USA",
     description: "Where James works and where our US celebration will take place.",
-    image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/0b4rbhuz_WhatsApp%20Image%202026-05-09%20at%2020.24.37.jpeg",
+    image: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/0hxwumay_wyoming-fall-color-pc-richard-gonzales-unsplash.jpg.webp",
     history: "Casper sits at the crossroads of the Oregon, California, Mormon Pioneer, and Pony Express trails. Known as 'The Oil City' for its petroleum heritage, it's surrounded by stunning Wyoming landscapes including the nearby Grand Tetons, some of the most dramatic mountain scenery in North America.",
     landmarks: [
       {
@@ -387,6 +387,33 @@ export const travelInfo = {
       {
         name: "Garden Creek Falls",
         description: "Beautiful waterfall accessible via a scenic hike near Casper Mountain."
+      }
+    ],
+    hotels: [
+      {
+        name: "Hilton Garden Inn Casper",
+        address: "1150 N Poplar St, Casper, WY 82601",
+        mapQuery: "Hilton+Garden+Inn+Casper+WY"
+      },
+      {
+        name: "Hyatt Place Casper",
+        address: "340 West F St, Casper, WY 82601",
+        mapQuery: "Hyatt+Place+Casper+WY"
+      },
+      {
+        name: "Hampton Inn & Suites Casper",
+        address: "400 West F St, Casper, WY 82601",
+        mapQuery: "Hampton+Inn+Suites+Casper+WY"
+      },
+      {
+        name: "Riverside Hotel & Conference Center",
+        address: "300 W 1st St, Casper, WY 82601",
+        mapQuery: "Riverside+Hotel+Conference+Center+Casper+WY"
+      },
+      {
+        name: "Ramkota Hotel",
+        address: "800 N Poplar St, Casper, WY 82601",
+        mapQuery: "Ramkota+Hotel+Casper+WY"
       }
     ]
   },
