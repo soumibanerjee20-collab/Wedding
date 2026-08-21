@@ -414,29 +414,6 @@ const RSVPPage = () => {
                       </div>
                     )}
 
-                    {/* Rehearsal Dinner - US Wedding Only */}
-                    {selectedEvent === 'us' && (
-                      <div className="bg-[#f5f2eb]/60 p-5 rounded-lg border border-[#d4b896]/20">
-                        <label className="block text-[#3d3d38] text-sm font-medium mb-3">
-                          <Calendar className="w-4 h-4 inline mr-2" />
-                          Rehearsal Dinner (October 24, 2026)
-                        </label>
-                        <p className="text-[#5a5a52] text-xs mb-3">
-                          An intimate evening the night before the wedding for close family and friends.
-                        </p>
-                        <div className="flex gap-4">
-                          <label className={`flex-1 p-3 border rounded-lg cursor-pointer transition-all text-center ${formData.attendingRehearsalDinner === 'yes' ? 'border-[#b8956b] bg-[#f5f2eb]' : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
-                            <input type="radio" name="attendingRehearsalDinner" value="yes" checked={formData.attendingRehearsalDinner === 'yes'} onChange={handleInputChange} className="sr-only" />
-                            <span className="text-[#3d3d38] text-sm font-medium">Will Attend</span>
-                          </label>
-                          <label className={`flex-1 p-3 border rounded-lg cursor-pointer transition-all text-center ${formData.attendingRehearsalDinner === 'no' ? 'border-[#b8956b] bg-[#f5f2eb]' : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
-                            <input type="radio" name="attendingRehearsalDinner" value="no" checked={formData.attendingRehearsalDinner === 'no'} onChange={handleInputChange} className="sr-only" />
-                            <span className="text-[#3d3d38] text-sm font-medium">Wedding Day Only</span>
-                          </label>
-                        </div>
-                      </div>
-                    )}
-
                     {/* Dietary Preferences */}
                     <div>
                       <label className="block text-[#3d3d38] text-sm font-medium mb-3">
