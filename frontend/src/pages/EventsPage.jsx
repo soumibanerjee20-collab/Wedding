@@ -11,11 +11,21 @@ const EventsPage = () => {
     <div className="min-h-screen relative bg-[#faf8f4]">
 
       {/* Hero - Full screen house photo with frame */}
-      <div className="relative w-full pt-16" data-testid="celebration-header"
+      <div className="relative w-full pt-16 overflow-hidden" data-testid="celebration-header"
            style={{ background: 'linear-gradient(180deg, #f5f0ea 0%, #faf8f4 100%)' }}>
         
+        {/* Leaf decorations flanking the photo */}
+        <EucalyptusBranch className="absolute top-20 left-0 w-24 md:w-36 h-auto text-[#8a9a7c]" />
+        <EucalyptusBranch className="absolute top-20 right-0 w-24 md:w-36 h-auto text-[#8a9a7c]" flip />
+        <SingleLeaf className="absolute top-48 left-8 w-8 h-12 text-[#8a9a7c] rotate-15" />
+        <SingleLeaf className="absolute top-64 right-10 w-9 h-14 text-[#8a9a7c] -rotate-20" />
+        <CornerVine className="absolute top-1/2 left-0 w-28 md:w-36 h-auto text-[#8a9a7c]" />
+        <CornerVine className="absolute top-1/2 right-0 w-28 md:w-36 h-auto text-[#8a9a7c]" flip />
+        <SingleLeaf className="absolute bottom-40 left-12 w-7 h-11 text-[#8a9a7c] -rotate-10" />
+        <SingleLeaf className="absolute bottom-32 right-6 w-8 h-12 text-[#8a9a7c] rotate-25" />
+
         {/* Full-width polaroid frame */}
-        <div className="relative mx-auto bg-white shadow-2xl"
+        <div className="relative mx-auto bg-white shadow-2xl z-10"
              style={{ 
                maxWidth: '1100px',
                padding: 'clamp(8px, 1.5vw, 20px)',
@@ -80,21 +90,29 @@ const EventsPage = () => {
             </div>
           </div>
 
-          {/* More Wedding Photos */}
-          <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto mb-16">
-            <div className="bg-white p-2 pb-10 shadow-lg -rotate-2 hover:rotate-0 transition-transform duration-500">
+          {/* Wedding Photos - courthouse + both church */}
+          <div className="grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto mb-16">
+            <div className="bg-white p-2 pb-8 shadow-lg -rotate-2 hover:rotate-0 transition-transform duration-500">
               <img
-                src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/u7x23dwd_1000051453.jpeg"
-                alt="Rings and sunflowers"
-                className="w-full h-48 md:h-64 object-cover"
-                style={{ objectPosition: 'center 60%' }}
+                src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/akwqgvkw_IMG_5565.webp"
+                alt="Courthouse ceremony"
+                className="w-full h-40 md:h-56 object-cover"
+                style={{ objectPosition: 'center 30%' }}
               />
             </div>
-            <div className="bg-white p-2 pb-10 shadow-lg rotate-2 hover:rotate-0 transition-transform duration-500">
+            <div className="bg-white p-2 pb-8 shadow-lg hover:rotate-0 transition-transform duration-500" style={{ transform: 'rotate(1.5deg)' }}>
               <img
                 src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/9kohm48g_1000051286.webp"
-                alt="Wedding ceremony"
-                className="w-full h-48 md:h-64 object-cover"
+                alt="Church ceremony"
+                className="w-full h-40 md:h-56 object-cover"
+                style={{ objectPosition: 'center 30%' }}
+              />
+            </div>
+            <div className="bg-white p-2 pb-8 shadow-lg rotate-2 hover:rotate-0 transition-transform duration-500">
+              <img
+                src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/gyu71a3d_1000051284.webp"
+                alt="Church blessing"
+                className="w-full h-40 md:h-56 object-cover"
                 style={{ objectPosition: 'center 30%' }}
               />
             </div>

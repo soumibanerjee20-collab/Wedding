@@ -191,6 +191,7 @@ export const timeline = [
     title: "We Said I Do",
     description: "On a beautiful September day in Wyoming, surrounded by love and the wide open sky, Soumi and James said 'I do' in a small and private ceremony. No grand venue, no hundreds of guests, just two people who crossed oceans, survived time zones, and waited years for this moment. It was perfect. It was them. And it was the beginning of their forever, together at last.",
     location: "Casper, Wyoming",
+    photoPosition: "center 75%",
     photos: [
       "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/u7x23dwd_1000051453.jpeg"
     ]

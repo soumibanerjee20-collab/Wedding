@@ -99,7 +99,7 @@ const TimelinePage = () => {
                                     src={photo}
                                     alt={`${item.title}, memory ${photoIndex + 1}`}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    style={{ objectPosition: 'center 25%' }}
+                                    style={{ objectPosition: item.photoPosition || 'center 25%' }}
                                   />
                                 </div>
                                 
