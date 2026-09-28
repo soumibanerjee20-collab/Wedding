@@ -1,0 +1,30 @@
+{
+  "summary": "Frontend-only verification of the post-wedding pivot cleanup for Soumi & James wedding site. Verified navigation, all public pages (home, our-story, timeline, events/celebration, gallery, travel, rsvp, faq, registry, guestbook) and the /admin dashboard behind the 'casper' password. All acceptance criteria from the review request pass. No forbidden legacy strings ('Tate Pumphouse', 'October 25', 'Indian wedding', 'Save the Date', 'Wedding Only', 'Rehearsal + Wedding', 'Chapter One', 'two continents', 'Rehearsal Dinner') were found on any page body. Site password 'sj2026' (case-insensitive) unlocks the site; /admin bypasses the site gate and accepts 'casper'. Copy-invite button produces the correct Open House message containing 'Open House Celebration', 'Saturday, October 24, 2026', '4450 Smoke Rise Road', 'Casper, Wyoming' and password 'sj2026'.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Cleanup only (non-blocking): /app/frontend/src/data/mock.js still contains unused exports `indiaLocation` (under travelInfo) and the `weddingParty` object. They are no longer imported anywhere in pages/, so they are dead code. Consider deleting to prevent regressions / confusion.",
+    "Non-blocking: /app/frontend/src/pages/WeddingPartyPage.jsx file still exists in pages/ though there is no route or import. Safe to delete.",
+    "Non-blocking: Navigating directly to /wedding-party renders the header/footer with an empty <main> (React Router logs 'No routes matched location'). Consider adding a catch-all 404 route or a redirect to '/' for a cleaner UX."
+  ],
+  "critical_code_review_comments": [
+    "App.js correctly removes the /wedding-party route and WeddingPartyPage import. Good.",
+    "mock.js `navigationItems` matches the required 9 items in the correct order (OUR STORY, TIMELINE, CELEBRATION, GALLERY, TRAVEL & STAY, FAQ, REGISTRY, GUESTBOOK, RSVP). No WE DID IT / WEDDING PARTY link.",
+    "TravelPage embeds the '4450 Smoke Rise Road' destination inside the Google Maps iframe URL only. It is not rendered as visible page text on initial load; it only becomes visible after a hotel is selected ('Directions from <hotel> to 4450 Smoke Rise Road'). Recommend showing the destination address prominently as static text near the map so users see it without needing to click a hotel first.",
+    "Consider deleting dead code (`indiaLocation`, `weddingParty`, WeddingPartyPage.jsx) to reduce future confusion.",
+    "Missing global 404 route in App.js."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "test_credentials": "Site password: sj2026 (case-insensitive) | Admin password: casper | /admin bypasses site gate",
+  "seed_data_creation": "Temporarily added guest 'TEST_Sanity' via admin form to verify copy-invite message content. Guest table was empty on subsequent screenshot (either auto-cleaned or was removed during testing). No lingering test data expected to affect UX.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All acceptance criteria in the review request are met on the preview URL (https://sage-gold-ceremony.preview.emergentagent.com). Nav has 9 items, no WE DID IT/WEDDING PARTY. /events shows 'We Did It!', Sept 25 2026, Oct 24 1-5 PM, 4450 Smoke Rise Road. /admin shows 'Celebration Dashboard' with only Name+Phone fields, no group dropdown/filters. Copy invite yields the correct Open House message with all required strings. Only remaining items are dead-code cleanup (indiaLocation, weddingParty in mock.js, WeddingPartyPage.jsx file) and adding a 404 route.",
+  "rca of the issue": "No functional bugs found."
+}
