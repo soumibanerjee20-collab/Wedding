@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Calendar, Heart, Mail, User, Phone, Users, Utensils, Music, Shirt, MapPin, Check, Sparkles, MessageCircle } from 'lucide-react';
+import { Calendar, Heart, Mail, User, Phone, Users, Utensils, Shirt, MapPin, Check, Sparkles, MessageCircle } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine, LeafGarland } from '../components/LeafDecorations';
 
 const API_URL = process.env.REACT_APP_BACKEND_URL;
@@ -28,7 +28,6 @@ const RSVPPage = () => {
     dietaryPreference: '',
     dietaryRestrictions: [],
     otherDietary: '',
-    songRequest: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [showDeclinePrompt, setShowDeclinePrompt] = useState(false);
@@ -80,7 +79,6 @@ const RSVPPage = () => {
           plusOneNames: formData.plusOneNames,
           dietaryPreference: formData.dietaryPreference,
           otherDietary: formData.otherDietary,
-          songRequest: formData.songRequest,
           source: isDirect ? 'qr_code' : 'website',
         })
       });
@@ -103,7 +101,6 @@ const RSVPPage = () => {
       dietaryPreference: '',
       dietaryRestrictions: [],
       otherDietary: '',
-      songRequest: '',
     });
     setSelectedEvent(null);
     setSubmitted(false);
@@ -478,21 +475,6 @@ const RSVPPage = () => {
                       )}
                     </div>
 
-                    {/* Song Request */}
-                    <div>
-                      <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                        <Music className="w-4 h-4 inline mr-2" />
-                        Song Request (optional)
-                      </label>
-                      <input
-                        type="text"
-                        name="songRequest"
-                        value={formData.songRequest}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-[#3d3d38]"
-                        placeholder="Any song you'd love to hear at the celebration?"
-                      />
-                    </div>
                   </>
                 )}
 
