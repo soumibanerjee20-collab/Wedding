@@ -58,17 +58,8 @@ const EventsPage = () => {
         </div>
       </div>
 
-      {/* Rest of page with subtle background */}
-      <div className="relative">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/u7x23dwd_1000051453.jpeg')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-[#faf8f4]/92" />
-        </div>
-
+      {/* Rest of page */}
+      <div className="relative bg-[#faf8f4]">
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
           {/* Leaf Decorations */}
           <EucalyptusBranch className="absolute top-8 left-0 w-20 md:w-28 h-auto text-[#8a9a7c]" />
