@@ -25,7 +25,6 @@ const RSVPPage = () => {
     attending: '',
     numberOfGuests: '1',
     plusOneNames: '',
-    attendingRehearsalDinner: '',
     dietaryPreference: '',
     dietaryRestrictions: [],
     otherDietary: '',
@@ -101,7 +100,6 @@ const RSVPPage = () => {
       attending: '',
       numberOfGuests: '1',
       plusOneNames: '',
-      attendingRehearsalDinner: '',
       dietaryPreference: '',
       dietaryRestrictions: [],
       otherDietary: '',
@@ -226,7 +224,7 @@ const RSVPPage = () => {
                       <span className="text-[#5a6b50] font-medium text-sm">Dress Code</span>
                     </div>
                     <p className="text-[#3d3d38] text-sm">
-                      Formal Attire. Suits for men, cocktail dresses for women.
+                      Casual and comfortable. This is a relaxed afternoon at our home. Come as you are!
                     </p>
                   </div>
                 </div>

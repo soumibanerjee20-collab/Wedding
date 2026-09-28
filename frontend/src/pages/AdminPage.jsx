@@ -4,11 +4,8 @@ const ADMIN_PASSWORD = 'casper';
 
 const SITE_URL = 'https://soumiandjameswedding.netlify.app?ref=oct2026';
 
-const WEDDING_MESSAGE = (name) => 
+const OPEN_HOUSE_MESSAGE = (name) => 
   `Hi ${name}!\nIt's Jimmy & Soumi!\n\nWith Joy and Gratitude... *We're Married!*\n\nWe're happy to share that we were married in a private ceremony in Wyoming on September 25, 2026.\n\nOur wedding day was a small and private occasion, but we would love to celebrate this special time with our family, friends, and neighbors.\n\nPlease join us for an *Open House Celebration*\n\n*Saturday, October 24, 2026*\n*1:00 PM to 5:00 PM*\n*4450 Smoke Rise Road*\n*Casper, Wyoming*\n\nPlease come and enjoy a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage and welcome Soumi as she begins this wonderful new chapter of her life in the United States.\n\nHors d'oeuvres and drinks will be provided.\n\nPlease RSVP so we can plan accordingly.\n\nMore details:\n${SITE_URL}\nPassword: sj2026\n\nWe hope you can join us!\n\nWith love,\nJimmy & Soumi\n\nWith love from our families:\nSomnath & Swapna Banerjee\nMark & Judy Adams`;
-
-const REHEARSAL_AND_WEDDING_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Jimmy & Soumi!\n\nWith Joy and Gratitude... *We're Married!*\n\nWe're happy to share that we were married in a private ceremony in Wyoming on September 25, 2026.\n\nAs one of our closest family and friends, we would love for you to join us for:\n\n*Rehearsal Dinner*\nFriday, October 23, 2026\nAn intimate evening of stories, laughter, and love.\n\n*Open House Celebration*\nSaturday, October 24, 2026\n1:00 PM to 5:00 PM\n4450 Smoke Rise Road, Casper, Wyoming\n\nPlease come and enjoy a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage and welcome Soumi as she begins this wonderful new chapter of her life.\n\nHors d'oeuvres and drinks will be provided.\n\nPlease RSVP so we can plan accordingly.\n\nMore details:\n${SITE_URL}\nPassword: sj2026\n\nWe hope you can join us!\n\nWith love,\nJimmy & Soumi\n\nWith love from our families:\nSomnath & Swapna Banerjee\nMark & Judy Adams`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -23,9 +20,7 @@ const AdminPage = () => {
   const [rsvps, setRsvps] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
-  const [newGroup, setNewGroup] = useState('wedding');
   const [copied, setCopied] = useState(null);
-  const [filter, setFilter] = useState('all');
   const [activeTab, setActiveTab] = useState('invites');
 
   useEffect(() => {
@@ -49,14 +44,13 @@ const AdminPage = () => {
     localStorage.setItem('wedding_guests', JSON.stringify(updatedGuests));
   };
 
-  const markInvited = (guestId, method, inviteType) => {
+  const markInvited = (guestId, method) => {
     const updated = guests.map(g => 
       g.id === guestId ? { 
         ...g, 
         invited: true, 
         invited_at: new Date().toISOString(), 
-        sent_via: method,
-        last_invite_type: inviteType
+        sent_via: method
       } : g
     );
     saveGuests(updated);
@@ -95,11 +89,9 @@ const AdminPage = () => {
       id: generateId(),
       name: newName.trim(),
       phone: newPhone.trim(),
-      group: newGroup,
       invited: false,
       invited_at: null,
       sent_via: null,
-      last_invite_type: null,
       created_at: new Date().toISOString(),
     };
     saveGuests([newGuest, ...guests]);
@@ -107,38 +99,32 @@ const AdminPage = () => {
     setNewPhone('');
   };
 
-  const getMessage = (guest, inviteType) => {
-    if (inviteType === 'rehearsal') return REHEARSAL_AND_WEDDING_MESSAGE(guest.name);
-    return WEDDING_MESSAGE(guest.name);
-  };
-
-  const handleWhatsApp = (guest, inviteType) => {
+  const handleWhatsApp = (guest) => {
     const cleanPhone = guest.phone.replace(/[\s\-()]/g, '');
-    const message = encodeURIComponent(getMessage(guest, inviteType));
+    const message = encodeURIComponent(OPEN_HOUSE_MESSAGE(guest.name));
     window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
-    markInvited(guest.id, 'whatsapp', inviteType);
+    markInvited(guest.id, 'whatsapp');
   };
 
-  const handleSMS = (guest, inviteType) => {
+  const handleSMS = (guest) => {
     const cleanPhone = guest.phone.replace(/[\s\-()]/g, '');
-    const message = encodeURIComponent(getMessage(guest, inviteType));
+    const message = encodeURIComponent(OPEN_HOUSE_MESSAGE(guest.name));
     window.open(`sms:${cleanPhone}?body=${message}`, '_blank');
-    markInvited(guest.id, 'sms', inviteType);
+    markInvited(guest.id, 'sms');
   };
 
-  const handleCopy = (guest, inviteType) => {
-    const message = getMessage(guest, inviteType);
+  const handleCopy = (guest) => {
+    const message = OPEN_HOUSE_MESSAGE(guest.name);
     navigator.clipboard.writeText(message).then(() => {
-      setCopied(guest.id + inviteType);
+      setCopied(guest.id);
       setTimeout(() => setCopied(null), 2000);
-      markInvited(guest.id, 'copied', inviteType);
+      markInvited(guest.id, 'copied');
     });
   };
 
-  const handleShare = async (guest, inviteType) => {
-    const message = getMessage(guest, inviteType);
+  const handleShare = async (guest) => {
+    const message = OPEN_HOUSE_MESSAGE(guest.name);
     try {
-      // Fetch the invite image as a blob
       const res = await fetch('/invite-v2.jpg');
       const blob = await res.blob();
       const file = new File([blob], 'Soumi-James-Open-House-Invite.jpg', { type: 'image/jpeg' });
@@ -148,20 +134,18 @@ const AdminPage = () => {
           text: message,
           files: [file],
         });
-        markInvited(guest.id, 'shared', inviteType);
+        markInvited(guest.id, 'shared');
       } else {
-        // Fallback: copy message and alert to attach image manually
         await navigator.clipboard.writeText(message);
-        setCopied(guest.id + inviteType);
+        setCopied(guest.id);
         setTimeout(() => setCopied(null), 2000);
         alert('Message copied! Please paste in WhatsApp and attach the invite image from your gallery.');
-        markInvited(guest.id, 'copied', inviteType);
+        markInvited(guest.id, 'copied');
       }
     } catch (err) {
-      // If share was cancelled or failed, try clipboard
       try {
         await navigator.clipboard.writeText(message);
-        setCopied(guest.id + inviteType);
+        setCopied(guest.id);
         setTimeout(() => setCopied(null), 2000);
       } catch {}
     }
@@ -207,11 +191,7 @@ const AdminPage = () => {
     );
   }
 
-  const filteredGuests = filter === 'all' ? guests : guests.filter(g => g.group === filter);
-  const weddingCount = guests.filter(g => g.group === 'wedding').length;
-  const rehearsalCount = guests.filter(g => g.group === 'rehearsal').length;
   const invitedCount = guests.filter(g => g.invited).length;
-
   const rsvpYesCount = rsvps.filter(r => r.attending === 'yes').length;
   const rsvpNoCount = rsvps.filter(r => r.attending === 'no').length;
   const totalGuestsCount = rsvps.filter(r => r.attending === 'yes').reduce((sum, r) => sum + parseInt(r.numberOfGuests || '1'), 0);
@@ -224,7 +204,7 @@ const AdminPage = () => {
       {/* Header */}
       <div className="max-w-5xl mx-auto mb-6">
         <h1 className="font-cormorant text-3xl mb-2" style={{ color: '#d4c4a8' }}>
-          Wedding Dashboard
+          Celebration Dashboard
         </h1>
         <div className="flex gap-4 text-sm flex-wrap" style={{ color: 'rgba(212,184,150,0.5)' }}>
           <span>{invitedCount} invited / {guests.length} total guests</span>
@@ -293,180 +273,110 @@ const AdminPage = () => {
           </div>
 
           {/* Add Guest Form */}
-      <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
-           style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
-        <h2 className="text-sm tracking-wider mb-4" style={{ color: 'rgba(212,184,150,0.7)' }}>
-          ADD GUEST
-        </h2>
-        <form onSubmit={handleAddGuest} className="flex flex-wrap gap-3 items-end">
-          <input
-            type="text"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-            placeholder="Name"
-            className="flex-1 min-w-[150px] px-4 py-2.5 rounded-lg text-sm outline-none"
-            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,184,150,0.15)', color: '#e8dfd0' }}
-            data-testid="guest-name-input"
-          />
-          <input
-            type="text"
-            value={newPhone}
-            onChange={(e) => setNewPhone(e.target.value)}
-            placeholder="Phone (e.g., +1234567890)"
-            className="flex-1 min-w-[180px] px-4 py-2.5 rounded-lg text-sm outline-none"
-            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,184,150,0.15)', color: '#e8dfd0' }}
-            data-testid="guest-phone-input"
-          />
-          <select
-            value={newGroup}
-            onChange={(e) => setNewGroup(e.target.value)}
-            className="px-4 py-2.5 rounded-lg text-sm outline-none cursor-pointer"
-            style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,184,150,0.15)', color: '#e8dfd0' }}
-            data-testid="guest-group-select"
-          >
-            <option value="wedding" style={{ background: '#2d3d32' }}>Wedding Only</option>
-            <option value="rehearsal" style={{ background: '#2d3d32' }}>Rehearsal + Wedding</option>
-          </select>
-          <button
-            type="submit"
-            className="px-6 py-2.5 rounded-lg text-sm tracking-wider transition-all hover:scale-[1.02]"
-            style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}
-            data-testid="add-guest-btn"
-          >
-            Add
-          </button>
-        </form>
-      </div>
-
-      {/* Filter Tabs */}
-      <div className="max-w-5xl mx-auto mb-4 flex gap-2">
-        {[
-          { key: 'all', label: 'All Guests' },
-          { key: 'wedding', label: 'Wedding Only' },
-          { key: 'rehearsal', label: 'Rehearsal + Wedding' },
-        ].map(tab => (
-          <button
-            key={tab.key}
-            onClick={() => setFilter(tab.key)}
-            className="px-4 py-2 rounded-lg text-xs tracking-wider transition-all"
-            style={{ 
-              background: filter === tab.key ? 'rgba(212,184,150,0.2)' : 'rgba(255,255,255,0.03)',
-              border: filter === tab.key ? '1px solid rgba(212,184,150,0.3)' : '1px solid rgba(212,184,150,0.08)',
-              color: filter === tab.key ? '#d4c4a8' : 'rgba(212,184,150,0.5)'
-            }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Guest List */}
-      <div className="max-w-5xl mx-auto">
-        <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(212,184,150,0.1)' }}>
-          {/* Table Header */}
-          <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider"
-               style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(212,184,150,0.5)' }}>
-            <div className="col-span-2">NAME</div>
-            <div className="col-span-2">PHONE</div>
-            <div className="col-span-1">GROUP</div>
-            <div className="col-span-2">STATUS</div>
-            <div className="col-span-5 text-right">SEND INVITE</div>
+          <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
+               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
+            <h2 className="text-sm tracking-wider mb-4" style={{ color: 'rgba(212,184,150,0.7)' }}>
+              ADD GUEST
+            </h2>
+            <form onSubmit={handleAddGuest} className="flex flex-wrap gap-3 items-end">
+              <input
+                type="text"
+                value={newName}
+                onChange={(e) => setNewName(e.target.value)}
+                placeholder="Name"
+                className="flex-1 min-w-[150px] px-4 py-2.5 rounded-lg text-sm outline-none"
+                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,184,150,0.15)', color: '#e8dfd0' }}
+                data-testid="guest-name-input"
+              />
+              <input
+                type="text"
+                value={newPhone}
+                onChange={(e) => setNewPhone(e.target.value)}
+                placeholder="Phone (e.g., +1234567890)"
+                className="flex-1 min-w-[180px] px-4 py-2.5 rounded-lg text-sm outline-none"
+                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(212,184,150,0.15)', color: '#e8dfd0' }}
+                data-testid="guest-phone-input"
+              />
+              <button
+                type="submit"
+                className="px-6 py-2.5 rounded-lg text-sm tracking-wider transition-all hover:scale-[1.02]"
+                style={{ background: 'rgba(106,130,108,0.3)', border: '1px solid rgba(106,130,108,0.4)', color: '#c8d4c0' }}
+                data-testid="add-guest-btn"
+              >
+                Add
+              </button>
+            </form>
           </div>
 
-          {filteredGuests.length === 0 && (
-            <div className="px-5 py-8 text-center text-sm" style={{ color: 'rgba(212,184,150,0.4)' }}>
-              No guests {filter !== 'all' ? 'in this group' : 'added yet'}.
-            </div>
-          )}
-          
-          {filteredGuests.map((guest) => (
-            <div key={guest.id} 
-                 className="grid grid-cols-12 gap-2 px-5 py-3 items-center"
-                 style={{ borderTop: '1px solid rgba(212,184,150,0.06)' }}
-                 data-testid={`guest-row-${guest.id}`}>
-              <div className="col-span-2 text-sm truncate" style={{ color: '#e8dfd0' }}>
-                {guest.name}
+          {/* Guest List */}
+          <div className="max-w-5xl mx-auto">
+            <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(212,184,150,0.1)' }}>
+              {/* Table Header */}
+              <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider"
+                   style={{ background: 'rgba(255,255,255,0.04)', color: 'rgba(212,184,150,0.5)' }}>
+                <div className="col-span-3">NAME</div>
+                <div className="col-span-3">PHONE</div>
+                <div className="col-span-2">STATUS</div>
+                <div className="col-span-4 text-right">SEND INVITE</div>
               </div>
-              <div className="col-span-2 text-sm truncate" style={{ color: 'rgba(212,184,150,0.7)' }}>
-                {guest.phone}
-              </div>
-              <div className="col-span-1">
-                <span className="px-2 py-0.5 rounded-full text-xs"
-                      style={{ 
-                        background: guest.group === 'rehearsal' ? 'rgba(184,149,107,0.15)' : 'rgba(106,130,108,0.15)',
-                        color: guest.group === 'rehearsal' ? '#d4c4a8' : '#a8c4a0'
-                      }}>
-                  {guest.group === 'rehearsal' ? 'R+W' : 'W'}
-                </span>
-              </div>
-              <div className="col-span-2">
-                {guest.invited ? (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs"
-                        style={{ background: 'rgba(106,130,108,0.2)', color: '#a8c4a0' }}>
-                    Sent {guest.last_invite_type === 'rehearsal' ? '(RD)' : '(W)'}
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs"
-                        style={{ background: 'rgba(212,184,150,0.1)', color: 'rgba(212,184,150,0.6)' }}>
-                    Pending
-                  </span>
-                )}
-              </div>
-              <div className="col-span-5 flex justify-end gap-1.5 flex-wrap">
-                {/* Wedding invite buttons */}
-                <div className="flex gap-1.5 items-center">
-                  <span className="text-xs mr-1" style={{ color: 'rgba(106,130,108,0.6)' }}>Wedding:</span>
-                  <button onClick={() => handleWhatsApp(guest, 'wedding')}
-                    className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
-                    style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
-                    WA
-                  </button>
-                  <button onClick={() => handleSMS(guest, 'wedding')}
-                    className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
-                    style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', color: '#60a5fa' }}>
-                    SMS
-                  </button>
-                  <button onClick={() => handleCopy(guest, 'wedding')}
-                    className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
-                    style={{ background: 'rgba(212,184,150,0.15)', border: '1px solid rgba(212,184,150,0.3)', color: '#d4c4a8' }}>
-                    {copied === guest.id + 'wedding' ? '✓' : 'Copy'}
-                  </button>
-                </div>
 
-                {/* Rehearsal dinner buttons - only for rehearsal group */}
-                {guest.group === 'rehearsal' && (
-                  <div className="flex gap-1.5 items-center">
-                    <span className="text-xs mr-1" style={{ color: 'rgba(184,149,107,0.6)' }}>R+W:</span>
-                    <button onClick={() => handleWhatsApp(guest, 'rehearsal')}
+              {guests.length === 0 && (
+                <div className="px-5 py-8 text-center text-sm" style={{ color: 'rgba(212,184,150,0.4)' }}>
+                  No guests added yet.
+                </div>
+              )}
+              
+              {guests.map((guest) => (
+                <div key={guest.id} 
+                     className="grid grid-cols-12 gap-2 px-5 py-3 items-center"
+                     style={{ borderTop: '1px solid rgba(212,184,150,0.06)' }}
+                     data-testid={`guest-row-${guest.id}`}>
+                  <div className="col-span-3 text-sm truncate" style={{ color: '#e8dfd0' }}>
+                    {guest.name}
+                  </div>
+                  <div className="col-span-3 text-sm truncate" style={{ color: 'rgba(212,184,150,0.7)' }}>
+                    {guest.phone}
+                  </div>
+                  <div className="col-span-2">
+                    {guest.invited ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs"
+                            style={{ background: 'rgba(106,130,108,0.2)', color: '#a8c4a0' }}>
+                        Sent
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs"
+                            style={{ background: 'rgba(212,184,150,0.1)', color: 'rgba(212,184,150,0.6)' }}>
+                        Pending
+                      </span>
+                    )}
+                  </div>
+                  <div className="col-span-4 flex justify-end gap-1.5 flex-wrap">
+                    <button onClick={() => handleWhatsApp(guest)}
                       className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                       style={{ background: 'rgba(37,211,102,0.15)', border: '1px solid rgba(37,211,102,0.3)', color: '#25d366' }}>
                       WA
                     </button>
-                    <button onClick={() => handleSMS(guest, 'rehearsal')}
+                    <button onClick={() => handleSMS(guest)}
                       className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                       style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)', color: '#60a5fa' }}>
                       SMS
                     </button>
-                    <button onClick={() => handleCopy(guest, 'rehearsal')}
+                    <button onClick={() => handleCopy(guest)}
                       className="px-2.5 py-1 rounded-md text-xs transition-all hover:scale-105"
                       style={{ background: 'rgba(212,184,150,0.15)', border: '1px solid rgba(212,184,150,0.3)', color: '#d4c4a8' }}>
-                      {copied === guest.id + 'rehearsal' ? '✓' : 'Copy'}
+                      {copied === guest.id ? '✓' : 'Copy'}
+                    </button>
+                    <button onClick={() => handleDelete(guest.id)}
+                      className="px-2 py-1 rounded-md text-xs transition-all hover:scale-105"
+                      style={{ background: 'rgba(180,80,80,0.15)', border: '1px solid rgba(180,80,80,0.2)', color: '#d4a0a0' }}>
+                      X
                     </button>
                   </div>
-                )}
-
-                {/* Delete */}
-                <button onClick={() => handleDelete(guest.id)}
-                  className="px-2 py-1 rounded-md text-xs transition-all hover:scale-105"
-                  style={{ background: 'rgba(180,80,80,0.15)', border: '1px solid rgba(180,80,80,0.2)', color: '#d4a0a0' }}>
-                  X
-                </button>
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      </>
+          </div>
+        </>
       )}
 
       {/* RSVP Responses Tab */}
@@ -580,7 +490,7 @@ const AdminPage = () => {
           <div className="max-w-md mx-auto text-center p-8 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
             <h2 className="font-cormorant text-2xl mb-4" style={{ color: '#d4c4a8' }}>RSVP QR Code</h2>
             <p className="text-sm mb-6" style={{ color: 'rgba(212,184,150,0.6)' }}>
-              Guests can scan this QR code to RSVP directly without needing the website password. Print it on your physical invitations or share it digitally.
+              Guests can scan this QR code to RSVP directly without needing the website password. Print it on your invitations or share it digitally.
             </p>
             <div className="bg-white rounded-lg p-4 inline-block mb-4">
               <img src="/rsvp-qr.png" alt="RSVP QR Code" className="w-64 h-64 mx-auto" />

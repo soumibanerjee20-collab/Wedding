@@ -15,7 +15,6 @@ export const navigationItems = [
   { id: 'our-story', label: 'OUR STORY', path: '/our-story' },
   { id: 'timeline', label: 'TIMELINE', path: '/timeline' },
   { id: 'events', label: 'CELEBRATION', path: '/events' },
-  { id: 'wedding-party', label: 'WE DID IT', path: '/wedding-party' },
   { id: 'gallery', label: 'GALLERY', path: '/gallery' },
   { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
   { id: 'faq', label: 'FAQ', path: '/faq' },
@@ -341,8 +340,8 @@ export const families = {
 
 export const travelInfo = {
   venue: {
-    name: "Two Celebrations, Two Countries",
-    description: "Our love story spans continents, and so will our celebrations."
+    name: "Casper, Wyoming",
+    description: "Come visit us in the heart of Wyoming for our Open House Celebration."
   },
   usLocation: {
     title: "Casper, Wyoming, USA",
@@ -403,7 +402,7 @@ export const travelInfo = {
   indiaLocation: {
     title: "Kolkata, India",
     location: "Kolkata, West Bengal",
-    description: "The City of Joy, Soumi's hometown and where our Indian celebration will be held.",
+    description: "The City of Joy, Soumi's hometown.",
     image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/tbzn52uf_beautiful-kolkata-beautiful-bengal-%E0%A6%AC-%E0%A6%B2-%E0%A6%B0-%E0%A6%AE-%E0%A6%9F-%E0%A6%AC-%E0%A6%B2-%E0%A6%B0-%E0%A6%9C%E0%A6%B2-%E0%A6%9B-%E0%A6%AC-%E0%A6%B8-v0-edv1cqskhydb1.png.webp",
     history: "Kolkata, formerly Calcutta, served as the capital of British India until 1911. It's a city of literature, art, film, and intellectual heritage, having produced Nobel laureates like Rabindranath Tagore and acclaimed filmmakers like Satyajit Ray. Known for its colonial architecture, vibrant Durga Puja festivals, legendary sweets, and the warmest hospitality you'll ever experience.",
     landmarks: [
@@ -438,7 +437,7 @@ export const travelInfo = {
     description: "Details about recommended hotels and accommodations will be shared soon. We're currently finalizing partnerships with hotels in Kolkata for our guests traveling from the US and other locations.",
     comingSoon: true
   },
-  stayTuned: "More details about venues, accommodations, and travel logistics will be shared as we finalize our plans. Thank you for being part of our journey!"
+  stayTuned: "We can't wait to welcome you to Casper! If you need any help with travel or accommodations, don't hesitate to reach out. We're here to help make your visit easy and enjoyable."
 };
 
 export const weddingParty = {
@@ -481,20 +480,15 @@ export const weddingParty = {
 
 export const rsvpInfo = {
   title: "RSVP",
-  description: "We can't wait to celebrate with you! Please let us know if you'll be joining us.",
+  description: "We can't wait to celebrate with you! Please let us know if you'll be joining us for the Open House.",
   usEvent: {
-    title: "US Wedding (2026)",
-    status: "Coming Soon",
-    description: "RSVP details will be available once the date and venue are finalized."
-  },
-  indiaEvent: {
-    title: "Indian Reception (2027)",
-    status: "Coming Soon",
-    description: "RSVP details and accommodation options for guests traveling to Kolkata will be shared here."
+    title: "Open House Celebration",
+    status: "Open",
+    description: "Join us for a relaxed afternoon of food, drinks, and celebration at our home in Casper."
   },
   photoShare: {
     title: "Share Your Photos",
-    description: "After the celebrations, we'll create a shared album where all guests can upload their photos. A QR code will be provided at the venue!",
+    description: "After the celebration, we'll create a shared album where all guests can upload their photos. A QR code will be provided at the event!",
     comingSoon: true
   }
 };
