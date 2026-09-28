@@ -60,32 +60,36 @@ const FAQPage = () => {
         {/* FAQ Items */}
         <div className="space-y-4">
           <FAQItem 
-            question="Why the short notice?"
-            answer="Our wedding date depends on Soumi's US immigration process, which has government timelines we can't control. This means you may receive only 30 to 90 days' notice before the celebration. We know that's not a lot of time, and we're so grateful for your patience and flexibility. It means more than you know!"
+            question="What is this celebration?"
+            answer="We got married in a private ceremony on September 25, 2026! Now we want to celebrate with our family, friends, and neighbors. This is a casual open house at our home where you can come, enjoy food and drinks, meet Soumi, and share in our happiness."
           />
           <FAQItem 
-            question="Where will the US ceremony be held?"
-            answer="We'll be getting married at the Tate Pumphouse in Casper, Wyoming. The ceremony will be in the afternoon followed by a reception in the evening at the same venue. We'll share exact timings as soon as we have them!"
+            question="When and where is the open house?"
+            answer="Saturday, October 24, 2026, from 1:00 PM to 5:00 PM at our home: 4450 Smoke Rise Road, Casper, WY 82604. Feel free to drop by anytime during those hours!"
           />
           <FAQItem 
             question="What should I wear?"
-            answer="For Wyoming, think elegant but comfortable. We'll be outdoors in nature, so cocktail or semi-formal works great. For Kolkata, traditional Indian attire is warmly welcomed (sarees, kurtas, lehengas) or you can go with formal western wear. We'll send more specific guidance closer to each event."
+            answer="Keep it casual and comfortable! This is a relaxed afternoon gathering at our home. Think smart casual. No need to dress up, just come as you are."
           />
           <FAQItem 
-            question="Will there be accommodation options nearby?"
-            answer="Absolutely! We'll share a list of recommended hotels and lodging in the Casper area once the date is set. For Kolkata, we'll have options from nearby hotels to family homes. Keep an eye on the Travel page for updates."
+            question="Will there be food and drinks?"
+            answer="Yes! Hors d'oeuvres and drinks will be provided. Come hungry and ready to enjoy a relaxed afternoon with us."
           />
           <FAQItem 
-            question="Can I bring a plus one?"
-            answer="We'd love to keep things intimate. Your invitation will let you know if a plus one is included. If you're unsure, just reach out to us directly and we'll sort it out!"
+            question="Do I need to stay the whole time?"
+            answer="Not at all! Feel free to drop in anytime between 1:00 PM and 5:00 PM. Stay for as long as you'd like. Even a quick stop means the world to us."
+          />
+          <FAQItem 
+            question="Can I bring my family?"
+            answer="Absolutely! Everyone is welcome. The more the merrier. Just let us know in your RSVP how many people will be coming so we can plan accordingly."
           />
           <FAQItem 
             question="What about gifts?"
             answer="Your presence is truly the greatest gift. Just having you there to celebrate with us is all we could ask for. If you'd still like to give something, we've set up a small registry. You can find it on our Registry page."
           />
           <FAQItem 
-            question="What about the Indian wedding?"
-            answer="We're planning a traditional Bengali Hindu wedding in Kolkata, India! This will be a separate celebration, and dates are still to be determined. We'll share all the details as plans take shape. Stay tuned!"
+            question="Is there parking available?"
+            answer="Yes, there's plenty of parking at and around our home. You won't have any trouble finding a spot."
           />
         </div>
       </div>

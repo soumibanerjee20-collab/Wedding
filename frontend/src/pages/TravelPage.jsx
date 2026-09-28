@@ -8,17 +8,17 @@ const TravelPage = () => {
 
   const getDirectionsUrl = (hotel) => {
     const origin = encodeURIComponent(hotel.name + ', Casper, WY');
-    const destination = encodeURIComponent('Tate Pumphouse, Casper, WY');
+    const destination = encodeURIComponent('4450 Smoke Rise Road, Casper, WY');
     return `https://www.google.com/maps/dir/${origin}/${destination}`;
   };
 
   const getMapSrc = (hotel) => {
     if (hotel) {
       const origin = encodeURIComponent(hotel.name + ', Casper, WY');
-      const destination = encodeURIComponent('Tate Pumphouse, Casper, WY');
+      const destination = encodeURIComponent('4450 Smoke Rise Road, Casper, WY 82604');
       return `https://www.google.com/maps?saddr=${origin}&daddr=${destination}&output=embed`;
     }
-    return `https://www.google.com/maps?q=${encodeURIComponent('Tate Pumphouse, Casper, WY')}&output=embed`;
+    return `https://www.google.com/maps?q=${encodeURIComponent('4450 Smoke Rise Road, Casper, WY')}&output=embed`;
   };
 
   return (
@@ -69,11 +69,11 @@ const TravelPage = () => {
               {/* Venue & Map */}
               <div className="mb-8">
                 <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">
-                  Wedding Venue: Tate Pumphouse
+                  Celebration Venue: Our Home
                 </h4>
                 <div className="rounded-lg overflow-hidden border border-[#8a9a7c]/15 transition-all duration-500" style={{ height: selectedHotel ? '450px' : '300px' }}>
                   <iframe
-                    title="Tate Pumphouse Map"
+                    title="4450 Smoke Rise Road Map"
                     src={getMapSrc(selectedHotel)}
                     width="100%"
                     height="100%"
@@ -88,7 +88,7 @@ const TravelPage = () => {
                     <div className="flex items-center gap-2">
                       <Navigation className="w-4 h-4 text-[#6b7c5e]" />
                       <span className="text-[#3d3d38] text-sm">
-                        Directions from <strong>{selectedHotel.name}</strong> to Tate Pumphouse
+                        Directions from <strong>{selectedHotel.name}</strong> to 4450 Smoke Rise Road
                       </span>
                     </div>
                     <div className="flex gap-2">
@@ -152,50 +152,6 @@ const TravelPage = () => {
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {travelInfo.usLocation.landmarks.map((landmark, index) => (
                   <div key={index} className="bg-[#f8faf7] p-4 border border-[#8a9a7c]/10 rounded-lg">
-                    <div className="flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-[#6b7c5e] mt-0.5 flex-shrink-0" />
-                      <div>
-                        <h5 className="font-medium text-[#3d3d38] text-sm mb-1">{landmark.name}</h5>
-                        <p className="text-[#5a5a52] text-xs leading-relaxed">{landmark.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* India Section - Coming Later */}
-        <div className="mb-16 opacity-50">
-          <div className="bg-white/95 backdrop-blur-sm overflow-hidden border border-[#8a9a7c]/15 rounded-lg shadow-sm relative">
-            <div className="absolute top-4 right-4 z-10 px-4 py-1.5 bg-[#b8956b]/90 text-white text-xs tracking-wider rounded-full">
-              Coming 2027
-            </div>
-            <div className="relative aspect-[21/9] overflow-hidden bg-[#e8e4de]">
-              <img
-                src={travelInfo.indiaLocation.image}
-                alt="Kolkata"
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 35%' }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/30 to-transparent" />
-              <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                <Building className="w-5 h-5 text-white" />
-                <h3 className="font-display text-2xl text-white tracking-wide drop-shadow-lg">
-                  {travelInfo.indiaLocation.title}
-                </h3>
-              </div>
-            </div>
-            <div className="p-8">
-              <p className="text-[#3d3d38] text-sm md:text-base mb-8 leading-relaxed">
-                {travelInfo.indiaLocation.history}
-              </p>
-              
-              <h4 className="text-[#5a6b50] font-medium mb-4 text-sm tracking-wider uppercase">Iconic Landmarks</h4>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {travelInfo.indiaLocation.landmarks.map((landmark, index) => (
-                  <div key={index} className="bg-[#faf8f4] p-4 border border-[#d4b896]/10 rounded-lg">
                     <div className="flex items-start gap-2">
                       <MapPin className="w-4 h-4 text-[#6b7c5e] mt-0.5 flex-shrink-0" />
                       <div>

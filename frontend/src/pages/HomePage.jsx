@@ -111,8 +111,8 @@ const PasswordGate = ({ onSuccess }) => {
 const WeddingCountdown = ({ visible }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   
-  // Wedding date: October 25, 2026
-  const weddingDate = new Date('2026-10-25T00:00:00');
+  // Reception date: October 24, 2026
+  const weddingDate = new Date('2026-10-24T00:00:00');
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -153,10 +153,10 @@ const WeddingCountdown = ({ visible }) => {
       {/* Big date display */}
       <div className="mb-6">
         <p className="text-[#5a6b4e] text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
-          Save the Date
+          We're Married! Join Our Celebration
         </p>
         <div className="flex items-center justify-center gap-3 md:gap-5">
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">25</span>
+          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">24</span>
           <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
           <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">10</span>
           <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>

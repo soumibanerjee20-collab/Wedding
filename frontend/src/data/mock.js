@@ -5,9 +5,8 @@ export const coupleInfo = {
   groom: "James",
   brideFullName: "Soumi Banerjee",
   groomFullName: "James M. Adams",
-  tagline: "TWO HEARTS, ONE JOURNEY",
+  tagline: "WE'RE MARRIED!",
   usWeddingYear: "2026",
-  indiaWeddingYear: "2027",
   monogram: "S & J",
   logoUrl: "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/scggrc0b_ChatGPT%20Image%20Dec%2027%2C%202025%20at%2010_07_22%20PM.png"
 };
@@ -15,8 +14,8 @@ export const coupleInfo = {
 export const navigationItems = [
   { id: 'our-story', label: 'OUR STORY', path: '/our-story' },
   { id: 'timeline', label: 'TIMELINE', path: '/timeline' },
-  { id: 'events', label: 'EVENTS', path: '/events' },
-  { id: 'wedding-party', label: 'WEDDING PARTY', path: '/wedding-party' },
+  { id: 'events', label: 'CELEBRATION', path: '/events' },
+  { id: 'wedding-party', label: 'WE DID IT', path: '/wedding-party' },
   { id: 'gallery', label: 'GALLERY', path: '/gallery' },
   { id: 'travel', label: 'TRAVEL & STAY', path: '/travel' },
   { id: 'faq', label: 'FAQ', path: '/faq' },
@@ -187,65 +186,35 @@ export const timeline = [
     photos: [
       "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ojn0o52l_148AA98A-A0A4-4DCD-A54A-320C0C871D73.jpeg"
     ]
+  },
+  {
+    date: "SEPTEMBER 25, 2026",
+    title: "We Said I Do",
+    description: "On a beautiful September day in Wyoming, surrounded by love and the wide open sky, Soumi and James said 'I do' in a small and private ceremony. No grand venue, no hundreds of guests, just two people who crossed oceans, survived time zones, and waited years for this moment. It was perfect. It was them. And it was the beginning of their forever, together at last.",
+    location: "Casper, Wyoming",
+    photos: [
+      "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/zmyvd9nw_8b42de1b-d6e3-4d87-9c27-b5a1eeac1404.jpeg"
+    ]
   }
 ];
 
 export const events = {
   usWedding: {
     title: "American Wedding",
-    subtitle: "Where The West Meets Forever",
+    subtitle: "We're Married! Come Celebrate With Us",
     location: "Casper, Wyoming",
-    date: "October 25, 2026",
-    image: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/x7ksqxlq_3960158_lg.jpg",
+    date: "October 24, 2026",
+    image: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/ykrmzpsp_1000051453.jpeg",
     events: [
       {
-        id: 2,
-        name: "Wedding Ceremony",
-        date: "October 25, 2026",
-        time: "Afternoon",
-        venue: "Tate Pumphouse",
-        location: "Casper, Wyoming",
-        description: "An intimate outdoor ceremony surrounded by Wyoming's natural beauty. Where two hearts officially become one under the open sky.",
-        icon: "rings"
-      },
-      {
-        id: 3,
-        name: "Reception",
-        date: "October 25, 2026",
-        time: "Evening",
-        venue: "Tate Pumphouse",
-        location: "Casper, Wyoming",
-        description: "Join us for an evening of celebration, dinner, dancing, and making memories together as we begin our married life.",
+        id: 1,
+        name: "Wedding Reception & Open House",
+        date: "Saturday, October 24, 2026",
+        time: "1:00 PM to 5:00 PM",
+        venue: "4450 Smoke Rise Road",
+        location: "Casper, Wyoming 82604",
+        description: "Please come and enjoy a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage and welcome Soumi as she begins this wonderful new chapter of her life in the United States. Hors d'oeuvres and drinks will be provided.",
         icon: "celebration"
-      }
-    ]
-  },
-  indianWedding: {
-    title: "Indian Wedding",
-    subtitle: "Where Tradition Meets Love",
-    location: "Kolkata, India",
-    date: "November 5-6, 2027 (Tentative)",
-    image: "https://customer-assets.emergentagent.com/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/89ivhx05_87570a88-61e5-4c39-94f0-9dd3d8504dee.jpg",
-    events: [
-      {
-        id: 4,
-        name: "Sangeet & Mehendi",
-        date: "November 5, 2027 (Tentative)",
-        time: "Evening",
-        venue: "Venue TBA",
-        location: "Kolkata, India",
-        description: "A night of music, dance, and beautiful henna art. Families come together for performances, laughter, and the bride gets adorned with intricate mehendi designs.",
-        icon: "music"
-      },
-      {
-        id: 5,
-        name: "Wedding Reception",
-        date: "November 6, 2027 (Tentative)",
-        time: "Evening",
-        venue: "Venue TBA",
-        location: "Kolkata, India",
-        description: "A grand celebration to welcome the newlyweds. Exquisite Bengali cuisine, music, and blessings from loved ones as we celebrate this union of two cultures.",
-        icon: "feast"
       }
     ]
   }
@@ -296,6 +265,21 @@ export const gallery = [
     id: 1,
     src: "https://customer-assets.emergentagent.com/job_tie-the-knot-30/artifacts/iqmqccln_B3D2F49B-B331-4E6A-A53A-A6B73860A61E.jpeg",
     category: "proposal"
+  },
+  {
+    id: 10,
+    src: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/9kohm48g_1000051286.webp",
+    category: "wedding"
+  },
+  {
+    id: 11,
+    src: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/gyu71a3d_1000051284.webp",
+    category: "wedding"
+  },
+  {
+    id: 12,
+    src: "https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/zmyvd9nw_8b42de1b-d6e3-4d87-9c27-b5a1eeac1404.jpeg",
+    category: "wedding"
   }
 ];
 

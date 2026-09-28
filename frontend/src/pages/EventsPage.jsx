@@ -172,7 +172,7 @@ const EventCard = ({ event, isIndian, index }) => {
 };
 
 const EventsPage = () => {
-  const { usWedding, indianWedding } = events;
+  const { usWedding } = events;
   
   return (
     <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 overflow-hidden">
@@ -263,128 +263,14 @@ const EventsPage = () => {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="max-w-xl mx-auto px-6 mb-20">
-        <div className="flex items-center justify-center gap-4">
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#b8956b]/30" />
-          <div className="flex items-center gap-2">
-            <span className="text-[#b8956b] text-2xl">✦</span>
-            <span className="font-cormorant text-lg text-[#5a5a52] italic">and then</span>
-            <span className="text-[#b8956b] text-2xl">✦</span>
-          </div>
-          <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#b8956b]/30" />
-        </div>
-      </div>
-
-      {/* Indian Wedding Section */}
-      <section className="relative py-4">
-        {/* Marigold gradient background - more visible */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,243,224,0.8) 0%, rgba(255,237,213,0.6) 50%, rgba(255,248,240,0.4) 100%)',
-          }}
-        />
-        
-        {/* Marigold border accent at top */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-[#E89B3C] to-transparent opacity-50" />
-        
-        {/* Decorative border pattern at top */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-96 opacity-30">
-          <BorderPattern className="w-full h-6 text-[#D4740C]" />
-        </div>
-        
-        {/* Large Alpana patterns - MORE VISIBLE */}
-        <div className="absolute top-16 right-8 opacity-40">
-          <AlpanaPattern className="w-72 h-72 text-[#D4740C]" />
-        </div>
-        <div className="absolute bottom-16 left-8 opacity-35">
-          <AlpanaPattern className="w-56 h-56 text-[#D4740C]" />
-        </div>
-        <div className="absolute top-1/2 left-4 -translate-y-1/2 opacity-25">
-          <AlpanaPattern className="w-40 h-40 text-[#E89B3C]" />
-        </div>
-        
-        {/* Paisley motifs - Bengali touch */}
-        <div className="absolute top-32 left-16 opacity-35 rotate-12">
-          <PaisleyPattern className="w-16 h-24 text-[#D4740C]" />
-        </div>
-        <div className="absolute bottom-32 right-16 opacity-30 -rotate-12">
-          <PaisleyPattern className="w-14 h-20 text-[#E89B3C]" />
-        </div>
-        <div className="absolute top-48 right-40 opacity-25 rotate-45">
-          <PaisleyPattern className="w-12 h-18 text-[#D4740C]" />
-        </div>
-        
-        {/* Marigold flower decorative dots - scattered */}
-        <div className="absolute top-24 left-32 w-4 h-4 rounded-full bg-[#F5A623] opacity-40" />
-        <div className="absolute top-40 right-48 w-3 h-3 rounded-full bg-[#E89B3C] opacity-35" />
-        <div className="absolute bottom-40 left-48 w-3 h-3 rounded-full bg-[#F5A623] opacity-30" />
-        <div className="absolute bottom-56 right-24 w-4 h-4 rounded-full bg-[#D4740C] opacity-35" />
-        <div className="absolute top-60 left-20 w-2 h-2 rounded-full bg-[#E89B3C] opacity-40" />
-        <div className="absolute bottom-28 left-36 w-2 h-2 rounded-full bg-[#F5A623] opacity-35" />
-        
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 relative">
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row-reverse md:items-end gap-6 mb-10">
-            {/* Image */}
-            <div className="md:w-1/3 relative group">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src={indianWedding.image} 
-                  alt="Kolkata"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              </div>
-              {/* Floating date badge */}
-              <div className="absolute -bottom-4 right-4 bg-white px-4 py-2 rounded-full shadow-md border border-[#E89B3C]/20">
-                <span className="text-[#D4740C] font-medium text-sm">{indianWedding.date}</span>
-              </div>
-            </div>
-            
-            {/* Title */}
-            <div className="md:w-2/3 pb-2 md:text-right">
-              <div className="flex items-center gap-3 mb-2 md:justify-end">
-                <span className="text-[#D4740C] text-sm tracking-[0.2em] uppercase">Chapter Two</span>
-                <div className="w-12 h-[2px] bg-[#E89B3C]" />
-              </div>
-              <h2 className="font-display text-3xl md:text-4xl text-[#B8540B] mb-2">
-                {indianWedding.title}
-              </h2>
-              <p className="font-cormorant text-xl text-[#5a5a52] italic">
-                {indianWedding.subtitle}
-              </p>
-              <div className="flex items-center gap-2 mt-3 text-[#3d3d38] md:justify-end">
-                <MapPin className="w-4 h-4 text-[#E89B3C]" />
-                <span className="text-sm">{indianWedding.location}</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Events Timeline */}
-          <div className="relative">
-            {/* Connecting line with marigold color */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#E89B3C]/20 via-[#E89B3C]/40 to-[#E89B3C]/20" />
-            
-            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-              {indianWedding.events.map((event, index) => (
-                <EventCard key={event.id} event={event} isIndian={true} index={index} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Bottom Note */}
       <div className="max-w-3xl mx-auto px-6 mt-20 text-center">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-sm border border-[#d4b896]/10">
           <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic mb-4">
-            "Two cultures, two celebrations, one beautiful love story"
+            "There will be no formal ceremony, just a casual gathering at our home where we can celebrate together"
           </p>
           <p className="text-[#5a5a52] text-sm">
-            More details about venues and timings will be shared as we finalize our plans. 
-            We can't wait to celebrate with you!
+            Come enjoy a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage.
           </p>
         </div>
       </div>

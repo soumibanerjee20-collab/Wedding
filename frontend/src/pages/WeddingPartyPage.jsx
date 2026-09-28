@@ -1,168 +1,98 @@
 import React from 'react';
-import { weddingParty } from '../data/mock';
-import { Heart, Sparkles, Crown, Shield } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDecorations';
 
-const WeddingPartyPage = () => {
+const WeDidItPage = () => {
   return (
-    <div className="min-h-screen pt-20 relative overflow-hidden">
-      {/* Faded outdoor wedding photo background */}
+    <div className="min-h-screen pt-20 relative">
+      {/* Background */}
       <div 
         className="fixed inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url('https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/31wcto03_4425205_lg.jpg')`,
         }}
       >
-        <div className="absolute inset-0 bg-[#faf8f4]/[0.87]" />
+        <div className="absolute inset-0 bg-[#faf8f4]/87" />
       </div>
 
-      {/* Leaf Decorations */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <EucalyptusBranch className="absolute top-20 left-0 w-24 md:w-32 h-auto text-[#8a9a7c]" />
-        <EucalyptusBranch className="absolute top-20 right-0 w-24 md:w-32 h-auto text-[#8a9a7c]" flip />
-        <SingleLeaf className="absolute top-1/3 right-8 w-10 h-14 text-[#8a9a7c] -rotate-12" />
-        <SingleLeaf className="absolute top-2/3 left-6 w-8 h-12 text-[#8a9a7c] rotate-20" />
-        <CornerVine className="absolute bottom-0 left-0 w-40 md:w-56 h-auto text-[#8a9a7c]" />
-        <CornerVine className="absolute bottom-0 right-0 w-40 md:w-56 h-auto text-[#8a9a7c]" flip />
-      </div>
+      <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
+        {/* Leaf Decorations */}
+        <EucalyptusBranch className="absolute top-20 left-0 w-20 md:w-28 h-auto text-[#8a9a7c]" />
+        <EucalyptusBranch className="absolute top-20 right-0 w-20 md:w-28 h-auto text-[#8a9a7c]" flip />
+        <SingleLeaf className="absolute top-1/3 right-6 w-8 h-12 text-[#8a9a7c] -rotate-12" />
+        <CornerVine className="absolute bottom-0 left-0 w-36 md:w-44 h-auto text-[#8a9a7c]" />
+        <CornerVine className="absolute bottom-0 right-0 w-36 md:w-44 h-auto text-[#8a9a7c]" flip />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-16">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
-            Wedding Party
+            We Did It!
           </h1>
           <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-6" />
-          <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic max-w-2xl mx-auto">
-            The incredible humans standing beside us as we say "I do" in Wyoming
-          </p>
-          <p className="text-[#6b7c5e] text-sm mt-3 tracking-wide">
-            October 25, 2026 &bull; Casper, Wyoming
+          <p className="font-cormorant text-xl md:text-2xl text-[#3d3d38] italic">
+            September 25, 2026 · Casper, Wyoming
           </p>
         </div>
 
-        {/* Two sides */}
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-          
-          {/* Bride's Side */}
-          <div>
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/80 mb-4 shadow-sm">
-                <Crown className="w-7 h-7 text-[#8a9a7c]" />
-              </div>
-              <h2 className="font-display text-2xl md:text-3xl text-[#b8956b] mb-2 tracking-wide">
-                {weddingParty.bridesSide.title}
-              </h2>
-              <p className="font-cormorant text-lg text-[#5a5a52] italic">
-                {weddingParty.bridesSide.subtitle}
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-3">
-                <div className="w-8 h-[1px] bg-[#d4b896]" />
-                <Heart className="w-4 h-4 text-[#b8956b] fill-[#b8956b]" />
-                <div className="w-8 h-[1px] bg-[#d4b896]" />
-              </div>
-            </div>
-
-            <div className="space-y-5">
-              {weddingParty.bridesSide.members.map((member, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300"
-                >
-                  <div className="flex items-center gap-5">
-                    {member.photo && (
-                      <div className="w-28 h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-[#d4b896]/30 shadow-sm">
-                        <img src={member.photo} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
-                      </div>
-                    )}
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <Sparkles className="w-4 h-4 text-[#b8956b]" />
-                        <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
-                          {member.role}
-                        </span>
-                      </div>
-                      <h3 className="font-display text-xl text-[#3d3d38] mb-1">
-                        {member.name}
-                      </h3>
-                      <p className="text-[#6b7c5e] text-sm italic">
-                        {member.relation}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Groom's Side */}
-          <div>
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/80 mb-4 shadow-sm">
-                <Shield className="w-7 h-7 text-[#8a9a7c]" />
-              </div>
-              <h2 className="font-display text-2xl md:text-3xl text-[#b8956b] mb-2 tracking-wide">
-                {weddingParty.groomsSide.title}
-              </h2>
-              <p className="font-cormorant text-lg text-[#5a5a52] italic">
-                {weddingParty.groomsSide.subtitle}
-              </p>
-              <div className="flex items-center justify-center gap-2 mt-3">
-                <div className="w-8 h-[1px] bg-[#d4b896]" />
-                <Heart className="w-4 h-4 text-[#b8956b] fill-[#b8956b]" />
-                <div className="w-8 h-[1px] bg-[#d4b896]" />
-              </div>
-            </div>
-
-            <div className="space-y-5">
-              {weddingParty.groomsSide.members.map((member, index) => (
-                <div 
-                  key={index}
-                  className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-[#8a9a7c]/15 hover:shadow-md transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3 mb-1">
-                    <Sparkles className="w-4 h-4 text-[#b8956b]" />
-                    <span className="text-[#8a9a7c] text-xs font-semibold tracking-[0.2em] uppercase">
-                      {member.role}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-xl text-[#3d3d38] mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-[#6b7c5e] text-sm italic">
-                    {member.relation}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Indian Wedding Note */}
-        <div className="mt-16 text-center">
-          <div className="bg-white/85 backdrop-blur-sm p-8 rounded-lg border border-[#d4b896]/20 max-w-2xl mx-auto">
-            <Sparkles className="w-6 h-6 text-[#D4740C] mx-auto mb-3" />
-            <h3 className="font-display text-xl text-[#B8540B] mb-3 tracking-wide">
-              Indian Wedding, Kolkata
-            </h3>
-            <p className="text-[#3d3d38] text-sm leading-relaxed">
-              For our Indian celebration, every family member and friend is part of the wedding party. 
-              In Bengali tradition, the entire community comes together to bless the couple. No roles needed, 
-              just love, laughter, and togetherness.
-            </p>
-            <p className="text-[#5a5a52] text-xs mt-3 italic">
-              November 5-6, 2027 (Tentative) &bull; Kolkata, India
+        {/* Wedding Photo */}
+        <div className="max-w-2xl mx-auto mb-12">
+          <div className="bg-white p-3 pb-14 shadow-lg rotate-1 hover:rotate-0 transition-transform duration-500">
+            <img
+              src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/zmyvd9nw_8b42de1b-d6e3-4d87-9c27-b5a1eeac1404.jpeg"
+              alt="Our wedding day"
+              className="w-full h-80 md:h-96 object-cover"
+              style={{ objectPosition: 'center 40%' }}
+            />
+            <p className="absolute bottom-4 left-0 right-0 text-center font-caveat text-lg text-[#5a5a52]" style={{ fontFamily: "'Caveat', cursive" }}>
+              Mr. & Mrs. Adams · 09.25.2026
             </p>
           </div>
         </div>
 
-        {/* Bottom quote */}
-        <div className="mt-16 text-center">
-          <div className="bg-[#8a9a7c] text-white p-8 rounded-lg">
-            <Heart className="w-5 h-5 fill-white mx-auto mb-3" />
-            <p className="font-cormorant text-xl md:text-2xl italic">
-              "Here's to the ones who make our love story even more beautiful. We couldn't do forever without you."
+        {/* The Story */}
+        <div className="max-w-2xl mx-auto text-center mb-12">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-8 md:p-10 shadow-sm border border-[#d4b896]/15">
+            <Heart className="w-8 h-8 text-[#b8956b] mx-auto mb-5 fill-[#b8956b]/20" />
+            <p className="text-[#3d3d38] text-base md:text-lg leading-relaxed mb-6">
+              We're happy to share that we were married in a private ceremony in Wyoming on September 25, 2026. Our wedding day was a small and private occasion, filled with love and the wide Wyoming sky above us.
             </p>
+            <p className="text-[#3d3d38] text-base md:text-lg leading-relaxed mb-6">
+              After years of long distance, immigration paperwork, and 7 time zones, we finally said "I do." It was intimate, it was us, and it was perfect.
+            </p>
+            <p className="text-[#5a5a52] text-sm leading-relaxed">
+              Now we want to celebrate with everyone who has been part of our journey. Please join us for an Open House Celebration on October 24, 2026 at our home in Casper.
+            </p>
+          </div>
+        </div>
+
+        {/* More Wedding Photos */}
+        <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
+          <div className="bg-white p-2 pb-10 shadow-lg -rotate-2 hover:rotate-0 transition-transform duration-500">
+            <img
+              src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/9kohm48g_1000051286.webp"
+              alt="Wedding ceremony"
+              className="w-full h-48 md:h-64 object-cover"
+              style={{ objectPosition: 'center 30%' }}
+            />
+          </div>
+          <div className="bg-white p-2 pb-10 shadow-lg rotate-2 hover:rotate-0 transition-transform duration-500">
+            <img
+              src="https://customer-assets-gfyr7b9c.emergentagent.net/job_1fed53a0-2d6d-4184-bdb5-20bc5b105bf6/artifacts/gyu71a3d_1000051284.webp"
+              alt="Wedding ceremony"
+              className="w-full h-48 md:h-64 object-cover"
+              style={{ objectPosition: 'center 30%' }}
+            />
+          </div>
+        </div>
+
+        {/* With Love */}
+        <div className="text-center">
+          <p className="font-cormorant text-xl text-[#5a5a52] italic mb-2">With love,</p>
+          <p className="font-display text-2xl text-[#b8956b] tracking-wider mb-6">Jimmy & Soumi</p>
+          <div className="text-[#5a5a52] text-sm">
+            <p className="italic">With love from our families:</p>
+            <p className="mt-1">Somnath & Swapna Banerjee</p>
+            <p>Mark & Judy Adams</p>
           </div>
         </div>
       </div>
@@ -170,4 +100,4 @@ const WeddingPartyPage = () => {
   );
 };
 
-export default WeddingPartyPage;
+export default WeDidItPage;

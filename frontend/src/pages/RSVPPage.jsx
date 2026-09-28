@@ -206,17 +206,17 @@ const RSVPPage = () => {
                     </div>
                     <div>
                       <h3 className="font-display text-2xl text-[#5a6b50] tracking-wide">
-                        US Wedding
+                        Open House Celebration
                       </h3>
                       <p className="text-[#5a5a52] text-sm">Casper, Wyoming</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
                     <Calendar className="w-4 h-4 text-[#6b7c5e]" />
-                    <span>October 25, 2026</span>
+                    <span>October 24, 2026</span>
                   </div>
                   <p className="text-[#3d3d38] text-sm mb-4">
-                    Join us for an intimate ceremony followed by a reception at the Tate Pumphouse, surrounded by the beautiful Wyoming landscape.
+                    Join us for a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage at our home in Casper.
                   </p>
                   
                   {/* Dress Code */}
@@ -235,49 +235,14 @@ const RSVPPage = () => {
                   onClick={() => setSelectedEvent('us')}
                   className="px-6 py-3 bg-[#8a9a7c] text-white rounded-full hover:bg-[#6b7c5e] transition-colors whitespace-nowrap cursor-pointer"
                 >
-                  RSVP for US Wedding
+                  RSVP for Open House
                 </button>
-              </div>
-            </div>
-
-            {/* Indian Wedding Card - Coming Soon */}
-            <div 
-              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#E89B3C]/25 rounded-lg opacity-75"
-              data-testid="india-wedding-rsvp-card"
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-[#FFF5E6] rounded-full flex items-center justify-center">
-                      <Sparkles className="w-5 h-5 text-[#D4740C]" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-2xl text-[#B8540B] tracking-wide">
-                        Indian Wedding & Reception
-                      </h3>
-                      <p className="text-[#5a5a52] text-sm">Kolkata, India</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
-                    <Calendar className="w-4 h-4 text-[#D4740C]" />
-                    <span>Dates to be announced</span>
-                  </div>
-                  <p className="text-[#3d3d38] text-sm mb-4">
-                    A traditional Bengali Hindu wedding celebration in the City of Joy. RSVP will open once details are finalized.
-                  </p>
-                </div>
-                
-                <div 
-                  className="px-6 py-3 bg-[#E89B3C]/30 text-[#B8540B] rounded-full text-sm tracking-wide whitespace-nowrap text-center"
-                >
-                  Coming Soon
-                </div>
               </div>
             </div>
 
             {/* Note */}
             <div className="text-center text-[#5a5a52] text-sm italic">
-              <p>Attending both celebrations? Please submit separate RSVPs for each event.</p>
+              <p>We hope you can join us for an afternoon of celebration!</p>
             </div>
           </div>
         ) : (
@@ -297,10 +262,10 @@ const RSVPPage = () => {
 
             <div className={`p-8 rounded-lg ${selectedEvent === 'us' ? 'bg-white/95 border border-[#8a9a7c]/30' : 'bg-white/95 border border-[#E89B3C]/30'} backdrop-blur-sm`}>
               <h2 className={`font-display text-2xl mb-2 ${selectedEvent === 'us' ? 'text-[#5a6b50]' : 'text-[#B8540B]'}`}>
-                {selectedEvent === 'us' ? 'RSVP: US Wedding' : 'RSVP: Indian Wedding & Reception'}
+                {selectedEvent === 'us' ? 'RSVP: Open House Celebration' : ''}
               </h2>
               <p className="text-[#5a5a52] text-sm mb-6">
-                {selectedEvent === 'us' ? 'October 25, 2026 • Tate Pumphouse, Casper, Wyoming' : 'November 5-6, 2027 (Tentative) • Kolkata, India'}
+                {selectedEvent === 'us' ? 'Saturday, October 24, 2026 • 1:00 PM to 5:00 PM • 4450 Smoke Rise Road, Casper, WY' : ''}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
