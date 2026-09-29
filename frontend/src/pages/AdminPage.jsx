@@ -272,6 +272,27 @@ const AdminPage = () => {
             </div>
           </div>
 
+          {/* Invite Message Preview */}
+          <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
+               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm tracking-wider" style={{ color: 'rgba(212,184,150,0.7)' }}>
+                INVITE MESSAGE PREVIEW
+              </h2>
+              <span className="text-xs px-2 py-1 rounded-full" style={{ background: 'rgba(106,130,108,0.15)', color: '#a8c4a0' }}>
+                Sent with WA / SMS / Copy
+              </span>
+            </div>
+            <div className="p-4 rounded-lg" style={{ background: 'rgba(0,0,0,0.15)', border: '1px solid rgba(212,184,150,0.08)' }}>
+              <pre className="text-xs leading-relaxed whitespace-pre-wrap" style={{ color: 'rgba(232,223,208,0.85)', fontFamily: 'inherit' }}>
+{OPEN_HOUSE_MESSAGE('[Guest Name]')}
+              </pre>
+            </div>
+            <p className="text-xs mt-2" style={{ color: 'rgba(212,184,150,0.4)' }}>
+              [Guest Name] will be replaced with the actual guest name when sending.
+            </p>
+          </div>
+
           {/* Add Guest Form */}
           <div className="max-w-5xl mx-auto mb-6 p-5 rounded-xl"
                style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,184,150,0.1)' }}>
