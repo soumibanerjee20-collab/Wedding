@@ -5,7 +5,7 @@ const ADMIN_PASSWORD = 'casper';
 const SITE_URL = 'https://soumiandjameswedding.netlify.app?ref=oct2026';
 
 const OPEN_HOUSE_MESSAGE = (name) => 
-  `Hi ${name}!\nIt's Jimmy & Soumi!\n\nWith Joy and Gratitude... *We're Married!*\n\nWe're happy to share that we were married in a private ceremony in Wyoming on September 25, 2026.\n\nOur wedding day was a small and private occasion, but we would love to celebrate this special time with our family, friends, and neighbors.\n\nPlease join us for an *Open House Celebration*\n\n*Saturday, October 24, 2026*\n*1:00 PM to 5:00 PM*\n*4450 Smoke Rise Road*\n*Casper, Wyoming*\n\nPlease come and enjoy a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage and welcome Soumi as she begins this wonderful new chapter of her life in the United States.\n\nHors d'oeuvres and drinks will be provided.\n\nPlease RSVP so we can plan accordingly.\n\nMore details:\n${SITE_URL}\nPassword: sj2026\n\nWe hope you can join us!\n\nWith love,\nJimmy & Soumi\n\nWith love from our families:\nSomnath & Swapna Banerjee\nMark & Judy Adams`;
+  `Hi ${name}!\nIt's Jimmy & Soumi!\n\nWith joy and gratitude, we're happy to share that we got married!\n\nWe would love nothing more than to celebrate with you. Please check the attached invite for the details of our Open House Celebration.\n\nRSVP: ${SITE_URL}\nPassword: sj2026\n\nWe hope you can make it!\n\nWith love,\nJimmy & Soumi`;
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
