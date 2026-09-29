@@ -167,7 +167,7 @@ const EventsPage = () => {
           {/* With Love */}
           <div className="text-center">
             <p className="font-cormorant text-xl text-[#5a5a52] italic mb-2">With love,</p>
-            <p className="font-display text-2xl text-[#b8956b] tracking-wider mb-6">Jimmy & Soumi</p>
+            <p className="font-display text-2xl text-[#b8956b] tracking-wider mb-6">James & Soumi</p>
             <div className="text-[#5a5a52] text-sm">
               <p className="italic">With love from our families:</p>
               <p className="mt-1">Somnath & Swapna Banerjee</p>
