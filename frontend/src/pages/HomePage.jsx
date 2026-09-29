@@ -2,86 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { coupleInfo } from '../data/mock';
 import IntroAnimation from '../components/IntroAnimation';
-
-// Wedding Countdown Component
-const WeddingCountdown = ({ visible }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  
-  // Reception date: October 24, 2026
-  const weddingDate = new Date('2026-10-24T00:00:00');
-
-  useEffect(() => {
-    const calculateTimeLeft = () => {
-      const now = new Date();
-      const difference = weddingDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      }
-    };
-
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const TimeBlock = ({ value, label }) => (
-    <div className="flex flex-col items-center">
-      <div className="bg-white/90 backdrop-blur-sm border-2 border-[#b8956b]/40 rounded-lg px-3 py-2 md:px-5 md:py-3 shadow-md min-w-[60px] md:min-w-[80px]">
-        <span className="font-display text-2xl md:text-4xl text-[#6b5a1a] font-bold">
-          {String(value).padStart(2, '0')}
-        </span>
-      </div>
-      <span className="text-[#4a4a42] text-xs md:text-sm tracking-wider mt-2 uppercase font-semibold">
-        {label}
-      </span>
-    </div>
-  );
-
-  return (
-    <div className={`transition-all duration-1000 delay-900 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-      {/* Big date display */}
-      <div className="mb-6">
-        <p className="text-[#5a6b4e] text-xs tracking-[0.3em] uppercase mb-3 font-semibold">
-          We're Married! Join Our Celebration
-        </p>
-        <div className="flex items-center justify-center gap-3 md:gap-5">
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">24</span>
-          <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">10</span>
-          <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
-          <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">2026</span>
-        </div>
-        <p className="text-[#4a4a42] text-sm mt-2 tracking-[0.15em] font-semibold">
-          Casper, Wyoming
-        </p>
-      </div>
-
-      {/* Thin divider */}
-      <div className="w-20 h-[1px] bg-[#b8956b]/40 mx-auto mb-5" />
-
-      {/* Countdown */}
-      <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase mb-3 font-semibold">
-        Counting Down To Forever
-      </p>
-      <div className="flex items-center justify-center gap-2 md:gap-4">
-        <TimeBlock value={timeLeft.days} label="Days" />
-        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
-        <TimeBlock value={timeLeft.hours} label="Hours" />
-        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
-        <TimeBlock value={timeLeft.minutes} label="Mins" />
-        <span className="text-[#b8956b] text-xl md:text-2xl font-bold mb-6">:</span>
-        <TimeBlock value={timeLeft.seconds} label="Secs" />
-      </div>
-    </div>
-  );
-};
+import { Heart } from 'lucide-react';
 
 const HomePage = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -114,13 +35,12 @@ const HomePage = () => {
             backgroundPosition: 'center 75%',
           }}
         >
-          {/* Fade overlay - more faded for better text visibility */}
           <div className="absolute inset-0 bg-[#faf8f4]/50" />
         </div>
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 pt-16 pb-8">
-          {/* Logo Image - Now with transparent background */}
+          {/* Logo */}
           <div className={`mb-6 transition-all duration-1000 delay-300 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
             <img
               src={coupleInfo.logoUrl}
@@ -132,7 +52,7 @@ const HomePage = () => {
             />
           </div>
 
-          {/* Names - Bold and visible */}
+          {/* Names */}
           <h1 
             className={`font-display text-4xl md:text-6xl lg:text-7xl text-[#6b5a1a] mb-2 tracking-wide font-semibold transition-all duration-1000 delay-500 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
           >
@@ -146,21 +66,63 @@ const HomePage = () => {
             {coupleInfo.tagline}
           </p>
 
-          {/* Wedding Countdown */}
-          <div className="mt-10">
-            <WeddingCountdown visible={contentVisible} />
+          {/* Marriage Date & Message - replaces countdown */}
+          <div className={`mt-10 transition-all duration-1000 delay-900 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            {/* Bold marriage date */}
+            <div className="mb-5">
+              <div className="flex items-center justify-center gap-3 md:gap-5">
+                <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">25</span>
+                <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
+                <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">09</span>
+                <span className="font-display text-3xl md:text-5xl text-[#b8956b]">.</span>
+                <span className="font-display text-5xl md:text-7xl text-[#6b5a1a] tracking-wide">2026</span>
+              </div>
+              <p className="text-[#4a4a42] text-sm mt-2 tracking-[0.15em] font-semibold">
+                Casper, Wyoming
+              </p>
+            </div>
+
+            {/* Thin divider */}
+            <div className="w-20 h-[1px] bg-[#b8956b]/40 mx-auto mb-5" />
+
+            {/* Personal message */}
+            <div className="max-w-lg mx-auto mb-6">
+              <p className="font-cormorant text-lg md:text-xl text-[#3d3d38] italic leading-relaxed">
+                After crossing oceans and time zones, we said "I do" in a private ceremony.
+                Now we want to celebrate with you.
+              </p>
+            </div>
+
+            {/* Open house teaser */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-xl px-6 py-4 inline-block border border-[#b8956b]/15 shadow-sm">
+              <p className="text-[#5a6b4e] text-xs tracking-[0.2em] uppercase font-semibold mb-1">
+                Open House Celebration
+              </p>
+              <p className="text-[#3d3d38] text-sm font-medium">
+                October 24, 2026 · 1:00 - 5:00 PM
+              </p>
+            </div>
           </div>
 
-          {/* CTA Button */}
-          <Link
-            to="/our-story"
-            className={`mt-10 inline-flex items-center gap-3 bg-[#8a9a7c] hover:bg-[#6b7c5e] text-white px-8 py-4 rounded-full text-sm tracking-wider transition-all duration-300 group shadow-md ${contentVisible ? 'opacity-100 translate-y-0 delay-1000' : 'opacity-0 translate-y-4'}`}
-          >
-            <span>Discover Our Story</span>
-            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+          {/* CTA Buttons */}
+          <div className={`mt-8 flex flex-col sm:flex-row items-center gap-4 transition-all duration-1000 delay-1000 ${contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <Link
+              to="/our-story"
+              className="inline-flex items-center gap-3 bg-[#8a9a7c] hover:bg-[#6b7c5e] text-white px-8 py-4 rounded-full text-sm tracking-wider transition-all duration-300 group shadow-md"
+            >
+              <span>Discover Our Story</span>
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+            <Link
+              to="/rsvp"
+              className="inline-flex items-center gap-2 bg-[#b8956b] hover:bg-[#a07c5a] text-white px-8 py-4 rounded-full text-sm tracking-wider transition-all duration-300 shadow-md"
+            >
+              <Heart className="w-4 h-4" />
+              <span>RSVP</span>
+            </Link>
+          </div>
         </div>
 
         {/* Scroll indicator */}
