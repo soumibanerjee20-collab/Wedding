@@ -27,7 +27,7 @@ export const ourStory = {
   tagline: "Two strangers in a classroom. An unexpected friendship. A love that crossed oceans.",
   meetingDate: "October 2, 2023",
   meetingPlace: "University of Essex, Colchester",
-  narrative: "An Army Captain and a Bengali dreamer sat down at the same table by accident. He was the serious one. She lit up every room. Two years later, they walked down the aisle on purpose."
+  narrative: "An Army Captain and a Bengali dreamer sat down at the same table by accident. He was the serious one. She lit up every room. Three years later, they walked down the aisle on purpose."
 };
 
 export const brideProfile = {
