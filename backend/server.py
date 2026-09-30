@@ -179,6 +179,20 @@ async def get_rsvps(x_admin_token: str = Header()):
     rsvps = await db.rsvps.find({}, {"_id": 0}).sort("submitted_at", -1).to_list(1000)
     return rsvps
 
+@api_router.delete("/admin/rsvps/{rsvp_id}")
+async def delete_rsvp(rsvp_id: str, x_admin_token: str = Header()):
+    verify_admin(x_admin_token)
+    result = await db.rsvps.delete_one({"id": rsvp_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="RSVP not found")
+    return {"success": True}
+
+@api_router.delete("/admin/rsvps")
+async def clear_all_rsvps(x_admin_token: str = Header()):
+    verify_admin(x_admin_token)
+    result = await db.rsvps.delete_many({})
+    return {"success": True, "deleted": result.deleted_count}
+
 
 # Include the router in the main app
 app.include_router(api_router)

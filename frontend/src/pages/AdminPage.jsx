@@ -436,6 +436,31 @@ const AdminPage = () => {
             </div>
           )}
 
+          {/* Clear All Button */}
+          {rsvps.length > 0 && (
+            <div className="mb-4 flex justify-end">
+              <button
+                onClick={async () => {
+                  if (!window.confirm(`Delete ALL ${rsvps.length} RSVP responses? This cannot be undone.`)) return;
+                  try {
+                    const res = await fetch(`${API_URL}/api/admin/rsvps`, {
+                      method: 'DELETE',
+                      headers: { 'x-admin-token': token }
+                    });
+                    if (res.ok) {
+                      setRsvps([]);
+                    }
+                  } catch {}
+                }}
+                className="px-4 py-2 rounded-lg text-xs tracking-wider transition-all hover:scale-105"
+                style={{ background: 'rgba(180,80,80,0.2)', border: '1px solid rgba(180,80,80,0.3)', color: '#d4a0a0' }}
+                data-testid="clear-all-rsvps-btn"
+              >
+                Clear All Responses
+              </button>
+            </div>
+          )}
+
           {/* RSVP List */}
           <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(212,184,150,0.1)' }}>
             <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider"
@@ -445,9 +470,9 @@ const AdminPage = () => {
               <div className="col-span-1">STATUS</div>
               <div className="col-span-1">GUESTS</div>
               <div className="col-span-2">MEAL</div>
-              <div className="col-span-2">SONG</div>
               <div className="col-span-1">SOURCE</div>
-              <div className="col-span-1">DATE</div>
+              <div className="col-span-2">DATE</div>
+              <div className="col-span-1 text-right">DELETE</div>
             </div>
 
             {rsvps.length === 0 && (
@@ -484,9 +509,6 @@ const AdminPage = () => {
                   {rsvp.dietaryPreference || ''}
                   {rsvp.otherDietary ? ` (${rsvp.otherDietary})` : ''}
                 </div>
-                <div className="col-span-2 text-xs truncate" style={{ color: 'rgba(212,184,150,0.5)' }}>
-                  {rsvp.songRequest || ''}
-                </div>
                 <div className="col-span-1">
                   <span className="px-2 py-0.5 rounded-full text-xs"
                         style={{ 
@@ -496,8 +518,28 @@ const AdminPage = () => {
                     {rsvp.source === 'qr_code' ? 'QR' : 'Web'}
                   </span>
                 </div>
-                <div className="col-span-1 text-xs" style={{ color: 'rgba(212,184,150,0.4)' }}>
+                <div className="col-span-2 text-xs" style={{ color: 'rgba(212,184,150,0.4)' }}>
                   {rsvp.submitted_at ? new Date(rsvp.submitted_at).toLocaleDateString() : ''}
+                </div>
+                <div className="col-span-1 text-right">
+                  <button
+                    onClick={async () => {
+                      if (!window.confirm(`Delete RSVP from ${rsvp.name}?`)) return;
+                      try {
+                        const res = await fetch(`${API_URL}/api/admin/rsvps/${rsvp.id}`, {
+                          method: 'DELETE',
+                          headers: { 'x-admin-token': token }
+                        });
+                        if (res.ok) {
+                          setRsvps(prev => prev.filter(r => r.id !== rsvp.id));
+                        }
+                      } catch {}
+                    }}
+                    className="px-2 py-1 rounded-md text-xs transition-all hover:scale-105"
+                    style={{ background: 'rgba(180,80,80,0.15)', border: '1px solid rgba(180,80,80,0.2)', color: '#d4a0a0' }}
+                  >
+                    X
+                  </button>
                 </div>
               </div>
             ))}
