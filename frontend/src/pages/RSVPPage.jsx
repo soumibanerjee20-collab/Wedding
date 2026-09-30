@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Calendar, Heart, Mail, User, Phone, Users, Utensils, Shirt, MapPin, Check, Sparkles, MessageCircle } from 'lucide-react';
 import { EucalyptusBranch, SingleLeaf, CornerVine, LeafGarland } from '../components/LeafDecorations';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'https://sage-gold-ceremony.preview.emergentagent.com';
 
 const RSVPPage = () => {
   const navigate = useNavigate();

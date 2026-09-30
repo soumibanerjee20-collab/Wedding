@@ -9,7 +9,7 @@ const OPEN_HOUSE_MESSAGE = (name) =>
 
 const generateId = () => Math.random().toString(36).substr(2, 9);
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'https://sage-gold-ceremony.preview.emergentagent.com';
 
 const AdminPage = () => {
   const [authenticated, setAuthenticated] = useState(false);
