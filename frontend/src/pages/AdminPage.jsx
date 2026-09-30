@@ -18,6 +18,8 @@ const AdminPage = () => {
   const [error, setError] = useState('');
   const [guests, setGuests] = useState([]);
   const [rsvps, setRsvps] = useState([]);
+  const [rsvpLoading, setRsvpLoading] = useState(false);
+  const [rsvpError, setRsvpError] = useState('');
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
   const [copied, setCopied] = useState(null);
@@ -62,24 +64,36 @@ const AdminPage = () => {
       setAuthenticated(true);
       setToken(password);
       setError('');
+      // Fetch RSVPs immediately and again after a short delay for reliability
       fetchRsvps(password);
+      setTimeout(() => fetchRsvps(password), 2000);
     } else {
       setError('Wrong password');
     }
   };
 
   const fetchRsvps = async (adminToken) => {
-    try {
-      const res = await fetch(`${API_URL}/api/admin/rsvps`, {
-        headers: { 'x-admin-token': adminToken }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        setRsvps(data);
+    setRsvpLoading(true);
+    setRsvpError('');
+    const tkn = adminToken || token;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await fetch(`${API_URL}/api/admin/rsvps`, {
+          headers: { 'x-admin-token': tkn }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setRsvps(data);
+          setRsvpLoading(false);
+          return;
+        }
+      } catch {
+        // retry
       }
-    } catch {
-      console.error('Failed to fetch RSVPs');
+      await new Promise(r => setTimeout(r, 1000));
     }
+    setRsvpError('Could not load RSVPs. Check your connection and try again.');
+    setRsvpLoading(false);
   };
 
   const handleAddGuest = (e) => {
@@ -229,7 +243,7 @@ const AdminPage = () => {
           Invite Manager
         </button>
         <button
-          onClick={() => { setActiveTab('rsvps'); fetchRsvps(token); }}
+          onClick={() => { setActiveTab('rsvps'); fetchRsvps(); }}
           className="px-5 py-2.5 rounded-lg text-sm tracking-wider transition-all"
           style={{
             background: activeTab === 'rsvps' ? 'rgba(184,149,107,0.3)' : 'rgba(255,255,255,0.03)',
@@ -436,9 +450,16 @@ const AdminPage = () => {
             </div>
           )}
 
-          {/* Clear All Button */}
-          {rsvps.length > 0 && (
-            <div className="mb-4 flex justify-end">
+          {/* Clear All & Refresh Buttons */}
+          <div className="mb-4 flex justify-between items-center">
+            <button
+              onClick={() => fetchRsvps()}
+              className="px-4 py-2 rounded-lg text-xs tracking-wider transition-all hover:scale-105"
+              style={{ background: 'rgba(106,130,108,0.2)', border: '1px solid rgba(106,130,108,0.3)', color: '#a8c4a0' }}
+            >
+              {rsvpLoading ? 'Loading...' : 'Refresh'}
+            </button>
+            {rsvps.length > 0 && (
               <button
                 onClick={async () => {
                   if (!window.confirm(`Delete ALL ${rsvps.length} RSVP responses? This cannot be undone.`)) return;
@@ -458,6 +479,14 @@ const AdminPage = () => {
               >
                 Clear All Responses
               </button>
+            )}
+          </div>
+
+          {/* Error State */}
+          {rsvpError && (
+            <div className="mb-4 p-4 rounded-xl text-center text-sm" style={{ background: 'rgba(180,80,80,0.1)', border: '1px solid rgba(180,80,80,0.2)', color: '#d4a0a0' }}>
+              {rsvpError}
+              <button onClick={() => fetchRsvps()} className="ml-3 underline">Retry</button>
             </div>
           )}
 
