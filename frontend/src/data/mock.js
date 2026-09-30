@@ -7,6 +7,7 @@ export const coupleInfo = {
   groomFullName: "James M. Adams",
   tagline: "WE'RE MARRIED!",
   usWeddingYear: "2026",
+  indiaWeddingYear: "2027",
   monogram: "S & J",
   logoUrl: "https://customer-assets.emergentagent.com/job_94251580-a7d4-48e5-924b-022edb5391d4/artifacts/scggrc0b_ChatGPT%20Image%20Dec%2027%2C%202025%20at%2010_07_22%20PM.png"
 };
