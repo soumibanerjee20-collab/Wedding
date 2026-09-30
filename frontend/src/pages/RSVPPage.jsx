@@ -56,7 +56,7 @@ const RSVPPage = () => {
     e.preventDefault();
     setSubmitting(true);
     
-    // Save to localStorage
+    // Save to localStorage as backup
     const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
     const newRSVP = {
       ...formData,
@@ -65,25 +65,29 @@ const RSVPPage = () => {
     };
     localStorage.setItem('weddingRSVPs', JSON.stringify([...existingRSVPs, newRSVP]));
     
-    // Also submit to backend
-    try {
-      await fetch(`${API_URL}/api/rsvp`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          attending: formData.attending,
-          numberOfGuests: formData.numberOfGuests,
-          plusOneNames: formData.plusOneNames,
-          dietaryPreference: formData.dietaryPreference,
-          otherDietary: formData.otherDietary,
-          source: isDirect ? 'qr_code' : 'website',
-        })
-      });
-    } catch {
-      // Still show success even if backend fails (localStorage has the data)
+    // Submit to backend with retry
+    let backendSuccess = false;
+    for (let attempt = 0; attempt < 2 && !backendSuccess; attempt++) {
+      try {
+        const res = await fetch(`${API_URL}/api/rsvp`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            attending: formData.attending,
+            numberOfGuests: formData.numberOfGuests,
+            plusOneNames: formData.plusOneNames,
+            dietaryPreference: formData.dietaryPreference,
+            otherDietary: formData.otherDietary,
+            source: isDirect ? 'qr_code' : 'website',
+          })
+        });
+        if (res.ok) backendSuccess = true;
+      } catch {
+        // Retry
+      }
     }
     
     setSubmitting(false);
