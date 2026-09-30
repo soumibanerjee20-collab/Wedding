@@ -18,6 +18,7 @@ const AdminPage = () => {
   const [error, setError] = useState('');
   const [guests, setGuests] = useState([]);
   const [rsvps, setRsvps] = useState([]);
+  const [googleRsvps, setGoogleRsvps] = useState([]);
   const [rsvpLoading, setRsvpLoading] = useState(false);
   const [rsvpError, setRsvpError] = useState('');
   const [newName, setNewName] = useState('');
@@ -78,12 +79,13 @@ const AdminPage = () => {
     const tkn = adminToken || token;
     for (let attempt = 0; attempt < 3; attempt++) {
       try {
-        const res = await fetch(`${API_URL}/api/admin/rsvps`, {
+        const res = await fetch(`${API_URL}/api/admin/rsvps/all`, {
           headers: { 'x-admin-token': tkn }
         });
         if (res.ok) {
           const data = await res.json();
-          setRsvps(data);
+          setRsvps(data.db_rsvps || []);
+          setGoogleRsvps(data.google_rsvps || []);
           setRsvpLoading(false);
           return;
         }
@@ -206,9 +208,10 @@ const AdminPage = () => {
   }
 
   const invitedCount = guests.filter(g => g.invited).length;
-  const rsvpYesCount = rsvps.filter(r => r.attending === 'yes').length;
-  const rsvpNoCount = rsvps.filter(r => r.attending === 'no').length;
-  const totalGuestsCount = rsvps.filter(r => r.attending === 'yes').reduce((sum, r) => sum + parseInt(r.numberOfGuests || '1'), 0);
+  const allRsvps = [...rsvps, ...googleRsvps];
+  const rsvpYesCount = allRsvps.filter(r => r.attending === 'yes').length;
+  const rsvpNoCount = allRsvps.filter(r => r.attending === 'no').length;
+  const totalGuestsCount = allRsvps.filter(r => r.attending === 'yes').reduce((sum, r) => sum + parseInt(r.numberOfGuests || '1'), 0);
 
   return (
     <div className="min-h-screen p-6" 
@@ -223,7 +226,7 @@ const AdminPage = () => {
         <div className="flex gap-4 text-sm flex-wrap" style={{ color: 'rgba(212,184,150,0.5)' }}>
           <span>{invitedCount} invited / {guests.length} total guests</span>
           <span>|</span>
-          <span>{rsvps.length} RSVPs ({rsvpYesCount} attending, {rsvpNoCount} declined)</span>
+          <span>{allRsvps.length} RSVPs ({rsvpYesCount} attending, {rsvpNoCount} declined)</span>
           <span>|</span>
           <span>{totalGuestsCount} total headcount</span>
         </div>
@@ -251,7 +254,7 @@ const AdminPage = () => {
             color: activeTab === 'rsvps' ? '#d4c4a8' : 'rgba(212,184,150,0.5)'
           }}
         >
-          RSVP Responses ({rsvps.length})
+          RSVP Responses ({allRsvps.length})
         </button>
         <button
           onClick={() => setActiveTab('qr')}
@@ -439,7 +442,7 @@ const AdminPage = () => {
               <h3 className="text-sm tracking-wider mb-3" style={{ color: 'rgba(212,184,150,0.7)' }}>MEAL PREFERENCES</h3>
               <div className="flex gap-4 flex-wrap">
                 {['Vegetarian', 'Vegan', 'Non-Vegetarian'].map(pref => {
-                  const count = rsvps.filter(r => r.attending === 'yes' && r.dietaryPreference === pref).length;
+                  const count = allRsvps.filter(r => r.attending === 'yes' && r.dietaryPreference === pref).length;
                   return count > 0 ? (
                     <span key={pref} className="px-3 py-1 rounded-full text-xs" style={{ background: 'rgba(106,130,108,0.15)', color: '#a8c4a0' }}>
                       {pref}: {count}
@@ -573,6 +576,66 @@ const AdminPage = () => {
               </div>
             ))}
           </div>
+
+          {/* Google Form Responses */}
+          {googleRsvps.length > 0 && (
+            <>
+              <h3 className="text-sm tracking-wider mt-8 mb-4" style={{ color: 'rgba(212,184,150,0.7)' }}>
+                GOOGLE FORM RESPONSES ({googleRsvps.length})
+              </h3>
+              <div className="rounded-xl overflow-hidden" style={{ border: '1px solid rgba(59,130,246,0.2)' }}>
+                <div className="grid grid-cols-12 gap-2 px-5 py-3 text-xs tracking-wider"
+                     style={{ background: 'rgba(59,130,246,0.08)', color: 'rgba(212,184,150,0.5)' }}>
+                  <div className="col-span-2">NAME</div>
+                  <div className="col-span-2">CONTACT</div>
+                  <div className="col-span-1">STATUS</div>
+                  <div className="col-span-1">GUESTS</div>
+                  <div className="col-span-2">MEAL</div>
+                  <div className="col-span-1">SOURCE</div>
+                  <div className="col-span-3">DATE</div>
+                </div>
+                {googleRsvps.map((rsvp) => (
+                  <div key={rsvp.id}
+                       className="grid grid-cols-12 gap-2 px-5 py-3 items-center"
+                       style={{ borderTop: '1px solid rgba(59,130,246,0.08)' }}>
+                    <div className="col-span-2 text-sm truncate" style={{ color: '#e8dfd0' }}>
+                      {rsvp.name}
+                      {rsvp.plusOneNames && <p className="text-xs truncate" style={{ color: 'rgba(212,184,150,0.5)' }}>+{rsvp.plusOneNames}</p>}
+                    </div>
+                    <div className="col-span-2 text-xs truncate" style={{ color: 'rgba(212,184,150,0.6)' }}>
+                      <div>{rsvp.email}</div>
+                      <div>{rsvp.phone}</div>
+                    </div>
+                    <div className="col-span-1">
+                      <span className="px-2 py-0.5 rounded-full text-xs"
+                            style={{ 
+                              background: rsvp.attending === 'yes' ? 'rgba(106,130,108,0.2)' : 'rgba(180,80,80,0.15)',
+                              color: rsvp.attending === 'yes' ? '#a8c4a0' : '#d4a0a0'
+                            }}>
+                        {rsvp.attending === 'yes' ? 'Yes' : 'No'}
+                      </span>
+                    </div>
+                    <div className="col-span-1 text-sm" style={{ color: '#e8dfd0' }}>
+                      {rsvp.attending === 'yes' ? rsvp.numberOfGuests : ''}
+                    </div>
+                    <div className="col-span-2 text-xs" style={{ color: 'rgba(212,184,150,0.7)' }}>
+                      {rsvp.dietaryPreference || ''}
+                      {rsvp.otherDietary ? ` (${rsvp.otherDietary})` : ''}
+                    </div>
+                    <div className="col-span-1">
+                      <span className="px-2 py-0.5 rounded-full text-xs"
+                            style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
+                        Form
+                      </span>
+                    </div>
+                    <div className="col-span-3 text-xs" style={{ color: 'rgba(212,184,150,0.4)' }}>
+                      {rsvp.submitted_at || ''}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       )}
 

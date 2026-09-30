@@ -9,6 +9,9 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+import csv
+import io
+import httpx
 
 
 ROOT_DIR = Path(__file__).parent
@@ -192,6 +195,73 @@ async def clear_all_rsvps(x_admin_token: str = Header()):
     verify_admin(x_admin_token)
     result = await db.rsvps.delete_many({})
     return {"success": True, "deleted": result.deleted_count}
+
+
+GOOGLE_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLMZiqitLBHupwoRp9k1lwjxmmtG-cWS9-s1lRrFxSYakHet0o_-iSiBC1a9rlRkAiQXnoQLH7pD3z/pub?output=csv"
+
+@api_router.get("/admin/rsvps/google")
+async def get_google_rsvps(x_admin_token: str = Header()):
+    verify_admin(x_admin_token)
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.get(GOOGLE_SHEET_CSV)
+            resp.raise_for_status()
+        
+        reader = csv.DictReader(io.StringIO(resp.text))
+        rsvps = []
+        for row in reader:
+            attending_raw = row.get("Will you be attending? *", "").strip()
+            attending = "yes" if "accept" in attending_raw.lower() else "no"
+            rsvps.append({
+                "id": f"gf-{uuid.uuid5(uuid.NAMESPACE_URL, row.get('Email address', '') + row.get('Timestamp', ''))}",
+                "name": row.get("Full Name", "").strip(),
+                "email": row.get("Email address", "").strip(),
+                "phone": row.get("Phone number", "").strip(),
+                "attending": attending,
+                "numberOfGuests": row.get("Number of Guests (including yourself)", "1").strip() or "1",
+                "plusOneNames": row.get("Names of Additional Guests (Optional)", "").strip(),
+                "dietaryPreference": row.get("Dietary Preference?", "").strip(),
+                "otherDietary": row.get("Other Dietary Needs?(Optional)", "").strip(),
+                "source": "google_form",
+                "submitted_at": row.get("Timestamp", "").strip(),
+            })
+        return rsvps
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Failed to fetch Google Sheet: {str(e)}")
+
+@api_router.get("/admin/rsvps/all")
+async def get_all_rsvps(x_admin_token: str = Header()):
+    verify_admin(x_admin_token)
+    # Fetch from MongoDB
+    db_rsvps = await db.rsvps.find({}, {"_id": 0}).sort("submitted_at", -1).to_list(1000)
+    
+    # Fetch from Google Sheet
+    google_rsvps = []
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            resp = await client.get(GOOGLE_SHEET_CSV)
+            resp.raise_for_status()
+        reader = csv.DictReader(io.StringIO(resp.text))
+        for row in reader:
+            attending_raw = row.get("Will you be attending? *", "").strip()
+            attending = "yes" if "accept" in attending_raw.lower() else "no"
+            google_rsvps.append({
+                "id": f"gf-{uuid.uuid5(uuid.NAMESPACE_URL, row.get('Email address', '') + row.get('Timestamp', ''))}",
+                "name": row.get("Full Name", "").strip(),
+                "email": row.get("Email address", "").strip(),
+                "phone": row.get("Phone number", "").strip(),
+                "attending": attending,
+                "numberOfGuests": row.get("Number of Guests (including yourself)", "1").strip() or "1",
+                "plusOneNames": row.get("Names of Additional Guests (Optional)", "").strip(),
+                "dietaryPreference": row.get("Dietary Preference?", "").strip(),
+                "otherDietary": row.get("Other Dietary Needs?(Optional)", "").strip(),
+                "source": "google_form",
+                "submitted_at": row.get("Timestamp", "").strip(),
+            })
+    except Exception:
+        pass  # If Google Sheet fails, still return DB RSVPs
+    
+    return {"db_rsvps": db_rsvps, "google_rsvps": google_rsvps}
 
 
 # Include the router in the main app
