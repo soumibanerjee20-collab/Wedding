@@ -203,7 +203,7 @@ GOOGLE_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLMZiqitLBH
 async def get_google_rsvps(x_admin_token: str = Header()):
     verify_admin(x_admin_token)
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
             resp = await client.get(GOOGLE_SHEET_CSV)
             resp.raise_for_status()
         
@@ -238,7 +238,7 @@ async def get_all_rsvps(x_admin_token: str = Header()):
     # Fetch from Google Sheet
     google_rsvps = []
     try:
-        async with httpx.AsyncClient(timeout=10.0) as client:
+        async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
             resp = await client.get(GOOGLE_SHEET_CSV)
             resp.raise_for_status()
         reader = csv.DictReader(io.StringIO(resp.text))
