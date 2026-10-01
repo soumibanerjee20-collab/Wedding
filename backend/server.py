@@ -199,6 +199,44 @@ async def clear_all_rsvps(x_admin_token: str = Header()):
 
 GOOGLE_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLMZiqitLBHupwoRp9k1lwjxmmtG-cWS9-s1lRrFxSYakHet0o_-iSiBC1a9rlRkAiQXnoQLH7pD3z/pub?output=csv"
 
+def parse_google_sheet_rows(csv_text):
+    """Parse Google Sheet CSV using index-based approach to handle duplicate column names."""
+    rsvps = []
+    reader = csv.reader(io.StringIO(csv_text))
+    headers = next(reader, None)
+    if not headers:
+        return rsvps
+    for row in reader:
+        if len(row) < 5 or not row[1].strip():
+            continue
+        attending_raw = row[4].strip() if len(row) > 4 else ""
+        attending = "yes" if "accept" in attending_raw.lower() else "no"
+        name = row[1].strip() if len(row) > 1 else ""
+        email = row[2].strip() if len(row) > 2 else ""
+        phone = row[3].strip() if len(row) > 3 else ""
+        num_guests = (row[5].strip() if len(row) > 5 else "1") or "1"
+        plus_ones = row[6].strip() if len(row) > 6 else ""
+        dietary = row[7].strip() if len(row) > 7 else ""
+        other_dietary = row[8].strip() if len(row) > 8 else ""
+        message = row[9].strip() if len(row) > 9 else ""
+        timestamp = row[0].strip() if len(row) > 0 else ""
+        rsvps.append({
+            "id": f"gf-{uuid.uuid5(uuid.NAMESPACE_URL, email + timestamp)}",
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "attending": attending,
+            "numberOfGuests": num_guests,
+            "plusOneNames": plus_ones,
+            "dietaryPreference": dietary,
+            "otherDietary": other_dietary,
+            "message": message,
+            "source": "google_form",
+            "submitted_at": timestamp,
+        })
+    return rsvps
+
+
 @api_router.get("/admin/rsvps/google")
 async def get_google_rsvps(x_admin_token: str = Header()):
     verify_admin(x_admin_token)
@@ -206,26 +244,7 @@ async def get_google_rsvps(x_admin_token: str = Header()):
         async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
             resp = await client.get(GOOGLE_SHEET_CSV)
             resp.raise_for_status()
-        
-        reader = csv.DictReader(io.StringIO(resp.text))
-        rsvps = []
-        for row in reader:
-            attending_raw = row.get("Will you be attending? *", "").strip()
-            attending = "yes" if "accept" in attending_raw.lower() else "no"
-            rsvps.append({
-                "id": f"gf-{uuid.uuid5(uuid.NAMESPACE_URL, row.get('Email address', '') + row.get('Timestamp', ''))}",
-                "name": row.get("Full Name", "").strip(),
-                "email": row.get("Email address", "").strip(),
-                "phone": row.get("Phone number", "").strip(),
-                "attending": attending,
-                "numberOfGuests": row.get("Number of Guests (including yourself)", "1").strip() or "1",
-                "plusOneNames": row.get("Names of Additional Guests (Optional)", "").strip(),
-                "dietaryPreference": row.get("Dietary Preference?", "").strip(),
-                "otherDietary": row.get("Other Dietary Needs?(Optional)", "").strip(),
-                "source": "google_form",
-                "submitted_at": row.get("Timestamp", "").strip(),
-            })
-        return rsvps
+        return parse_google_sheet_rows(resp.text)
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Failed to fetch Google Sheet: {str(e)}")
 
@@ -241,23 +260,7 @@ async def get_all_rsvps(x_admin_token: str = Header()):
         async with httpx.AsyncClient(timeout=10.0, follow_redirects=True) as client:
             resp = await client.get(GOOGLE_SHEET_CSV)
             resp.raise_for_status()
-        reader = csv.DictReader(io.StringIO(resp.text))
-        for row in reader:
-            attending_raw = row.get("Will you be attending? *", "").strip()
-            attending = "yes" if "accept" in attending_raw.lower() else "no"
-            google_rsvps.append({
-                "id": f"gf-{uuid.uuid5(uuid.NAMESPACE_URL, row.get('Email address', '') + row.get('Timestamp', ''))}",
-                "name": row.get("Full Name", "").strip(),
-                "email": row.get("Email address", "").strip(),
-                "phone": row.get("Phone number", "").strip(),
-                "attending": attending,
-                "numberOfGuests": row.get("Number of Guests (including yourself)", "1").strip() or "1",
-                "plusOneNames": row.get("Names of Additional Guests (Optional)", "").strip(),
-                "dietaryPreference": row.get("Dietary Preference?", "").strip(),
-                "otherDietary": row.get("Other Dietary Needs?(Optional)", "").strip(),
-                "source": "google_form",
-                "submitted_at": row.get("Timestamp", "").strip(),
-            })
+        google_rsvps = parse_google_sheet_rows(resp.text)
     except Exception:
         pass  # If Google Sheet fails, still return DB RSVPs
     
