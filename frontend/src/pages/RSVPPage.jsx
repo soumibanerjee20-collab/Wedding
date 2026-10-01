@@ -58,7 +58,7 @@ const RSVPPage = () => {
               <div className="w-12 h-[1px] bg-[#b8956b]/30 mx-auto mb-5" />
 
               {/* Quick Info */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              <div className="mb-6">
                 <div className="bg-[#f0f4ed]/60 p-3 rounded-lg">
                   <div className="flex items-center gap-2 mb-1">
                     <Shirt className="w-4 h-4 text-[#6b7c5e]" />
@@ -66,15 +66,6 @@ const RSVPPage = () => {
                   </div>
                   <p className="text-[#3d3d38] text-sm">
                     Casual and comfortable. Come as you are!
-                  </p>
-                </div>
-                <div className="bg-[#f0f4ed]/60 p-3 rounded-lg">
-                  <div className="flex items-center gap-2 mb-1">
-                    <Heart className="w-4 h-4 text-[#6b7c5e]" />
-                    <span className="text-[#5a6b50] font-medium text-sm">What to Expect</span>
-                  </div>
-                  <p className="text-[#3d3d38] text-sm">
-                    Hors d'oeuvres, drinks, and good company!
                   </p>
                 </div>
               </div>
