@@ -1,515 +1,140 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Calendar, Heart, Mail, User, Phone, Users, Utensils, Shirt, MapPin, Check, Sparkles, MessageCircle } from 'lucide-react';
-import { EucalyptusBranch, SingleLeaf, CornerVine, LeafGarland } from '../components/LeafDecorations';
+import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Calendar, Heart, MapPin, Shirt, PartyPopper } from 'lucide-react';
+import { EucalyptusBranch, SingleLeaf, CornerVine } from '../components/LeafDecorations';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL || 'https://sage-gold-ceremony.preview.emergentagent.com';
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSco4SeHrvid7DFmzBbOFzdoOeRf0Dz7sEo0O10QpkpSZvga4g/viewform?embedded=true';
 
 const RSVPPage = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const isDirect = searchParams.get('direct') === 'true';
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [submitting, setSubmitting] = useState(false);
-
-  // Auto-select US wedding if coming from QR code
-  useEffect(() => {
-    if (isDirect) {
-      setSelectedEvent('us');
-    }
-  }, [isDirect]);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    attending: '',
-    numberOfGuests: '1',
-    plusOneNames: '',
-    dietaryPreference: '',
-    dietaryRestrictions: [],
-    otherDietary: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [showDeclinePrompt, setShowDeclinePrompt] = useState(false);
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    if (type === 'checkbox') {
-      setFormData(prev => ({
-        ...prev,
-        dietaryRestrictions: checked 
-          ? [...prev.dietaryRestrictions, value]
-          : prev.dietaryRestrictions.filter(item => item !== value)
-      }));
-    } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
-      
-      if (name === 'attending' && value === 'no') {
-        setShowDeclinePrompt(true);
-      } else if (name === 'attending' && value === 'yes') {
-        setShowDeclinePrompt(false);
-      }
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitting(true);
-    
-    // Save to localStorage as backup
-    const existingRSVPs = JSON.parse(localStorage.getItem('weddingRSVPs') || '[]');
-    const newRSVP = {
-      ...formData,
-      event: selectedEvent,
-      submittedAt: new Date().toISOString()
-    };
-    localStorage.setItem('weddingRSVPs', JSON.stringify([...existingRSVPs, newRSVP]));
-    
-    // Submit to backend with retry
-    let backendSuccess = false;
-    for (let attempt = 0; attempt < 2 && !backendSuccess; attempt++) {
-      try {
-        const res = await fetch(`${API_URL}/api/rsvp`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            attending: formData.attending,
-            numberOfGuests: formData.numberOfGuests,
-            plusOneNames: formData.plusOneNames,
-            dietaryPreference: formData.dietaryPreference,
-            otherDietary: formData.otherDietary,
-            source: isDirect ? 'qr_code' : 'website',
-          })
-        });
-        if (res.ok) backendSuccess = true;
-      } catch {
-        // Retry
-      }
-    }
-    
-    setSubmitting(false);
-    setSubmitted(true);
-  };
-
-  const resetForm = () => {
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      attending: '',
-      numberOfGuests: '1',
-      plusOneNames: '',
-      dietaryPreference: '',
-      dietaryRestrictions: [],
-      otherDietary: '',
-    });
-    setSelectedEvent(null);
-    setSubmitted(false);
-    setShowDeclinePrompt(false);
-  };
-
-  // Success Screen
-  if (submitted) {
-    const isDecline = formData.attending === 'no';
-    return (
-      <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
-        {/* Leaf decorations on success */}
-        <CornerVine className="absolute top-0 right-0 w-40 h-auto text-[#8a9a7c] rotate-90" flip />
-        <CornerVine className="absolute bottom-0 left-0 w-40 h-auto text-[#8a9a7c]" />
-        
-        <div className="max-w-lg mx-auto px-6 text-center relative z-10">
-          <div className={`w-20 h-20 ${isDecline ? 'bg-[#b8956b]' : 'bg-[#8a9a7c]'} rounded-full flex items-center justify-center mx-auto mb-6`}>
-            <Check className="w-10 h-10 text-white" />
-          </div>
-          <h2 className="font-display text-3xl text-[#b8956b] mb-4">
-            {isDecline ? 'We\'ll Miss You!' : 'We Can\'t Wait to See You!'}
-          </h2>
-          <p className="text-[#3d3d38] mb-8">
-            {isDecline 
-              ? 'Your response has been recorded. We understand and will miss having you there.' 
-              : 'Your RSVP has been received. This is going to be such a special day with you there!'}
-          </p>
-          
-          {/* Guestbook prompt for everyone */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 mb-6 border border-[#d4b896]/15 shadow-sm">
-            <Heart className="w-6 h-6 text-[#b8956b] mx-auto mb-3" />
-            <p className="font-cormorant text-xl text-[#3d3d38] italic mb-2">
-              {isDecline 
-                ? 'Even though you can\'t be there in person, your words mean the world to us.'
-                : 'Before you go, we\'d love to hear from you!'}
-            </p>
-            <p className="text-[#5a5a52] text-sm mb-5">
-              {isDecline
-                ? 'Drop a note in our guestbook? We\'ll read every single one.'
-                : 'Leave a wish, a piece of advice, or just say hi in our guestbook. We\'ll treasure every message.'}
-            </p>
-            <button
-              onClick={() => navigate('/guestbook')}
-              className="px-6 py-3 bg-[#b8956b] text-white rounded-full hover:bg-[#a07c5a] transition-all hover:scale-105 flex items-center gap-2 mx-auto"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Leave Your Wishes
-            </button>
-          </div>
-          
-          <button
-            onClick={resetForm}
-            className="px-6 py-3 bg-transparent border border-[#8a9a7c]/40 text-[#5a6b50] rounded-full hover:bg-[#6b7c5e] hover:text-white transition-colors text-sm"
-          >
-            Submit Another RSVP
-          </button>
-        </div>
-      </div>
-    );
-  }
+  const [showForm, setShowForm] = useState(isDirect);
+  const [formLoaded, setFormLoaded] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#faf8f4] pt-24 pb-16 relative overflow-hidden">
+    <div className="min-h-screen bg-[#faf8f4] pt-20 pb-16 relative overflow-hidden">
       {/* Leaf Decorations */}
       <EucalyptusBranch className="absolute top-20 left-0 w-20 md:w-28 h-auto text-[#8a9a7c]" />
       <EucalyptusBranch className="absolute top-20 right-0 w-20 md:w-28 h-auto text-[#8a9a7c]" flip />
-      <SingleLeaf className="absolute top-64 right-6 w-10 h-14 text-[#8a9a7c] -rotate-12" />
-      <SingleLeaf className="absolute top-80 left-8 w-8 h-12 text-[#8a9a7c] rotate-25" />
+      <SingleLeaf className="absolute top-1/4 right-6 w-8 h-12 text-[#8a9a7c] -rotate-12" />
       <CornerVine className="absolute bottom-0 left-0 w-36 md:w-44 h-auto text-[#8a9a7c]" />
       <CornerVine className="absolute bottom-0 right-0 w-36 md:w-44 h-auto text-[#8a9a7c]" flip />
-      <SingleLeaf className="absolute bottom-1/3 right-12 w-9 h-13 text-[#8a9a7c] rotate-30" />
 
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="relative z-10 max-w-3xl mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-display text-4xl md:text-6xl text-[#b8956b] mb-4 tracking-wider">
+        <div className="text-center mb-10" data-testid="rsvp-header">
+          <Heart className="w-8 h-8 text-[#b8956b] mx-auto mb-4 fill-[#b8956b]/20" />
+          <h1 className="font-display text-4xl md:text-5xl text-[#b8956b] mb-3 tracking-wider">
             RSVP
           </h1>
-          <div className="w-24 h-[1px] bg-[#b8956b] mx-auto mb-6" />
-          <p className="text-[#3d3d38] text-sm md:text-base tracking-wide max-w-xl mx-auto">
-            We would be honored to have you celebrate with us. Please let us know which event(s) you'll be attending.
+          <div className="w-20 h-[1px] bg-[#b8956b] mx-auto mb-4" />
+          <p className="font-cormorant text-lg md:text-xl text-[#3d3d38] italic max-w-lg mx-auto">
+            We can't wait to celebrate with you! Please let us know if you'll be joining us.
           </p>
         </div>
 
-        {/* Event Selection */}
-        {!selectedEvent ? (
-          <div className="space-y-8">
-            {/* US Wedding Card */}
-            <div 
-              className="bg-white/95 backdrop-blur-sm p-8 shadow-sm border border-[#8a9a7c]/25 hover:border-[#8a9a7c]/40 transition-all rounded-lg"
-              data-testid="us-wedding-rsvp-card"
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 bg-[#f0f4ed] rounded-full flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-[#6b7c5e]" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-2xl text-[#5a6b50] tracking-wide">
-                        Open House Celebration
-                      </h3>
-                      <p className="text-[#5a5a52] text-sm">Casper, Wyoming</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#3d3d38] text-sm mb-4">
-                    <Calendar className="w-4 h-4 text-[#6b7c5e]" />
-                    <span>October 24, 2026</span>
-                  </div>
-                  <p className="text-[#3d3d38] text-sm mb-4">
-                    Join us for a relaxed afternoon of good food, drinks, laughter, and friendship as we celebrate our marriage at our home in Casper.
-                  </p>
-                  
-                  {/* Dress Code */}
-                  <div className="bg-[#f0f4ed]/60 p-4 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Shirt className="w-4 h-4 text-[#6b7c5e]" />
-                      <span className="text-[#5a6b50] font-medium text-sm">Dress Code</span>
-                    </div>
-                    <p className="text-[#3d3d38] text-sm">
-                      Casual and comfortable. This is a relaxed afternoon at our home. Come as you are!
-                    </p>
-                  </div>
-                </div>
-                
-                <button 
-                  onClick={() => setSelectedEvent('us')}
-                  className="px-6 py-3 bg-[#8a9a7c] text-white rounded-full hover:bg-[#6b7c5e] transition-colors whitespace-nowrap cursor-pointer"
-                >
-                  RSVP for Open House
-                </button>
+        {/* Event Info Card */}
+        {!showForm && (
+          <div className="max-w-xl mx-auto mb-8" data-testid="rsvp-event-card">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-sm border border-[#8a9a7c]/20">
+              <div className="w-12 h-12 bg-[#f0f4ed] rounded-full flex items-center justify-center mx-auto mb-4">
+                <PartyPopper className="w-6 h-6 text-[#6b7c5e]" />
               </div>
-            </div>
-
-            {/* Note */}
-            <div className="text-center text-[#5a5a52] text-sm italic">
-              <p>We hope you can join us for an afternoon of celebration!</p>
-            </div>
-          </div>
-        ) : (
-          /* RSVP Form */
-          <div className="max-w-2xl mx-auto">
-            {/* Back button */}
-            <button 
-              onClick={() => {
-                setSelectedEvent(null);
-                setShowDeclinePrompt(false);
-                setFormData(prev => ({ ...prev, attending: '' }));
-              }}
-              className="mb-6 text-[#5a5a52] hover:text-[#3d3d38] text-sm flex items-center gap-2 font-medium"
-            >
-              ← Back to event selection
-            </button>
-
-            <div className={`p-8 rounded-lg ${selectedEvent === 'us' ? 'bg-white/95 border border-[#8a9a7c]/30' : 'bg-white/95 border border-[#E89B3C]/30'} backdrop-blur-sm`}>
-              <h2 className={`font-display text-2xl mb-2 ${selectedEvent === 'us' ? 'text-[#5a6b50]' : 'text-[#B8540B]'}`}>
-                {selectedEvent === 'us' ? 'RSVP: Open House Celebration' : ''}
+              <h2 className="font-display text-2xl text-[#5a6b50] mb-4 tracking-wide text-center">
+                Wedding Reception & Open House
               </h2>
-              <p className="text-[#5a5a52] text-sm mb-6">
-                {selectedEvent === 'us' ? 'Saturday, October 24, 2026 • 1:00 PM to 5:00 PM • 4450 Smoke Rise Road, Casper, WY' : ''}
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                    <User className="w-4 h-4 inline mr-2" />
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-[#3d3d38]"
-                    placeholder="Your full name"
-                  />
+              <div className="space-y-2 text-center mb-5">
+                <div className="flex items-center justify-center gap-2 text-[#3d3d38]">
+                  <Calendar className="w-4 h-4 text-[#6b7c5e]" />
+                  <span className="font-medium">Saturday, October 24, 2026</span>
                 </div>
-
-                {/* Email */}
-                <div>
-                  <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                    <Mail className="w-4 h-4 inline mr-2" />
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-[#3d3d38]"
-                    placeholder="your@email.com"
-                  />
+                <p className="text-[#5a5a52] text-sm">1:00 PM to 5:00 PM</p>
+                <div className="flex items-center justify-center gap-2 text-[#3d3d38]">
+                  <MapPin className="w-4 h-4 text-[#6b7c5e]" />
+                  <span>4450 Smoke Rise Road, Casper, WY 82604</span>
                 </div>
+              </div>
 
-                {/* Phone */}
-                <div>
-                  <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                    <Phone className="w-4 h-4 inline mr-2" />
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-[#3d3d38]"
-                    placeholder="+1 (555) 000-0000"
-                  />
-                </div>
+              <div className="w-12 h-[1px] bg-[#b8956b]/30 mx-auto mb-5" />
 
-                {/* Attending */}
-                <div>
-                  <label className="block text-[#3d3d38] text-sm font-medium mb-3">
-                    Will you be attending? *
-                  </label>
-                  <div className="flex gap-4">
-                    <label className={`flex-1 p-4 border rounded-lg cursor-pointer transition-all ${formData.attending === 'yes' ? (selectedEvent === 'us' ? 'border-[#8a9a7c] bg-[#f0f4ed]' : 'border-[#E89B3C] bg-[#FFF9F0]') : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
-                      <input
-                        type="radio"
-                        name="attending"
-                        value="yes"
-                        checked={formData.attending === 'yes'}
-                        onChange={handleInputChange}
-                        className="sr-only"
-                      />
-                      <span className="flex items-center justify-center gap-2 text-[#3d3d38] font-medium">
-                        Joyfully Accept
-                      </span>
-                    </label>
-                    <label className={`flex-1 p-4 border rounded-lg cursor-pointer transition-all ${formData.attending === 'no' ? 'border-[#b8956b] bg-[#f5f2eb]' : 'border-[#8a9a7c]/20 hover:border-[#b8956b]/50'}`}>
-                      <input
-                        type="radio"
-                        name="attending"
-                        value="no"
-                        checked={formData.attending === 'no'}
-                        onChange={handleInputChange}
-                        className="sr-only"
-                      />
-                      <span className="flex items-center justify-center gap-2 text-[#3d3d38] font-medium">
-                        Regretfully Decline
-                      </span>
-                    </label>
+              {/* Quick Info */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                <div className="bg-[#f0f4ed]/60 p-3 rounded-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Shirt className="w-4 h-4 text-[#6b7c5e]" />
+                    <span className="text-[#5a6b50] font-medium text-sm">Dress Code</span>
                   </div>
+                  <p className="text-[#3d3d38] text-sm">
+                    Casual and comfortable. Come as you are!
+                  </p>
                 </div>
-
-                {/* Decline Prompt */}
-                {showDeclinePrompt && (
-                  <div className="bg-[#f5f2eb] p-5 rounded-lg border border-[#d4b896]/30">
-                    <p className="text-[#3d3d38] text-sm mb-3">
-                      We're sorry you can't make it! Would you like to leave your wishes for the couple?
-                    </p>
-                    <button
-                      type="button"
-                      onClick={() => navigate('/guestbook')}
-                      className="flex items-center gap-2 text-[#b8956b] hover:text-[#8a7a5a] font-medium text-sm"
-                    >
-                      <MessageCircle className="w-4 h-4" />
-                      Go to Guestbook to leave a message
-                    </button>
+                <div className="bg-[#f0f4ed]/60 p-3 rounded-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Heart className="w-4 h-4 text-[#6b7c5e]" />
+                    <span className="text-[#5a6b50] font-medium text-sm">What to Expect</span>
                   </div>
-                )}
+                  <p className="text-[#3d3d38] text-sm">
+                    Hors d'oeuvres, drinks, and good company!
+                  </p>
+                </div>
+              </div>
 
-                {/* Fields shown when attending */}
-                {formData.attending === 'yes' && (
-                  <>
-                    {/* Number of Guests */}
-                    <div>
-                      <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                        <Users className="w-4 h-4 inline mr-2" />
-                        Number of Guests (including yourself) *
-                      </label>
-                      <select
-                        name="numberOfGuests"
-                        value={formData.numberOfGuests}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-[#3d3d38]"
-                      >
-                        <option value="1">1 (Just me)</option>
-                        <option value="2">2 Guests</option>
-                        <option value="3">3 Guests</option>
-                        <option value="4">4 Guests</option>
-                        <option value="5+">5+ Guests</option>
-                      </select>
-                    </div>
-
-                    {/* Plus One Names */}
-                    {(formData.numberOfGuests !== '1') && (
-                      <div className={`p-4 rounded-lg ${selectedEvent === 'us' ? 'bg-[#f0f4ed]/60 border border-[#8a9a7c]/20' : 'bg-[#FFF9F0] border border-[#E89B3C]/20'}`}>
-                        <label className="block text-[#3d3d38] text-sm font-medium mb-2">
-                          <Heart className="w-4 h-4 inline mr-2" />
-                          Names of Your Guest(s) *
-                        </label>
-                        <input
-                          type="text"
-                          name="plusOneNames"
-                          value={formData.plusOneNames}
-                          onChange={handleInputChange}
-                          required
-                          className="w-full px-4 py-3 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-white text-[#3d3d38]"
-                          placeholder="e.g., John Smith, Jane Smith"
-                        />
-                        <p className="text-[#5a5a52] text-xs mt-2">
-                          Please list the full names of everyone attending with you
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Dietary Preferences */}
-                    <div>
-                      <label className="block text-[#3d3d38] text-sm font-medium mb-3">
-                        <Utensils className="w-4 h-4 inline mr-2" />
-                        {selectedEvent === 'us' ? 'Meal Preference *' : 'Dietary Preferences / Restrictions'}
-                      </label>
-                      
-                      {selectedEvent === 'us' ? (
-                        <>
-                          <div className="space-y-3">
-                            {['Vegetarian', 'Vegan', 'Non-Vegetarian'].map((option) => (
-                              <label key={option} className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${formData.dietaryPreference === option ? 'bg-[#f0f4ed] border border-[#8a9a7c]/40' : 'border border-transparent hover:bg-[#faf8f4]'}`}>
-                                <input
-                                  type="radio"
-                                  name="dietaryPreference"
-                                  value={option}
-                                  checked={formData.dietaryPreference === option}
-                                  onChange={handleInputChange}
-                                  className="w-4 h-4 accent-[#8a9a7c]"
-                                />
-                                <span className="text-[#3d3d38] text-sm">{option}</span>
-                              </label>
-                            ))}
-                          </div>
-                          <input
-                            type="text"
-                            name="otherDietary"
-                            value={formData.otherDietary}
-                            onChange={handleInputChange}
-                            className="w-full mt-3 px-4 py-2 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-sm text-[#3d3d38]"
-                            placeholder="Any allergies or other dietary needs?"
-                          />
-                        </>
-                      ) : (
-                        <>
-                          <div className="grid grid-cols-2 gap-3">
-                            {['Vegetarian', 'Non-Vegetarian', 'Gluten-Free', 'Vegan', 'No Restrictions'].map((option) => (
-                              <label key={option} className="flex items-center gap-2 cursor-pointer">
-                                <input
-                                  type="checkbox"
-                                  name="dietary"
-                                  value={option}
-                                  checked={formData.dietaryRestrictions.includes(option)}
-                                  onChange={handleInputChange}
-                                  className="w-4 h-4 accent-[#D4740C]"
-                                />
-                                <span className="text-[#3d3d38] text-sm">{option}</span>
-                              </label>
-                            ))}
-                          </div>
-                          <input
-                            type="text"
-                            name="otherDietary"
-                            value={formData.otherDietary}
-                            onChange={handleInputChange}
-                            className="w-full mt-3 px-4 py-2 border border-[#8a9a7c]/25 rounded-lg focus:outline-none focus:border-[#b8956b] bg-[#faf8f4] text-sm text-[#3d3d38]"
-                            placeholder="Other allergies or dietary needs..."
-                          />
-                        </>
-                      )}
-                    </div>
-
-                  </>
-                )}
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={!formData.attending || !formData.name || !formData.email || !formData.phone || submitting}
-                  className={`w-full py-4 rounded-full text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
-                    selectedEvent === 'us' 
-                      ? 'bg-[#8a9a7c] hover:bg-[#6b7c5e]' 
-                      : 'bg-[#E89B3C] hover:bg-[#D4740C]'
-                  }`}
-                >
-                  {submitting ? 'Submitting...' : formData.attending === 'no' ? 'Submit Response' : 'Submit RSVP'}
-                </button>
-              </form>
+              <button
+                onClick={() => setShowForm(true)}
+                className="w-full bg-[#8a9a7c] hover:bg-[#6b7c5e] text-white py-3.5 rounded-lg text-sm tracking-wider transition-all duration-300 shadow-md"
+                data-testid="rsvp-open-form-btn"
+              >
+                RSVP for Open House
+              </button>
             </div>
           </div>
         )}
 
-        {/* Contact Section */}
-        <div className="mt-12 bg-[#8a9a7c] text-white p-8 text-center rounded-lg">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Mail className="w-5 h-5" />
-            <Heart className="w-4 h-4 fill-white" />
+        {/* Embedded Google Form */}
+        {showForm && (
+          <div className="max-w-2xl mx-auto" data-testid="rsvp-google-form">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-sm border border-[#8a9a7c]/20 overflow-hidden">
+              {/* Loading indicator */}
+              {!formLoaded && (
+                <div className="flex items-center justify-center py-16">
+                  <div className="text-center">
+                    <div className="w-8 h-8 border-2 border-[#8a9a7c] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                    <p className="text-[#5a5a52] text-sm">Loading RSVP form...</p>
+                  </div>
+                </div>
+              )}
+              <iframe
+                src={GOOGLE_FORM_URL}
+                title="RSVP Form"
+                className="w-full border-0"
+                style={{ 
+                  height: formLoaded ? '1050px' : '0px',
+                  transition: 'height 0.3s ease',
+                }}
+                onLoad={() => setFormLoaded(true)}
+              >
+                Loading...
+              </iframe>
+            </div>
+
+            {/* Back button */}
+            {!isDirect && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => { setShowForm(false); setFormLoaded(false); }}
+                  className="text-[#5a5a52] text-sm hover:text-[#b8956b] transition-colors"
+                >
+                  Back to event details
+                </button>
+              </div>
+            )}
           </div>
-          <p className="font-cormorant text-xl italic mb-2">
-            Questions about the events?
-          </p>
-          <p className="text-white/90 text-sm">
-            We'd love to hear from you! Reach out and we'll get back to you soon.
+        )}
+
+        {/* Bottom note */}
+        <div className="max-w-xl mx-auto mt-10 text-center">
+          <p className="text-[#5a5a52] text-xs">
+            Having trouble with the form? You can also RSVP by texting or calling Jimmy & Soumi directly.
           </p>
         </div>
       </div>
