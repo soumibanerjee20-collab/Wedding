@@ -170,9 +170,9 @@ export const timeline = [
     ]
   },
   {
-    date: "NOW",
+    date: "LATE 2025 - MID 2026",
     title: "Counting Down to Forever",
-    description: "An ocean apart but never truly separated. Video calls that bridge time zones. Messages that say 'I love you' at midnight and dawn. The visa paperwork is underway, each form a step closer to home. Every day apart is one day closer to the moment she arrives in Wyoming, to the life they'll build together. Distance is just a temporary chapter in their forever story.",
+    description: "An ocean apart but never truly separated. Video calls that bridge time zones. Messages that say 'I love you' at midnight and dawn. After the proposal, the real waiting began. Visa applications, immigration paperwork, embassy appointments, endless forms, and months of hoping every notification was the one. Each stamp, each approval, brought them one step closer. Every day apart was one day closer to the moment she would arrive in Wyoming, to the life they would finally build together. Distance was just a temporary chapter in their forever story.",
     location: "Wyoming & India",
     photos: [
       "https://customer-assets.emergentagent.com/job_0d9d20d0-1ab0-4c43-b970-5c7adcb8ec81/artifacts/x50vhte2_IMG_9275.jpeg"
