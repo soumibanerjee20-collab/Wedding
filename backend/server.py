@@ -197,7 +197,7 @@ async def clear_all_rsvps(x_admin_token: str = Header()):
     return {"success": True, "deleted": result.deleted_count}
 
 
-GOOGLE_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQLMZiqitLBHupwoRp9k1lwjxmmtG-cWS9-s1lRrFxSYakHet0o_-iSiBC1a9rlRkAiQXnoQLH7pD3z/pub?output=csv"
+GOOGLE_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRV_7f4pPHgwCPmq4Fq-vdWOf9GLilfxfU5cAUWqkDPnsjcRnBdM_TIHapQWA1kvjqTLoK79vIx0MW6/pub?output=csv"
 
 def parse_google_sheet_rows(csv_text):
     """Parse Google Sheet CSV using index-based approach to handle duplicate column names."""
